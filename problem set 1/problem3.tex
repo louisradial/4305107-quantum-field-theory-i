@@ -1,0 +1,20 @@
+\begin{problem}{Infinitesimal Lorentz transformations}{p3}
+   Consider an infinitesimal Lorentz transformation \(\tilde{x}^\mu = \Lambda\indices{^\mu_\nu}x^\nu\) where \(\Lambda\indices{^\mu_\nu} = \delta\indices{^\mu_\nu} + \omega\indices{^\mu_\nu}.\)
+   \begin{enumerate}[label=(\alph*)]
+      \item Show that \(\omega_{\mu\nu} = -\omega_{\nu\mu}\).
+      \item For a rotation, what is the form of \(\omega_{\mu\nu}\)?
+      \item For a scalar field \(\phi(x)\) obtain the conserved current associated to a Lorentz transformation.
+   \end{enumerate}
+\end{problem}
+\begin{proof}[Solution]
+    As Lorentz transformations must preserve the pseudo inner product, we have
+    \begin{align*}
+       g_{\mu\nu} \tilde{x}^\mu \tilde{x}^\nu = g_{\mu\nu}x^\mu x^\nu 
+       &\implies g_{\mu\nu}\left(\delta\indices{^\mu_\rho} + \omega\indices{^\mu_\rho}\right) \left(\delta\indices{^\nu_\sigma} + \omega\indices{^\nu_\sigma}\right) x^\rho x^\sigma - g_{\mu\nu} x^{\mu} x^\nu = 0\\
+       &\implies g_{\mu\nu}x^\rho x^\sigma \left[\left(\delta\indices{^\mu_\rho} + \omega\indices{^\mu_\rho}\right) \left(\delta\indices{^\nu_\sigma} + \omega\indices{^\nu_\sigma}\right) - \delta\indices{^\mu_\rho} \delta\indices{^\nu_\sigma}\right] = 0\\
+       &\implies x^\rho x^\sigma \left[\left(g_{\rho \nu} + \omega_{\nu \rho}\right)\left(\delta\indices{^\nu_\sigma} + \omega\indices{^\nu_\sigma}\right) - g_{\rho\sigma}\right] = 0\\
+       &\implies x^\rho x^\sigma \left[g_{\rho\sigma} + \omega_{\rho \sigma} + \omega_{\sigma \rho} + O(\omega^2) - g_{\rho \sigma}\right] = 0\\
+       &\implies x^\rho x^\sigma \left(\omega_{\rho \sigma} + \omega_{\sigma \rho}\right) = 0
+    \end{align*}
+    for all \(x,\) hence \(\omega_{\rho \sigma} = -\omega_{\sigma \rho}\).
+\end{proof}

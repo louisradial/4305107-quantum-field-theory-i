@@ -17,4 +17,34 @@
        &\implies x^\rho x^\sigma \left(\omega_{\rho \sigma} + \omega_{\sigma \rho}\right) = 0
     \end{align*}
     for all \(x,\) hence \(\omega_{\rho \sigma} = -\omega_{\sigma \rho}\).
+
+    As rotations are proper and orthochronous Lorentz transformations with the additional property that \(g_{ij} \tilde{x}^i \tilde{x}^j = g_{ij} x^i x^j,\) we have \(\tilde{x}^0 = x^0,\) hence \(\omega_{0\mu} = 0.\) For a rotation along the direction \(\vetor{n} = n^i \vetor{e}_i\) by an infinitesimal angle \(\vartheta,\) we have
+    \begin{equation*}
+       \tilde{x}^k =  (\vetor{x} + \vartheta \vetor{n} \times \vetor{x})^k = x^k + \vartheta n_i x_j \epsilon^{ijk} = \left(\delta\indices{^k_\ell} + \vartheta n_i g_{j \ell}\epsilon^{ijk}\right) x^\ell,
+    \end{equation*}
+    then 
+    \begin{equation*}
+       \omega\indices{^k_\ell} = \vartheta n_i \epsilon\indices{^i_{\ell}^k}
+    \end{equation*}
+    are the other components of \(\omega\indices{^\mu_\nu}\). As an example, the rotation along the \(\vetor{e}_z\) direction by an infinitesimal angle \(\vartheta\) has \(\omega_{12} = -\vartheta = -\omega_{21}\) and all other components equal to zero.
+
+    Under the Lorentz transformation
+    \begin{equation*}
+       x^\mu \mapsto \tilde{x}^\mu = \left(\delta\indices{^\mu_\nu} + \omega\indices{^\mu_\nu}\right)x^\nu
+       \quad\text{and}\quad
+       \phi(x) \mapsto \tilde{\phi}(\tilde{x}) = \phi(x)
+    \end{equation*}
+    we have \(\Delta x^\mu = \omega\indices{^\mu_\nu} x^\nu\) and
+    \begin{equation*}
+       \delta \phi(x) = \tilde{\phi}(x) - \phi(x) = \phi(x - \omega x) - \phi(x) = - \omega\indices{^\mu_\nu} x^\nu \partial_\mu \phi(x).
+    \end{equation*}
+    Let \(\mathcal{L} = \mathcal{L}[\phi, \partial \phi, x]\) be a Lagrangian density for which Lorentz transformations are symmetries, then by \nameref{thm:noether},
+    \begin{align*}
+       j^\rho 
+       = \diffp{\mathcal{L}}{(\partial_\rho \phi)} \delta \phi + \mathcal{L} \Delta x^\rho
+       &= -\diffp{\mathcal{L}}{(\partial_\rho \phi)} \omega\indices{^\mu_\nu} x^\nu \partial_\mu \phi + \mathcal{L} \omega\indices{^\mu_\nu}x^\nu\\
+       &= \omega\indices{^\mu_\nu}x^\nu \left[\mathcal{L} - \diffp{\mathcal{L}}{(\partial_\rho \phi)} \partial_\mu \phi\right]\\
+       &= \omega_{\sigma \nu} x^\nu \left[\mathcal{L} g^{\sigma \mu} - \diffp{\mathcal{L}}{(\partial_\rho\phi)} \partial^\sigma \phi\right]
+    \end{align*}
+    is the conserved current.
 \end{proof}

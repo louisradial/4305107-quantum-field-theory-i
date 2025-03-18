@@ -1,0 +1,53 @@
+\begin{problem}{Scalar field with scale invariance}{p2}
+   Consider a real scalar field \(\phi\) whose Lagrangian density is
+   \begin{equation*}
+      \mathcal{L} = \frac12 \partial_\mu \phi \partial^\mu \phi - \frac{\lambda}{4!}\phi^4.
+   \end{equation*}
+   A scale transformation is defined as 
+   \begin{equation*}
+      x \mapsto \tilde{x} = e^{\epsilon} x
+      \quad\text{and}\quad
+      \phi(x) \mapsto \tilde{\phi}(\tilde{x}) = e^{-d_\phi \epsilon}\phi(x),
+   \end{equation*}
+   where \(d_\phi = 1\) is the dimension of the field \(\phi\). Is this transformation a symmetry? If so, what is the conserved current?
+\end{problem}
+\begin{proof}[Solution]
+   With the scale transformation defined above, we have
+   \begin{equation*}
+      \tilde{\partial}_{\mu} \tilde{\phi}(\tilde{x}) = \diffp{x^\nu}{\tilde{x}^\mu} \partial_\nu e^{- \epsilon}\phi(x) = e^{-2 \epsilon} \delta\indices{^\nu_\mu} \partial_\nu \phi(x) = e^{-2 \epsilon} \partial_\mu \phi(x),
+   \end{equation*}
+   then
+   \begin{equation*}
+      \tilde{\mathcal{L}} = \frac12 g^{\mu \nu} \tilde{\partial}_\mu \tilde{\phi} \tilde{\partial}_\nu \tilde{\phi} - \frac\lambda{4!} \tilde{\phi}^4 = e^{-4\epsilon} \mathcal{L}.
+   \end{equation*}
+   As 
+   \begin{equation*}
+      \dln4{\tilde{x}} = \det\left(\diffp{\tilde{x}^\mu}{x^\nu}\right) \dln4x = \det\left(e^{\epsilon} \unity\right) \dln4x = e^{4\epsilon} \dln4x,
+   \end{equation*}
+   it follows that the transformation bears no change in the action, hence the theory is invariant under scale transformations.
+
+   We consider the infinitesimal transformation
+   \begin{equation*}
+      x \mapsto \tilde{x} = (1 + \varepsilon)x
+      \quad\text{and}\quad
+      \phi(x) \mapsto \tilde{\phi}(\tilde{x}) = (1 - \varepsilon) \phi(x),
+   \end{equation*}
+   then \(\Delta x^\mu = \varepsilon x^\mu\) and
+   \begin{align*}
+      \delta\phi(x) = \tilde{\phi}(x) - \phi(x) 
+      &= (1 - \varepsilon) \phi( (1 - \varepsilon)x) - \phi(x)\\
+      &= (1 - \varepsilon) \left(\phi(x) - \varepsilon x^\mu \partial_\mu \phi(x)\right) - \phi(x)\\
+      &= -\varepsilon \left[\phi(x) - x^\mu \partial_\mu \phi(x)\right]
+   \end{align*}
+   By \nameref{thm:noether}, the conserved current is
+   \begin{align*}
+      j^\rho &= \diffp{\mathcal{L}}{(\partial_\rho \phi)} \delta\phi + \mathcal{L} \Delta x^\rho\\
+             &= -\varepsilon \frac12 \left(g^{\mu \nu}\delta\indices{^\rho_\mu} \partial_\nu \phi + g^{\mu\nu} \delta\indices{^\rho_\nu} \partial_\mu \phi\right)\left[\phi - x^\sigma \partial_\sigma \phi\right] - \varepsilon x^\rho \left(\frac12 g^{\mu\nu} \partial_\mu\phi \partial_\nu \phi - \frac\lambda{4!} \phi^4\right)\\
+             &= - \varepsilon \left[\left(\phi - x^\sigma \partial_\sigma \phi\right)g^{\mu \rho} \partial_\mu \phi  + x^\rho \left(\frac12 g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - \frac\lambda{4!}\phi^4\right)\right].
+   \end{align*}
+   As \(\varepsilon\) is arbitrary,
+   \begin{equation*}
+       J^\rho = \left(\phi - x^\sigma \partial_\sigma \phi\right)g^{\mu \rho} \partial_\mu \phi  + x^\rho \left(\frac12 g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - \frac\lambda{4!}\phi^4\right)
+   \end{equation*}
+   satisfies the continuity equation \(\partial_\rho J^\rho = 0\).
+\end{proof}

@@ -1,0 +1,74 @@
+\begin{problem}{Source free electromagnetic equations of motion}{p1}
+    In the absence of sources, the electromagnetic Lagrangian density is
+    \begin{equation*}
+       \mathcal{L} = -\frac14 F_{\mu\nu}F^{\mu\nu},
+    \end{equation*}
+    where \(F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu\) and \(A_\mu\) is the 4-potential.
+    \begin{enumerate}[label=(\alph*)]
+        \item Obtain the classical equations of motion.
+        \item Obtain the energy momentum tensor that is the conserved current when we consider the symmetry \(x^\mu \mapsto \tilde{x}^\mu = x^\mu + a^\mu,\) with \(a^\mu\) constant.
+    \end{enumerate}
+\end{problem}
+\begin{proof}[Solution]
+    Notice we have \(\diffp{F_{\mu\nu}}{A_\sigma} = 0\) and
+    \begin{equation*}
+       \diffp{F_{\mu\nu}}{(\partial_\rho A_\sigma)} = \delta\indices{^\rho_\mu}\delta\indices{^\sigma_\nu} - \delta\indices{^\sigma_\mu}\delta\indices{^\rho_\nu},
+    \end{equation*}
+    hence \(\diffp{F^{\mu\nu}}{A_\sigma} = 0\) and
+    \begin{equation*}
+        \diffp{F^{\mu\nu}}{(\partial_\rho A_\sigma)} = g^{\alpha \mu} g^{\beta \nu} \diffp{F_{\alpha \beta}}{(\partial_\rho A_\sigma)} = g^{\alpha \mu} g^{\beta \nu} \left(\delta\indices{^\rho_\alpha}\delta\indices{^\sigma_\beta} - \delta\indices{^\sigma_\alpha}\delta\indices{^\rho_\beta}\right) = g^{\rho \mu} g^{\sigma \nu} - g^{\sigma \mu} g^{\rho \nu}.
+    \end{equation*}
+    This yields
+    \begin{align*}
+        \diffp{\mathcal{L}}{(\partial_\rho A_\sigma)} &= - \frac14 \left[ \left(g^{\rho\mu} g^{\sigma \nu} - g^{\sigma \mu} g^{\rho \nu}\right)F_{\mu\nu} + \left(\delta\indices{^\rho_\mu}\delta\indices{^\sigma_\nu} - \delta\indices{^\sigma_\mu}\delta\indices{^\rho_\nu}\right)F^{\mu\nu}\right]\\
+                                                      &= - \frac12 \left[F^{\rho\sigma} - F^{\sigma \rho}\right]\\
+                                                      &= - F^{\rho\sigma}
+    \end{align*}
+    by the antisymmetric properties of the electromagnetic field tensor. Then, we have 
+    \begin{equation}
+        \diffp{\mathcal{L}}{A_\sigma} - \partial_\rho\diffp{\mathcal{L}}{(\partial_\rho A_\sigma)} 
+        = \partial_\rho F^{\rho \sigma},
+    \end{equation}
+    that is, the equations of motion are \(\partial_\rho F^{\rho \sigma} = 0\).
+
+    Let us consider the infinitesimal transformation \(x^\mu \mapsto \tilde{x}^\mu = x^\mu + \epsilon a^\mu\) and \(A_\sigma(x) \mapsto \tilde{A}_\sigma(\tilde{x}) = A_\sigma(x),\) then
+    \begin{equation*}
+        \delta A_\sigma(x) = \tilde{A}_\sigma(x) - A_\sigma(x) = A_\sigma(x - \epsilon a) - A_\sigma(x) = - \epsilon a^\mu \partial_\mu A_\sigma(x)
+    \end{equation*}
+    and
+    \begin{equation*}
+        \Delta x^\mu = \epsilon a^\mu.
+    \end{equation*}
+    By \nameref{thm:noether}, the conserved current is
+    \begin{align*}
+        j^\rho &= \diffp{L}{(\partial_\rho A_\sigma)} \delta A_\sigma(x) + \mathcal{L} \Delta x^\rho\\
+               &= - \epsilon \diffp{L}{(\partial_\rho A_\sigma)} a^\mu \partial_\mu A_\sigma + \epsilon a^\rho \mathcal{L}\\
+               &= \epsilon a^\mu F^{\rho \sigma} \partial_\mu A_\sigma - \frac\epsilon4 a^\rho F^{\alpha \beta}F_{\alpha \beta}\\
+               &= \epsilon a^\mu \left(F^{\rho \sigma} \partial_\mu A_\sigma - \frac14 \delta\indices{^\rho_\mu} F^{\alpha \beta} F_{\alpha \beta}\right)\\
+               &= \epsilon a^\mu \left[F^{\rho \sigma} \left(F_{\mu \sigma} + \partial_\sigma A_\mu\right) - \frac14 \delta\indices{^\rho_\mu} F^{\alpha \beta}F_{\alpha \beta}\right]
+               % &= \epsilon a^\mu\left[F^{\rho \sigma} F_{\mu \sigma} + F^{\rho \sigma} \partial_\sigma A_\mu  - \frac14 \delta\indices{^\rho_\mu} F^{\alpha \beta}F_{\alpha \beta}\right]
+    \end{align*}
+    satisfying \(\partial_\rho j^\rho = 0.\) As \(a^\mu\) and \(\epsilon\) are arbitrary, the term inside the brackets also satisfies the same continuity equation, and one could define it as the stress-energy tensor. 
+
+    A more usual form of the electromagnetic stress-energy tensor is obtained by using the electromagnetic equations of motion. Notice \(F^{\rho \sigma} A_\mu\) is antisymmetric in \(\sigma\) and \(\rho\) and that
+    \begin{equation*}
+        \diffp{F^{\rho \sigma} A_\mu}{x^\sigma} = \diffp{F^{\rho \sigma}}{x^\sigma} A_\mu + F^{\rho \sigma} \diffp{A_\mu}{x^\sigma} = F^{\rho \sigma} \diffp{A_\mu}{x^\sigma}
+    \end{equation*}
+    considering the equations of motion. As a result, we have
+    \begin{equation*}
+        \partial_{\rho}\partial_{\sigma} \left(F^{\rho \sigma} A_\mu\right) = 0,
+    \end{equation*}
+    as the partial derivatives are symmetric in \(\rho\) and \(\sigma\). As a result, we may define the stress-energy tensor as
+    \begin{equation*}
+        T^{\rho \lambda} = F^{\rho \sigma}F\indices{^\lambda_\sigma} - \frac14 g^{\rho \lambda} F^{\alpha \beta} F_{\alpha \beta}
+    \end{equation*}
+    yielding
+    \begin{equation*}
+        j^\rho = \epsilon a^\mu g_{\mu \lambda} T^{\rho \lambda} + \epsilon a^\mu \partial_\sigma (F^{\rho \sigma} A_\mu)
+    \end{equation*}
+    with
+    \begin{equation*}
+        \partial_\rho j^\rho = \epsilon a^\mu g_{\mu \lambda} \left[\partial_\rho T^{\rho \lambda} + \partial_{\rho} \partial_{\sigma} (F^{\rho \sigma} A_\mu)\right] \implies \partial_\rho T^{\rho \lambda} = 0,
+    \end{equation*}
+    as expected.
+\end{proof}

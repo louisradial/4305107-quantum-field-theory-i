@@ -1,0 +1,34 @@
+\begin{problem}{Conserved quantity due to electromagnetism's Lorentz invariance}{p4}
+   Consider the vector field \(A^\mu\) associated to the electromagnetic field. Obtain the conserved quantities due to the Lorentz invariance of the theory. Use the Langrangian density given in the first problem.
+\end{problem}
+\begin{proof}[Solution]
+   We consider the infinitesimal Lorentz transformation
+   \begin{equation*}
+      x^\mu \mapsto \tilde{x}^\mu = \left(\delta\indices{^\mu_\nu} + \omega\indices{^\mu_\nu}\right)x^\nu
+      \quad\text{and}\quad
+      A_\mu(x) \mapsto \tilde{A}_\mu(\tilde{x}) = \diffp{x^\nu}{\tilde{x}^\mu} A_\nu(x).
+   \end{equation*}
+   As the transformation is infinitesimal, we have \(\diffp{x^\nu}{\tilde{x}^\mu} = \delta\indices{^\nu_\mu} - \omega\indices{^\nu_\mu}\), hence
+   \begin{align*}
+      \delta A_\mu(x) = \tilde{A}_\mu(x) - A_\mu(x) 
+      &=\left(\delta\indices{^\nu_\mu} - \omega\indices{^\nu_\mu}\right) A_\nu(x - \omega x) - A_\mu(x)\\
+      &=\left(\delta\indices{^\nu_\mu} - \omega\indices{^\nu_\mu}\right) \left[A_\nu(x) - \omega\indices{^\rho_\sigma} x^\sigma \partial_\rho A_\nu(x)\right] - A_\mu(x)\\
+      &=  - \omega\indices{^\nu_\mu} A_\nu(x) - \omega\indices{^\lambda_\sigma} x^\sigma \partial_\lambda A_\mu(x)
+   \end{align*}
+   and \(\Delta x^\rho = \omega\indices{^\rho_\eta}x^\eta\). As we have shown in \cref{prob:p1}, we have
+   \begin{equation*}
+      \diffp{\mathcal{L}}{(\partial_\rho A_\mu)} = - F^{\rho\mu},
+   \end{equation*}
+   then the conserved current guaranteed by \nameref{thm:noether} is
+   \begin{align*}
+      j^\rho = \diffp{L}{(\partial_\rho A_\mu)}\delta A_\mu(x) + \mathcal{L} \Delta x^\rho
+      &= F^{\rho\mu} \left[\omega\indices{^\sigma_\mu} A_\sigma + \omega\indices{^\sigma_\lambda} x^\lambda \partial_\sigma A_\mu\right] - \frac14 F^{\alpha \beta}F_{\alpha \beta} \omega\indices{^\rho_\lambda} x^\lambda\\
+      &= \omega\indices{^\sigma_\lambda}\left[F^{\rho \mu}\left(\delta\indices{^\lambda_\mu} A_\sigma + x^\lambda \partial_\sigma A_\mu\right) - \frac14 F^{\alpha \beta}F_{\alpha \beta} \delta\indices{^\rho_\sigma}x^\lambda\right]\\
+      &= \omega_{\nu \lambda}\left[F^{\rho \lambda} A^\nu + x^\lambda \left(F^{\rho \mu} \partial^\nu A_\mu - \frac14 g^{\rho \nu} F^{\alpha \beta} F_{\alpha \beta}\right)\right]\\
+      &= \omega_{\nu \lambda} \left[F^{\rho \lambda} A^\nu + x^\lambda F^{\rho \mu} \partial_\mu A^\nu + x^\lambda T^{\rho \nu}\right]\\
+      &= \omega_{\nu \lambda} \left[F^{\rho \mu} \delta\indices{^\lambda_\mu} A^\nu + x^\lambda F^{\rho \mu} \partial_\mu A^\nu + x^\lambda T^{\rho \nu}\right]\\
+      &= \omega_{\nu \lambda} \left[F^{\rho \mu} A^\nu \partial_\mu x^\lambda + x^\lambda F^{\rho \mu} \partial_\mu A^\nu + x^\lambda T^{\rho \nu}\right]\\
+      &= \omega_{\nu \lambda} \left[F^{\rho \mu} \partial_\mu( x^\lambda A^\nu) + x^\lambda T^{\rho \nu}\right]
+   \end{align*}
+   where \(T^{\rho\nu}\) is the stress-energy tensor defined in \cref{prob:p1}.
+\end{proof}

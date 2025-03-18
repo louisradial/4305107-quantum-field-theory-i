@@ -1,0 +1,80 @@
+\documentclass[english]{artigo}
+
+\author{Louis Bergamo Radial\\8992822}
+\title{Quantum Field Theory I\\Problem set I}
+\begin{document}
+   \maketitle
+   \begin{theorem}{Noether's theorem}{noether}
+      Let \(x^\mu \mapsto \tilde{x}^\mu = x^\mu + \Delta x^\mu\) and \(\phi_j(x) \mapsto \tilde{\phi}_j(\tilde{x}) = \phi_j(x) + \Delta\phi_j(x)\) be an infinitesimal transformation that leaves the action \(S = \int \dln4x \mathcal{L}\) invariant. Then the current \(j^\mu = \diffp{\mathcal{L}}{(\partial_\mu \phi_j)} \delta \phi_j + \mathcal{L} \Delta x^\mu\) satisfies the continuity equation \(\partial_\mu j^\mu = 0\), where \(\delta \phi_j(x) = \tilde{\phi}_j(x) - \phi_j(x)\).
+   \end{theorem}
+   \begin{proof}
+      Notice we have
+      \begin{align*}
+         \Delta\phi_j(x) = \tilde{\phi_j}(\tilde{x}) - \phi_j(x) &= \tilde{\phi_j}(x) + \Delta x^\mu \partial_\mu \tilde{\phi_j}(x) - \phi_j(x) = \Delta x^\mu \partial_\mu \tilde{\phi_j}(x) + \delta \phi_j(x)\\
+                                                                 &= \Delta x^\mu \partial_\mu \left[\phi_j(x) + \Delta \phi_j(x)\right] + \delta\phi_j(x)\\
+                                                                 &= \Delta x^\mu \partial_\mu \phi_j(x) + \delta\phi_j(x)
+      \end{align*}
+      and
+      \begin{equation*}
+         \tilde{\partial}_\mu = \diffp{x^\nu}{\tilde{x}^\mu} \partial_\nu = \left(\delta\indices{^\nu_\mu} - \partial_\mu \Delta x^\nu\right)\partial_\nu
+      \end{equation*}
+      in first order of \(\Delta x^\mu\) and \(\Delta \phi_j(x)\). This yields
+      \begin{align*}
+         \Delta (\partial_\mu \phi_j)(x) = \tilde{\partial}_\mu \tilde{\phi_j}(\tilde{x}) - \partial_\mu \phi_j(x) 
+         &= \left(\delta\indices{^\nu_\mu} - \partial_\mu \Delta x^\nu\right) \partial_\nu \left[\phi_j(x) + \Delta \phi_j(x)\right] - \partial_\mu \phi_j(x)\\
+         &= \partial_\mu \Delta\phi_j(x) - (\partial_\mu \Delta x^\nu) \partial_\nu \phi_j(x)\\
+         &= \partial_\mu \left[\delta \phi_j(x)\right] + \partial_\mu \left[\Delta x^\nu \partial_\nu \phi_j(x)\right] - (\partial_\mu \Delta x^\nu) \partial_\nu \phi_j(x)\\
+         &= \partial_\mu \left[\delta \phi_j(x)\right] + \Delta x^\nu \partial_\mu \partial_\nu \phi_j(x)\\
+         &= \partial_\mu \left[\delta \phi_j(x)\right] + \Delta x^\nu \partial_\nu \partial_\mu \phi_j(x)
+      \end{align*}
+      in the same first order approximation. Let us denote 
+      \begin{equation*}
+         \tilde{\mathcal{L}} = \mathcal{L}[\tilde{\phi}(\tilde{x}), \tilde{\partial}\tilde{\phi}(\tilde{x}), \tilde{x}]\quad\text{and}\quad
+         \mathcal{L} = \mathcal{L}[\phi(x), \partial \phi(x), x], 
+      \end{equation*}
+      then
+      \begin{align*}
+         \tilde{\mathcal{L}} &= \mathcal{L}\left[\phi(x) + \Delta \phi(x), \partial \phi(x) + \Delta \partial\phi(x), x + \Delta x\right]\\
+                             &= \mathcal{L} + \diffp{\mathcal{L}}{\phi_j} \Delta \phi_j(x) + \diffp{\mathcal{L}}{(\partial_\mu \phi_j)} \Delta \partial_\mu \phi_j(x) + \diffp{\mathcal{L}}{x^\mu} \Delta x^\mu\\
+                             &= \mathcal{L} + \diffp{\mathcal{L}}{\phi_j} \left[\Delta x^\mu \partial_\mu \phi_j(x) + \delta\phi_j(x)\right] + 
+                             \diffp{\mathcal{L}}{(\partial_\nu \phi_j)} \left\{\partial_\nu \left[\delta \phi_j(x)\right] + \Delta x^\mu \partial_\mu \partial_\nu \phi_j(x)\right\}
+                             + \diffp{L}{x^\mu} \Delta x^\mu\\
+                             &=  \mathcal{L} + \diff{\mathcal{L}}{x^\mu} \Delta x^\mu + \diffp{L}{\phi_j} \delta \phi_j(x) + \diffp{\mathcal{L}}{(\partial_\nu \phi_j)} \partial_\nu\left[\delta \phi_j(x)\right]\\
+                             &=  \mathcal{L} + \diff{\mathcal{L}}{x^\mu} \Delta x^\mu + \delta \mathcal{L},
+      \end{align*}
+      where we defined \(\delta \mathcal{L} = \diffp{\mathcal{L}}{\phi_j} \delta \phi_j(x) + \diffp{\mathcal{L}}{(\partial_\nu \phi_j)} \partial_\nu\left[\delta \phi_j(x)\right]\). Notice if \(\phi_j\) satisfies the equations of motion,
+      \begin{equation*}
+         \diffp{\mathcal{L}}{\phi_j} = \partial_\sigma \diffp{\mathcal{L}}{(\partial_\sigma \phi_j)},
+      \end{equation*}
+      we have
+      \begin{equation*}
+         \delta \mathcal{L} = \partial_\nu \left(\diffp{\mathcal{L}}{(\partial_\nu \phi_j)}\right) \delta \phi_j(x) + \diffp{\mathcal{L}}{(\partial_\nu \phi_j)} \partial_\nu \left[\delta \phi_j(x)\right] = \partial_\nu\left[\diffp{\mathcal{L}}{(\partial_\nu \phi_j)} \delta\phi_j(x)\right] = \diff*{\left[\diffp{\mathcal{L}}{(\partial_\nu \phi_j)} \delta\phi_j(x)\right]}{x^\nu}.
+      \end{equation*}
+
+      Recall that if a matrix \(A\) has (complex) eigenvalues \(\sigma(A),\) then the matrix \(\unity + A\) has eigenvalues \(\sigma(\unity + A) = \setc{1 + a}{a \in \sigma(A)}\). Therefore, if \(\varepsilon\) is an infinitesimal parameter, we have
+      \begin{equation*}
+         \det(\unity + \varepsilon A) = \prod_{\lambda \in \sigma(\unity + \varepsilon A)} \lambda = \prod_{a \in \sigma(A)} (1 + \varepsilon a) = 1 + \varepsilon \sum_{a \in \sigma(A)} a = 1 + \varepsilon \Tr(A)
+      \end{equation*}
+      up to linear order in \(\varepsilon\). As a result, the Jacobian of the infinitesimal transformation is such that
+      \begin{equation*}
+         \dln4{\tilde{x}} = \left(1 + \partial_\mu\Delta x^\mu\right) \dln4x,
+      \end{equation*}
+      thus the difference in action is given by
+      \begin{align*}
+         \Delta S &= \int \dln4{\tilde{x}} \tilde{\mathcal{L}} - \int \dln4x \mathcal{L}\\
+                  &= \int \dln4x \left\{\left(1 + \partial_\sigma \Delta x^\sigma\right)\left[\mathcal{L} + \diff{\mathcal{L}}{x^\mu}\Delta x^\mu + \delta \mathcal{L}\right] - \mathcal{L}\right\}\\
+                  &= \int \dln4x \left(\mathcal{L} \partial_\sigma \Delta x^\sigma + \diff{\mathcal{L}}{x^\mu}\Delta x^\mu + \delta \mathcal{L}\right)\\
+                  &= \int \dln4x \left[\diff*{\left(\mathcal{L} \Delta x^\sigma\right)}{x^\sigma} + \delta \mathcal{L}\right].
+      \end{align*}
+      Then, for a solution of the equations of motion, this yields
+      \begin{equation*}
+         \Delta S = \int \dln4x \diff*{\left[\diffp{\mathcal{L}}{(\partial_\sigma \phi_j)} \delta \phi_j(x) + \mathcal{L} \Delta x^\sigma\right]}{x^\sigma},
+      \end{equation*}
+      therefore the integrand must be equal to zero if the infinitesimal transformation is a symmetry, as desired.
+   \end{proof}
+
+   \include{problem1}
+   \include{problem2}
+   \include{problem3}
+   \include{problem4}
+\end{document}

@@ -28,7 +28,17 @@
       &= \omega_{\nu \lambda} \left[F^{\rho \lambda} A^\nu + x^\lambda F^{\rho \mu} \partial_\mu A^\nu + x^\lambda T^{\rho \nu}\right]\\
       &= \omega_{\nu \lambda} \left[F^{\rho \mu} \delta\indices{^\lambda_\mu} A^\nu + x^\lambda F^{\rho \mu} \partial_\mu A^\nu + x^\lambda T^{\rho \nu}\right]\\
       &= \omega_{\nu \lambda} \left[F^{\rho \mu} A^\nu \partial_\mu x^\lambda + x^\lambda F^{\rho \mu} \partial_\mu A^\nu + x^\lambda T^{\rho \nu}\right]\\
-      &= \omega_{\nu \lambda} \left[F^{\rho \mu} \partial_\mu( x^\lambda A^\nu) + x^\lambda T^{\rho \nu}\right]
+      &= \omega_{\nu \lambda} \left[F^{\rho \mu} \partial_\mu( x^\lambda A^\nu) + x^\lambda T^{\rho \nu}\right]\\
+      &= \frac12 \omega_{\nu \lambda} \left[F^{\rho \mu} \partial_\mu( x^\lambda A^\nu) + x^\lambda T^{\rho \nu}\right] + \frac12 \omega_{\lambda \nu}\left[F^{\rho \mu} \partial_\mu( x^\nu A^\lambda) + x^\nu T^{\rho \lambda}\right]\\
+      &= \frac12 \omega_{\nu \lambda} \left[x^{\lambda} T^{\rho \nu} - x^\nu T^{\rho \lambda} + F^{\rho \mu} \partial_\mu (x^\lambda A^\nu - x^\nu A^{\lambda})\right] 
    \end{align*}
-   where \(T^{\rho\nu}\) is the stress-energy tensor defined in \cref{prob:p1}.
+   where \(T^{\rho\nu}\) is the symmetric stress-energy tensor defined in \cref{prob:p1}. As the Lorentz transformation components are arbitrary, the tensor
+   \begin{equation*}
+      \tilde{M}^{\lambda \rho \nu} = x^{\lambda} T^{\rho \nu} - x^\nu T^{\rho \lambda} + F^{\rho \mu} \partial_\mu(x^\lambda A^\nu - x^\nu A^\lambda)
+   \end{equation*}
+   is conserved with \(\partial_\rho \tilde{M}^{\lambda \rho \nu} = 0\). The equations of motion then yield the conservation of the tensor \(M^{\lambda \rho \nu} = x^{\lambda}T^{\rho \nu} - x^{\nu}T^{\rho \lambda}\) since we have
+   \begin{equation*}
+      \partial_\rho (\tilde{M}^{\lambda \rho \nu} - M^{\lambda \rho \nu}) = \partial_\rho \left[F^{\rho \mu} \partial_\mu(x^\lambda A^\nu - x^\nu A^\lambda)\right]  = F^{\rho \mu} \partial_\rho \partial_\mu (x^\lambda A^\nu - x^\nu A^\lambda) = 0
+   \end{equation*}
+   since \(F^{\rho \mu}\) is antisymmetric and the partial derivatives commute.
 \end{proof}

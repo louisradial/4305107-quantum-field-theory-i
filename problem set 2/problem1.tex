@@ -1,0 +1,269 @@
+% vim: spl=en
+\begin{problem}{Canonical quantization of a complex scalar field}{p1}
+   We consider the field theory of a complex-valued scalar field satisfying the Klein-Gordon equation. The Lagrangian density for this model is
+   \begin{equation*}
+      \mathcal{L} = \partial_\mu \conj{\phi} \partial^\mu \phi - m^2 \conj{\phi} \phi,
+   \end{equation*}
+   where we may consider \(\phi\) and \(\conj{\phi}\) as the dynamical variables rather than the real and imaginary parts of \(\phi\).
+   \begin{enumerate}[label=(\alph*)]
+      \item Obtain the conjugate momenta of \(\phi\) and \(\conj{\phi}\) as well as the Hamiltonian of the system.
+      \item Consider the transformation \(\phi(x) \mapsto \tilde{\phi}(x) = e^{i\alpha} \phi(x)\), where \(\alpha\) is a real constant. Is this a symmetry of the model? If so, what is the conserved charge?
+      \item Compute the Heisenberg equation of motion for \(\phi(x).\)
+      \item Expand \(\phi\) in the normal modes of the Klein-Gordon equation and obtain the commutation relations between the creation and annihilation operators.
+      \item Express the Hamiltonian, linear momentum, and conserved charge in terms of the creation and annihilation operators.
+      \item Show that the Feynman propagator,
+         \begin{equation*}
+            \Delta_F(x - \tilde{x}) = \bra{0}T\left(\phi(x) \herm{\phi}(\tilde{x})\right)\ket{0},
+         \end{equation*}
+         is given by
+         \begin{equation*}
+            \Delta_F(x) =  \lim_{\epsilon \to 0}{\int \frac{\dln4p}{(2\pi)^4} \frac{i}{p^2 - m^2 + i \epsilon} e^{-i px}},
+         \end{equation*}
+         where \(px = p_\mu x^\mu\) and \(p^2 = p_\mu p^\mu\).
+   \end{enumerate}
+\end{problem}
+\begin{proof}[Solution]
+   As a classical field, the conjugate momenta are
+   \begin{equation*}
+      \pi = \diffp{\mathcal{L}}{(\partial_0\phi)} = \diffp*{}{(\partial_0\phi)}\left(g^{\mu \nu} \partial_\mu \conj{\phi} \partial_\nu \phi - m^2 \conj{\phi}\phi\right) = g^{\mu0} \partial_\mu\conj{\phi} = \partial^0 \conj{\phi} = \conj{\dot\phi}
+   \end{equation*}
+   and \(\conj{\pi} = \dot\phi\) analogously. As a result, the Hamiltonian is
+   \begin{equation*}
+      H = \int\dln3x (\pi \dot{\phi} + \conj\pi \conj{\dot\phi} - \mathcal{L}) = \int \dln3x (\conj{\dot{\phi}} \dot\phi + \nabla \conj{\phi} \cdot \nabla \phi + m^2 \conj\phi \phi) = \int \dln3x ( \pi^* \pi + \nabla \conj\phi \cdot \nabla \phi + m^2 \conj\phi \phi)
+   \end{equation*}
+
+   Notice the Lagrangian density is invariant by the change of phase,
+   \begin{equation*}
+      \tilde{\mathcal{L}} =  \partial_\mu (e^{-i \alpha} \conj{\phi}) \partial^\mu (e^{i \alpha}\phi) - m^2 (e^{-i \alpha} \conj{\phi})(e^{i \alpha} \phi) = \partial_\mu \conj{\phi} \partial^\mu \phi - m^2 \conj{\phi}\phi = \mathcal{L},
+   \end{equation*}
+   therefore this transformation is a symmetry of the model. By Noether's theorem, the conserved current is
+   \begin{equation*}
+      j^\rho = \diffp{\mathcal{L}}{(\partial_\rho \phi)} i \alpha \phi + \diffp{\mathcal{L}}{(\partial_\rho \conj\phi)} (-i \alpha) \conj{\phi} = i \alpha  \left[(\partial^\rho\conj{\phi})\phi - (\partial^\rho \phi)\conj{\phi} \right] = \alpha J^\rho,
+   \end{equation*}
+   hence the charge
+   \begin{equation*}
+      Q = \int \dln3x J^0 = i\int \dln3x \left(\conj{\dot\phi} \phi - \conj\phi\dot\phi\right) = i\int \dln3x \left(\pi \phi - \conj{\pi} \conj{\phi}\right)
+   \end{equation*}
+   is conserved.
+
+   We promote \(\phi(x)\), \(\conj{\phi}(x)\), \(\pi(x),\) and \(\conj{\pi}(x)\) to operators \(\phi(x),\) \(\herm{\phi}(x),\) \(\pi(x)\) and \(\herm{\pi}(x)\) with the same-time commutation relations
+   \begin{equation*}
+      [\phi(t, \vetor{x}), \pi(t, \vetor{\tilde{x}})] = [\herm{\phi}(t, \vetor{x}), \herm{\pi}(t, \vetor{\tilde{x}})] = i \delta(\vetor{x} - \vetor{\tilde{x}})
+   \end{equation*}
+   and other same-time commutation relations equal to zero. We have
+   \begin{align*}
+      \commutator{\phi(t, \vetor{x})}{H(t)} &= \int\dln3{\tilde{x}} \commutator*{\phi(t, \vetor{x})}{\herm{\pi}(t, \vetor{\tilde{x}})\pi(t, \vetor{\tilde{x}}) + \tilde{\nabla} \herm{\phi}(t, \vetor{\tilde{x}})\cdot \tilde{\nabla} \phi(t, \vetor{\tilde{x}}) + m^2 \herm{\phi}(t, \vetor{\tilde{x}})\phi(t, \vetor{\tilde{x}})}\\
+                                            &= \int\dln3{\tilde{x}} \left( \herm{\pi}(t, \vetor{\tilde{x}})\commutator{\phi(t,\vetor{x})}{\pi(t, \vetor{\tilde{x}})} + \tilde{\nabla}\herm{\phi}(t, \vetor{\tilde{x}}) \cdot \tilde{\nabla}\commutator{\phi(t, \vetor{x})}{\phi(t, \vetor{\tilde{x}})}\right)\\
+                                            &= i \int \dln3{\tilde{x}} \delta(\vetor{x} - \vetor{\tilde{x}}) \herm{\pi}(t, \vetor{\tilde{x}})\\
+                                            &= i \herm{\pi}(t, \vetor{x})
+   \end{align*}
+   and, analogously, \(\commutator{\herm{\phi}(t, \vetor{x})}{H(t)} = i \pi(t, \vetor{x})\), hence 
+   \begin{equation*}
+      \partial_t \phi(t, \vetor{x}) = \herm{\pi}(t, \vetor{x})
+      \quad\text{and}\quad
+      \partial_t \herm{\phi}(t, \vetor{x}) = \pi(t, \vetor{x})
+   \end{equation*}
+   are the equations of motion for the field operators.
+
+   We consider the Fourier transform
+   \begin{equation*}
+      \phi(x) = \int \frac{\dln4p}{(2\pi)^4} e^{-ipx}\tilde{\phi}(p),
+   \end{equation*}
+   then
+   \begin{equation*}
+      (\partial_\mu \partial^\mu + m^2)\phi(x) = \int\frac{\dln4p}{(2\pi)^4} (-p_\mu p^\mu + m^2) e^{-ipx} \tilde{\phi}(p).
+   \end{equation*}
+   In order to satisfy the Klein-Gordon equation, we may set \(\tilde{\phi}(p) = 2\pi \delta(p_\mu p^\mu + m^2) \Xi(p_0, \vetor{p})\), yielding
+   \begin{align*}
+      \phi(x) &= \int \frac{\dln4p}{(2\pi)^3} \delta(p_\mu p^\mu + m^2) e^{-ipx} \Xi(p_0, \vetor{p})\\
+              &= \int \frac{\dln3p}{(2\pi)^3} \int \dli{p_0}\frac{\delta(p_0 - \omega_{\vetor{p}}) + \delta(p_0 + \omega_{\vetor{p}})}{2 \omega_{\vetor{p}}} e^{-ipx} \Xi(p_0, \vetor{p})\\
+              &= \int \frac{\dln3p}{(2\pi)^3(2 \omega_{\vetor{p}})} \left[e^{-i\omega_{\vetor{p}} t} \Xi(\omega_{\vetor{p}}, \vetor{p}) + e^{i \omega_{\vetor{p}} t} \Xi(-\omega_{\vetor{p}}, \vetor{p})\right]e^{i \vetor{p} \cdot \vetor{x}}\\
+              &= \int \frac{\dln3p}{(2\pi)^3(2\omega_{\vetor{p}})} \left[e^{-i(\omega_{\vetor{p}} t - \vetor{p}\cdot \vetor{x})} \Xi(\omega_{\vetor{p}}, \vetor{p}) + e^{i(\omega_{\vetor{p}} t - \vetor{p}\cdot\vetor{x})} \Xi(- \omega_{\vetor{p}}, -\vetor{p})\right],
+   \end{align*}
+   where \(\omega_{\vetor{p}} = \sqrt{\norm{\vetor{p}}^2 + m^2}\) is the dispersion relation and in the last step we used a substitution \(\vetor{p} \mapsto - \vetor{p}\) in the second term. Defining
+   \begin{equation*}
+      a_{\vetor{p}} = \frac{1}{\sqrt{2 \omega_{\vetor{p}}}}\Xi(\omega_{\vetor{p}}, \vetor{p})
+      \quad\text{and}\quad
+      c_{\vetor{p}} = \frac{1}{\sqrt{2 \omega_{\vetor{p}}}}\Xi(-\omega_{\vetor{p}}, -\vetor{p}),
+   \end{equation*}
+   we obtain
+   \begin{equation*}
+      \phi(x) = \int \frac{\dln3p}{(2\pi)^3 \sqrt{2\omega_{\vetor{p}}}} \left(a_{\vetor{p}} e^{-ipx} + c_{\vetor{p}} e^{ipx}\right),
+   \end{equation*}
+   with \(p_0 = \omega_{\vetor{p}}\). Repeating this argument for \(\herm{\phi}(x)\) yields
+   \begin{equation*}
+      \herm{\phi}(x) = \int\frac{\dln3p}{(2\pi)^3 \sqrt{2\omega_{\vetor{p}}}} \left(b_{\vetor{p}}e^{-ipx} + d_{\vetor{p}}e^{ipx}\right),
+   \end{equation*}
+   and we may conclude \(c_{\vetor{p}} = \herm{b}_{\vetor{p}}\) and \(d_{\vetor{p}} = \herm{a}_{\vetor{p}}.\) That is, the expansion in the normal modes of the Klein-Gordon equation yields
+   \begin{equation*}
+      \phi(x) = \int \frac{\dln3p}{(2\pi)^3 \sqrt{2\omega_{\vetor{p}}}} \left(a_{\vetor{p}} e^{-ipx} + \herm{b}_{\vetor{p}} e^{ipx}\right),\qquad\qquad
+      \herm\phi(x) = \int \frac{\dln3p}{(2\pi)^3 \sqrt{2\omega_{\vetor{p}}}} \left(b_{\vetor{p}} e^{-ipx} + \herm{a}_{\vetor{p}} e^{ipx}\right),
+   \end{equation*}
+   \begin{equation*}
+      \pi(x) = \int \frac{\dln3p i\omega_{\vetor{p}}}{(2\pi)^3 \sqrt{2\omega_{\vetor{p}}}} \left(-b_{\vetor{p}} e^{-ipx} + \herm{a}_{\vetor{p}} e^{ipx}\right),
+      \quad\text{and}\quad
+      \herm{\pi}(x) = \int\frac{\dln3p i \omega_{\vetor{p}}}{(2\pi)^3 \sqrt{2\omega_{\vetor{p}}}} \left(\herm{b}_{\vetor{p}}e^{ipx} - a_{\vetor{p}}e^{-ipx}\right).
+   \end{equation*}
+   We may obtain the coefficients by taking the inverse Fourier transform at \(t = 0,\) yielding
+   \begin{align*}
+      \int \dln3x \frac{e^{ipx}}{\sqrt{2\omega_{\vetor{p}}}}\phi(x) &= \int \dln3k \int \dln3x \frac{1}{(2\pi)^3 2\sqrt{\omega_{\vetor{p}}\omega_{\vetor{k}}}} \left(a_{\vetor{k}}e^{ix(p - k)}+ \herm{b}_{\vetor{k}} e^{ix(p + k)}\right)\\
+                                                     &= \int \dln3k \frac{1}{2\sqrt{\omega_{\vetor{p}}\omega_{\vetor{k}}}} \left(a_{\vetor{p}} \delta(\vetor{p} - \vetor{k}) + \herm{b}_{-\vetor{p}} \delta(\vetor{p} + \vetor{k})\right)\\
+                                                     &= \frac{1}{2 \omega_{\vetor{p}}} \left(a_{\vetor{p}}  + \herm{b}_{-\vetor{p}} \right),
+   \end{align*}
+   and
+   \begin{align*}
+      \int \dln3x \frac{e^{ipx}}{\sqrt{2\omega_{\vetor{p}}}}\herm\pi(x) &= \int \dln3k \int \dln3x \frac{i\omega_{\vetor{k}}}{(2\pi)^3 2\sqrt{\omega_{\vetor{p}}\omega_{\vetor{k}}}} \left(-a_{\vetor{k}}e^{ix(p - k)} + \herm{b}_{\vetor{k}} e^{ix(p + k)}\right)\\
+                                                     &= \frac{i}2\int \dln3k \left(-a_{\vetor{p}} \delta(\vetor{p} - \vetor{k}) + \herm{b}_{-\vetor{p}} \delta(\vetor{p} + \vetor{k})\right)\\
+                                                     &= \frac{1}{2i} \left(a_{\vetor{p}} - \herm{b}_{-\vetor{p}} \right),
+   \end{align*}
+   thus
+   \begin{equation*}
+      a_{\vetor{p}} = \int\dln3x \frac{e^{ipx}}{\sqrt{2\omega_{\vetor{p}}}} \left[\omega_{\vetor{p}} \phi(x) + i \herm\pi(x)\right]
+      \quad\text{and}\quad
+      \herm{b}_{\vetor{p}} = \int\dln3x \frac{e^{-ipx}}{\sqrt{2\omega_{\vetor{p}}}} \left[\omega_{\vetor{p}} \phi(x) - i \herm\pi(x)\right]
+   \end{equation*}
+   and, analogously, 
+   \begin{equation*}
+      \herm{a}_{\vetor{p}} = \int\dln3x \frac{e^{-ipx}}{\sqrt{2\omega_{\vetor{p}}}} \left[\omega_{\vetor{p}} \herm\phi(x) - i \pi(x)\right]
+      \quad\text{and}\quad
+      b_{\vetor{p}} = \int\dln3x \frac{e^{ipx}}{\sqrt{2\omega_{\vetor{p}}}} \left[\omega_{\vetor{p}} \herm{\phi}(x) + i {\pi}(x)\right].
+   \end{equation*}
+   It is immediate that \(\commutator{a_{\vetor{p}}}{\herm{b}_{\vetor{k}}} = \commutator{\herm{a}_{\vetor{p}}}{b_{\vetor{k}}} = 0\) since \(\phi\) and \(\pi\) commute with \(\herm{\phi}\) and \(\herm{\pi}\). Since the dispersion relation satisfies \(\omega_{\vetor{p}} = \omega_{-\vetor{p}}\), we have
+   \begin{align*}
+      \commutator{a_{\vetor{p}}}{b_{\vetor{k}}} &= \int \dln3{x} \int \dln3{y} \frac{e^{i(px + k y)}}{2\sqrt{\omega_{\vetor{p}}\omega_{\vetor{k}}}} \commutator{\omega_{\vetor{p}} \phi(x) + i \herm\pi(x)}{\omega_{\vetor{k}} \herm{\phi}(y) + i \pi(y)}\\
+                                                &= i\int \dln3x \int \dln3{y} \frac{e^{i(px + k y)}}{2 \sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \left(\omega_{\vetor{p}}\commutator{\phi(x)}{\pi(y)} - \omega_{\vetor{k}} \commutator{\herm{\phi}(y)}{\herm\pi(x)} \right)\\
+                                                &= - \int \dln3x \frac{\omega_{\vetor{p}} - \omega_{\vetor{k}}}{2 \sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} e^{ix(p + k)}\\
+                                                &= -(2\pi)^3 \frac{\omega_{\vetor{p}} - \omega_{\vetor{k}}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \delta(\vetor{p} + \vetor{k})\\
+                                                &= 0,
+   \end{align*}
+   and
+   \begin{align*}
+      \commutator{\herm{a}_{\vetor{p}}}{\herm{b}_{\vetor{k}}} &= \int \dln3{x} \int \dln3{y} \frac{e^{-i(px + k y)}}{2\sqrt{\omega_{\vetor{p}}\omega_{\vetor{k}}}} \commutator{\omega_{\vetor{p}} \herm\phi(x) - i \pi(x)}{\omega_{\vetor{k}} \phi(y) - i \herm\pi(y)}\\
+                                                &= -i\int \dln3x \int \dln3{y} \frac{e^{-i(px + k y)}}{2 \sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \left(\omega_{\vetor{p}}\commutator{\herm\phi(x)}{\herm\pi(y)} - \omega_{\vetor{k}} \commutator{\phi(y)}{\pi(x)} \right)\\
+                                                &= \int \dln3x \frac{\omega_{\vetor{p}} - \omega_{\vetor{k}}}{2 \sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} e^{-ix(p + k)}\\
+                                                &= (2\pi)^3 \frac{\omega_{\vetor{p}} - \omega_{\vetor{k}}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \delta(\vetor{p} + \vetor{k})\\
+                                                &= 0.
+   \end{align*}
+   Finally, the other two commutation relations are
+   \begin{align*}
+      \commutator{a_{\vetor{p}}}{\herm{a}_{\vetor{p}}} &= \int \dln3x \int \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \commutator{\omega_{\vetor{p}} \phi(x) + i \herm\pi(x)}{\omega_{\vetor{k}} \herm{\phi}(y) - i \pi(y)}\\
+                                                       &= -i\int \dln3x \int \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \left(\omega_{\vetor{p}}\commutator{\phi(x)}{\pi(y)} + \omega_{\vetor{k}} \commutator{\herm\phi(y)}{\herm\pi(x)}\right)\\
+                                                       &= \int \dln3x \frac{\omega_{\vetor{p}} + \omega_{\vetor{k}}}{2 \sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} e^{i x (p - k)}\\
+                                                       &= (2\pi)^3 \frac{\omega_{\vetor{p}} + \omega_{\vetor{k}}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \delta(\vetor{p} - \vetor{k})\\
+                                                       &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}).
+   \end{align*}
+   and
+   \begin{align*}
+      \commutator{b_{\vetor{p}}}{\herm{b}_{\vetor{p}}} &= \int \dln3x \int \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \commutator{\omega_{\vetor{p}}\herm\phi(x) + i \pi(x)}{\omega_{\vetor{k}} {\phi}(y) - i \herm\pi(y)}\\
+                                                       &= -i\int \dln3x \int \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \left(\omega_{\vetor{p}}\commutator{\herm\phi(x)}{\herm\pi(y)} + \omega_{\vetor{k}} \commutator{\phi(y)}{\pi(x)}\right)\\
+                                                       &= \int \dln3x \frac{\omega_{\vetor{p}} + \omega_{\vetor{k}}}{2 \sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} e^{i x (p - k)}\\
+                                                       &= (2\pi)^3 \frac{\omega_{\vetor{p}} + \omega_{\vetor{k}}}{2\sqrt{\omega_{\vetor{p}} \omega_{\vetor{k}}}} \delta(\vetor{p} - \vetor{k})\\
+                                                       &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}).
+   \end{align*}
+
+   As a classical field, the stress-energy tensor is
+   \begin{equation*}
+      T^{\mu \nu} = \diffp{\mathcal{L}}{(\partial_\mu \phi)}\partial^\nu \phi + \diffp{\mathcal{L}}{(\partial_\mu \conj{\phi})}\partial^\nu \conj{\phi} - g^{\mu \nu} \mathcal{L}
+      = \partial^\mu \conj\phi \partial^\nu \phi + \partial^\mu \conj\phi \partial^\nu \phi - g^{\mu\nu} \partial_\sigma \conj\phi \partial^\sigma \phi + g^{\mu\nu} m^2 \conj{\phi}\phi,
+   \end{equation*}
+   then 
+   \begin{equation*}
+      T^{0i} = \pi \partial^i \phi + \conj\pi \partial^i \conj\phi
+   \end{equation*}
+   and we conclude the linear momentum is
+   \begin{equation*}
+      \vetor{P} = -\int \dln3x \left(\pi(x) \nabla \phi(x) + \herm\pi(x) \nabla \herm\phi(x)\right).
+   \end{equation*}
+   Using the shorthand \(\int_{\vetor{p}} = \int \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_{\vetor{p}}}}\), we have
+   \begin{align*}
+      \pi(x) \nabla\phi(x) &= i\int_{\vetor{p}} \int_{\vetor{k}} \omega_{\vetor{p}}\left(\herm{a}_{\vetor{p}}e^{ipx} - b_{\vetor{p}}e^{-ipx}\right) \nabla \left(a_{\vetor{k}}e^{-ikx} + \herm{b}_{\vetor{k}}e^{ikx}\right)\\
+                           &= -\int_{\vetor{p}} \int_{\vetor{k}} \omega_{\vetor{p}}\vetor{k}\left(\herm{a}_{\vetor{p}}e^{ipx} - b_{\vetor{p}}e^{-ipx}\right)\left(a_{\vetor{k}}e^{-ikx} - \herm{b}_{\vetor{k}}e^{ikx}\right)\\
+                           &= -\int_{\vetor{k}} \vetor{k} \int_{\vetor{p}} \omega_{\vetor{p}} \left(\herm{a}_{\vetor{p}} a_{\vetor{k}} e^{i x (p-k)} - \herm{a}_{\vetor{p}}\herm{b}_{\vetor{k}}e^{ix(p+k)} - b_{\vetor{p}}a_{\vetor{k}}e^{-ix(p+k)} + b_{\vetor{p}} \herm{b}_{\vetor{k}} e^{-ix(p - k)}\right)
+   \end{align*}
+   and, analogously,
+   \begin{equation*}
+      \herm{\pi}(x) \nabla \herm{\phi}(x) = -\int_{\vetor{k}} \vetor{k} \int_{\vetor{p}} \omega_{\vetor{p}} \left(\herm{b}_{\vetor{p}} b_{\vetor{k}} e^{i x (p-k)} - \herm{b}_{\vetor{p}}\herm{a}_{\vetor{k}}e^{ix(p+k)} - a_{\vetor{p}}b_{\vetor{k}}e^{-ix(p+k)} + a_{\vetor{p}} \herm{a}_{\vetor{k}} e^{-ix(p - k)}\right),
+   \end{equation*}
+   hence
+   \begin{align*}
+      \frac{\vetor{P}}{(2\pi)^3} &= \textstyle \int_{\vetor{k}} \vetor{k} \int_{\vetor{p}} \omega_{\vetor{p}} \left[\left(\herm{a}_{\vetor{p}} a_{\vetor{k}} + a_{\vetor{p}} \herm{a}_{\vetor{k}} + \herm{b}_{\vetor{p}} b_{\vetor{k}} + b_{\vetor{p}} \herm{b}_{\vetor{k}}\right) \delta(\vetor{p} - \vetor{k})-\left(\herm{a}_{\vetor{p}} \herm{b}_{\vetor{k}} + b_{\vetor{p}} a_{\vetor{k}} + \herm{b}_{\vetor{p}} \herm{a}_{\vetor{k}} + a_{\vetor{p}} b_{\vetor{k}}\right)\delta(\vetor{p} + \vetor{k}) \right]\\
+                                 &= \frac12\int \frac{\dln3p}{(2\pi)^6} \vetor{p} \left[\anticommutator{\herm{a}_{\vetor{p}}}{a_{\vetor{p}}} + \anticommutator{\herm{b}_{\vetor{p}}}{b_{\vetor{p}}} - \left(\herm{a}_{\vetor{p}} \herm{b}_{-\vetor{p}} + \herm{b}_{\vetor{p}} \herm{a}_{-\vetor{p}} + a_{\vetor{p}}b_{-\vetor{p}} + b_{\vetor{p}}a_{-\vetor{p}}\right)\right]\\
+                                 &= \int \frac{\dln3p}{(2\pi)^6} \vetor{p} \left[\herm{a}_{\vetor{p}} a_{\vetor{p}} + \herm{b}_{\vetor{p}} b_{\vetor{p}} - \frac12\left(\herm{a}_{\vetor{p}} \herm{b}_{-\vetor{p}} + \herm{b}_{\vetor{p}} \herm{a}_{-\vetor{p}} + a_{\vetor{p}}b_{-\vetor{p}} + b_{\vetor{p}}a_{-\vetor{p}} - \commutator{a_{\vetor{p}}}{\herm{a}_{\vetor{p}}} - \commutator{b_{\vetor{p}}}{\herm{b}_{\vetor{p}}}\right)\right]\\
+                                 &= \int \frac{\dln3p}{(2\pi)^6} \vetor{p} \left[\herm{a}_{\vetor{p}} a_{\vetor{p}} + \herm{b}_{\vetor{p}} b_{\vetor{p}} - \frac12\left(\herm{a}_{\vetor{p}} \herm{b}_{-\vetor{p}} + \herm{b}_{\vetor{p}} \herm{a}_{-\vetor{p}} + a_{\vetor{p}}b_{-\vetor{p}} + b_{\vetor{p}}a_{-\vetor{p}} - 2(2\pi)^3\delta(\vetor{0})\right)\right].
+   \end{align*}
+   Notice the term in parenthesis is unchanged under the transformation \(\vetor{p} \mapsto -\vetor{p}\) as its terms commute for every \(\vetor{p}\), so its contribution to the integral must be zero, and we obtain
+   \begin{align*}
+   \vetor{P} = \int \frac{\dln3p}{(2\pi)^3} \vetor{p} \left(\herm{a}_{\vetor{p}} a_{\vetor{p}} + \herm{b}_{\vetor{p}} b_{\vetor{p}}\right) 
+   \end{align*}
+   as the linear momentum operator.
+
+   In order to obtain the Hamiltonian, we compute
+   \begin{align*}
+      \herm{\pi}(x) \pi(x) &= \int_{\vetor{p}}\int_{\vetor{k}} \omega_{\vetor{p}} \omega_{\vetor{k}} \left(a_{\vetor{p}} e^{-ipx} - \herm{b}_{\vetor{p}} e^{ipx}\right)\left(\herm{a}_{\vetor{k}}e^{ikx} - b_{\vetor{k}}e^{-ikx}\right)\\
+                           &= \int_{\vetor{p}} \int_{\vetor{k}} \omega_{\vetor{p}} \omega_{\vetor{k}} \left(a_{\vetor{p}} \herm{a}_{\vetor{k}} e^{-ix (p - k)} - a_{\vetor{p}} b_{\vetor{k}} e^{-ix(p + k)} - \herm{b}_{\vetor{p}} \herm{a}_{\vetor{k}} e^{ix(p+x)} + \herm{b}_{\vetor{p}} b_{\vetor{k}} e^{ix (p - k)}\right),
+   \end{align*}
+   \begin{align*}
+      \nabla \herm\phi(x) \cdot \nabla \phi(x) &= \int_{\vetor{p}} \int_{\vetor{k}} \nabla\left(\herm{a}_{\vetor{p}} e^{ipx} + b_{\vetor{p}} e^{-ipx}\right) \cdot \nabla \left(a_{\vetor{k}} e^{-ikx} + \herm{b}_{\vetor{k}} e^{ikx}\right)\\
+                                               &= \int_{\vetor{p}} \int_{\vetor{k}} \vetor{p} \cdot \vetor{k} \left(\herm{a}_{\vetor{p}} e^{ipx} - b_{\vetor{p}} e^{-ipx}\right)\left(a_{\vetor{k}} e^{-ikx} - \herm{b}_{\vetor{k}} e^{ikx}\right)\\
+                                               &= \int_{\vetor{p}} \int_{\vetor{k}} \vetor{p} \cdot \vetor{k} \left(\herm{a}_{\vetor{p}} a_{\vetor{k}} e^{ix(p-k)} - \herm{a}_{\vetor{p}} \herm{b}_{\vetor{k}} e^{ix(p + k)} - b_{\vetor{p}} a_{\vetor{k}} e^{-ix(p + k)} + b_{\vetor{p}} \herm{b}_{\vetor{k}} e^{-ix(p - k)}\right),
+   \end{align*}
+   and
+   \begin{align*}
+      \herm{\phi}(x) \phi(x) &= \int_{\vetor{p}} \int_{\vetor{k}} \left(\herm{a}_{\vetor{p}} e^{ipx} + b_{\vetor{p}} e^{-ipx}\right) \left(a_{\vetor{k}} e^{-ikx} + \herm{b}_{\vetor{k}} e^{ikx}\right)\\
+                             &= \int_{\vetor{p}} \int_{\vetor{k}} \left(\herm{a}_{\vetor{p}} a_{\vetor{k}} e^{ix(p-k)} + \herm{a}_{\vetor{p}} \herm{b}_{\vetor{k}} e^{ix(p + k)} + b_{\vetor{p}} a_{\vetor{k}} e^{-ix(p + k)} + b_{\vetor{p}} \herm{b}_{\vetor{k}} e^{-ix(p - k)}\right),
+   \end{align*}
+   then
+   \begin{equation*}
+      \begin{split}
+         \frac{H}{(2\pi)^3} &= 
+         \int_{\vetor{p}} \int_{\vetor{k}} \left\{\left[\omega_{\vetor{p}} \omega_{\vetor{k}}\left(a_{\vetor{p}} \herm{a}_{\vetor{k}} + \herm{b}_{\vetor{p}} b_{\vetor{k}}\right) + (m^2 + \vetor{p} \cdot \vetor{k})\left(\herm{a}_{\vetor{p}}a_{\vetor{k}} + b_{\vetor{p}}\herm{b}_{\vetor{k}}\right)\right]\delta(\vetor{p} - \vetor{k}) + \right.\\
+                            &\left.\hphantom{= \int_{\vetor{p}} \int_{\vetor{k}}\;} \left[-\omega_{\vetor{p}} \omega_{\vetor{k}}\left(a_{\vetor{p}} b_{\vetor{k}} + \herm{b}_{\vetor{p}} \herm{a}_{\vetor{k}}\right) + (m^2 - \vetor{p} \cdot \vetor{k})\left(\herm{a}_{\vetor{p}}\herm{b}_{\vetor{k}} + b_{\vetor{p}}a_{\vetor{k}}\right)\right]\delta(\vetor{p} + \vetor{k})\right\}\\
+                            &= \int \frac{\dln3p}{(2\pi)^6} \frac12 \omega_{\vetor{p}} \left[\anticommutator{\herm{a}_{\vetor{p}}}{a_{\vetor{p}}} + \anticommutator{\herm{b}_{\vetor{p}}}{b_{\vetor{p}}} - \left(a_{\vetor{p}} b_{-\vetor{p}} + \herm{b}_{\vetor{p}} \herm{a}_{-\vetor{p}} - \herm{a}_{\vetor{p}} \herm{b}_{-\vetor{p}} - b_{\vetor{p}} a_{-\vetor{p}}\right)\right],
+      \end{split}
+   \end{equation*}
+   which simplifies to
+   \begin{equation*}
+      H = \int \frac{\dln3p}{(2\pi)^3} \frac{\omega_{\vetor{p}}}{2} \left(\anticommutator{\herm{a}_{\vetor{p}}}{a_{\vetor{p}}} + \anticommutator{\herm{b}_{\vetor{p}}}{b_{\vetor{p}}}\right),
+   \end{equation*}
+   easily seen with a substitution \(\vetor{p} \mapsto - \vetor{p}\) in the last term of the integral in the previous step. Removing the zero-point energy, we may identify
+   \begin{equation*}
+      \tilde{H} = \int \frac{\dln3p}{(2\pi)^3} \omega_{\vetor{p}} \left(\herm{a}_{\vetor{p}}a_{\vetor{p}} + \herm{b}_{\vetor{p}} b_{\vetor{p}}\right)
+   \end{equation*}
+   as the Hamiltonian.
+   
+   We have
+   \begin{align*}
+      \pi(x) \phi(x) &= \int_{\vetor{p}} \int_{\vetor{k}} i \omega_{\vetor{p}} \left(\herm{a}_{\vetor{p}} e^{ipx} - b_{\vetor{p}} e^{-ipx}\right)\left(a_{\vetor{k}} e^{-ikx} + \herm{b}_{\vetor{k}} e^{ikx}\right)\\
+                     &= \int_{\vetor{p}} \int_{\vetor{k}} i \omega_{\vetor{p}} \left(\herm{a}_{\vetor{p}} a_{\vetor{k}} e^{ix(p - k)} + \herm{a}_{\vetor{p}} \herm{b}_{\vetor{k}} e^{ix(p + k)} - b_{\vetor{p}}a_{\vetor{k}} e^{-ix(p + k)} - b_{\vetor{p}} \herm{b}_{\vetor{k}} e^{-ix(p - k)}\right)
+   \end{align*}
+   and
+   \begin{align*}
+      \herm\pi(x) \herm\phi(x) &= \int_{\vetor{p}} \int_{\vetor{k}} i \omega_{\vetor{p}} \left(\herm{b}_{\vetor{p}} e^{ipx} - a_{\vetor{p}} e^{-ipx}\right)\left(b_{\vetor{k}} e^{-ikx} + \herm{a}_{\vetor{k}} e^{ikx}\right)\\
+                     &= \int_{\vetor{p}} \int_{\vetor{k}} i \omega_{\vetor{p}} \left(\herm{b}_{\vetor{p}} b_{\vetor{k}} e^{ix(p - k)} + \herm{b}_{\vetor{p}} \herm{a}_{\vetor{k}} e^{ix(p + k)} - a_{\vetor{p}}b_{\vetor{k}} e^{-ix(p + k)} - a_{\vetor{p}} \herm{a}_{\vetor{k}} e^{-ix(p - k)}\right),
+   \end{align*}
+   then
+   \begin{align*}
+      \frac{Q}{(2\pi)^3} &= \int_{\vetor{p}} \int_{\vetor{k}} \omega_{\vetor{p}} \left[ \left(\herm{b}_{\vetor{p}} b_{\vetor{k}} - a_{\vetor{p}} \herm{a}_{\vetor{k}} - \herm{a}_{\vetor{p}} a_{\vetor{k}} + b_{\vetor{p}} \herm{b}_{\vetor{k}}\right) \delta(\vetor{p} - \vetor{k}) + \left(\herm{b}_{\vetor{p}}\herm{a}_{\vetor{k}} - a_{\vetor{p}} b_{\vetor{k}} - \herm{a}_{\vetor{p}}\herm{b}_{\vetor{k}} + b_{\vetor{p}} a_{\vetor{k}}\right) \delta(\vetor{p} + \vetor{k}) \right]\\
+                         &= \int \frac{\dln3p}{2(2\pi)^6} \left[\anticommutator{\herm{b}_{\vetor{p}}}{b_{\vetor{p}}} - \anticommutator{\herm{a}_{\vetor{p}}}{a_{\vetor{p}}} + \left(\herm{b}_{\vetor{p}} \herm{a}_{-\vetor{p}} - \herm{a}_{\vetor{p}} \herm{b}_{-\vetor{p}} + b_{\vetor{p}} a_{-\vetor{p}} - a_{\vetor{p}} b_{-\vetor{p}}\right)\right]
+   \end{align*}
+   is the conserved charge. By the same argument as before, we see that the term in parenthesis vanishes, so the charge is 
+   \begin{equation*}
+      Q = \int \frac{\dln3p}{(2\pi)^3} \left(\herm{b}_{\vetor{p}}b_{\vetor{p}} - \herm{a}_{\vetor{p}}a_{\vetor{p}}\right),
+   \end{equation*}
+   where we have used that
+   \begin{align*}
+      \anticommutator{\herm{b}_{\vetor{p}}}{b_{\vetor{p}}} - \anticommutator{\herm{a}_{\vetor{p}}}{a_{\vetor{p}}} 
+      &= \left(2\herm{b}_{\vetor{p}}b_{\vetor{p}} + \commutator{b_{\vetor{p}}}{\herm{b}_{\vetor{p}}}\right) - \left(2 \herm{a}_{\vetor{p}} a_{\vetor{p}} + \commutator{a_{\vetor{p}}}{\herm{a}_{\vetor{p}}}\right)\\
+      &= \left(2\herm{b}_{\vetor{p}}b_{\vetor{p}} + (2\pi)^3 \delta(\vetor{0})\right) - \left(2 \herm{a}_{\vetor{p}} a_{\vetor{p}} + (2\pi)^3 \delta(\vetor{0})\right)\\
+      &= 2\herm{b}_{\vetor{p}} b_{\vetor{p}} - 2 \herm{a}_{\vetor{p}} a_{\vetor{p}}.
+   \end{align*}
+   Notice \(\commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{\herm{a}_{\vetor{k}}} = (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \herm{a}_{\vetor{p}}\) and \(\commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{a_{\vetor{k}}} = -(2\pi)^3 \delta(\vetor{p} - \vetor{k}) a_{\vetor{p}}\), then
+   \begin{align*}
+      \commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{\anticommutator{\herm{a}_{\vetor{k}}}{a_{\vetor{k}}}} 
+      &= \commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{\herm{a}_{\vetor{k}}a_{\vetor{k}}} + \commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{a_{\vetor{k}}\herm{a}_{\vetor{k}}}\\
+      &= \commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{\herm{a}_{\vetor{k}}}a_{\vetor{k}} + \herm{a}_{\vetor{k}}\commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{a_{\vetor{k}}} + \commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{a_{\vetor{k}}} \herm{a}_{\vetor{k}} + a_{\vetor{k}}\commutator{\herm{a}_{\vetor{p}}a_{\vetor{p}}}{\herm{a}_{\vetor{k}}}\\
+      &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \left(\herm{a}_{\vetor{k}} a_{\vetor{k}} - \herm{a}_{\vetor{k}}a_{\vetor{k}} - a_{\vetor{k}}\herm{a}_{\vetor{k}} + a_{\vetor{k}}\herm{a}_{\vetor{k}}\right)\\
+      &= 0
+   \end{align*}
+   and, analogously, \(\commutator{\herm{b}_{\vetor{p}}b_{\vetor{p}}}{\anticommutator{\herm{b}_{\vetor{k}}}{b_{\vetor{k}}}} = 0\), so \(Q\) is indeed a constant of motion.
+\end{proof}

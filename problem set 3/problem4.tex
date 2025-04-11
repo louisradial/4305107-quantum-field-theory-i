@@ -1,0 +1,102 @@
+% vim: spl=en
+\begin{problem}{Feynman propagator for the Dirac Field}{p4}
+    We define the Feynman propagator for the Dirac field as
+    \begin{equation*}
+       S(x - y) = \bra{0} T\Psi(x) \bar{\Psi}(y) \ket{0}
+    \end{equation*}
+    where
+    \begin{equation*}
+        T\Psi(x) \bar{\Psi}(y) = \begin{cases}
+           \Psi(x) \bar{\Psi}(y), & x^0 > y^0\\
+           -\bar{\Psi}(y) \Psi(x), & x^0 < y^0.
+        \end{cases}
+    \end{equation*}
+    Prove that
+    \begin{equation*}
+       S(x - y) = \int \frac{\dln4p}{(2\pi)^4} \frac{i(\slashed{p} + m)}{p_\mu p^\mu - m^2 + i \epsilon}e^{-i p(x - y)}
+    \end{equation*}
+    and obtain the differential equation satisfied by \(S(x - y).\) 
+\end{problem}
+\begin{proof}
+   As \(b_{\vetor{p}s} \ket{0} = 0 = a_{\vetor{p}s} \ket{0}\) we have
+   \begin{align*}
+      \bra{0} \Psi_\alpha(x) \bar{\Psi}_\beta(y) \ket{0} 
+      &= \bra{0} \int_{\vetor{p}}\int_{\vetor{k}} \sum_{s, r} \left(a_{\vetor{p} s} u_{\vetor{p} s} e^{-ipx} + \herm{b}_{\vetor{p}s} v_{\vetor{p}s} e^{ipx}\right)_\alpha\left(\herm{a}_{\vetor{k} r} \bar{u}_{\vetor{k} r} e^{iky} + b_{\vetor{k}r} \bar{v}_{\vetor{k}r} e^{-iky}\right)_\beta \ket{0}\\
+      &= \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r} \bra{0} a_{\vetor{p}s} \herm{a}_{\vetor{k}r} \ket{0} e^{i(ky - px)} u_{\vetor{p}s \alpha} \bar{u}_{\vetor{k} r \beta}\\
+      &= \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r} \bra{0} \anticommutator{a_{\vetor{p}s}}{\herm{a}_{\vetor{k}r}}\ket{0} e^{i(ky - px)} u_{\vetor{p}s \alpha} \bar{u}_{\vetor{k} r \beta}\\
+      &= \int_{\mathbb{R}^3} \dln3p \int_{\mathbb{R}^3} \dln3k \frac{e^{ip(y - x)}}{(2\pi)^3 2 \omega_{\vetor{p}}} \delta(\vetor{p} - \vetor{k}) \sum_{s, r} u_{\vetor{p}s \alpha} \bar{u}_{\vetor{p} s \beta} \delta_{rs}\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{e^{ip(y - x)}}{2\omega_{\vetor{p}}} \sum_s u_{\vetor{p}s \alpha} \bar{u}_{\vetor{p} s \beta}\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{e^{ip(y - x)}}{2\omega_{\vetor{p}}} (\slashed{p} + m)_{\alpha \beta}
+   \end{align*}
+   and
+   \begin{align*}
+      \bra{0}  \bar{\Psi}_\beta(y)\Psi_\alpha(x) \ket{0} 
+      &= \bra{0} \int_{\vetor{p}}\int_{\vetor{k}} \sum_{s, r} \left(\herm{a}_{\vetor{k} r} \bar{u}_{\vetor{k} r} e^{iky} + b_{\vetor{k}r} \bar{v}_{\vetor{k}r} e^{-iky}\right)_\beta \left(a_{\vetor{p} s} u_{\vetor{p} s} e^{-ipx} + \herm{b}_{\vetor{p}s} v_{\vetor{p}s} e^{ipx}\right)_\alpha \ket{0}\\
+      &= \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r} \bra{0} b_{\vetor{k}r} \herm{b}_{\vetor{p}s} \ket{0} e^{-i(ky - px)} v_{\vetor{p}s \alpha} \bar{v}_{\vetor{k} r \beta}\\
+      &= \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r} \bra{0} \anticommutator{b_{\vetor{k}r}}{\herm{b}_{\vetor{p}s}}\ket{0} e^{-i(ky - px)} v_{\vetor{p}s \alpha} \bar{v}_{\vetor{k} r \beta}\\
+      &= \int_{\mathbb{R}^3} \dln3p \int_{\mathbb{R}^3} \dln3k \frac{e^{-ip(y - x)}}{(2\pi)^3 2 \omega_{\vetor{p}}} \delta(\vetor{p} - \vetor{k}) \sum_{s, r} v_{\vetor{p}s \alpha} \bar{v}_{\vetor{p} s \beta} \delta_{rs}\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{e^{-ip(y - x)}}{2\omega_{\vetor{p}}} \sum_s v_{\vetor{p}s \alpha} \bar{v}_{\vetor{p} s \beta}\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{e^{-ip(y - x)}}{2\omega_{\vetor{p}}} (\slashed{p} - m)_{\alpha \beta}
+   \end{align*}
+   then
+   \begin{equation*}
+      S(x - y) = \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \left[\frac{e^{-ip(x- y)}(\slashed{p} + m)}{2\omega_{\vetor{p}}} \theta(x^0 - y^0) - \frac{e^{ip(x - y)}(\slashed{p} - m)}{2\omega_{\vetor{p}}}\theta(y^0 - x^0)\right]
+   \end{equation*}
+   is the Feynman propagator, where, as usual, we identified \(p_0 = \omega_{\vetor{p}}\).
+
+   We wish to show the map
+   \begin{equation*}
+       \Delta(x - y) = \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{i(\slashed{p} + m) e^{-ip(x - y)}}{p_\mu p^\mu - m^2 + i \epsilon}
+   \end{equation*}
+   is equal to the Feynman propagator. 
+
+   As it was shown in \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset2}{Problem set II}, we know 
+   \begin{equation*}
+      \frac{i}{2\pi} f_z(\xi) = \frac{i}{2\pi}\int_{\mathbb{R}} \dli{\zeta} \frac{e^{-i \zeta \xi}}{(\zeta - z)(\zeta + z)} = \theta(-\xi) \frac{e^{iz\xi}}{2z} + \theta(\xi) \frac{e^{-iz\xi}}{2z}
+   \end{equation*}
+   for all \(z \in \mathbb{C}\) with \(\Re(z) > 0\) and \(\Im(z) < 0\) and \(\xi \in \mathbb{R} \setminus \set{0}.\) We now consider the map
+   \begin{equation*}
+      g_z(\xi) = \int_{\mathbb{R}} \dli{\zeta} \frac{\zeta e^{-i\zeta \xi}}{(\zeta - z)(\zeta + z)},
+   \end{equation*}
+   then
+   \begin{align*}
+      \frac{i}{2\pi} g_z(\xi) &= \frac{i}{2\pi}\int_{\mathbb{R}} \dli{\zeta} \diffp*{\frac{ie^{-i\zeta \xi}}{(\zeta - z) (\zeta + z)}}{\xi} = i\diffp*{\frac{if_z(\xi)}{2\pi}}{\xi}\\
+                              &= i \left[-\delta(-\xi) + iz\theta(-\xi)\right]\frac{e^{iz \xi}}{2z}+ i \left[\delta(\xi) - iz \theta(\xi)\right]\frac{e^{-iz \xi}}{2z}\\
+                              &= i \delta(\xi) \frac{e^{-iz \xi} - e^{iz\xi}}{2z} + \theta(\xi) \frac{ze^{-iz \xi}}{2z} - \theta(-\xi) \frac{z e^{iz \xi}}{2z}\\
+                              % &=  \delta(\xi)\frac{\sin(0z)}{z} + \theta(\xi) \frac{ze^{-iz \xi}}{2z} - \theta(-\xi) \frac{z e^{iz \xi}}{2z}\\
+                              &= \theta(\xi) \frac{ze^{-iz \xi}}{2z} - \theta(-\xi) \frac{z e^{iz \xi}}{2z},
+   \end{align*}
+   as the factor that multiplies \(\delta(\xi)\) vanishes when \(\xi = 0\). With this, we have
+   \begin{align*}
+      \Delta(x - y) &= \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{i(\slashed{p} + m) e^{-ip(x - y)}}{p_\mu p^\mu - m^2 + i \epsilon}\\
+                                  &= \int_{\mathbb{R}^3} \frac{\dln3p e^{i \vetor{p}\cdot (\vetor{x} - \vetor{y})}}{(2\pi)^3} \frac{i}{2\pi} \int_{\mathbb{R}} \dli{p_0} \frac{(\gamma^0 p_0  + \gamma^j p_j + m \delta) e^{-ip_0(x^0 -y^0)}}{\left[(p_0 - (\omega_{\vetor{p}} - \frac12 i \epsilon)\right]\left[(p_0 + (\omega_{\vetor{p}} - \frac12 i \epsilon)\right]}\\
+                                  &= \int_{\mathbb{R}^3} \frac{\dln3p e^{i\vetor{p}\cdot(\vetor{x} - \vetor{y})}}{(2\pi)^3} \frac{i}{2\pi}\left(\gamma^0  g_{\omega_{\vetor{p}} - \frac12 i \epsilon}(x^0 - y^0) + (\gamma^j p_j + m \delta) f_{\omega_{\vetor{p}} - \frac12 i \epsilon}(x^0 - y^0) \right)\\
+                                  &= \int_{\mathbb{R}^3} \frac{\dln3p e^{i\vetor{p}\cdot(\vetor{x} - \vetor{y})}}{(2\pi)^3} \left[\gamma^0 \left(\theta(x^0 - y^0) \frac{\omega_{\vetor{p}}e^{-i \omega_{\vetor{p}} (x^0 - y^0)}}{2\omega_{\vetor{p}}} - \theta(y^0 - x^0) \frac{\omega_{\vetor{p}}e^{i \omega_{\vetor{p}} (x^0 - y^0)}}{2\omega_{\vetor{p}}} \right)\right.\\
+                                  &{}\phantom{=\int_{\mathbb{R}^3} \frac{\dln3p e^{i\vetor{p}\cdot(\vetor{x} - \vetor{y})}}{(2\pi)^3}}+ \left.(\gamma^j p_j + m \delta) \left(\theta(x^0 - y^0) \frac{e^{-i \omega_{\vetor{p}}(x^0 - y^0)}}{2 \omega_{\vetor{p}}} + \theta(y^0 - x^0) \frac{e^{i \omega_{\vetor{p}} (x^0 - y^0)}}{2 \omega_{\vetor{p}}}\right)\right]\\
+                                  &= \theta(x^0 - y^0)\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{\gamma^0 \omega_{\vetor{p}} + \gamma^jp_j + m \delta}{2\omega_{\vetor{p}}} e^{-i[\omega_{\vetor{p}} (x^0 - y^0) - \vetor{p}\cdot(\vetor{x} - \vetor{y})]}\\
+                                  &{}\phantom{=\theta(x^0 - y^0)}- \theta(y^0 - x^0)\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{\gamma^0 \omega_{\vetor{p}} - \gamma^jp_j - m \delta}{2\omega_{\vetor{p}}} e^{i[\omega_{\vetor{p}} (x^0 - y^0) + \vetor{p}\cdot(\vetor{x} - \vetor{y})]}\\
+                                  &= \theta(x^0 - y^0) \int_{\mathbb{R}^3} \frac{\dln3p e^{-i p (x - y)}}{(2\pi)^3(2\omega_{\vetor{p}})} (\gamma^{\mu}p_\mu + m) - \theta(y^0 - x^0) \int_{\mathbb{R}^3} \frac{\dln3pe^{i p (x - y)}}{(2\pi)^3(2\omega_{-\vetor{p}})} (\gamma^\mu p_\mu - m)\\
+                                  &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \left[\theta(x^0 - y^0)  \frac{e^{-i p (x - y)}(\slashed{p} + m)}{2\omega_{\vetor{p}}}  - \theta(y^0 - x^0) \frac{e^{i p (x - y)}(\slashed{p} - m)}{2\omega_{\vetor{p}}} \right]\\
+                                  &= S(x - y),
+   \end{align*}
+   where in the last few steps we identified \(p_0 = \omega_{\vetor{p}}\).
+
+   With the equality shown, it is easy to see that \(S(x - y)\) is the Green function of the Dirac equation. We begin by noting that \((\slashed{p} - m)(\slashed{p} + m) = p_\mu p^\mu - m^2\) since we have
+   \begin{align*}
+      (\slashed{p} - m)(\slashed{p} + m) &= \gamma^\mu p_\mu \gamma^\nu p_\nu - m^2\\
+                                         &= p_\mu p_\nu \gamma^\mu \gamma^\nu - m^2\\
+                                         &= \frac12 p_\mu p_\nu \anticommutator{\gamma^\mu}{\gamma^\nu} + \frac12 p_\mu p_\nu \commutator{\gamma^\mu}{\gamma^\nu} - m^2\\
+                                         &= g^{\mu\nu} p_\mu p_\nu - m^2\\
+                                         &= p_\mu p^\mu - m^2
+   \end{align*}
+   where we have used the identity \(\anticommutator{\gamma^\mu}{\gamma^\nu} = 2 g^{\mu\nu}\) and that \(p_\mu p_\nu \commutator{\gamma^\mu}{\gamma^\nu} = 0\) due to the contraction of the lower symmetric indices with the upper antisymmetric indices. Applying the Dirac equation operator to the Feynman propagator yields
+   \begin{align*}
+      (i \slashed{\partial}_x - m)S(x - y) 
+      &= \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{i(i\slashed{\partial}_x - m)e^{-ip(x - y)}(\slashed{p} + m)}{p_\mu p^\mu - m^2 + i \epsilon}\\
+      &= \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{ie^{-ip(x - y)}(\slashed{p} - m)(\slashed{p} + m)}{p_\mu p^\mu - m^2 + i \epsilon}\\
+      &= i \int_{\mathbb{R}^4} \frac{\dln4p e^{-ip(x - y)}}{(2\pi)^4} \frac{p_\mu p^\mu - m^2}{p_\mu p^\mu - m^2 + i \epsilon}\\
+      &= i \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} e^{-ip(x - y)}\\
+      &= i \delta(x - y)
+   \end{align*}
+   as claimed.
+\end{proof}

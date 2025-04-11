@@ -1,0 +1,195 @@
+% vim: spl=en
+\begin{problem}{Quantization of the Dirac Field}{p1}
+    Consider the Dirac field with Lagrangian density given by
+    \begin{equation*}
+    \mathcal{L} = \bar{\Psi} (i \slashed{\partial} - m) \Psi.
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Impose the anticommutation relations and obtain the anticommutators between the annihilation and creation operators. Use that
+           \begin{equation*}
+              \Psi(x) = \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{1}{\sqrt{2 \omega_{\vetor{p}}}} \sum_s \left(a_{\vetor{p}s} u_{s}(\vetor{p}) e^{-ipx} + \herm{b}_{\vetor{p}s}v_{s}(\vetor{p}) e^{ipx}\right).
+           \end{equation*}
+        \item Express the conserved charge in terms of the annihilation and creation operators.
+        \item Express the Hamiltonian in terms of the annihilation and creation operators.
+        \item Obtain the linear momentum in terms of the annihilation and creation operators.
+    \end{enumerate}
+\end{problem}
+\begin{proof}
+   As a classical field, the canonically conjugated momentum with respect to \(\Psi\) is
+   \begin{equation*}
+      \Pi_{\Psi} = \diffp{\mathcal{L}}{(\partial_0 \Psi)} = i\bar{\Psi} \gamma^0 = i \herm{\Psi}.
+   \end{equation*}
+   Moreover, the stress-energy tensor is given by
+   \begin{align*}
+      T^{\mu \nu} &= \diffp{\mathcal{L}}{(\partial_\mu \Psi)} \partial^\nu \Psi + \diffp{\mathcal{L}}{(\partial_\mu \bar{\Psi})} \partial^\nu \bar{\Psi} - g^{\mu\nu} \mathcal{L}\\
+                  &= \bar{\Psi} i \gamma^\mu \partial^\nu \Psi - g^{\mu\nu} \bar{\Psi}(i \slashed{\partial} - m) \Psi,
+   \end{align*}
+   then the Hamiltonian is
+   \begin{equation*}
+      H = \int_{\mathbb{R}^3} \dln3x T^{00} = \int_{\mathbb{R}^3} \dln3x \left[i \bar{\Psi} \gamma^0 \partial^0 \Psi - \bar{\Psi}(i \slashed{\partial} - m) \Psi\right] = i \int_{\mathbb{R}^3} \dln3x  \left[\herm{\Psi} \partial_0 \Psi + i \bar{\Psi}(i \slashed{\partial} - m)\Psi\right]
+   \end{equation*}
+   and
+   \begin{equation*}
+      P^j = \int_{\mathbb{R}^3} \dln3x T^{0j} = \int_{\mathbb{R}^3} \dln3x i \bar{\Psi} \gamma^0 \partial^j \Psi = -i \int_{\mathbb{R}^3} \dln3x \herm{\Psi} \partial_j \Psi \implies \vetor{P} = -i \int_{\mathbb{R}^3} \dln3x \herm{\Psi} \nabla \Psi
+   \end{equation*}
+   is the expression for the linear momentum. Under the transformation \(\Psi \mapsto \Psi' = e^{i\alpha} \Psi,\) the Lagrangian density is unchanged, so the conserved current is
+   \begin{equation*}
+      i\alpha J^\mu = \diffp{\mathcal{L}}{(\partial_\mu \Psi)} \delta \Psi + \diffp{\mathcal{L}}{(\partial_\mu \bar{\Psi})} \delta\bar{\Psi} = i \alpha \bar{\Psi} \gamma^\mu \Psi
+   \end{equation*}
+   hence 
+   \begin{equation*}
+      Q = \int_{\mathbb{R}^3} \dln3x J^0 = \int_{\mathbb{R}^3} \dln3x \herm{\Psi}\Psi
+   \end{equation*}
+   is the \(U(1)\) conserved charge.
+
+   For a field that satisfies the Dirac equation, \((i \slashed{\partial} - m)\Psi = 0,\) we use the expansion in the normal modes
+   \begin{equation*}
+      \Psi(x) = \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{1}{\sqrt{2 \omega_{\vetor{p}}}} \sum_s \left(a_{\vetor{p}s} u_{s}(\vetor{p}) e^{-ipx} + \herm{b}_{\vetor{p}s}v_{s}(\vetor{p}) e^{ipx}\right).
+   \end{equation*}
+   and take the Fourier transform at \(x^0 = t\), obtaining
+   \begin{align*}
+      \int_{\mathbb{R}^3}\dln3x e^{\pm ipx} \Psi(x) &= \int_{\mathbb{R}^3} \frac{\dln3k}{(2\pi)^3 \sqrt{2\omega_{\vetor{k}}}} \int_{\mathbb{R}^3} \dln3x \sum_{s} \left(a_{\vetor{k}s} u_s(\vetor{k}) e^{- i x(k \mp p)} + \herm{b}_{\vetor{k}s} v_s(\vetor{k}) e^{ix(k \pm p)}\right)\\
+                                                    &= \int_{\mathbb{R}^3} \frac{\dln3k}{\sqrt{2 \omega_{\vetor{k}}}} \sum_s \left(a_{\vetor{k} s} u_s(\vetor{k})e^{-i(1 \mp 1)\omega_{\vetor{p}} t} \delta(\vetor{k} \mp p) + \herm{b}_{\vetor{k}s} v_{s}(\vetor{k}) e^{i(1 \pm 1)\omega_{\vetor{p}} t}\delta(k \pm \vetor{p})\right)\\
+                                                    &= \frac{1}{\sqrt{2 \omega_{\vetor{p}}}} \sum_s \left(a_{\pm \vetor{p} s} u_s(\pm \vetor{p}) e^{-i(1 \mp 1) \omega_{\vetor{p}} t} + \herm{b}_{\mp \vetor{p}s} v_{s}(\mp \vetor{p}) e^{i(1 \pm 1) \omega_{\vetor{p}} t}\right).
+   \end{align*}
+   The properties \(\herm{u}_r(\vetor{q}) u_s(\vetor{q}) = 2 \omega_{\vetor{q}} \delta_{rs} = \herm{v}_r(\vetor{q}) v_s(\vetor{q})\) and \(\herm{u}_r(\vetor{q})v_s(-\vetor{q}) = \herm{v}_r(\vetor{q}) u_s(-\vetor{q}) = 0\) yield
+   \begin{equation*}
+      a_{\vetor{p}r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{u}_{r}(\vetor{p}) \Psi(x)
+      \quad\text{and}\quad
+      \herm{b}_{\vetor{p}r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{-ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{v}_r(\vetor{p})\Psi(x)
+   \end{equation*}
+   hence
+   \begin{equation*}
+      \herm{a}_{\vetor{p}r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{-ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{\Psi}(x)u_{r}(\vetor{p}) 
+      \quad\text{and}\quad
+      b_{\vetor{p}r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{\Psi}(x)v_r(\vetor{p}).
+   \end{equation*}
+   From the same-time anticommutation relations,\footnote{Here we employ the shorthand notation used in the literature, as the actual anticommutation relation must be component wise in order to make sense, e.g., \(\anticommutator*{\Psi_\alpha(\vetor{x}, t)}{\herm{\Psi}_\beta(\vetor{y}, t)} = \delta(\vetor{x} - \vetor{y}) \delta_{\alpha\beta}\).}
+   \begin{equation*}
+      \anticommutator*{\Psi(\vetor{x}, t)}{\herm{\Psi}(\vetor{y}, t)} = \delta(\vetor{x} - \vetor{y}) \quad\text{and}\quad \anticommutator*{\Psi(\vetor{x},t)}{\Psi(\vetor{y},t)} = \anticommutator*{\herm{\Psi}(\vetor{x},t)}{\herm{\Psi}(\vetor{y},t)} = 0,
+   \end{equation*}
+   we obtain for \(x^0 = y^0\) that
+   \begin{align*}
+      \anticommutator*{\herm{r} \Psi(x)}{\herm{s} \Psi(y)} 
+      &= \sum_{\alpha, \beta} \left[\herm{r}_\alpha \Psi_\alpha(x) \herm{s}_\beta \Psi_\beta(y) +  \herm{s}_\beta \Psi_\beta(y)\herm{r}_\alpha \Psi_\alpha(x)\right]\\
+      &= \sum_{\alpha, \beta} \herm{r}_\alpha \herm{s}_\beta \anticommutator*{\Psi_\alpha(x)}{\Psi_\beta(y)}\\
+      &= 0
+   \end{align*}
+   and
+   \begin{align*}
+      \anticommutator*{\herm{r} \Psi(x)}{\herm{\Psi}(y)s} 
+      &= \sum_{\alpha, \beta} \left[\herm{r}_\alpha \Psi_\alpha(x)  \herm{\Psi}_\beta(y)s_\beta +   \herm{\Psi}_\beta(y)s_\beta\herm{r}_\alpha \Psi_\alpha(x)\right]\\
+      &= \sum_{\alpha, \beta} \herm{r}_\alpha s_\beta \anticommutator*{\Psi_\alpha(x)}{\herm{\Psi}_\beta(y)}\\
+      &= \sum_{\alpha, \beta} \herm{r}_\alpha s_\beta \delta_{\alpha \beta} \delta(\vetor{x} - \vetor{y})\\
+      &= \herm{r} s \delta(\vetor{x} - \vetor{y}),
+   \end{align*}
+   where \(r\) and \(s\) denote either \(u_{1,2}(\vetor{p})\) or \(v_{1,2}(\vetor{p}).\) With this, using \(x^0 = y^0 = t\) we get
+   \begin{equation*}
+      \anticommutator*{a_{\vetor{p}r}}{a_{\vetor{k}s}} = \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px + ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \anticommutator*{\herm{u}_r(\vetor{p}) \Psi(x)}{\herm{u}_s(\vetor{k}) \Psi(y)} = 0,
+   \end{equation*}
+   \begin{equation*}
+      \anticommutator*{b_{\vetor{p}r}}{b_{\vetor{k}s}} = \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px + ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \anticommutator*{\herm{\Psi}(x)v_r(\vetor{p})}{\herm{\Psi}(y)v_s(\vetor{k})} = 0,
+   \end{equation*}
+   \begin{align*}
+      \anticommutator*{a_{\vetor{p}r}}{\herm{b}_{\vetor{k}s}} = \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \anticommutator*{\herm{u}_r(\vetor{p})\Psi(x)}{\herm{v}_s(\vetor{k})\Psi(y)} = 0,
+   \end{align*}
+   \begin{align*}
+      \anticommutator*{a_{\vetor{p}r}}{b_{\vetor{k}s}} 
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px + ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \anticommutator*{\herm{u}_r(\vetor{p})\Psi(x)}{\herm{\Psi}(y)v_s(\vetor{k})}\\
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px + ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \herm{u}_r(\vetor{p}) v_s(\vetor{k}) \delta(\vetor{x} - \vetor{y})\\
+      &= \int_{\mathbb{R}^3} \dln3x \frac{e^{ix(p + k)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \herm{u}_r(\vetor{p}) v_s(\vetor{k})\\
+      &= \frac{(2\pi)^3 \delta(\vetor{p} + \vetor{k})}{2 \omega_{\vetor{p}}} \herm{u}_r(\vetor{p}) v_s(-\vetor{p})\\
+      &= 0,
+   \end{align*}
+   \begin{align*}
+      \anticommutator*{a_{\vetor{p}r}}{\herm{a}_{\vetor{k}s}} 
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \anticommutator*{\herm{u}_r(\vetor{p})\Psi(x)}{\herm{\Psi}(y) u_s(\vetor{k})}\\
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \herm{u}_r(\vetor{p}) u_s(\vetor{k}) \delta(\vetor{x} - \vetor{y})\\
+      &= \int_{\mathbb{R}^3} \dln3x \frac{e^{ix(p - k)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \herm{u}_r(\vetor{p}) u_s(\vetor{k})\\
+      &= \frac{(2\pi)^3 \delta(\vetor{p} - \vetor{k})}{2 \omega_{\vetor{p}}} \herm{u}_r(\vetor{p}) u_s(-\vetor{p})\\
+      &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \delta_{rs},
+   \end{align*}
+   and
+   \begin{align*}
+      \anticommutator*{b_{\vetor{p}r}}{\herm{b}_{\vetor{k}s}} 
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \anticommutator*{\herm{\Psi}(x)v_r(\vetor{p})}{\herm{v}_s(\vetor{k}) \Psi(y)}\\
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \herm{v}_s(\vetor{k}) v_r(\vetor{p}) \delta(\vetor{x} - \vetor{y})\\
+      &= \int_{\mathbb{R}^3} \dln3x \frac{e^{ix(p - k)}}{2\sqrt{\omega_{\vetor{k}} \omega_{\vetor{p}}}} \herm{v}_s(\vetor{k}) v_r(\vetor{p})\\
+      &= \frac{(2\pi)^3 \delta(\vetor{p} - \vetor{k})}{2 \omega_{\vetor{p}}} \herm{v}_s(\vetor{p}) v_r(\vetor{p})\\
+      &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \delta_{rs},
+   \end{align*}
+   with the others obtained from \(\herm{\anticommutator{A}{B}} = \anticommutator{\herm{A}}{\herm{B}}.\)
+
+   We'll use the shorthand 
+   \begin{equation*}
+      \int_{\vetor{q}} = \int_{\mathbb{R}^3} \frac{\dln3q}{(2\pi)^3\sqrt{2\omega_{\vetor{q}}}}
+   \end{equation*}
+   and \(u_{s}(\vetor{q}) = u_{\vetor{q} s}\) in order to make the following expressions less cumbersome. As we have expanded the fields in normal modes, they satisfy the Dirac equation by construction, thus justifying the definition used for the stress-energy tensor, that is, the term \(g^{\mu \nu} \mathcal{L}\) is equal to zero in the stress-energy tensor, and the Hamiltonian at \(x^0 = t\) is simplified to
+   \begin{align*}
+      H &= i \int_{\mathbb{R}^3} \dln3x \herm{\Psi} \partial_0 \Psi\\
+      &= \int_{\vetor{p}} \int_{\vetor{k}}\int_{\mathbb{R}^3} \dln3x \sum_{s,r} \omega_{\vetor{k}} \left(\herm{a}_{\vetor{p} s} \herm{u}_{\vetor{p}s} e^{ipx} + b_{\vetor{p}s} \herm{v}_{\vetor{p}s} e^{-ipx}\right)\left(a_{\vetor{k} r} u_{\vetor{k}r} e^{-ikx} - \herm{b}_{\vetor{k}r} v_{\vetor{k}r} e^{ikx}\right)\\
+      &= (2\pi)^3 \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r}\omega_{\vetor{k}}\bigg[
+            \big(\herm{a}_{\vetor{p} s} a_{\vetor{p}r} \overbrace{\herm{u}_{\vetor{p}s} u_{\vetor{p}r}}^{2 \omega_{\vetor{p}} \delta_{rs}} - b_{\vetor{p}s} \herm{b}_{\vetor{p} r} \overbrace{\herm{v}_{\vetor{p} s} v_{\vetor{p} r}}^{2 \omega_{\vetor{p}} \delta_{rs}} \big) \delta(\vetor{p} - \vetor{k}) \\
+      &\phantom{(2\pi)^3 \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r}\bigg[\omega_{\vetor{k}}}{}- \big(\herm{a}_{\vetor{p}s}\herm{b}_{-\vetor{p}r} \underbrace{\herm{u}_{\vetor{p}s}v_{-\vetor{p}r}}_{0}e^{2i \omega_{\vetor{p}} t} - b_{\vetor{p}s} a_{-\vetor{p} r} \underbrace{\herm{v}_{\vetor{p}s} u_{-\vetor{p} r}}_{0} e^{-2i \omega_{\vetor{p}} t}\big) \delta(\vetor{p} + \vetor{k})\bigg]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \omega_{\vetor{p}} \left[\herm{a}_{\vetor{p} s} a_{\vetor{p}s} + \herm{b}_{\vetor{p} s} b_{\vetor{p}s} - \anticommutator{\herm{b}_{\vetor{p}s}}{b_{\vetor{p} s}}\right]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \omega_{\vetor{p}}\left[\herm{a}_{\vetor{p} s} a_{\vetor{p}s} + \herm{b}_{\vetor{p} s} b_{\vetor{p}s} - (2\pi)^3 \delta(\vetor{0})\right].
+   \end{align*}
+   Using the identity \(\commutator{A}{BC} = \anticommutator{A}{B}C - B\anticommutator{A}{C}\), we get
+   \begin{align*}
+      \commutator{a_{\vetor{k}r}}{H} &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \omega_{\vetor{p}}\sum_s \left(\commutator{a_{\vetor{k}r}}{\herm{a}_{\vetor{p} s} a_{\vetor{p} s}} + \commutator{a_{\vetor{k} r}}{\herm{b}_{\vetor{p} s} b_{\vetor{p} s}}\right)\\
+                                     &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \omega_{\vetor{p}}\sum_s \left(
+                                        \anticommutator{a_{\vetor{k}r}}{\herm{a}_{\vetor{p} s}}a_{\vetor{p} s} - \herm{a}_{\vetor{p}s}\anticommutator{a_{\vetor{k}r}}{a_{\vetor{p} s}} + 
+                                        \anticommutator{a_{\vetor{k}r}}{\herm{b}_{\vetor{p} s}}b_{\vetor{p} s} - \herm{b}_{\vetor{p}s}\anticommutator{a_{\vetor{k}r}}{b_{\vetor{p} s}}\right)\\
+                                     &= \int_{\mathbb{R}^3} \dln3p \omega_{\vetor{p}} \sum_{s} \delta_{rs} \delta(\vetor{p} - \vetor{k}) a_{\vetor{p} s}\\
+                                     &= \int_{\mathbb{R}^3} \dln3p \omega_{\vetor{p}} \delta(\vetor{p} - \vetor{k}) a_{\vetor{p} k}\\
+                                     &= \omega_{\vetor{k}} a_{\vetor{k} r},
+   \end{align*}
+   where the operators are computed at time \(t\). Repeating this computation, we obtain the same-time commutation relations
+   \begin{equation*}
+      \commutator{a_{\vetor{p}r}}{H} = \omega_{\vetor{p}} a_{\vetor{p}r},
+      \quad
+      \commutator{b_{\vetor{p}r}}{H} = \omega_{\vetor{p}} b_{\vetor{p}r},
+      \quad
+      \commutator{\herm{a}_{\vetor{p}r}}{H} = -\omega_{\vetor{p}} \herm{a}_{\vetor{p}r},
+      \quad\text{and}\quad
+      \commutator{\herm{b}_{\vetor{p}r}}{H} = -\omega_{\vetor{p}} \herm{b}_{\vetor{p}r},
+   \end{equation*}
+   thus the time evolution of the annihilation and creation operators is
+   \begin{equation*}
+      a_{\vetor{p}r}(t) = e^{-i \omega_{\vetor{p}} t} a_{\vetor{p}r}(0),
+      \quad
+      b_{\vetor{p}r}(t) = e^{-i \omega_{\vetor{p}} t} b_{\vetor{p}r}(0),
+      \quad
+      \herm{a}_{\vetor{p}r}(t) = e^{i \omega_{\vetor{p}} t} \herm{a}_{\vetor{p}r}(0),
+      \quad\text{and}\quad
+      \herm{b}_{\vetor{p}r}(t) = e^{i \omega_{\vetor{p}} t} \herm{b}_{\vetor{p}r}(0),
+   \end{equation*}
+   and we conclude their anticommutation relations are mostly unchanged at different times, as we have
+   \begin{equation*}
+      \anticommutator{a_{\vetor{p}r}(t)}{\herm{a}_{\vetor{k} s}(t')} = e^{i\omega_{\vetor{k}} (t' - t)} \anticommutator{a_{\vetor{p} r}(t)}{\herm{a}_{\vetor{k} s}(t)}  = (2\pi)^3e^{i \omega_{\vetor{p}}(t' - t)} \delta_{rs} \delta(\vetor{p} - \vetor{k})
+   \end{equation*}
+   and analogously for the other ones.
+
+   Finally, in terms of the annihilation and creation operators,
+   \begin{align*}
+      Q &= \int_{\mathbb{R}^3} \dln3x \herm{\Psi}\Psi\\
+      &= \int_{\vetor{p}} \int_{\vetor{k}}\int_{\mathbb{R}^3} \dln3x \sum_{s,r} \left(\herm{a}_{\vetor{p} s} \herm{u}_{\vetor{p}s} e^{ipx} + b_{\vetor{p}s} \herm{v}_{\vetor{p}s} e^{-ipx}\right)\left(a_{\vetor{k} r} u_{\vetor{k}r} e^{-ikx} + \herm{b}_{\vetor{k}r} v_{\vetor{k}r} e^{ikx}\right)\\
+      &= (2\pi)^3 \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r}\bigg[
+            \big(\herm{a}_{\vetor{p} s} a_{\vetor{p}r} \overbrace{\herm{u}_{\vetor{p}s} u_{\vetor{p}r}}^{2 \omega_{\vetor{p}} \delta_{rs}} + b_{\vetor{p}s} \herm{b}_{\vetor{p} r} \overbrace{\herm{v}_{\vetor{p} s} v_{\vetor{p} r}}^{2 \omega_{\vetor{p}} \delta_{rs}} \big) \delta(\vetor{p} - \vetor{k}) \\
+      &\phantom{(2\pi)^3 \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r}\bigg[}+ \big(\herm{a}_{\vetor{p}s}\herm{b}_{-\vetor{p}r} \underbrace{\herm{u}_{\vetor{p}s}v_{-\vetor{p}r}}_{0}e^{2i \omega_{\vetor{p}} t} + b_{\vetor{p}s} a_{-\vetor{p} r} \underbrace{\herm{v}_{\vetor{p}s} u_{-\vetor{p} r}}_{0} e^{-2i \omega_{\vetor{p}} t}\big) \delta(\vetor{p} + \vetor{k})\bigg]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \left[\herm{a}_{\vetor{p} s} a_{\vetor{p}s} - \herm{b}_{\vetor{p} s} b_{\vetor{p}s} + \anticommutator{\herm{b}_{\vetor{p}s}}{b_{\vetor{p} s}}\right]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \left[\herm{a}_{\vetor{p} s} a_{\vetor{p}s} - \herm{b}_{\vetor{p} s} b_{\vetor{p}s} + (2\pi)^3 \delta(\vetor{0})\right],
+   \end{align*}
+   and
+   \begin{align*}
+      \vetor{P} 
+      &= \int_{\vetor{p}} \int_{\vetor{k}}\int_{\mathbb{R}^3} \dln3x \sum_{s,r} \vetor{k} \left(\herm{a}_{\vetor{p} s} \herm{u}_{\vetor{p}s} e^{ipx} + b_{\vetor{p}s} \herm{v}_{\vetor{p}s} e^{-ipx}\right)\left(a_{\vetor{k} r} u_{\vetor{k}r} e^{-ikx} - \herm{b}_{\vetor{k}r} v_{\vetor{k}r} e^{ikx}\right)\\
+      &= (2\pi)^3 \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r} \vetor{k}\bigg[
+            \big(\herm{a}_{\vetor{p} s} a_{\vetor{p}r} \overbrace{\herm{u}_{\vetor{p}s} u_{\vetor{p}r}}^{2 \omega_{\vetor{p}} \delta_{rs}} - b_{\vetor{p}s} \herm{b}_{\vetor{p} r} \overbrace{\herm{v}_{\vetor{p} s} v_{\vetor{p} r}}^{2 \omega_{\vetor{p}} \delta_{rs}} \big) \delta(\vetor{p} - \vetor{k}) \\
+      &\phantom{=(2\pi)^3 \int_{\vetor{p}} \int_{\vetor{k}} \sum_{s,r}\vetor{k}\bigg[}- \big(\herm{a}_{\vetor{p}s}\herm{b}_{-\vetor{p}r} \underbrace{\herm{u}_{\vetor{p}s}v_{-\vetor{p}r}}_{0}e^{2i \omega_{\vetor{p}} t} - b_{\vetor{p}s} a_{-\vetor{p} r} \underbrace{\herm{v}_{\vetor{p}s} u_{-\vetor{p} r}}_{0} e^{-2i \omega_{\vetor{p}} t}\big) \delta(\vetor{p} + \vetor{k})\bigg]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \vetor{p} \left[\herm{a}_{\vetor{p} s} a_{\vetor{p}s} + \herm{b}_{\vetor{p} s} b_{\vetor{p}s} - \anticommutator{\herm{b}_{\vetor{p}s}}{b_{\vetor{p} s}}\right]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \vetor{p}\left[\herm{a}_{\vetor{p} s} a_{\vetor{p}s} + \herm{b}_{\vetor{p} s} b_{\vetor{p}s} - (2\pi)^3 \delta(\vetor{0})\right]\\
+      &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \sum_{s} \vetor{p} \left[\herm{a}_{\vetor{p}s} a_{\vetor{p}s} + \herm{b}_{\vetor{p} s} b_{\vetor{p} s}\right]
+   \end{align*}
+   as the expressions for the conserved charge and linear momentum.
+\end{proof}

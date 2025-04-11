@@ -1,0 +1,36 @@
+% vim: spl=en
+\begin{problem}{Gordon identity}{p2}
+   Show that 
+   \begin{equation*}
+      \bar{u}(k) \gamma^\mu u(p) = \bar{u}(k) \left[\frac{k^\mu + p^\mu}{2m} + \frac{i \sigma^{\mu \nu} q_\nu}{2m}\right]u(p),
+   \end{equation*}
+   where \(q = k - p.\)
+\end{problem}
+\begin{proof}
+   Recall that \(\anticommutator{\gamma^\mu}{\gamma^\nu} = 2g^{\mu \nu}\unity,\) then we may write
+   \begin{align*}
+      i\sigma^{\mu \nu} &= -\frac{1}2 \commutator{\gamma^\mu}{\gamma^\nu} = - \gamma^\mu \gamma^\nu + \frac12\anticommutator{\gamma^\mu}{\gamma^\nu} = g^{\mu \nu}\unity - \gamma^\mu \gamma^\nu\\
+                        &= \frac12 \commutator{\gamma^\nu}{\gamma^\mu} = \gamma^\nu \gamma^\mu - \frac12 \anticommutator{\gamma^\nu}{\gamma^\mu} = \gamma^\nu \gamma^\mu - g^{\mu\nu} \unity.
+   \end{align*}
+   % from which we conclude
+   % \begin{equation*}
+   %    \gamma^\mu \gamma^\nu = g^{\nu \mu} \unity + i \sigma^{\nu \mu} = g^{\mu\nu} \unity - i \sigma^{\mu\nu}.
+   % \end{equation*}
+   Let \(q = k - p,\) then
+   \begin{align*}
+      i \sigma^{\mu\nu} q_\nu &=  (\gamma^\nu \gamma^\mu - g^{\mu \nu} \unity)k_\nu -  (g^{\mu \nu}\unity - \gamma^\mu \gamma^\nu)p_\nu\\
+                              &= (\gamma^\nu k_\nu \gamma^\mu - k^\mu \unity) - (p^\mu \unity - \gamma^\mu \gamma^\nu p_\nu)\\
+                              &= \slashed{k} \gamma^\mu + \gamma^\mu \slashed{p} - (k^\mu + p^\mu)\unity
+   \end{align*}
+   hence
+   \begin{align*}
+      \bar{u}(k) i \sigma^{\mu\nu} q_\nu u(p) &= (\bar{u}(k) \slashed{k})\gamma^\mu u(p) + \bar{u}(k) \gamma^\mu (\slashed{p} u(p)) - \bar{u}(k) (k^\mu + p^\mu) u(p)\\
+                                              &= 2m \bar{u}(k) \gamma^\mu u(p) - \bar{u}(k) (k^\mu + p^\mu) u(p)
+   \end{align*}
+   as \(\slashed{p}u(p) = m u(p)\) and \(\bar{u}(k) \slashed{k} = m \bar{u}(k)\). Assuming \(m \neq 0,\)
+   \begin{align*}
+      \bar{u}(k) \gamma^\mu u(p) &= \frac{1}{2m}\left[\bar{u}(k) (k^\mu + p^\mu) u(p) + \bar{u}(k) i \sigma^{\mu \nu} q_\nu u(p)\right]\\
+                                 &= \bar{u}(k) \left[\frac{k^\mu + p^\mu}{2m} + \frac{i \sigma^{\mu \nu} q_\nu}{2m}\right]u(p)
+   \end{align*}
+   as desired.
+\end{proof}

@@ -1,0 +1,39 @@
+% vim: spl=en
+\begin{lemma}{Commutator of products}{commutator}
+   The equality
+   \begin{equation*}
+      \commutator{AB}{CD} = A\anticommutator{B}{C}D - \anticommutator{A}{C}BD + CA\anticommutator{B}{D} - C\anticommutator{A}{D}B
+   \end{equation*}
+   holds for any operators \(A, B, C, D.\)
+\end{lemma}
+\begin{proof}
+    Indeed,
+   \begin{align*}
+      \commutator{AB}{CD} &= ABCD - CDAB\\
+                          &= ABCD + ACBD - ACBD - CABD + CABD + CADB - CADB - CDAB\\
+                          &= A(BC + CB)D - (AC + CA)BD + CA(BD + DB) - C(AD + DA)B\\
+                          &= A\anticommutator{B}{C}D - \anticommutator{A}{C}BD + CA\anticommutator{B}{D} - C\anticommutator{A}{D}B,
+   \end{align*}
+   as claimed.
+\end{proof}
+\begin{problem}{Microcausality relation for the conserved current of the free Dirac field}{p3}
+   Consider the conserved current of the free Dirac field, \(J^\mu = \bar{\Psi} \gamma^\mu \Psi.\) Show that this current satisfies the microcausality relation \(\commutator{J^\mu(x)}{J^\nu(y)} = 0\) for \(x\) and \(y\) spacelike separated.
+\end{problem}
+\begin{proof}[Solution]
+   As \(x\) and \(y\) are spacelike separated, there exists a frame in which they are simultaneous and \(\vetor{x} - \vetor{y} \neq \vetor{0}.\) In this frame, we have
+   \begin{align*}
+       \commutator{\herm{\Psi}_{\alpha}(x) \Psi_{\beta}(x)}{\herm{\Psi}_{\sigma}(y)\Psi_{\rho}(y)} 
+       &= \herm{\Psi}_{\alpha}(x)\anticommutator{\Psi_{\beta}(x)}{\herm{\Psi}_{\sigma}(y)}\Psi_{\rho}(y) - \anticommutator{\herm{\Psi}_{\alpha}(x)}{\herm{\Psi}_{\sigma}(y)}\Psi_{\beta}(x)\Psi_{\rho}(y)\\
+       &{}\phantom{=}+ \herm{\Psi}_{\sigma}(y)\herm{\Psi}_{\alpha}(x)\anticommutator{\Psi_{\beta}(x)}{\Psi_{\rho}(y)} - \herm{\Psi}_{\sigma}(y)\anticommutator{\herm{\Psi}_{\alpha}(x)}{\Psi_{\rho}(y)}\Psi_{\beta}(x)\\
+       &= \herm{\Psi}_{\alpha}(x)\delta(\vetor{x} - \vetor{y})\Psi_{\rho}(y) - \herm{\Psi}_{\sigma}(y)\delta(\vetor{x} - \vetor{y})\Psi_{\beta}(x)\\
+       &= 0
+   \end{align*}
+   then
+   \begin{align*}
+      \commutator{J^\mu(x)}{J^\nu(y)} &= \commutator{\herm{\Psi}_\alpha(x) \gamma^0_{\alpha \eta} \gamma^{\mu}_{\eta \beta} \Psi_\beta(x)}{\herm{\Psi}_\sigma(y) \gamma^0_{\sigma \tau} \gamma^{\nu}_{\tau \rho} \Psi_\rho(y)}\\
+                                      &= \gamma^0_{\alpha \eta} \gamma^\mu_{\eta \beta} \gamma^0_{\sigma \tau} \gamma^\nu_{\tau \rho} \commutator{\herm{\Psi}_{\alpha}(x) \Psi_{\beta}(x)}{\herm{\Psi}_{\sigma}(y)\Psi_{\rho}(y)}\\
+                                      &= 0,
+   \end{align*}
+   hence \(\commutator{J^\mu(x)}{J^\nu(y)} = 0\) in all frames.
+\end{proof}
+

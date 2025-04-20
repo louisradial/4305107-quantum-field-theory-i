@@ -1,3 +1,5 @@
+books/
+drafts/
 *.log
 *.aux
 *.synctex.gz

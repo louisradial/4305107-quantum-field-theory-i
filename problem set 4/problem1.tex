@@ -10,5 +10,221 @@
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   We consider the Lagrangian density \(\mathcal{L} = \bar{\Psi} (i \slashed{\partial} - m) \Psi\) and its invariance under the infinitesimal Lorentz transformation 
+   \begin{equation*}
+      x^\mu \mapsto x'^\mu = x^\mu + \omega\indices{^\mu_\nu}x^\nu\quad\text{and}\quad\Psi(x) \mapsto \Psi'(x') = \left(\unity - \frac{i}{4} \omega_{\mu\nu} \sigma^{\mu\nu}\right)\Psi(x).
+   \end{equation*}
+   As
+   \begin{align*}
+      \delta \Psi(x) = \Psi'(x) - \Psi(x) &= \left(\unity - \frac{i}{4} \omega_{\mu\nu} \sigma^{\mu\nu}\right)\Psi(x - \omega x) - \Psi(x)\\
+                                          &= -\frac{i}{4} \omega_{\mu\nu} \sigma^{\mu\nu}\Psi(x) - \omega\indices{^\mu_\nu} x^\nu\partial_\mu \Psi(x)\\
+                                          &= -i \omega_{\mu\nu} \left(\frac14 \omega^{\mu\nu} + \frac1i x^\nu \partial^\mu\right)\Psi(x)
+   \end{align*}
+   and as the conserved current is \(J^\rho = i \bar{\Psi} \gamma^\rho \delta \Psi,\) the conserved charge for a rotation about the \(\vetor{n}\) axis by the infinitesimal angle \(\vartheta\), where \(\omega_{jk} = \vartheta n^i \epsilon_{ijk},\) is
+   \begin{equation*}
+      \int_{\mathbb{R}^3} \dln3x J^0 = \int_{\mathbb{R}^3} \dln3x \herm{\Psi} \vartheta n^i \epsilon_{ijk} \left(\frac14 \sigma^{jk} + \frac{1}{i} x^{k} \partial^j\right) \Psi(x) = \int_{\mathbb{R}^3} \dln3x \herm{\Psi} \left(\frac{\vartheta}2 n^i \Sigma_i + \vartheta n^i L_i\right)\Psi(x),
+   \end{equation*}
+   where \(L_i\) is the \(i\) component of the orbital angular momentum and 
+   \begin{equation*}
+      \Sigma_i = \frac12 \epsilon_{ijk} \sigma^{jk} = \frac{i}{4} \epsilon_{ijk} \commutator{\gamma^j}{\gamma^k} = \frac{i}{4} \epsilon_{ijk} \left(\anticommutator{\gamma^j}{\gamma^k} - 2\gamma^{k} \gamma^{j}\right) = -\frac{i}{2} \epsilon_{ijk} \gamma^{k} \gamma^{j} = \frac{i}{2} \epsilon_{ijk} \gamma^{j} \gamma^{k}
+   \end{equation*}
+   is the \(i\) component of the spin angular momentum, up to a factor of two. In the Weyl representation, where
+   \begin{equation*}
+       \gamma^0 = \begin{pmatrix}
+           && \unity\\
+          \unity && 
+       \end{pmatrix}
+       \quad\text{and}\quad
+       \gamma^j = \begin{pmatrix}
+           && \sigma^j\\
+          -\sigma^j &&
+       \end{pmatrix},
+   \end{equation*}
+   we have
+   \begin{equation*}
+   \Sigma_i = \frac12 \epsilon_{ijk} \gamma^j \gamma^k = -\frac12 \epsilon_{ijk} (\delta_{jk} + i \epsilon_{jk\ell} \sigma^{\ell}) \unity = -\delta_{i \ell} \sigma_\ell \unity \implies \Sigma^i = \begin{pmatrix}
+      \sigma^i &&\\
+               && \sigma^i
+   \end{pmatrix}.
+   \end{equation*}
+
+   From the Dirac equation we have
+   \begin{equation*}
+       i\slashed{\partial}\Psi = m \Psi \implies i \gamma^0\partial_0 \Psi = (m - i \gamma^j \partial_j)\Psi \implies i \partial_0 \Psi = \gamma^0 (m - i \gamma^j \partial_j) \Psi,
+   \end{equation*}
+   that is, 
+   \begin{equation*}
+      H_D = \gamma^0 (m + \gamma^j p_j)
+   \end{equation*}
+   is the free Dirac Hamiltonian. In the Weyl representation, we have
+   \begin{equation*}
+      H_D = \begin{pmatrix}
+         -\sigma^j p_j && m\\
+         m && \sigma^j p_j
+      \end{pmatrix} = \begin{pmatrix}
+         \vetor{\sigma} \cdot \vetor{p} && m\\
+         m && -\vetor{\sigma} \cdot \vetor{p}
+      \end{pmatrix},
+   \end{equation*}
+   where \(\vetor{\sigma} \cdot \vetor{p} = \delta_{ij} \sigma^i p^j.\) Notice the helicity, \(h = \frac{\vetor{\Sigma} \cdot \vetor{p}}{\norm{\vetor{p}}},\) satisfies
+   \begin{align*}
+      \commutator{h}{H_D} &= \commutator*{\begin{pmatrix}
+            \vetor{\sigma} \cdot \frac{\vetor{p}}{\norm{\vetor{p}}} &&\\
+                                                                    && \vetor{\sigma} \cdot \frac{\vetor{p}}{\norm{\vetor{p}}}
+      \end{pmatrix}}
+      {\begin{pmatrix}
+            \vetor{\sigma} \cdot \vetor{p} && m\\
+            m && -\vetor{\sigma} \cdot \vetor{p}
+         \end{pmatrix}}\\
+                          &=
+         \begin{pmatrix}
+            \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)(\vetor{\sigma}\cdot \vetor{p}) && \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)m\\
+            \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)m && -\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)(\vetor{\sigma} \cdot \vetor{p})
+         \end{pmatrix}-
+         \begin{pmatrix}
+            (\vetor{\sigma}\cdot \vetor{p})\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right) && m \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)\\
+            m \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right) && - (\vetor{\sigma} \cdot \vetor{p})\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)
+         \end{pmatrix}\\
+                          &= 0
+         ,
+   \end{align*}
+   then \(h\) and \(H_D\) are compatible, that is, there exists a basis with which both operators can be diagonalized simultaneously.
+
+   Let \(\Psi\) be an element of such basis, that is, \(h \Psi = s \Psi\) and \(H_D \Psi = E \Psi.\) In the Weyl representation, let us write \(\Psi = \left(\begin{smallmatrix}
+       \Psi_1\\
+       \Psi_2
+   \end{smallmatrix}\right),\) then,
+   \begin{equation*}
+       \begin{cases}
+          \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
+          \vetor{\sigma} \cdot \vetor{p} \Psi_1 + m \Psi_2 = E \Psi_1\\
+          m \Psi_1 - \vetor{\sigma} \cdot \vetor{p} \Psi_2 = E \Psi_2
+       \end{cases}
+       \implies
+       \begin{cases}
+          \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
+          s \norm{\vetor{p}} \Psi_1 + m \Psi_2 = E \Psi_1\\
+          m \Psi_1 - s \norm{\vetor{p}} \Psi_2 = E \Psi_2.
+       \end{cases}
+   \end{equation*}
+   We may use a rotated frame for which \(\frac{\vetor{p}}{\norm{\vetor{p}}} = \vetor{e}_z,\) then the eigenstate equation for the helicity reads as \(\sigma_z \Psi_i = s \Psi_i,\) that is, \(s = \pm 1\) and we see \(\Psi_i\) is an eigenvector of \(\sigma_z\) in this frame. We'll first consider massive particles, and after a boost to its rest frame, we have \(E = \pm m\), hence
+   \begin{equation*}
+      \begin{cases}
+         m \Psi_2 = \pm m \Psi_1\\
+         m \Psi_1 = \pm m \Psi_2
+      \end{cases} \implies \Psi_1 = \pm \Psi_2.
+   \end{equation*}
+   We have thus the following set of linearly independent solutions
+   \begin{equation*}
+       \Psi^+_\uparrow = \sqrt{m} \begin{pmatrix}
+           1 \\ 0\\1 \\ 0
+       \end{pmatrix},
+       \quad
+       \Psi^+_\downarrow = \sqrt{m} \begin{pmatrix}
+           0 \\ 1\\0 \\ 1
+       \end{pmatrix},
+       \quad
+       \Psi^-_\uparrow = \sqrt{m} \begin{pmatrix}
+           1 \\ 0\\-1 \\ 0
+       \end{pmatrix},
+       \quad\text{and}\quad
+       \Psi^-_\downarrow = \sqrt{m} \begin{pmatrix}
+           0 \\ 1\\0 \\-1
+       \end{pmatrix},
+   \end{equation*}
+   where the sign reflects that of the energy and the arrow denotes the helicity. We'll write 
+   \begin{equation*}
+      \Psi^\pm_{s} = \sqrt{m}\begin{pmatrix} \xi_s\\\pm\xi_s \end{pmatrix}
+   \end{equation*}
+   and boost each rest frame solution back to the frame where \(p^\mu = (E, \norm{\vetor{p}} \vetor{e}_z)\). The rapidity \(\phi\) for the boost is such that \(\norm{\vetor{p}} = \pm m \sinh\phi\) and \(E = m \cosh\phi\) then the spinor transformation is
+   \begin{align*}
+      \exp\left(\frac14 \phi \sigma^{03}\right) 
+      &= \exp\left[\frac12 \phi \begin{pmatrix}
+            - \sigma_z && \\
+                       && \sigma_z
+      \end{pmatrix}\right]\\
+      &= \left[\cosh\left(\frac12 \phi\right) \unity + \sinh\left(\frac12 \phi\right)\begin{pmatrix}
+            - \sigma_z && \\
+                       && \sigma_z
+      \end{pmatrix}\right]\\
+      &= \begin{pmatrix}
+         e^{\frac{\phi}2} \left(\frac{\unity - \sigma_z}{2}\right) + e^{-\frac{\phi}2} \left(\frac{\unity + \sigma_z}{2}\right) &&\\
+         && e^{\frac{\phi}2} \left(\frac{\unity + \sigma_z}2\right) + e^{-\frac{\phi}2} \left(\frac{\unity - \sigma_z}{2}\right)
+      \end{pmatrix}\\
+      &= \frac{1}{\sqrt{m}}\begin{pmatrix}
+         \sqrt{E \pm \norm{\vetor{p}}} \left(\frac{\unity - \sigma_z}{2}\right) + \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{\unity + \sigma_z}2\right)&&\\
+         &&\sqrt{E \pm \norm{\vetor{p}}} \left(\frac{\unity + \sigma_z}{2}\right) + \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{\unity - \sigma_z}2\right)
+      \end{pmatrix}.
+   \end{align*}
+   The boosted solutions are
+   \begin{equation*}
+      \Psi_s^{\pm} = \begin{pmatrix}
+         \left[\sqrt{E \pm \norm{\vetor{p}}} \left(\frac{1 - s}{2}\right) + 
+         \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{1 + s}{2}\right)\right] \xi_s\\
+         \pm\left[\sqrt{E \pm \norm{\vetor{p}}} \left(\frac{1 + s}{2}\right) + 
+         \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{1 - s}{2}\right)\right]\xi_s
+      \end{pmatrix},
+   \end{equation*}
+   or
+   \begin{equation*}
+       \Psi^+_\uparrow = \begin{pmatrix}
+          \sqrt{E - \norm{\vetor{p}}}\\
+          0\\
+          \sqrt{E + \norm{\vetor{p}}}\\
+          0
+       \end{pmatrix},\quad
+       \Psi^+_\downarrow = \begin{pmatrix}
+          0\\
+          \sqrt{E + \norm{\vetor{p}}}\\
+          0\\
+          \sqrt{E - \norm{\vetor{p}}}
+       \end{pmatrix},\quad
+       \Psi^-_\uparrow = \begin{pmatrix}
+          \sqrt{E + \norm{\vetor{p}}}\\
+          0\\
+          -\sqrt{E - \norm{\vetor{p}}}\\
+          0
+       \end{pmatrix},\quad\text{and}\quad
+       \Psi^-_\downarrow = \begin{pmatrix}
+          0\\
+          \sqrt{E - \norm{\vetor{p}}}\\
+          0\\
+          -\sqrt{E + \norm{\vetor{p}}}
+       \end{pmatrix}.
+   \end{equation*}
+
+   For massless particles, we have \(E = \pm\norm{\vetor{p}},\) then
+   \begin{equation*}
+       \begin{cases}
+          s \norm{\vetor{p}} \Psi_1 = E \Psi_1\\
+          - s \norm{\vetor{p}} \Psi_2 = E \Psi_2
+       \end{cases} \implies 
+       \begin{cases}
+          \Psi_1 = \pm s \Psi_1\\
+          \Psi_2 = \mp s \Psi_2
+       \end{cases},
+   \end{equation*}
+   from which we infer that \(s = \pm1.\)
+
+   % We'll show the Hamiltonian and the helicity, \(h = \frac{\vetor{\Sigma} \cdot \vetor{p}}{\norm{\vetor{p}}} = g^{ij}\frac{\Sigma_i p_j}{\norm{\vetor{p}}},\) are compatible operators
+   % \begin{align*}
+   %    \commutator*{h}{H_D} %&= \commutator*{\frac{\vetor{\Sigma}\cdot\vetor{p}}{\norm{\vetor{p}}}}{\gamma^0 (m - \vetor{\gamma}\cdot \vetor{p})}\\
+   %                        &= g^{ij}\commutator*{\frac{\Sigma_i p_j}{\norm{\vetor{p}}}}{\gamma^0\left(m + \gamma^k p_k\right)}\\
+   %                        &= \frac{i}{2} g^{ij} \epsilon_{iab} \frac{p_j}{\norm{\vetor{p}}}\commutator*{\gamma^a \gamma^b}{\gamma^0\left(m + \gamma^kp_k\right)}\\
+   %                        &= \frac{i}{2} g^{ij} \epsilon_{iab} \frac{p_j}{\norm{\vetor{p}}}\left(m\commutator*{\gamma^a \gamma^b}{\gamma^0} + \commutator*{\gamma^a \gamma^b}{\gamma^0 \gamma^k}p_k\right)\\
+   %                        &= \frac{i}{2} g^{ij} \epsilon_{iab} \frac{p_j}{\norm{\vetor{p}}}p_k\commutator*{\gamma^a \gamma^b}{\gamma^0 \gamma^k}\\
+   %                        &= \frac{i}{2} g^{ij} \epsilon_{iab} \frac{p_j}{\norm{\vetor{p}}}p_k\left(\commutator*{\gamma^a \gamma^b}{\gamma^0}\gamma^k + \gamma^0\commutator*{\gamma^a \gamma^b}{\gamma^k}\right)\\
+   %                        &= \frac{i}{2} g^{ij} \epsilon_{iab} \frac{p_j}{\norm{\vetor{p}}}p_k\gamma^0\commutator*{\gamma^a \gamma^b}{\gamma^k}\\
+   %                        &= \frac{i}{2} g^{ij} \epsilon_{iba} \frac{p_j}{\norm{\vetor{p}}}p_k\gamma^0\left(\anticommutator*{\gamma^k}{\gamma^a}\gamma^b - \gamma^a\anticommutator*{\gamma^k}{\gamma^b}\right)\\
+   %                        &= i g^{ij} \epsilon_{iba} \frac{p_j}{\norm{\vetor{p}}}p_k\gamma^0\left(g^{ka}\gamma^b - \gamma^ag^{kb}\right)\\
+   %                        &= \\
+   %                        % &= \frac{i}{2} g^{ij} \epsilon_{iba} \frac{p_j}{\norm{\vetor{p}}} \left[\anticommutator*{\gamma^0\left(m + \gamma^k p_k\right)}{\gamma^a} \gamma^b - \gamma^a \anticommutator*{\gamma^0\left(m + \gamma^k p_k\right)}{\gamma^b}\right]\\
+   %                        % &= \frac{i}{2} g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left(\anticommutator*{\gamma^0\gamma^k}{\gamma^a} \gamma^b - \gamma^a \anticommutator*{\gamma^0\gamma^k}{\gamma^b} + mg^{0a} \gamma^b - m g^{0b}\gamma^a\right)\\
+   %                        % &= \frac{i}{2} g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left(\commutator*{\gamma^0\gamma^k}{\gamma^a} \gamma^b + \gamma^a \commutator*{\gamma^0\gamma^k}{\gamma^b}\right)\\
+   %                        % &= \frac{i}{2} g^{ij} \epsilon_{iab} p_k \frac{p_j}{\norm{\vetor{p}}} \left(\anticommutator*{\gamma^a}{\gamma^0} \gamma^k \gamma^b - \gamma^0 \anticommutator*{\gamma^a}{\gamma^k} \gamma^b + \gamma^a \anticommutator*{\gamma^b}{\gamma^0} \gamma^k - \gamma^a \gamma^0 \anticommutator*{\gamma^b}{\gamma^k}\right)\\
+   %                        % &= i g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left(g^{ak}\gamma^0  \gamma^b + g^{bk}\gamma^a \gamma^0 \right)\\
+   %                        % &= \frac{i}{2} g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left(g^{ak}\gamma^0  \gamma^b + g^{bk}\gamma^a \gamma^0 - g^{bk} \gamma^0 \gamma^a - g^{ak} \gamma^b \gamma^0\right)\\
+   %                        % &= \frac{i}{2} g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left[g^{ak} \commutator*{\gamma^0}{\gamma^b} + g^{bk} \commutator*{\gamma^a}{\gamma^0}\right]\\
+   %                        % &= g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left(g^{ak} \sigma^{0b} - g^{bk} \sigma^{0a}\right)
+   % \end{align*}
 \end{proof}

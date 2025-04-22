@@ -1,5 +1,5 @@
 % vim: spl=en
-\begin{problem}{}{p1}
+\begin{problem}{Simultaneous eigenstates of the helicity operator and free Dirac Hamiltonian}{p1}
    The helicity operator is defined as
    \begin{equation*}
       h = \frac{\vetor{\Sigma}\cdot \vetor{p}}{\norm{\vetor{p}}}.
@@ -30,27 +30,27 @@
    \end{equation*}
    is the \(i\) component of the spin angular momentum, up to a factor of two. In the Weyl representation, where
    \begin{equation*}
-       \gamma^0 = \begin{pmatrix}
+      \gamma^0 = \begin{pmatrix}
            && \unity\\
-          \unity && 
-       \end{pmatrix}
-       \quad\text{and}\quad
-       \gamma^j = \begin{pmatrix}
+         \unity && 
+      \end{pmatrix}
+      \quad\text{and}\quad
+      \gamma^j = \begin{pmatrix}
            && \sigma^j\\
-          -\sigma^j &&
-       \end{pmatrix},
+         -\sigma^j &&
+      \end{pmatrix},
    \end{equation*}
    we have
    \begin{equation*}
-   \Sigma_i = \frac12 \epsilon_{ijk} \gamma^j \gamma^k = -\frac12 \epsilon_{ijk} (\delta_{jk} + i \epsilon_{jk\ell} \sigma^{\ell}) \unity = -\delta_{i \ell} \sigma_\ell \unity \implies \Sigma^i = \begin{pmatrix}
-      \sigma^i &&\\
-               && \sigma^i
-   \end{pmatrix}.
+      \Sigma_i = \frac12 \epsilon_{ijk} \gamma^j \gamma^k = -\frac12 \epsilon_{ijk} (\delta_{jk} + i \epsilon_{jk\ell} \sigma^{\ell}) \unity = -\delta_{i \ell} \sigma_\ell \unity \implies \Sigma^i = \begin{pmatrix}
+         \sigma^i &&\\
+                  && \sigma^i
+      \end{pmatrix}.
    \end{equation*}
 
    From the Dirac equation we have
    \begin{equation*}
-       i\slashed{\partial}\Psi = m \Psi \implies i \gamma^0\partial_0 \Psi = (m - i \gamma^j \partial_j)\Psi \implies i \partial_0 \Psi = \gamma^0 (m - i \gamma^j \partial_j) \Psi,
+      i\slashed{\partial}\Psi = m \Psi \implies i \gamma^0\partial_0 \Psi = (m - i \gamma^j \partial_j)\Psi \implies i \partial_0 \Psi = \gamma^0 (m - i \gamma^j \partial_j) \Psi,
    \end{equation*}
    that is, 
    \begin{equation*}
@@ -61,51 +61,51 @@
       H_D = \begin{pmatrix}
          -\sigma^j p_j && m\\
          m && \sigma^j p_j
-      \end{pmatrix} = \begin{pmatrix}
+         \end{pmatrix} = \begin{pmatrix}
          \vetor{\sigma} \cdot \vetor{p} && m\\
          m && -\vetor{\sigma} \cdot \vetor{p}
       \end{pmatrix},
    \end{equation*}
    where \(\vetor{\sigma} \cdot \vetor{p} = \delta_{ij} \sigma^i p^j.\) Notice the helicity, \(h = \frac{\vetor{\Sigma} \cdot \vetor{p}}{\norm{\vetor{p}}},\) satisfies
    \begin{align*}
-      \commutator{h}{H_D} &= \commutator*{\begin{pmatrix}
+      \commutator{h}{H_D} 
+      &= \commutator*{\begin{pmatrix}
             \vetor{\sigma} \cdot \frac{\vetor{p}}{\norm{\vetor{p}}} &&\\
                                                                     && \vetor{\sigma} \cdot \frac{\vetor{p}}{\norm{\vetor{p}}}
       \end{pmatrix}}
       {\begin{pmatrix}
             \vetor{\sigma} \cdot \vetor{p} && m\\
             m && -\vetor{\sigma} \cdot \vetor{p}
-         \end{pmatrix}}\\
-                          &=
-         \begin{pmatrix}
-            \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)(\vetor{\sigma}\cdot \vetor{p}) && \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)m\\
-            \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)m && -\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)(\vetor{\sigma} \cdot \vetor{p})
-         \end{pmatrix}-
-         \begin{pmatrix}
-            (\vetor{\sigma}\cdot \vetor{p})\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right) && m \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)\\
-            m \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right) && - (\vetor{\sigma} \cdot \vetor{p})\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)
-         \end{pmatrix}\\
-                          &= 0
-         ,
+      \end{pmatrix}}\\
+      &=
+      \begin{pmatrix}
+         \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)(\vetor{\sigma}\cdot \vetor{p}) && \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)m\\
+         \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)m && -\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)(\vetor{\sigma} \cdot \vetor{p})
+      \end{pmatrix}-
+      \begin{pmatrix}
+         (\vetor{\sigma}\cdot \vetor{p})\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right) && m \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)\\
+         m \left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right) && - (\vetor{\sigma} \cdot \vetor{p})\left(\vetor{\sigma}\cdot\frac{\vetor{p}}{\norm{\vetor{p}}}\right)
+      \end{pmatrix}\\
+      &= 0,
    \end{align*}
    then \(h\) and \(H_D\) are compatible, that is, there exists a basis with which both operators can be diagonalized simultaneously.
 
    Let \(\Psi\) be an element of such basis, that is, \(h \Psi = s \Psi\) and \(H_D \Psi = E \Psi.\) In the Weyl representation, let us write \(\Psi = \left(\begin{smallmatrix}
-       \Psi_1\\
-       \Psi_2
+         \Psi_1\\
+         \Psi_2
    \end{smallmatrix}\right),\) then,
    \begin{equation*}
-       \begin{cases}
-          \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
-          \vetor{\sigma} \cdot \vetor{p} \Psi_1 + m \Psi_2 = E \Psi_1\\
-          m \Psi_1 - \vetor{\sigma} \cdot \vetor{p} \Psi_2 = E \Psi_2
-       \end{cases}
-       \implies
-       \begin{cases}
-          \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
-          s \norm{\vetor{p}} \Psi_1 + m \Psi_2 = E \Psi_1\\
-          m \Psi_1 - s \norm{\vetor{p}} \Psi_2 = E \Psi_2.
-       \end{cases}
+      \begin{cases}
+         \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
+         \vetor{\sigma} \cdot \vetor{p} \Psi_1 + m \Psi_2 = E \Psi_1\\
+         m \Psi_1 - \vetor{\sigma} \cdot \vetor{p} \Psi_2 = E \Psi_2
+      \end{cases}
+      \implies
+      \begin{cases}
+         \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
+         s \norm{\vetor{p}} \Psi_1 + m \Psi_2 = E \Psi_1\\
+         m \Psi_1 - s \norm{\vetor{p}} \Psi_2 = E \Psi_2.
+      \end{cases}
    \end{equation*}
    We may use a rotated frame for which \(\frac{\vetor{p}}{\norm{\vetor{p}}} = \vetor{e}_z,\) then the eigenstate equation for the helicity reads as \(\sigma_z \Psi_i = s \Psi_i,\) that is, \(s = \pm 1\) and we see \(\Psi_i\) is an eigenvector of \(\sigma_z\) in this frame. We'll first consider massive particles, and after a boost to its rest frame, we have \(E = \pm m\), hence
    \begin{equation*}
@@ -116,25 +116,25 @@
    \end{equation*}
    We have thus the following set of linearly independent solutions
    \begin{equation*}
-       \Psi^+_\uparrow = \sqrt{m} \begin{pmatrix}
-           1 \\ 0\\1 \\ 0
-       \end{pmatrix},
-       \quad
-       \Psi^+_\downarrow = \sqrt{m} \begin{pmatrix}
-           0 \\ 1\\0 \\ 1
-       \end{pmatrix},
-       \quad
-       \Psi^-_\uparrow = \sqrt{m} \begin{pmatrix}
-           1 \\ 0\\-1 \\ 0
-       \end{pmatrix},
-       \quad\text{and}\quad
-       \Psi^-_\downarrow = \sqrt{m} \begin{pmatrix}
-           0 \\ 1\\0 \\-1
-       \end{pmatrix},
+      \Psi^+_\uparrow = \sqrt{m} \begin{pmatrix}
+         1 \\ 0\\1 \\ 0
+      \end{pmatrix},
+      \quad
+      \Psi^+_\downarrow = \sqrt{m} \begin{pmatrix}
+         0 \\ 1\\0 \\ 1
+      \end{pmatrix},
+      \quad
+      \Psi^-_\uparrow = \sqrt{m} \begin{pmatrix}
+         1 \\ 0\\-1 \\ 0
+      \end{pmatrix},
+      \quad\text{and}\quad
+      \Psi^-_\downarrow = \sqrt{m} \begin{pmatrix}
+         0 \\ 1\\0 \\-1
+      \end{pmatrix},
    \end{equation*}
-   where the sign reflects that of the energy and the arrow denotes the helicity. We'll write 
+   where the sign reflects that of the energy and the arrow denotes the helicity. We'll write
    \begin{equation*}
-      \Psi^\pm_{s} = \sqrt{m}\begin{pmatrix} \xi_s\\\pm\xi_s \end{pmatrix}
+      \Psi^\pm_{s} = \sqrt{m}\begin{pmatrix} \xi_s\\\pm\xi_s \end{pmatrix},\quad\text{where}\quad \xi_s \in \set*{\begin{pmatrix} 1 \\0 \end{pmatrix}, \begin{pmatrix} 0\\1 \end{pmatrix}},
    \end{equation*}
    and boost each rest frame solution back to the frame where \(p^\mu = (E, \norm{\vetor{p}} \vetor{e}_z)\). The rapidity \(\phi\) for the boost is such that \(\norm{\vetor{p}} = \pm m \sinh\phi\) and \(E = m \cosh\phi\) then the spinor transformation is
    \begin{align*}
@@ -148,12 +148,10 @@
                        && \sigma_z
       \end{pmatrix}\right]\\
       &= \begin{pmatrix}
-         e^{\frac{\phi}2} \left(\frac{\unity - \sigma_z}{2}\right) + e^{-\frac{\phi}2} \left(\frac{\unity + \sigma_z}{2}\right) &&\\
-         && e^{\frac{\phi}2} \left(\frac{\unity + \sigma_z}2\right) + e^{-\frac{\phi}2} \left(\frac{\unity - \sigma_z}{2}\right)
+         e^{\frac{\phi}2} \left(\frac{\unity - \sigma_z}{2}\right) + e^{-\frac{\phi}2} \left(\frac{\unity + \sigma_z}{2}\right) &&\\ && e^{\frac{\phi}2} \left(\frac{\unity + \sigma_z}2\right) + e^{-\frac{\phi}2} \left(\frac{\unity - \sigma_z}{2}\right)
       \end{pmatrix}\\
       &= \frac{1}{\sqrt{m}}\begin{pmatrix}
-         \sqrt{E \pm \norm{\vetor{p}}} \left(\frac{\unity - \sigma_z}{2}\right) + \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{\unity + \sigma_z}2\right)&&\\
-         &&\sqrt{E \pm \norm{\vetor{p}}} \left(\frac{\unity + \sigma_z}{2}\right) + \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{\unity - \sigma_z}2\right)
+         \sqrt{E \pm \norm{\vetor{p}}} \left(\frac{\unity - \sigma_z}{2}\right) + \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{\unity + \sigma_z}2\right)&&\\ &&\sqrt{E \pm \norm{\vetor{p}}} \left(\frac{\unity + \sigma_z}{2}\right) + \sqrt{E \mp \norm{\vetor{p}}} \left(\frac{\unity - \sigma_z}2\right)
       \end{pmatrix}.
    \end{align*}
    The boosted solutions are
@@ -167,44 +165,60 @@
    \end{equation*}
    or
    \begin{equation*}
-       \Psi^+_\uparrow = \begin{pmatrix}
-          \sqrt{E - \norm{\vetor{p}}}\\
-          0\\
-          \sqrt{E + \norm{\vetor{p}}}\\
-          0
-       \end{pmatrix},\quad
-       \Psi^+_\downarrow = \begin{pmatrix}
-          0\\
-          \sqrt{E + \norm{\vetor{p}}}\\
-          0\\
-          \sqrt{E - \norm{\vetor{p}}}
-       \end{pmatrix},\quad
-       \Psi^-_\uparrow = \begin{pmatrix}
-          \sqrt{E + \norm{\vetor{p}}}\\
-          0\\
-          -\sqrt{E - \norm{\vetor{p}}}\\
-          0
-       \end{pmatrix},\quad\text{and}\quad
-       \Psi^-_\downarrow = \begin{pmatrix}
-          0\\
-          \sqrt{E - \norm{\vetor{p}}}\\
-          0\\
-          -\sqrt{E + \norm{\vetor{p}}}
-       \end{pmatrix}.
+      \Psi^+_\uparrow = \begin{pmatrix}
+         \sqrt{E - \norm{\vetor{p}}}\\
+         0\\
+         \sqrt{E + \norm{\vetor{p}}}\\
+         0
+      \end{pmatrix},\quad
+      \Psi^+_\downarrow = \begin{pmatrix}
+         0\\
+         \sqrt{E + \norm{\vetor{p}}}\\
+         0\\
+         \sqrt{E - \norm{\vetor{p}}}
+      \end{pmatrix},\quad
+      \Psi^-_\uparrow = \begin{pmatrix}
+         \sqrt{E + \norm{\vetor{p}}}\\
+         0\\
+         -\sqrt{E - \norm{\vetor{p}}}\\
+         0
+      \end{pmatrix},\quad\text{and}\quad
+      \Psi^-_\downarrow = \begin{pmatrix}
+         0\\
+         \sqrt{E - \norm{\vetor{p}}}\\
+         0\\
+         -\sqrt{E + \norm{\vetor{p}}}
+      \end{pmatrix}.
    \end{equation*}
-
-   For massless particles, we have \(E = \pm\norm{\vetor{p}},\) then
+   We now consider the Hamiltonian for a massless particle and the solutions above. For a massless particle we have \(E = \pm \norm{\vetor{p}},\) which means
    \begin{equation*}
-       \begin{cases}
-          s \norm{\vetor{p}} \Psi_1 = E \Psi_1\\
-          - s \norm{\vetor{p}} \Psi_2 = E \Psi_2
-       \end{cases} \implies 
-       \begin{cases}
-          \Psi_1 = \pm s \Psi_1\\
-          \Psi_2 = \mp s \Psi_2
-       \end{cases},
+      \Psi^+_\uparrow = \begin{pmatrix}
+         0\\
+         0\\
+         \sqrt{2E}\\
+         0
+      \end{pmatrix},\quad
+      \Psi^+_\downarrow = \begin{pmatrix}
+         0\\
+         \sqrt{2E}\\
+         0\\
+         0
+      \end{pmatrix},\quad
+      \Psi^-_\uparrow = \begin{pmatrix}
+         0\\
+         0\\
+         -\sqrt{2E}\\
+         0
+      \end{pmatrix},\quad\text{and}\quad
+      \Psi^-_\downarrow = \begin{pmatrix}
+         0\\
+         \sqrt{2E}\\
+         0\\
+         0
+      \end{pmatrix},
    \end{equation*}
-   from which we infer that \(s = \pm1.\)
+   are independent energy eigenstates.
+\end{proof}
 
    % We'll show the Hamiltonian and the helicity, \(h = \frac{\vetor{\Sigma} \cdot \vetor{p}}{\norm{\vetor{p}}} = g^{ij}\frac{\Sigma_i p_j}{\norm{\vetor{p}}},\) are compatible operators
    % \begin{align*}
@@ -227,4 +241,3 @@
    %                        % &= \frac{i}{2} g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left[g^{ak} \commutator*{\gamma^0}{\gamma^b} + g^{bk} \commutator*{\gamma^a}{\gamma^0}\right]\\
    %                        % &= g^{ij} \epsilon_{iba} p_k \frac{p_j}{\norm{\vetor{p}}} \left(g^{ak} \sigma^{0b} - g^{bk} \sigma^{0a}\right)
    % \end{align*}
-\end{proof}

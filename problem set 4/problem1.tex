@@ -1,4 +1,46 @@
 % vim: spl=en
+\begin{lemma}{Eigenvectors of a real linear combination of Pauli matrices}{pauli}
+   Let \(\vetor{n} = n^i \vetor{e}_i \in \mathbb{R}^3\) be a unit vector. Then the eigenvalues of \(\vetor{n}\cdot \vetor{\sigma}\) are \(\set{-1,1}\) and its eigenvectors are
+   \begin{equation*}
+      \psi_{s} = \begin{pmatrix}
+          s( n^1 - i n^2)\\
+          1 - s n^3
+      \end{pmatrix},
+   \end{equation*}
+   where \(s = \pm1.\)
+\end{lemma}
+\begin{proof}
+   Since \(\vetor{n} \cdot \vetor{\sigma} = \unity,\) it is clear its eigenvalues are either \(1\) or \(-1\) as we have
+   \begin{equation*}
+      \vetor{n} \cdot \vetor{\sigma} \psi_s = s \psi_s \implies \psi_s = s^2 \psi_s.
+   \end{equation*}
+   For \(s \in \set{-1,1},\) we have
+   \begin{align*}
+      \vetor{n} \cdot \vetor{\sigma} \psi_s &= \begin{pmatrix}
+         n^3 && n^1 - i n^2\\
+         n^1 + i n^2 && -n^3
+      \end{pmatrix}
+      \begin{pmatrix}
+          s( n^1 - i n^2)\\
+          1 - s n^3
+      \end{pmatrix}\\
+      &= 
+      \begin{pmatrix}
+         sn^3 (n^1 - in^2) + (n^1 - i n^2) (1 - sn^3)\\
+         s(n^1 - in^2)(n^1 + in^2) - n^3(1 - sn^3)
+      \end{pmatrix}\\
+      &= \begin{pmatrix}
+          n^1 - in^2\\
+          s\vetor{n}\cdot\vetor{n} - n^3
+      \end{pmatrix}\\
+      &= s \begin{pmatrix}
+          s(n^1 - in^2)\\
+          1 - sn^3
+      \end{pmatrix}\\
+      &= s \psi_s,
+   \end{align*}
+   that is, \(\psi_s\) are the eigenvectors as claimed.
+\end{proof}
 \begin{problem}{Simultaneous eigenstates of the helicity operator and free Dirac Hamiltonian}{p1}
    The helicity operator is defined as
    \begin{equation*}
@@ -90,7 +132,161 @@
    \end{align*}
    then \(h\) and \(H_D\) are compatible, that is, there exists a basis with which both operators can be diagonalized simultaneously.
 
-   Let \(\Psi\) be an element of such basis, that is, \(h \Psi = s \Psi\) and \(H_D \Psi = E \Psi.\) In the Weyl representation, let us write \(\Psi = \left(\begin{smallmatrix}
+   Let \(\Psi_s\) be an element of such basis, that is, \(h \Psi_s = s \Psi_s\) and \(H_D \Psi_s = E \Psi_s.\) Notice \(h^2 = \unity,\) then \(s \in \set{-1,1}.\) If we write \(\vetor{p} = \norm{\vetor{p}} \left(\cos\phi \sin\theta \vetor{e}_1 + \sin\phi\cos\theta \vetor{e}_2 + \cos\theta \vetor{e}_3\right),\) we learn from \cref{lem:pauli} that
+   \begin{equation*}
+      \Psi_s = \begin{pmatrix}
+         \lambda_s \psi_s\\
+         \mu_s \psi_s
+      \end{pmatrix},
+      \quad\text{where}\quad
+      \psi_s = \begin{pmatrix}
+         se^{-i\phi} \sin\theta\\
+         1 - s \cos\theta
+      \end{pmatrix},
+   \end{equation*}
+   with \(\lambda_s, \mu_s\) depending on the energy eigenvalue. Using this on the energy eigenvalue problem yields
+   \begin{equation*}
+      \begin{cases}
+         \lambda_s s \norm{\vetor{p}} \psi_s + m \mu_s \psi_s = \lambda_s E \psi_s\\
+         m \lambda_s  \psi_s  - \mu_s s  \norm{\vetor{p}} \psi_s =  \mu_s E \psi_s
+      \end{cases}
+      \implies
+      \begin{cases}
+         \lambda_s (E - s \norm{\vetor{p}}) = m \mu_s\\
+         \mu_s (E + s \norm{\vetor{p}}) = m \lambda_s
+      \end{cases}
+      % \implies
+      % \begin{cases}
+      %    \lambda_s (E - s \sqrt{E^2 - m^2}) = m \mu_s\\
+      %    \mu_s (E + s \sqrt{E^2 - m^2}) = m \lambda_s
+      % \end{cases}
+   \end{equation*}
+   as \(\psi_s\) is not a null spinor. For a massive particle, we have \(E \pm s \norm{\vetor{p}} \neq 0,\) then
+   \begin{equation*}
+      \Psi_s = \mu_s
+      \begin{pmatrix}
+         \frac{m}{E - s\norm{\vetor{p}}} \psi_s\\
+         \psi_s
+      \end{pmatrix}.
+   \end{equation*}
+   Imposing the normalization condition \(\herm{\Psi_s}\Psi_s = 2 E\) yields
+   \begin{align*}
+      \abs{\mu_s}^2 \left[\left(\frac{m}{E - s \norm{\vetor{p}}}\right)^2 + 1\right]\herm{\psi_s}\psi_s = 2E
+      &\implies \abs{\mu_s}^2 \frac{2E^2 - 2s E\norm{\vetor{p}}}{(E - s \norm{\vetor{p}})^2}(1 - s\cos\theta) = E\\
+      &\implies (1 - s\cos\theta)\abs{\mu_s}^2 = \frac12 \abs*{E - s \norm{\vetor{p}}},
+   \end{align*}
+   and we choose the phase of \(\mu_s\) such that
+   \begin{equation*}
+      \mu_s = \sqrt{\frac{E - s \norm{\vetor{p}}}{2 (1 - s \cos\theta)}},
+   \end{equation*}
+   hence
+   \begin{equation*}
+      \Psi_s = \sqrt{E - s \norm{\vetor{p}}} \begin{pmatrix}
+         \frac{sm}{E - s \norm{\vetor{p}}} e^{-i\phi} \frac{\sin\frac{\theta}{2} \cos\frac\theta2}{\sqrt{\frac{1 - s \cos\theta}2}}\\
+         \frac{m}{E - s \norm{\vetor{p}}} \sqrt{\frac{1 - s \cos\theta}{2}}\\
+         s e^{-i\phi} \frac{\sin\frac{\theta}{2} \cos\frac\theta2}{\sqrt{\frac{1 - s \cos\theta}2}}\\
+         \sqrt{\frac{1 - s \cos\theta}{2}}
+      \end{pmatrix},
+   \end{equation*}
+   that is,
+   \begin{equation*}
+      \Psi_\uparrow =  \begin{pmatrix}
+         \frac{m}{\sqrt{E - \norm{\vetor{p}}}} e^{-i\phi} \cos\frac\theta2\\
+         \frac{m}{\sqrt{E - \norm{\vetor{p}}}} \sin\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}}e^{-i\phi} \cos\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}}\sin\frac\theta2
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+         \sqrt{E + \norm{\vetor{p}}} e^{-i\phi} \cos\frac\theta2\\
+         \sqrt{E + \norm{\vetor{p}}} \sin\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}}e^{-i\phi} \cos\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}}\sin\frac\theta2
+      \end{pmatrix}
+   \end{equation*}
+   and
+   \begin{equation*}
+      \Psi_\downarrow =  \begin{pmatrix}
+         -\frac{m}{\sqrt{E + \norm{\vetor{p}}}} e^{-i\phi} \sin\frac\theta2\\
+         \frac{m}{\sqrt{E + \norm{\vetor{p}}}} \cos\frac\theta2\\
+         -\sqrt{E + \norm{\vetor{p}}}e^{-i\phi} \sin\frac\theta2\\
+         \sqrt{E + \norm{\vetor{p}}}\cos\frac\theta2
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+         -\sqrt{E - \norm{\vetor{p}}} e^{-i\phi} \sin\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}} \cos\frac\theta2\\
+         -\sqrt{E + \norm{\vetor{p}}}e^{-i\phi} \sin\frac\theta2\\
+         \sqrt{E + \norm{\vetor{p}}}\cos\frac\theta2
+      \end{pmatrix},
+   \end{equation*}
+   where we have used that \(m = \sqrt{E^2 - \norm{\vetor{p}}^2} = \sqrt{E - \norm{\vetor{p}}} \sqrt{E + \norm{\vetor{p}}}.\) Finally, the positive energy solutions, \(H_D u_s = E u_s\) with \(E > 0,\) are
+   \begin{equation*}
+      u_\uparrow = \begin{pmatrix}
+         \sqrt{E + \norm{\vetor{p}}} e^{-i\phi} \cos\frac\theta2\\
+         \sqrt{E + \norm{\vetor{p}}} \sin\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}}e^{-i\phi} \cos\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}}\sin\frac\theta2
+      \end{pmatrix},
+      \quad\text{and}\quad
+      u_\downarrow =  \begin{pmatrix}
+         -\sqrt{E - \norm{\vetor{p}}} e^{-i\phi} \sin\frac\theta2\\
+         \sqrt{E - \norm{\vetor{p}}} \cos\frac\theta2\\
+         -\sqrt{E + \norm{\vetor{p}}}e^{-i\phi} \sin\frac\theta2\\
+         \sqrt{E + \norm{\vetor{p}}}\cos\frac\theta2
+      \end{pmatrix},
+   \end{equation*}
+   and the negative energy solutions, \(H_D v_s = - E v_s\) with \(E > 0\), are
+   \begin{equation*}
+      v_\uparrow = \begin{pmatrix}
+         i\sqrt{E - \norm{\vetor{p}}} e^{-i\phi} \cos\frac\theta2\\
+         i\sqrt{E - \norm{\vetor{p}}} \sin\frac\theta2\\
+         i\sqrt{E + \norm{\vetor{p}}}e^{-i\phi} \cos\frac\theta2\\
+         i\sqrt{E + \norm{\vetor{p}}}\sin\frac\theta2
+      \end{pmatrix},
+      \quad\text{and}\quad
+      v_\downarrow =  \begin{pmatrix}
+         -i\sqrt{E + \norm{\vetor{p}}} e^{-i\phi} \sin\frac\theta2\\
+         i\sqrt{E + \norm{\vetor{p}}} \cos\frac\theta2\\
+         -i\sqrt{E - \norm{\vetor{p}}}e^{-i\phi} \sin\frac\theta2\\
+         i\sqrt{E - \norm{\vetor{p}}}\cos\frac\theta2
+      \end{pmatrix}.
+   \end{equation*}
+   Notice we may take the \(m \to 0\) limit without problems yielding
+   \begin{equation*}
+      u_\uparrow = \begin{pmatrix}
+         \sqrt{2E} e^{-i\phi} \cos\frac\theta2\\
+         \sqrt{2E} \sin\frac\theta2\\
+         0\\
+         0
+      \end{pmatrix},
+      \quad\text{and}\quad
+      u_\downarrow =  \begin{pmatrix}
+         0\\
+         0\\
+         -\sqrt{2E}e^{-i\phi} \sin\frac\theta2\\
+         \sqrt{2E}\cos\frac\theta2
+      \end{pmatrix},
+   \end{equation*}
+   \begin{equation*}
+      v_\uparrow = \begin{pmatrix}
+         0\\
+         0\\
+         i\sqrt{2E}e^{-i\phi} \cos\frac\theta2\\
+         i\sqrt{2E}\sin\frac\theta2
+      \end{pmatrix},
+      \quad\text{and}\quad
+      v_\downarrow =  \begin{pmatrix}
+         -i\sqrt{2E} e^{-i\phi} \sin\frac\theta2\\
+         i\sqrt{2E} \cos\frac\theta2\\
+         0\\
+         0\\
+      \end{pmatrix},
+   \end{equation*}
+   which are the massless solutions.
+\end{proof}
+\begin{proof}[Alternative solution for the eigenstates up to a rotation]
+   Let \(\Psi\) be an element of such basis, where we have \(h \Psi = s \Psi\) and \(H_D \Psi = E \Psi.\) In the Weyl representation, let us write \(\Psi = \left(\begin{smallmatrix}
          \Psi_1\\
          \Psi_2
    \end{smallmatrix}\right),\) then,
@@ -217,7 +413,7 @@
          0
       \end{pmatrix},
    \end{equation*}
-   are independent energy eigenstates.
+   are the independent energy eigenstates.
 \end{proof}
 
    % We'll show the Hamiltonian and the helicity, \(h = \frac{\vetor{\Sigma} \cdot \vetor{p}}{\norm{\vetor{p}}} = g^{ij}\frac{\Sigma_i p_j}{\norm{\vetor{p}}},\) are compatible operators

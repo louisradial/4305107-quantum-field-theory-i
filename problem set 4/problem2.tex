@@ -1,5 +1,5 @@
 % vim: spl=en
-\begin{problem}{}{p2}
+\begin{problem}{Dirac equation for massless particles}{p2}
    Consider the Dirac equation for massless particles, \(i \slashed{\partial} \Psi = 0.\)
    \begin{enumerate}[label=(\alph*)]
       \item Show that the operators \(P_R = \frac{1 + \gamma^5}{2}\) and \(P_L = \frac{1 - \gamma^5}{2}\) are orthogonal projectors. Note that \(P_R + P_L = 1.\)
@@ -11,4 +11,158 @@
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
+   Notice 
+   \begin{equation*}
+      \mu \neq \nu \implies \gamma^\mu \gamma^\nu = \anticommutator{\gamma^\mu}{\gamma^\nu} - \gamma^\nu \gamma^\mu = - \gamma^\nu \gamma^\mu,
+   \end{equation*}
+   then \(\gamma^5\) is a Hermitian operator with \((\gamma^5)^2 = \unity\), as we have
+   \begin{align*}
+      \herm{\gamma^5} &= -i \herm{\gamma^3} \herm{\gamma^2} \herm{\gamma^1} \herm{\gamma^0} \\
+                      &= -i (\gamma^0 \gamma^3 \gamma^0) (\gamma^0 \gamma^2 \gamma^0) (\gamma^0 \gamma^1 \gamma^0) (\gamma^0 \gamma^0 \gamma^0) \\
+                      &= -i \gamma^0\gamma^3 \gamma^2 \gamma^1 \\
+                      &= -i \gamma^0 \gamma^1 \gamma^3 \gamma^2 \\
+                      &= i \gamma^0 \gamma^1 \gamma^2 \gamma^3 \\
+                      &= \gamma^5,
+   \end{align*}
+   and
+   \begin{equation*}
+      (\gamma^5)^2 = - \gamma^0 \gamma^1 \gamma^2 \gamma^3 \gamma^0 \gamma^1 \gamma^2 \gamma^3 = - \gamma^0 \gamma^0 \gamma^1 \gamma^1 \gamma^2 \gamma^2 \gamma^3 \gamma^3 = \unity.
+   \end{equation*}
+   Then the operators \(P_R\) and \(P_L\) are orthogonal projectors as
+   \begin{equation*}
+      \left[\frac12 \left(\unity \pm \gamma^5\right)\right]^2 = \frac14 \left(\unity \pm 2 \gamma^5 + (\gamma^5)\right) = \frac12 \left(\unity \pm \gamma^5\right)
+   \end{equation*}
+   and they are real polynomials on \(\gamma^5,\) hence hermitian. It is clear that these orthogonal projectors are complementary as \(P_L + P_R = \unity.\) Moreover, as \(P_L\) and \(P_R\) are polynomials on \(\gamma^5,\) it is clear that \(\commutator{\gamma^5}{P_{L,R}} = 0\)
+
+
+   From \cref{prob:p1}, the following spinors in the Weyl representation are eigenstates of helicity
+   \begin{equation*}
+      u_{\uparrow}(\vetor{p}) = \sqrt{2E} \begin{pmatrix}
+         0\\
+         \xi_\uparrow(\vetor{p})
+      \end{pmatrix},\quad
+      u_{\downarrow}(\vetor{p}) = \sqrt{2E} \begin{pmatrix}
+         \xi_\downarrow(\vetor{p})\\
+         0
+      \end{pmatrix},\quad
+      v_{\uparrow}(\vetor{p}) = \sqrt{2E} \begin{pmatrix}
+         \xi_\uparrow(\vetor{p})\\
+         0
+      \end{pmatrix},\quad\text{and}\quad
+      v_{\downarrow}(\vetor{p}) = \sqrt{2E} \begin{pmatrix}
+         0\\
+         \xi_\downarrow(\vetor{p})
+      \end{pmatrix},
+   \end{equation*}
+   where \(\vetor{\sigma} \cdot \frac{\vetor{p}}{\norm{\vetor{p}}}\xi_s(\vetor{p}) = s \xi_s(\vetor{p}).\) In the Weyl representation, \(\gamma^5 = \left(\begin{smallmatrix} - \unity &&\\ && \unity \end{smallmatrix}\right)\), then
+   \begin{equation*}
+      \gamma^5 u_{\uparrow} = u_{\uparrow},\quad
+      \gamma^5 u_{\downarrow} = - u_{\downarrow},\quad
+      \gamma^5 v_{\uparrow} = -v_{\uparrow},\quad\text{and}\quad
+      \gamma^5 v_{\downarrow} = v_{\downarrow},
+   \end{equation*}
+   hence they are also eigenstates of chirality.
+
+   Notice 
+   \begin{equation*}
+       \frac12 \gamma^5 (\unity \pm \gamma^5) = \frac12 (\gamma^5  \pm \unity) = \pm \frac12 (\unity \pm \gamma^5),
+   \end{equation*}
+   then \(\gamma^5 P_{R} = P_R\) and \(\gamma^5 P_L = -P_L\). As a result, we have \(\gamma^5 P_{R} \Psi = P_R \Psi\) and \(\gamma^5 P_L \Psi = - P_L \Psi,\) for any spinor \(\Psi,\) hence \(P_{L,R}\) are eigenstates of chirality. We may use this to define \(\Psi_{L,R} = P_{L,R} \Psi\) for any spinor \(\Psi\) and use it for a solution to the Dirac equation. In the Weyl representation, \(P_L = \left(\begin{smallmatrix} \unity &&\\&& \end{smallmatrix}\right)\) and \(P_R = \left(\begin{smallmatrix} &&\\&& \unity\end{smallmatrix}\right)\), hence 
+   \begin{equation*}
+       \Psi_R = \begin{pmatrix}
+           0\\
+           \psi_R
+       \end{pmatrix}
+       \quad\text{and}\quad
+       \Psi_L = \begin{pmatrix}
+           \psi_L\\
+           0
+       \end{pmatrix},
+   \end{equation*}
+   where \(\psi_L\) and \(\psi_R\) are two-component Weyl spinors. In the Weyl representation, the Dirac equation operator is 
+   \begin{equation*}
+       i\slashed{\partial} - m \doteq \begin{pmatrix}
+          -m && i \partial_0 + i \sigma^j \partial_j\\
+          i \partial_0 - i \sigma^j \partial_j && -m
+       \end{pmatrix},
+   \end{equation*}
+   hence
+   \begin{equation*}
+      (i \slashed{\partial} - m)\Psi \doteq \begin{pmatrix}
+          -m \psi_L + i \partial_0 \psi_R + i \sigma^j \partial_j \psi_R\\
+          i \partial_0 \psi_L - i \sigma^j \partial_j \psi_L - m \psi_R
+      \end{pmatrix}
+   \end{equation*}
+   and the Dirac equation is translated to the coupled equations
+   \begin{equation*}
+      (i \slashed{\partial} - m)\Psi = 0 \implies \begin{cases}
+          i \partial_0 \psi_R + i \sigma^j \partial_j \psi_R = m \psi_L\\
+          i \partial_0 \psi_L - i \sigma^j \partial_j \psi_L = m \psi_R.
+      \end{cases}
+   \end{equation*}
+   Notice that for massless particles, this representation decouples the equations in terms of the chirality eigenstates, yielding the Weyl equations
+   \begin{equation*}
+      i \sigma^\mu \partial_\mu \psi_R = 0 \quad\text{and}\quad i \bar{\sigma}^\mu \partial_\mu \psi_L = 0,
+   \end{equation*}
+   where \(\sigma^\mu = (\unity, \sigma^j)\) and \(\bar{\sigma}^\mu = (\unity, -\sigma^j).\)
+
+   % TODO: I would like to show this when I get the time to
+   The charge conjugation in the Weyl representation is \(C\Psi = -i \gamma^2\Psi^*,\) then
+   \begin{equation*}
+      C\Psi = \begin{pmatrix}
+          && -i \sigma^2\\
+         i\sigma^2 && 
+      \end{pmatrix}
+      \begin{pmatrix}
+         \psi_L^*\\
+         \psi_R^*
+         \end{pmatrix} = \begin{pmatrix}
+         -i\sigma^*2 \psi_R\\
+         i \sigma^2 \psi_L^*
+      \end{pmatrix}
+   \end{equation*}
+   that is, under charge conjugation we have
+   \begin{equation*}
+       C : \begin{cases}
+          \psi_L(t, \vetor{x}) \to -i \sigma^2 \psi_R^* (t, \vetor{x})\\
+          \psi_R(t, \vetor{x}) \to i \sigma^2 \psi_L^* (t, \vetor{x}).
+       \end{cases}
+   \end{equation*}
+   Parity is represented as \(P \Psi(t, \vetor{x}) = \gamma^0 \psi(t, - \vetor{x}),\) then as \(\gamma^0 = \left(\begin{smallmatrix} &&\unity\\\unity&& \end{smallmatrix}\right)\), we have
+   \begin{equation*}
+       P : \begin{cases}
+          \psi_L(t, \vetor{x}) \to \psi_R(t, -\vetor{x})\\
+          \psi_R(t, \vetor{x}) \to \psi_L(t, -\vetor{x}).
+       \end{cases}
+   \end{equation*}
+   Time reversal is represented as \(T\Psi(t, \vetor{x}) = \gamma^1 \gamma^3 \Psi(-t, \vetor{x}),\) then as \(\gamma^1 \gamma^3 = -\sigma^1\sigma^3\unity = \sigma^2 \unity,\) we have
+   \begin{equation*}
+       T : \begin{cases}
+          \psi_L(t, \vetor{x}) \to \sigma^2\psi_L(-t, \vetor{x})\\
+          \psi_R(t, \vetor{x}) \to \sigma^2\psi_R(-t, \vetor{x}).
+       \end{cases}
+   \end{equation*}
+
+   We consider the massless Dirac Lagrangian density \(\mathcal{L} = i\bar{\Psi} \slashed{\partial} \Psi\) and the chiral transformation \(\Psi \to \tilde{\Psi} = \exp(-i \alpha \gamma^5) \Psi.\)
+   It is easy to verify \(\anticommutator{\gamma^5}{\gamma^\mu} = 0,\) as it requires three adjacent swaps to make each term have the same product of \(\gamma\) matrices, hence they add to zero, for instance,
+   \begin{equation*}
+      \anticommutator{\gamma^5}{\gamma^1} = i \gamma^0 \gamma^1 \gamma^2 \gamma^3 \gamma^1 + i \gamma^1 \gamma^0 \gamma^1 \gamma^2 \gamma^3 = i \gamma^0 \gamma^1 \gamma^1 \gamma^2 \gamma^3 - i \gamma^0 \gamma^1\gamma^1 \gamma^2 \gamma^3 = 0.
+   \end{equation*}
+   As a result, it is easy to see with induction that \(\gamma^\mu (\gamma^5)^n = (-\gamma^5)^n\gamma^\mu\) for all \(n \in \mathbb{N},\) hence
+   \begin{equation*}
+      \gamma^\mu \exp(i \alpha \gamma^5) = \gamma^\mu \sum_{k = 0}^{\infty} \frac{(i \alpha \gamma^5)^k}{k!} = \sum_{k = 0}^{\infty} \frac{(i \alpha)^k \gamma^\mu (\gamma^5)^k}{k!} = \sum_{k=0}^\infty \frac{(-i \alpha \gamma^5)^k}{k!} \gamma^\mu = \exp(-i \alpha \gamma^5) \gamma^\mu.
+   \end{equation*}
+   We may now show the Lagrangian density is invariant under the chiral transformation, as 
+   \begin{equation*}
+      \tilde{\mathcal{L}} = i\herm{\tilde{\Psi}} \gamma^0 \slashed{\partial} \tilde{\Psi} = i\herm{\Psi} \exp(i \alpha \gamma^5) \gamma^0 \gamma^\mu  \exp(-i \alpha \gamma^5) \partial_\mu\Psi = i\bar{\Psi} \exp(-i \alpha \gamma^5) \exp(i \alpha \gamma^5) \slashed{\partial} \Psi = \mathcal{L}.
+   \end{equation*}
+   We observe this is not the case for massive particle, since
+   \begin{equation*}
+       \herm{\tilde{\Psi}}\gamma^0 \tilde{\Psi} = \herm{\Psi} \exp(i \alpha \gamma^5) \gamma^0 \exp(-i \alpha \gamma^5) \Psi = \bar{\Psi} \exp(-2i \alpha \gamma^5) \Psi,
+   \end{equation*}
+   so the massive Lagrangian density is not invariant under such transformation. Under the infinitesimal chiral transformation, \(\Psi \to \tilde{\Psi} = (\unity - i \alpha \gamma^5)\Psi\), we have the conserved current
+   \begin{equation*}
+      J^\nu = -i \diffp{\mathcal{L}}{(\partial_\nu\Psi)} \gamma^5\Psi = \bar{\Psi} \gamma^\nu \gamma^5\Psi
+   \end{equation*}
+   for massless particles.
 \end{proof}

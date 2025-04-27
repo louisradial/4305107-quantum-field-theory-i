@@ -352,14 +352,14 @@
    \begin{equation*}
       \begin{cases}
          \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
-         \vetor{\sigma} \cdot \vetor{p} \Psi_1 + m \Psi_2 = E \Psi_1\\
-         m \Psi_1 - \vetor{\sigma} \cdot \vetor{p} \Psi_2 = E \Psi_2
+         -\vetor{\sigma} \cdot \vetor{p} \Psi_1 + m \Psi_2 = E \Psi_1\\
+         m \Psi_1 + \vetor{\sigma} \cdot \vetor{p} \Psi_2 = E \Psi_2
       \end{cases}
       \implies
       \begin{cases}
          \vetor{\sigma}\cdot \vetor{p} \Psi_i = s \norm{\vetor{p}} \Psi_i\\
-         s \norm{\vetor{p}} \Psi_1 + m \Psi_2 = E \Psi_1\\
-         m \Psi_1 - s \norm{\vetor{p}} \Psi_2 = E \Psi_2.
+         -s \norm{\vetor{p}} \Psi_1 + m \Psi_2 = E \Psi_1\\
+         m \Psi_1 + s \norm{\vetor{p}} \Psi_2 = E \Psi_2.
       \end{cases}
    \end{equation*}
    We may use a rotated frame for which \(\frac{\vetor{p}}{\norm{\vetor{p}}} = \vetor{e}_z,\) then the eigenstate equation for the helicity reads as \(\sigma_z \Psi_i = s \Psi_i,\) that is, \(s = \pm 1\) and we see \(\Psi_i\) is an eigenvector of \(\sigma_z\) in this frame. We'll first consider massive particles, and after a boost to its rest frame, we have \(E = \pm m\), hence
@@ -472,7 +472,7 @@
          \sqrt{2E}\\
       \end{pmatrix},
    \end{equation*}
-   are the independent energy eigenstates.
+   are the independent energy eigenstates. To obtain the solutions in the original frame, we have to perform a rotation along the axis parallel to \(\vetor{e}_z \times \frac{\vetor{p}}{\norm{\vetor{p}}}\) by the angle \(-\theta,\) where \(\cos\theta = \vetor{e}_z \cdot \frac{\vetor{p}}{\norm{\vetor{p}}}\) and \(\sin\theta = \norm*{\vetor{e}_z \times \frac{\vetor{p}}{\norm{\vetor{p}}}}\). Writing \(\frac{\vetor{p}}{\norm{\vetor{p}}} = \sin\theta \cos\phi \vetor{e}_x + \sin\theta \sin\phi \vetor{e}_y + \cos\theta \vetor{e}_z,\) we see the axis is \(\vetor{e}_\phi = -\sin\phi \vetor{e}_x + \cos\phi \vetor{e}_y,\) and the rotation yields the solution found before.
 \end{proof}
 
    % We'll show the Hamiltonian and the helicity, \(h = \frac{\vetor{\Sigma} \cdot \vetor{p}}{\norm{\vetor{p}}} = g^{ij}\frac{\Sigma_i p_j}{\norm{\vetor{p}}},\) are compatible operators

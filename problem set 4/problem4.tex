@@ -1,7 +1,116 @@
 % vim: spl=en
 \begin{problem}{LSZ reduction formula for a Dirac field}{p4}
-   Show the LSZ reduction formula for a Dirac field.
+   Show the reduction formula for a Dirac field.
 \end{problem}
 \begin{proof}[Solution]
-    
+   In the \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset3}{Problem Set III} we have shown for the free Dirac field that the annihilation operators are
+   \begin{equation*}
+      a_{\vetor{p} r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{u}_{\vetor{p} r} \Psi_{\mathrm{free}}(x)
+      \quad\text{and}\quad
+      b_{\vetor{p} r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{\Psi}_{\mathrm{free}}(x) v_{\vetor{p} r}
+   \end{equation*}
+   and that the creation operators are
+   \begin{equation*}
+      \herm{a}_{\vetor{p} r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{-ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{\Psi}_{\mathrm{free}}(x) u_{\vetor{p} r} 
+      \quad\text{and}\quad
+      \herm{b}_{\vetor{p} r} = \int_{\mathbb{R}^3} \dln3x \frac{e^{-ipx}}{\sqrt{2 \omega_{\vetor{p}}}} \herm{v}_{\vetor{p} r} \Psi_{\mathrm{free}}(x),
+   \end{equation*}
+   such that
+   \begin{equation*}
+      \Psi_{\mathrm{free}}(x) = \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3} \frac{1}{\sqrt{2\omega_{\vetor{p}}}} \sum_{s} \left(a_{\vetor{p} s} u_{\vetor{p} s} e^{-ipx} + \herm{b}_{\vetor{p} s} v_{\vetor{p} s} e^{ipx}\right),
+   \end{equation*}
+   where \(\omega_{\vetor{p}} = \sqrt{m^2 + \norm{\vetor{p}}^2}.\) We will use the fact that while the integrands are time-dependent, the integral is not.
+
+   We consider an in state
+   \begin{align*}
+      \ket{\mathrm{in}} &= \ket{(\vetor{p}_1, s_1) \dots (\vetor{p}_m, s_m); (\vetor{\bar{p}}_1, \bar{s}_1) \dots (\vetor{\bar{p}}_{\bar{m}}, \bar{s}_{\bar{m}}); T_{\mathrm{in}}}\\
+                        &= \prod_{j = 1}^{m} \sqrt{2\omega_{\vetor{p}_j}} \prod_{j = 1}^{\bar{m}} \sqrt{2 \omega_{\vetor{\bar{p}}_j}}{\herm{a}}_{\vetor{p}_1 s_1}^{(\mathrm{in})}\dots{\herm{a}}_{\vetor{p}_m s_m}^{(\mathrm{in})}{\herm{b}}_{\vetor{p}_{1} \bar{s}_{1}}^{(\mathrm{in})}\dots{\herm{b}}_{\vetor{\bar{p}}_{\bar{m}} \bar{s}_{\bar{m}}}^{(\mathrm{in})} \ket{0}
+   \end{align*}
+   of \(M = m + \bar{m}\) fermions, where \(m\) are particles and \(\bar{m}\) are antiparticles, and an out state
+   \begin{align*}
+      \ket{\mathrm{out}} &= \ket{(\vetor{k}_1, r_1) \dots (\vetor{k}_n, r_n); (\vetor{\bar{k}}_1, \bar{r}_1) \dots (\vetor{\bar{k}}_{\bar{n}}, \bar{r}_{\bar{n}}); T_{\mathrm{out}}}\\
+                         &= \prod_{j = 1}^{n} \sqrt{2\omega_{\vetor{k}_j}} \prod_{j = 1}^{\bar{n}} \sqrt{2 \omega_{\vetor{\bar{k}}_j}}{\herm{a}}_{\vetor{k}_1 r_1}^{(\mathrm{out})}\dots{\herm{a}}_{\vetor{k}_n r_n}^{(\mathrm{out})}{\herm{b}}_{\vetor{\bar{k}}_{1} \bar{r}_{1}}^{(\mathrm{out})}\dots{\herm{b}}_{\vetor{\bar{k}}_{\bar{n}} \bar{r}_{\bar{n}}}^{(\mathrm{out})} \ket{0}
+   \end{align*}
+   of \(N = n + \bar{n}\) fermions, where \(n\) are particles and \(\bar{n}\) are antiparticles. We'll restrict these states such that none of the in fermions coincide with the out fermions, eliminating processes where one fermion does not interact with the others. In our notation, this means we'll assume for all \(1 \leq j \leq m\) and \(1 \leq \ell \leq n\) that \((\vetor{p}_j, s_j) \neq (\vetor{k}_\ell, r_\ell)\) and for all \(1 \leq \bar{j} \leq \bar{m}\) and \(1 \leq \bar{\ell} \leq \bar{n}\) that \((\vetor{\bar{p}}_{\bar{j}}, \bar{s}_{\bar{j}}) \neq (\vetor{\bar{k}}_{\bar{\ell}}, \bar{r}_{\bar{\ell}})\). We also assume the in and out states are similar to a wave packet, thus at each instant of time the fields are localized in space.
+
+   As \(\Psi \to Z^{\frac12} \Psi_\mathrm{in}(x)\) and \(\Psi \to Z^{\frac12} \Psi_\mathrm{in}(x)\) in the asymptotic limits \(t \to \pm\infty,\) we have
+   \begin{align*}
+      \sqrt{2 \omega_{\vetor{p}}} \left({\herm{a}}_{\vetor{p} s}^{(\mathrm{in})} - {\herm{a}}_{\vetor{p} s}^{(\mathrm{out})}\right) 
+      &= \underset{t \to -\infty}{\int_{\mathbb{R}^3}\dln3x}  e^{-ipx} \herm{\Psi}_{\mathrm{in}}(x) u_{\vetor{p}s} - \underset{t\to +\infty}{\int_{\mathbb{R}^3}\dln3x} e^{-ipx} \herm{\Psi}_{\mathrm{out}} u_{\vetor{ps}}\\
+      &= Z^{-\frac12} \left(\lim_{t\to-\infty} - \lim_{t\to+\infty}\right) \int_{\mathbb{R}^3} \dln3x e^{-ipx} \herm{\Psi}(x) u_{\vetor{p}s}\\
+      &= -Z^{-\frac12} \int_{\mathbb{R}} \dli{t} \diffp*{\int_{\mathbb{R}^3} \dln3x e^{-ipx} \herm{\Psi}(x) u_{\vetor{p}s}}{t}\\
+      &= iZ^{-\frac12} \int_{\mathbb{R}^4} \dln4x  \left[\herm{\Psi}(x) H_D(e^{-ipx} u_{\vetor{p}s}) + (i\partial_0 \herm{\Psi}(x))e^{-ipx} u_{\vetor{p}s}\right]\\
+      &= iZ^{-\frac12} \int_{\mathbb{R}^4} \dln4x \left[\herm{\Psi}(x) \gamma^0 (m - i \gamma^j \partial_j) u_{\vetor{p}s} e^{-ipx} + i \partial_0(\herm{\Psi}(x))u_{\vetor{p}s} e^{-ipx}\right],
+   \end{align*}
+   where we have used the result from \cref{prob:p1}. Integrating the \(\gamma^j \partial_j\) onto the \(\bar{\Psi}(x)\) term yields
+   \begin{align*}
+      \sqrt{2 \omega_{\vetor{p}}} \left({\herm{a}}_{\vetor{p} s}^{(\mathrm{in})} - {\herm{a}}_{\vetor{p} s}^{(\mathrm{out})}\right) 
+      &= i Z^{-\frac12} \int_{\mathbb{R}^4}\dln4x \left[\bar{\Psi}(x)\overleftarrow{(m + i \gamma^j \partial_j)} + i \partial_0 \bar{\Psi}(x) \gamma^0 u_{\vetor{p}s} e^{-ipx}\right]\\
+      &= i Z^{-\frac12} \int_{\mathbb{R}^4} \dln4x \bar{\Psi}(x) \overleftarrow{(m + i \slashed{\partial})} u_{\vetor{p}s} e^{-ipx},
+   \end{align*}
+   where the surface term is zero as the field is localized in space. It is clear the computation for \(b_{\vetor{p}s}\) is the same, except for changing \(e^{-ipx}\) to \(e^{ipx},\) then
+   \begin{equation*}
+      \sqrt{2 \omega_{\vetor{p}}} \left({b}_{\vetor{p} s}^{(\mathrm{in})} - {b}_{\vetor{p} s}^{(\mathrm{out})}\right) 
+      = i Z^{-\frac12} \int_{\mathbb{R}^4} \dln4x \bar{\Psi}(x) \overleftarrow{(m + i \slashed{\partial})} v_{\vetor{p}s} e^{ipx}.
+   \end{equation*}
+   Consider \((\slashed{p} + m) v_{\vetor{p}s} = 0\) then 
+   \begin{equation*}
+      0 = \herm{v}_{\vetor{p}s} (\gamma^0 \gamma^\mu \gamma^0 p_\mu + \gamma^0 m \gamma^0) = \bar{v}_{\vetor{p}s} ( \slashed{p} + m) \gamma^0,
+   \end{equation*}
+   hence \(\bar{v}_{\vetor{p}s} (\slashed{p} + m) = 0\) and we have
+   \begin{equation*}
+      \herm{v}_{\vetor{p}s} \omega_{\vetor{p}} = -\bar{v}_{\vetor{p}s} (m + \gamma^j p_j).
+   \end{equation*}
+   We may now compute the difference for \(\herm{b}_{\vetor{p}s},\) where we use the same first steps used before, obtaining
+   \begin{align*}
+      \sqrt{2 \omega_{\vetor{p}}} \left({\herm{b}}_{\vetor{p} s}^{(\mathrm{in})} - {\herm{b}}_{\vetor{p} s}^{(\mathrm{out})}\right) 
+      % &= \underset{t \to -\infty}{\int_{\mathbb{R}^3}\dln3x}  e^{-ipx} \herm{\Psi}_{\mathrm{in}}(x) u_{\vetor{p}s} - \underset{t\to +\infty}{\int_{\mathbb{R}^3}\dln3x} e^{-ipx} \herm{\Psi}_{\mathrm{out}} u_{\vetor{ps}}\\
+      % &= Z^{-\frac12} \left(\lim_{t\to-\infty} - \lim_{t\to+\infty}\right) \int_{\mathbb{R}^3} \dln3x e^{-ipx} \herm{\Psi}(x) u_{\vetor{p}s}\\
+        &= iZ^{-\frac12} \int_{\mathbb{R}} \dli{t} i\diffp*{\int_{\mathbb{R}^3} \dln3x e^{-ipx} \herm{v}_{\vetor{p}r} \Psi(x)}{t}\\
+        &= iZ^{-\frac12} \int_{\mathbb{R}^4} \dln4x  e^{-ipx} \left[\omega_{\vetor{p}} \herm{v}_{\vetor{p}s}\Psi(x) + \herm{v}_{\vetor{p}s}(i \partial_0 \Psi(x))\right]\\
+        &= iZ^{-\frac12} \int_{\mathbb{R}^4} \dln4x  e^{-ipx} \left[ \bar{v}_{\vetor{p}s}(-m - \gamma^jp_j)\Psi(x) + \bar{v}_{\vetor{p}s}(i\gamma^0 \partial_0 \Psi(x))\right]\\
+        &= iZ^{-\frac12} \int_{\mathbb{R}^4} \dln4x   \left\{ \bar{v}_{\vetor{p}s}\left[(-m - i\gamma^j \partial_j)e^{-ipx}\right]\Psi(x) + \bar{v}_{\vetor{p}s}e^{-ipx}(i\gamma^0 \partial_0 \Psi(x))\right\}\\
+        &= iZ^{-\frac12} \int_{\mathbb{R}^4} \dln4x   \left\{ \bar{v}_{\vetor{p}s}e^{-ipx}\left[(-m + i\gamma^j \partial_j)\right]\Psi(x) + \bar{v}_{\vetor{p}s}e^{-ipx}(i\gamma^0 \partial_0 \Psi(x))\right\}\\
+        &= i Z^{-\frac12} \int_{\mathbb{R}^4} \dln4x e^{-ipx} \bar{v}_{\vetor{p}s} (i \slashed{\partial} - m) \Psi(x).
+   \end{align*}
+   The difference for \(a_{\vetor{p}s}\) is obtained analogously, yielding
+   \begin{equation*}
+      \sqrt{2 \omega_{\vetor{p}}} \left({a}_{\vetor{p} s}^{(\mathrm{in})} - {a}_{\vetor{p} s}^{(\mathrm{out})}\right) 
+        = i Z^{-\frac12} \int_{\mathbb{R}^4} \dln4x e^{ipx} \bar{u}_{\vetor{p}s} (i \slashed{\partial} - m) \Psi(x).
+   \end{equation*}
+
+   We'll obtain the matrix elements \(\braket{\mathrm{out}}{\mathrm{in}}\) by iteratively removing  particles from the in and out states. By our hypothesis, \(a_{\vetor{p}_j s_j}^{(\mathrm{out})}\ket{\mathrm{in}} = 0\) and \(a_{\vetor{k}_j r_j}^{(\mathrm{in})}\ket{\mathrm{out}} = 0,\) hence
+   \begin{align*}
+      \braket{\mathrm{out}}{\mathrm{in}} &= \sqrt{2\omega_{\vetor{p}_1}}\bra{\mathrm{out}} {\herm{a}}_{\vetor{p}_1 s_1}^{(\mathrm{in})}\overbrace{\ket{(\vetor{p}_2, s_2) \dots (\vetor{p}_m, s_m); (\vetor{\bar{p}}_1, \bar{s}_1) \dots (\vetor{\bar{p}}_{\bar{m}}, \bar{s}_{\bar{m}}); T_{\mathrm{in}}}}^{\ket{\mathrm{in} - (\vetor{p}_1, s_1)}}\\
+                                         &= \sqrt{2\omega_{\vetor{p}_1}}\bra{\mathrm{out}} {\herm{a}}_{\vetor{p}_1 s_1}^{(\mathrm{in})} - {\herm{a}}_{\vetor{p}_1 s_1}^{(\mathrm{out})}\ket{\mathrm{in} - (\vetor{p}_1, s_1)}\\
+                                         &= iZ^{-\frac12} \int_{\mathbb{R}^4}\dln4x \bra{\mathrm{out}}\bar{\Psi}(x) \ket{\mathrm{in} - (\vetor{p}_1, s_1)} \overleftarrow{(m + i \slashed{\partial})} u_{\vetor{p}s} e^{-ipx}\\
+                                         &=  \sqrt{\frac{2 \omega_{\vetor{k}_1}}{Z}} i  \int_{\mathbb{R}^4} \dln4x \bra{\mathrm{out} - (\vetor{k}_1, r_1)} a^{(\mathrm{out})}_{\vetor{k}_1 r_1} \bar{\Psi}(x)  - \bar{\Psi}(x) a_{\vetor{k}_1r_1}^{(\mathrm{in})} \ket{\mathrm{in}-(\vetor{p}_1, s_1)} \overleftarrow{(m + i \slashed{\partial})} u_{\vetor{p}_1s_1} e^{-ip_1x}.
+   \end{align*}
+   Notice \(T a_{\vetor{k}_1 r_1}^{(\mathrm{out})} \bar{\Psi}(x) = a_{\vetor{k}_1 r_1}^{(\mathrm{out})} \bar{\Psi}(x) \) and \(T a_{\vetor{k}_1 r_1}^{(\mathrm{in})} \bar{\Psi}(x) = \bar{\Psi}(x) a_{\vetor{k}_1 r_1}^{(\mathrm{in})}\), that is, 
+   \begin{equation*}
+      T \left(a_{\vetor{k}_1 r_1}^{(\mathrm{out})} - a_{\vetor{k}_1 r_1}^{(\mathrm{in})}\right)\bar{\Psi}(x) = a_{\vetor{k}_1 r_1}^{(\mathrm{out})} \bar{\Psi}(x) - \bar{\Psi}(x) a_{\vetor{k}_1 r_1}^{(\mathrm{in})}.
+   \end{equation*}
+   This results in
+   \begin{align*}
+      \braket{\mathrm{out}}{\mathrm{in}} &= -\frac{1}{Z} \int_{\mathbb{R}^4} \dln4x e^{-ip_1 x} \int_{\mathbb{R}^4} \dln4y e^{ik_1 y} \times \\
+                                         &{}\phantom{Z \int_{\mathbb{R}^4} \dln4x\int_{\mathbb{R}^4} \dln4y} \times \bar{u}_{\vetor{k}_1r_1} (i \slashed{\partial}_y - m) \bra{\mathrm{out} - (\vetor{k}_1, r_1)} T \Psi(y) \bar{\Psi}(x) \ket{\mathrm{in} - (\vetor{p}_1, s_1)} \overleftarrow{(m + i \slashed{\partial}_x)} u_{\vetor{p}_1s_1}.
+   \end{align*}
+   Instead of removing particles from the in and out states, we may remove antiparticles, obtaining analogously
+   \begin{align*}
+      \braket{\mathrm{out}}{\mathrm{in}} &= -\frac{1}{Z} \int_{\mathbb{R}^4} \dln4{\bar{x}} e^{-i \bar{p}_1 \bar{x}} \int_{\mathbb{R}^4} \dln4{\bar{y}} e^{i \bar{k}_1 \bar{y}} \times \\
+                                         &{}\phantom{Z \int_{\mathbb{R}^4} \dln4x\int_{\mathbb{R}^4} \dln4{\bar{y}}} \times \bar{v}_{\vetor{\bar{p}}_1 \bar{s}_1} (i \slashed{\partial}_{\bar{x}} - m) \bra{\mathrm{out} - (\vetor{\bar{k}}_1, \bar{r}_1)} T \Psi(\bar{x}) \bar{\Psi}(\bar{y}) \ket{\mathrm{in} - (\vetor{\bar{p}}_1, \bar{s}_1)} \overleftarrow{(m + i \slashed{\partial}_{\bar{y}})} v_{\vetor{\bar{k}}_1 \bar{r}_1}.
+   \end{align*}
+   Repeating this process for the \(N + M\) one-particle states yields a phase \((-i)^{N+M}\) and we eventually obtain
+   \begin{align*}
+      \braket{\mathrm{out}}{\mathrm{in}} &= \left(\frac{1}{iZ^{\frac12}}\right)^{N+M} \int_{\mathbb{R}^{4m}} \dln4{x_1} \dots \dln4{x_m} \int_{\mathbb{R}^{4 \bar{m}}} \dln4{\bar{x}_1} \dots  \dln4{\bar{x}_{\bar{m}}} \int_{\mathbb{R}^{4n}} \dln4{y_1} \dots\dln4{y_n} \int_{\mathbb{R}^{4{\bar{n}}}} \dln4{\bar{y}_1} \dots \dln4{\bar{y}_{\bar{n}}} \times\\
+                                         &{}\phantom{=\left(\frac{1}{iZ^{\frac12}}\right)^{N+M}}\times  
+                                         \prod_{\bar{j} = 1}^{\bar{m}} e^{-i \bar{p}_{\bar{j}} \bar{x}_{\bar{j}}} \bar{v}_{\vetor{\bar{p}}_{\bar{j}} \bar{s}_{\bar{j}}} (i \slashed{\partial}_{\bar{x}_{\bar{j}}} - m)
+                                         \prod_{\ell = 1}^{n} e^{i k_{\ell} y_{\ell}} \bar{u}_{\vetor{k_{\ell}} r_{\ell}} (i \slashed{\partial}_{y_{\ell}} - m) \times\\
+                                         &{}\phantom{=\left(\frac{1}{iZ^{\frac12}}\right)^{N+M}}\times  
+                                         \bra{0} T \left\{\bar{\Psi}(x_1) \dots \bar{\Psi}(x_m) \bar{\Psi}(\bar{y}_1)\dots \bar{\Psi}(\bar{y}_{\bar{n}}) \Psi(\bar{x}_1) \dots \Psi(\bar{x}_{\bar{m}}) \Psi(y_1)\dots \Psi(y_n)\right\}\ket{0}\times\\
+                                         &{}\phantom{=\left(\frac{1}{iZ^{\frac12}}\right)^{N+M}}\times  
+                                         \prod_{\bar{\ell} = 1}^{\bar{n}}  \overleftarrow{(i \slashed{\partial}_{\bar{y}_{\bar{\ell}}} + m)}v_{\vetor{\bar{k}}_{\bar{\ell}} \bar{r}_{\bar{\ell}}} e^{i \bar{k}_{\bar{\ell}} \bar{y}_{\bar{\ell}}} 
+                                         \prod_{j = 1}^{m} \overleftarrow{(i \slashed{\partial}_{x_{j}} + m)}u_{\vetor{p}_{j} s_{j}} e^{-i p_{j} x_{j}} 
+   \end{align*}
+   as the reduction formula.
 \end{proof}

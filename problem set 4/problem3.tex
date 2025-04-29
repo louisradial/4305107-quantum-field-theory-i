@@ -1,15 +1,269 @@
 % vim: spl=en
-\begin{problem}{}{p3}
+\begin{problem}{Discrete transformations of quantities in the quantized Dirac field}{p3}
    Obtain the \(C,\) \(P,\) \(T,\) and \(CPT\) transformation of
    \begin{enumerate}[label=(\alph*)]
-       \item \(S = \bar{\Psi} \Psi\);
-       \item \(V^\mu = \bar{\Psi} \gamma^\mu \Psi\);
-       \item \(T^{\mu\nu} = \bar{\Psi} \sigma^{\mu \nu} \Psi\);
-       \item \(P = i \bar{\Psi} \gamma^5 \Psi\);
-       \item \(A^\mu = \bar{\Psi} \gamma^5 \gamma^\mu \Psi\);
-       \item \(\partial_\mu.\)
+      \item \(S = \bar{\Psi} \Psi\);
+      \item \(V^\mu = \bar{\Psi} \gamma^\mu \Psi\);
+      \item \(T^{\mu\nu} = \bar{\Psi} \sigma^{\mu \nu} \Psi\);
+      \item \(P = i \bar{\Psi} \gamma^5 \Psi\);
+      \item \(A^\mu = \bar{\Psi} \gamma^5 \gamma^\mu \Psi\);
+      \item \(\partial_\mu.\)
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   We'll consider the discrete transformations of charge conjugation,
+   \begin{equation*}
+      \Psi \to \mathscr{C} \Psi \mathscr{C}^\dag = -i \gamma^2 \Psi^*,
+   \end{equation*}
+   parity\footnote{Here we define the shorthand \(\tilde{x} = (\tilde{x})\), hence \(- \tilde{x} = (-t, \vetor{x}).\)}
+   \begin{equation*}
+      \Psi(x) \to \mathscr{P}\Psi(x)\mathscr{P}^\dag = \gamma^0 \Psi(\tilde{x}),
+   \end{equation*}
+   time reversal,
+   \begin{equation*}
+      \Psi(x) \to \mathscr{T} \Psi(x) \mathscr{T}^\dag = \gamma^1 \gamma^3 \Psi(-\tilde{x})
+   \end{equation*}
+   and their composition CPT,
+   \begin{equation*}
+      \Psi(x) \to \mathscr{CPT} \Psi(x) (\mathscr{CPT})^\dag =  -i \gamma^2 \gamma^0 \gamma^1 \gamma^3 \Psi^*(-x) = -\gamma^5 \Psi^*(-x)
+   \end{equation*}
+   and compute the transformations for several quantities. It's important to note \(\mathscr{T}\) is anti-linear, thus \(\gamma^2 \to \mathscr{T} \gamma^2 \mathscr{T}^\dag = - \gamma^2,\) and the other \(\gamma\) matrices are unchanged. In particular, we have \(\mathscr{T} \gamma^5 \mathscr{T}^\dag = \gamma^5\) as the time reversal yields a sign change for both \(i\) and \(\gamma^2.\) We also note that \(\mathscr{C}\) and \(\mathscr{P}\) are unitary and involutive transformations satisfying, for instance, \(\mathscr{C} = \mathscr{C}^\dag = \mathscr{C}^{-1},\) whereas \(\mathscr{T}\) is antilinear and antiunitary satisfying \(\mathscr{T} = -\mathscr{T}^\dag = - \mathscr{T}^{-1}.\) Thus,  we have \(\mathscr{X} \herm{\Psi} \mathscr{X}^{\dag} = (\mathscr{X} \Psi \mathscr{X}^\dag)^\dag\), where \(\mathscr{X}\) is any of the transformations considered. With this argument in mind, the transformations for \(\bar{\Psi}\) are
+   \begin{align*}
+      \mathscr{C}\bar{\Psi}(x)\mathscr{C}^\dag &= \mathscr{C} \herm{\Psi}(x) \mathscr{C}^\dag \gamma^0&
+      \mathscr{P}\bar{\Psi}(x)\mathscr{P}^\dag &= \mathscr{P} \herm{\Psi}(x) \mathscr{P}^\dag \gamma^0&
+      \mathscr{T}\bar{\Psi}(x)\mathscr{T}^\dag &= \mathscr{T} \herm{\Psi}(x) \mathscr{T}^\dag \gamma^0\\
+                                                         &= (\mathscr{C} \Psi(x) \mathscr{C}^\dag)^\dag \gamma^0&
+                                                         &= (\mathscr{P} \Psi (x)\mathscr{P}^\dag)^\dag \gamma^0&
+                                                         &= (\mathscr{T} \Psi(x) \mathscr{T}^\dag)^\dag \gamma^0\\
+                                                         &= -i \Psi^\top(x) \gamma^2 \gamma^0&
+                                                         &= \herm{\Psi}(\tilde{x})&
+                                                         &= \bar{\Psi}(-\tilde{x}) \gamma^3 \gamma^1
+   \end{align*}
+   and \(\mathscr{CPT} \bar{\Psi}(x) (\mathscr{CPT})^{\dag} = - \Psi^\top(-x)\gamma^5 \gamma^0\). 
+\end{proof}
+\begin{proof}[Solution for (a)]
+   We consider the scalar \(S = \bar{\Psi} \Psi\) and its transformations. Using the fermionic anticommutation relation, \(\anticommutator*{\Psi_a(t, \vetor{x})}{\herm{\Psi}_b(t, \vetor{y})} = \delta(\vetor{x} - \vetor{y}) \delta_{ab},\) we obtain
+   \begin{equation*}
+      \mathscr{C} \bar{\Psi} \Psi \mathscr{C}^\dag = - \Psi^\top \gamma^2 \gamma^0 \gamma^2 \Psi^* = -\Psi^\top \gamma^0 \Psi^* = - \Psi_a \gamma^0_{ab} \Psi^*_b = \Psi^*_b \gamma^0_{ab} \Psi_a = \herm{\Psi} (\gamma^0)^\top \Psi = \herm{\Psi} \gamma^0 \Psi = \bar{\Psi} \Psi,
+   \end{equation*}
+   where we have used that \(\delta(\vetor{0})\delta_{ab} \gamma^0_{ab} = 0\). Whenever we get the charge conjugation of a quantity we'll use the fermion anticommutation relation and we'll have to use the symmetry properties of the Dirac matrices, namely\footnote{We'll write \((\gamma^\mu)^\top = (-1)^\mu \gamma^\mu\), where \((-1)^\mu\) simply means multiplication and \emph{not} the notation used in, e.g., Peskin and Schroeder.} \(\gamma^0_{ab} = \gamma^0_{ba},\) \(\gamma^i_{ab} = (-1)^i\gamma^i_{ba},\) \(\gamma^5_{ab} = \gamma^5_{ba}.\) The other transformations for this bilinear are simpler:
+   \begin{equation*}
+      \mathscr{P} \bar{\Psi}(x)\Psi(x) \mathscr{P}^\dag = \herm{\Psi}(\tilde{x}) \gamma^0 \Psi(\tilde{x}) = \bar{\Psi}(\tilde{x}) \Psi(\tilde{x}),
+   \end{equation*}
+   and
+   \begin{equation*}
+      \mathscr{T} \bar{\Psi}(x)\Psi(x) \mathscr{T}^\dag = \bar{\Psi}(-\tilde{x}) \gamma^3 \gamma^1 \gamma^1 \gamma^3 \Psi(-\tilde{x}) = \bar{\Psi}(-\tilde{x})\Psi(-\tilde{x}).
+   \end{equation*}
+   Finally, we may use these transformations to obtain 
+   \begin{align*}
+      \mathscr{CPT} \bar{\Psi}(x)\Psi(x) (\mathscr{CPT})^\dag 
+       &= \mathscr{CP} \bar{\Psi}(-\tilde{x}) \Psi(-\tilde{x}) (\mathscr{CP})^{\dag}\\
+       &= \mathscr{C}\bar{\Psi}(-x) \Psi(-x) \mathscr{C}^\dag\\
+       &= \bar{\Psi}(-x) \Psi(-x)
+   \end{align*}
+   as the CPT transformation.
+\end{proof}
+\begin{proof}[Solution for (b)]
+   We consider the vector \(V^\mu = \bar{\Psi} \gamma^\mu \Psi\) and its transformations under C, P, T, and CPT. 
+   Notice that with the fermion anticommutation relation we have
+   \begin{equation*}
+      \Psi^\top \gamma^0 \gamma^j \Psi^* =  \Psi_a \gamma^{0}_{ab} \gamma^j_{bc} \Psi^*_{c} =-(-1)^j\Psi^*_c \gamma^{j}_{cb} \gamma^{0}_{ba} \Psi_a + \delta(\vetor{0}) \gamma^{j}_{bc} \gamma^0_{cb} = -(-1)^j\herm{\Psi} \gamma^j \gamma^0 \Psi = (-1)^{j}\bar{\Psi} \gamma^j \Psi
+   \end{equation*}
+   as \(\gamma^j \gamma^0\) is traceless, and 
+   \begin{equation*}
+      \Psi^\top \gamma^0 \gamma^0 \Psi^* = \Psi_a \Psi^*_a = -\Psi^*_a \Psi_a + 4\delta(\vetor{0}) = - \bar{\Psi} \gamma^0 \Psi + 4\delta(\vetor{0}),
+   \end{equation*}
+   and we simply ignore the divergence. Under charge conjugation we have
+   \begin{equation*}
+      \mathscr{C} \bar{\Psi} \gamma^\mu \Psi \mathscr{C}^\dag = - \Psi^\top \gamma^2 \gamma^0 \gamma^\mu\gamma^2 \Psi^* = \Psi^\top \gamma^2 \gamma^0 \gamma^2 \gamma^\mu \Psi^* - 2 g^{\mu 2} \Psi^\top \gamma^2 \gamma^0 \Psi^* = \Psi^\top \gamma^0 \gamma^\mu \Psi^* + 2g^{\mu 2} \Psi^\top \gamma^0 \gamma^2 \Psi^*,
+   \end{equation*}
+   then the previous results yield \(\mathscr{C} \bar{\Psi} \gamma^\mu \Psi \mathscr{C}^\dag = -\bar{\Psi} \gamma^\mu \Psi\). Under parity, we have
+   \begin{equation*}
+      \mathscr{P} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{P}^\dag = \herm{\Psi}(\tilde{x}) \gamma^\mu \gamma^0 \Psi(\tilde{x}) = -\bar{\Psi}(\tilde{x}) \gamma^\mu \Psi(\tilde{x}) + 2g^{\mu0} \bar{\Psi}(\tilde{x}) \gamma^0 \Psi(\tilde{x}) = \bar{\Psi}(\tilde{x}) \gamma_\mu \Psi(\tilde{x}),
+   \end{equation*}
+   that is, \(\mathscr{P} V^\mu(x) \mathscr{P}^\dag = V_\mu(\tilde{x}).\)\footnote{Instead of \(\mathscr{P} V^\mu(x) \mathscr{P}^\dag = g_{\mu\mu}V^\mu( \tilde{x})\) we opted for lowering the index.} Under time reversal we have 
+   \begin{equation*}
+      \mathscr{T} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 \mathscr{T}\gamma^\mu\mathscr{T}^\dag \gamma^1 \gamma^3 \Psi( - \tilde{x})
+   \end{equation*}
+   after which we consider each case separately: for \(\mu = 0\) we have
+   \begin{equation*}
+       \mathscr{T} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 \gamma^0 \gamma^1 \gamma^3 \Psi(- \tilde{x}) = \bar{\Psi}(- \tilde{x}) \gamma^0 \Psi(- \tilde{x}) = \bar{\Psi}(- \tilde{x}) \gamma^\mu \Psi(- \tilde{x}),
+   \end{equation*}
+   for \(\mu = 1\) we have
+   \begin{equation*}
+       \mathscr{T} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 \gamma^1 \gamma^1 \gamma^3 \Psi(- \tilde{x}) = -\bar{\Psi}(- \tilde{x}) \gamma^1 \Psi(- \tilde{x}) = -\bar{\Psi}(- \tilde{x}) \gamma^\mu \Psi(- \tilde{x}),
+   \end{equation*}
+   for \(\mu = 2\) we have
+   \begin{equation*}
+       \mathscr{T} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 (-\gamma^2) \gamma^1 \gamma^3 \Psi(- \tilde{x}) = -\bar{\Psi}(- \tilde{x}) \gamma^2 \Psi(- \tilde{x}) = -\bar{\Psi}(- \tilde{x}) \gamma^\mu \Psi(- \tilde{x}),
+   \end{equation*}
+   and for \(\mu = 3\) we have 
+   \begin{equation*}
+       \mathscr{T} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 \gamma^3 \gamma^1 \gamma^3 \Psi(- \tilde{x}) = -\bar{\Psi}(- \tilde{x}) \gamma^3 \Psi(- \tilde{x}) = -\bar{\Psi}(- \tilde{x}) \gamma^\mu \Psi(- \tilde{x}),
+   \end{equation*}
+   hence \(\mathscr{T} \bar{\Psi}(x) \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma_\mu \Psi(- \tilde{x})\). We compose these transformations to obtain
+   \begin{align*}
+      \mathscr{CPT} \bar{\Psi}(x) \gamma^\mu \Psi(x)(\mathscr{CPT})^\dag &= \mathscr{CP} \bar{\Psi}(- \tilde{x}) \gamma_\mu \Psi(- \tilde{x}) (\mathscr{CP})^\dag\\
+                                                                         &= \mathscr{C} \bar{\Psi}(-x) \gamma^\mu \Psi(-x) \mathscr{C}^\dag\\
+                                                                         &= - \bar{\Psi}(-x) \gamma^\mu \Psi(-x)
+   \end{align*}
+   as the CPT transformation.
+\end{proof}
+\begin{proof}[Solution for (c)]
+   We now consider the second-order tensor \(T^{\mu\nu} = \bar{\Psi} \sigma^{\mu\nu} \Psi\) and its transformations. As \(\sigma^{\mu\nu}\) is antisymmetric, we need only check the six components
+   \begin{equation*}
+      (\mu, \nu) \in \set{(0,1), (0,2), (0,3), (1,2), (1,3), (2,3)}.
+   \end{equation*}
+   As \(\sigma^{\mu\nu} = \frac12 i \commutator{\gamma^\mu}{\gamma^\nu},\) we have 
+   \begin{equation*}
+      (\sigma^{\mu\nu})^\top = \frac12 i \commutator{(\gamma^\nu)^\top}{(\gamma^\mu)^\top} = - (-1)^{\mu+\nu}\frac12i\commutator{\gamma^\mu}{\gamma^\nu} = (-1)^{\mu+\nu+1} \sigma^{\mu\nu} \implies \sigma^{\mu\nu}_{ab} = (-1)^{\mu + \nu + 1} \sigma^{\mu\nu}_{ba}.
+   \end{equation*}
+   Under charge conjugation, we have
+   \begin{equation*}
+      \mathscr{C} \bar{\Psi} \sigma^{\mu\nu} \Psi \mathscr{C}^\dag = - \Psi^\top \gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2 \Psi^* = - \Psi_a (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)_{ab} \Psi^*_b = \herm{\Psi} (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top \Psi + \Tr(\gamma^0 \sigma^{\mu\nu}) \delta(\vetor{0}),
+   \end{equation*}
+   and we ignore the divergence in the cases where \(\Tr(\gamma^0 \sigma^{\mu\nu}) \neq 0.\) We need only determine 
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top = (-1)^{\mu+\nu+1} \gamma^2 \sigma^{\mu\nu} \gamma^0 \gamma^2
+   \end{equation*}
+   and anticommute \(\gamma^0\) until it is on the left. Notice
+   \begin{align*}
+      \commutator{\gamma^\alpha}{\sigma^{\mu\nu}} &= \frac12 i\commutator{\gamma^0}{\gamma^\mu \gamma^\nu} - (\mu \leftrightarrow \nu)\\
+                                                  &=  \frac12 i \left(\anticommutator{\gamma^\alpha}{\gamma^\mu}\gamma^\nu - \gamma^\mu \anticommutator{\gamma^\alpha}{\gamma^\nu}\right) - (\mu \leftrightarrow \nu)\\
+                                                  &= 2i \left(g^{\mu \alpha} \gamma^\nu - g^{\nu \alpha} \gamma^\mu\right),
+   \end{align*}
+   then \(\sigma^{\mu\nu} \gamma^\alpha = \gamma^\alpha \sigma^{\mu\nu} - 2i\left(g^{\mu \alpha} \gamma^\nu - g^{\nu \alpha} \gamma^\mu\right)\). For \(\mu = 0\) and \(\nu \in \set{1,3}\) we have
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top =  \gamma^2 \sigma^{\mu\nu} \gamma^0 \gamma^2 =  \sigma^{\mu\nu} \gamma^0 = \gamma^0 \sigma^{\mu\nu} - 2i\gamma^\nu = \gamma^0 (\sigma^{\mu\nu} \underbrace{- i \gamma^0\gamma^\nu + i \gamma^\nu \gamma^0}_{-2\sigma^{\mu\nu}}) = -\gamma^0 \sigma^{\mu\nu}.
+   \end{equation*}
+   For \(\mu = 0\) and \(\nu = 2\), we have \(\sigma^{\mu\nu} = \frac12i (\gamma^0 \gamma^2 - \gamma^2 \gamma^0) = i \gamma^0 \gamma^2\), then
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top = - \gamma^2 \sigma^{\mu\nu} \gamma^0 \gamma^2 = -\frac12 i \gamma^2 (\gamma^0 \gamma^2 - \gamma^2 \gamma^0) \gamma^0 \gamma^2 = i \gamma^2\gamma^2 \gamma^0 \gamma^0 \gamma^2 = -i \gamma^2 = -\gamma^0 \sigma^{\mu\nu}.
+   \end{equation*}
+   For \(\mu = 1\) and \(\nu = 2,\) we have \(\sigma^{\mu\nu} = i \gamma^1 \gamma^2,\) then
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top = \gamma^2 \sigma^{\mu\nu} \gamma^0 \gamma^2 = i \gamma^1 \gamma^0 \gamma^2 = - \gamma^0 \sigma^{\mu\nu}.
+   \end{equation*}
+   For \(\mu = 1\) and \(\nu = 3\), we have 
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top = - \gamma^2 \sigma^{\mu\nu} \gamma^0 \gamma^2 = - \gamma^2 \gamma^0 \gamma^2 \sigma^{\mu\nu} = - \gamma^0 \sigma^{\mu\nu}.
+   \end{equation*}
+   For \(\mu = 2\) and \(\nu = 3,\) we have \(\sigma^{\mu\nu} = i \gamma^2 \gamma^3,\) then
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top = \gamma^2 \sigma^{\mu\nu} \gamma^0 \gamma^2 = -i \gamma^3 \gamma^0 \gamma^2 = i \gamma^0 \gamma^3 \gamma^2 = -\gamma^0 \sigma^{\mu\nu}.
+   \end{equation*}
+   We conclude that \((\gamma^2 \gamma^0 \sigma^{\mu\nu} \gamma^2)^\top = - \gamma^0 \sigma^{\mu\nu},\) hence
+   \begin{equation*}
+      \mathscr{C} \bar{\Psi} \sigma^{\mu\nu} \Psi \mathscr{C}^{\dag} = -\herm{\Psi} \gamma^0 \sigma^{\mu\nu} \Psi = -\bar{\Psi} \sigma^{\mu\nu} \Psi
+   \end{equation*}
+   is the charge conjugation transformation. Under parity, we have
+   \begin{equation*}
+      \mathscr{P} \bar{\Psi}(x) \sigma^{\mu\nu} \Psi(x) \mathscr{P}^\dag = \herm{\Psi}(\tilde{x}) \sigma^{\mu\nu} \gamma^0 \Psi(\tilde{x}) = \bar{\Psi}(\tilde{x}) \left[\sigma^{\mu\nu} -2(g^{\mu0} \sigma^{0\nu} - g^{\nu0} \sigma^{0\mu})\right]\Psi(\tilde{x}) = \bar{\Psi}(\tilde{x}) \sigma_{\mu\nu} \Psi(\tilde{x}),
+   \end{equation*}
+   as we see the factor yields a sign for each index greater than zero. Under time reversal, we have
+   \begin{equation*}
+      \mathscr{T} \bar{\Psi}(x) \sigma^{\mu\nu} \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 \mathscr{T}\sigma^{\mu\nu}\mathscr{T}^\dag \gamma^1 \gamma^3 \Psi(- \tilde{x}),
+   \end{equation*}
+   hence we need to compute \(\gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3.\) For \(\mu,\nu \neq 2,\) we have \(\mathscr{T}\sigma^{\mu\nu} \mathscr{T}^{\dag} = - \sigma^{\mu\nu},\) then for \((\mu,\nu) = (0,1)\) we have
+   \begin{equation*}
+      \gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3 = -i\gamma^3 \gamma^1 \gamma^0 \gamma^1 \gamma^1 \gamma^3 =  \gamma^3 \sigma^{\mu\nu} \gamma^1 \gamma^1 \gamma^3 =  \sigma^{\mu\nu}
+   \end{equation*}
+   for \((\mu, \nu) = (0,3),\) we have
+   \begin{equation*}
+      \gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3 = -i\gamma^3 \gamma^1 \gamma^0 \gamma^3 \gamma^1 \gamma^3 = -i \gamma^3 \gamma^0 = \sigma^{\mu\nu},
+   \end{equation*}
+   for \((\mu, \nu) = (1,3),\) we have
+   \begin{equation*}
+      \gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3 = -i\gamma^3 \gamma^1 \gamma^1 \gamma^3 \gamma^1 \gamma^3 = -i \gamma^1 \gamma^3 = -\sigma^{\mu\nu}.
+   \end{equation*}
+   For \(\mu = 2\) or \(\nu = 2,\) we have \(\mathscr{T}\sigma^{\mu\nu} \mathscr{T}^{\dag} = \sigma^{\mu\nu},\) then for \((\mu,\nu) = (0,2)\) we have
+   \begin{equation*}
+      \gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3 = \gamma^3 \gamma^1 \sigma^{\mu\nu} \gamma^1 \gamma^3 = \sigma^{\mu\nu},
+   \end{equation*}
+   for \((\mu,\nu) = (1,2)\) we have
+   \begin{equation*}
+      \gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3 = i\gamma^3 \gamma^1 \gamma^1\gamma^2 \gamma^1 \gamma^3 = \gamma^3\sigma^{\mu\nu} \gamma^3 = - \sigma^{\mu\nu},
+   \end{equation*}
+   and for \((\mu,\nu) = (2,3)\) we have
+   \begin{equation*}
+      \gamma^3 \gamma^1 \mathscr{T} \sigma^{\mu\nu} \mathscr{T}^\dag \gamma^1 \gamma^3 = i\gamma^3 \gamma^1 \gamma^2\gamma^3 \gamma^1 \gamma^3 = -i \gamma^2 \gamma^3 = - \sigma^{\mu\nu}.
+   \end{equation*}
+   Notice we only avoid the sign when there is a zero index, hence
+   \begin{equation*}
+      \mathscr{T} \bar{\Psi}(x) \sigma^{\mu\nu} \Psi(x) \mathscr{T}^\dag = - \bar{\Psi}(- \tilde{x}) \sigma_{\mu\nu} \Psi(- \tilde{x})
+   \end{equation*}
+   is the time reversal transformation. With the composition, we find
+   \begin{align*}
+      \mathscr{CPT} \bar{\Psi}(x) \sigma^{\mu\nu} \Psi(x)(\mathscr{CPT})^\dag &= -\mathscr{CP} \bar{\Psi}(- \tilde{x}) \sigma_{\mu\nu} \Psi(- \tilde{x}) (\mathscr{CP})^\dag\\
+                                                                         &= -\mathscr{C} \bar{\Psi}(-x) \sigma^\mu \Psi(-x) \mathscr{C}^\dag\\
+                                                                         &= \bar{\Psi}(-x) \sigma^{\mu\nu} \Psi(-x)
+   \end{align*}
+   as the CPT transformation.
+\end{proof}
+\begin{proof}[Solution for (d)]
+   We now obtain the transformations for the pseudoscalar \(i \bar{\Psi}\gamma^5 \Psi.\) For charge conjugation we have
+   \begin{equation*}
+      \mathscr{C} i \bar{\Psi} \gamma^5 \Psi \mathscr{C}^\dag = -i\Psi^\top \gamma^2 \gamma^0 \gamma^5 \gamma^2 \Psi^* = -i \Psi^\top \gamma^5 \gamma^0 \Psi^* = -i \Psi_a \gamma^5_{ab} \gamma^0_{bc} \Psi^*_c = i \Psi^*_c \gamma^0_{cb}\gamma^5_{ba} \Psi_a = i \bar{\Psi} \gamma^5 \Psi,
+   \end{equation*}
+   where we have used that \(\gamma^0 \gamma^5\) is traceless, since \(\gamma^5\) anticommutes with \(\gamma^0,\) hence 
+   \begin{equation*}
+      \Tr(\gamma^0 \gamma^5) = - \Tr(\gamma^5 \gamma^0) = -\Tr(\gamma^0 \gamma^5),
+   \end{equation*}
+   by the cyclic property, and thus the term \(\delta(\vetor{0}) \gamma^5_{ab} \gamma^0_{ba}\) vanishes. The other transformations are
+   \begin{equation*}
+      \mathscr{P} i \bar{\Psi}(x) \gamma^5 \Psi(x) \mathscr{P}^\dag = i \herm{\Psi}(\tilde{x}) \gamma^5 \gamma^0 \Psi(\tilde{x}) = -i \bar{\Psi}(\tilde{x}) \gamma^5 \Psi(\tilde{x})
+   \end{equation*}
+   and
+   \begin{equation*}
+      \mathscr{T} i \bar{\Psi}(x) \gamma^5 \Psi(x) \mathscr{T}^\dag = -i \bar{\Psi}(-\tilde{x})\gamma^3 \gamma^1 \gamma^5 \gamma^1 \gamma^3\Psi(-\tilde{x}) = -i \bar{\Psi}(-\tilde{x}) \gamma^5 \Psi(-\tilde{x}).
+   \end{equation*}
+   Doing one transformation after the other, we obtain
+   \begin{align*}
+      \mathscr{CPT} i\bar{\Psi}(x)\gamma^5\Psi(x) (\mathscr{CPT})^\dag 
+       &= -\mathscr{CP} i\bar{\Psi}(-\tilde{x}) \gamma^5\Psi(-\tilde{x}) (\mathscr{CP})^{\dag}\\
+       &= \mathscr{C}i\bar{\Psi}(-x)\gamma^5 \Psi(-x) \mathscr{C}^\dag\\
+       &= i\bar{\Psi}(-x) \gamma^5\Psi(-x)
+   \end{align*}
+   as the CPT transformation.
+\end{proof}
+\begin{proof}[Solution for (e)]
+   We consider the axial vector \(A^\mu = \bar{\Psi} \gamma^5 \gamma^\mu\Psi\) and its transformations under C, P, T, and CPT. Under charge conjugation, we have
+   \begin{equation*}
+      \mathscr{C} \bar{\Psi} \gamma^5 \gamma^\mu \Psi \mathscr{C}^\dag = -\Psi^\top \gamma^2 \gamma^0 \gamma^5 \gamma^\mu \gamma^2 \Psi^* = \herm{\Psi} (\gamma^2 \gamma^0 \gamma^5 \gamma^\mu \gamma^2)^\top \Psi,
+   \end{equation*}
+   ignoring the divergent terms from the anticommutation relations. For \(\mu \notin \set{1,3},\) we have 
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \gamma^5 \gamma^\mu \gamma^2)^\top = -(\gamma^\mu \gamma^5 \gamma^0)^\top = \gamma^0 \gamma^5 \gamma^\mu,
+   \end{equation*}
+   for \(\mu = 0\) we have
+   \begin{equation*}
+      (\gamma^2 \gamma^0 \gamma^5 \gamma^\mu \gamma^2)^\top = - \gamma^5 = \gamma^0 \gamma^5 \gamma^\mu
+   \end{equation*}
+   and for \(\mu = 2\) we have
+   \begin{equation*}
+       (\gamma^2 \gamma^0 \gamma^5 \gamma^\mu \gamma^2)^\top  = (- \gamma^\mu \gamma^0 \gamma^5)^\top = - \gamma^5 \gamma^0 \gamma^\mu = \gamma^0 \gamma^5 \gamma^\mu,
+   \end{equation*}
+   hence
+   \begin{equation*}
+      \mathscr{C} \bar{\Psi} \gamma^5 \gamma^\mu \Psi \mathscr{C}^\dag = \herm{\Psi} \gamma^0 \gamma^5 \gamma^\mu \Psi = \bar{\Psi} \gamma^5 \gamma^\mu \Psi.
+   \end{equation*}
+   Under parity, we have
+   \begin{equation*}
+      \mathscr{P} \bar{\Psi}(x) \gamma^5 \gamma^\mu \Psi(x) \mathscr{P}^\dag = \herm{\Psi}(\tilde{x}) \gamma^5 \gamma^\mu \gamma^0 \Psi(\tilde{x}) = -\bar{\Psi}(\tilde{x}) \gamma^5 (- \gamma^\mu + 2g^{\mu 0} \gamma^0) \Psi(\tilde{x}) = - \bar{\Psi}(\tilde{x}) \gamma^5 \gamma_\mu \Psi(\tilde{x}).
+   \end{equation*}
+   Under time reversal, we have
+   \begin{equation*}
+      \mathscr{T} \bar{\Psi}(x) \gamma^5 \gamma^\mu \Psi(x) \mathscr{T}^\dag = \bar{\Psi}(- \tilde{x}) \gamma^3 \gamma^1 \gamma^5 \gamma^\mu \gamma^1 \gamma^3 \Psi(- \tilde{x}) = \bar{\Psi}(- \tilde{x}) \gamma^5 \gamma_\mu \Psi(- \tilde{x}),
+   \end{equation*}
+   where we have used the result \(\gamma^3 \gamma^1 \gamma^\mu \gamma^1 \gamma^3 = \gamma_\mu\) from the time reversal of the vector bilinear. Finally,
+   \begin{align*}
+      \mathscr{CPT} \bar{\Psi}(x)\gamma^5\gamma^\mu\Psi(x) (\mathscr{CPT})^\dag 
+       &= \mathscr{CP} \bar{\Psi}(-\tilde{x}) \gamma^5 \gamma_\mu\Psi(-\tilde{x}) (\mathscr{CP})^{\dag}\\
+       &= -\mathscr{C}\bar{\Psi}(-x)\gamma^5 \gamma^\mu\Psi(-x) \mathscr{C}^\dag\\
+       &= -\bar{\Psi}(-x) \gamma^5 \gamma^\mu\Psi(-x)
+   \end{align*}
+   is the CPT transformation.
+\end{proof}
+\begin{proof}[Solution for (f)]
+   As the charge conjugation acts only in the fields, it is clear that \(\mathscr{C} \partial_\mu \mathscr{C}^\dag = \partial_\mu.\) As \(\mathscr{P}\) changes \(\vetor{x} \to -\vetor{x},\) we have \(\mathscr{P} \partial_\mu \mathscr{P} = \partial^\mu.\) Similarly, as time reversal changes \(t \to -t,\) we have \(\mathscr{T}\partial_\mu \mathscr{T} = -\partial^\mu.\) Finally, \(\mathscr{CPT} \partial_\mu (\mathscr{CPT})^\dag = - \partial_\mu.\)
 \end{proof}

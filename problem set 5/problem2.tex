@@ -2,3 +2,16 @@
 \begin{problem}{Generating functional for a free complex scalar field}{p2}
     Obtain the generating functional for a free complex scalar field.
 \end{problem}
+\begin{proof}[Solution]
+    We recall the Feynman propagator for a free complex scalar field,
+    \begin{equation*}
+        D_F(x,y) = i \int_{\mathbb{R}^4}\frac{\dln4p}{(2\pi)^4} \frac{e^{-ip(x-y)}}{p_\mu p^\mu - m^2 + i \epsilon},
+    \end{equation*}
+    and consider the differential operator \(L_x = \square_x + m^2 - i \epsilon,\) then \(iD_F(x,y)\) is a Green function for this operator as we have
+    \begin{align*}
+        L_x D_F(x,y) &= i \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{L_x e^{-i p(x-y)}}{p_\mu p^\mu - m^2 + i \epsilon}\\
+                     &= i \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{-p_\nu p^\nu + m^2 - i \epsilon}{p_\mu p^\mu - m^2 + i \epsilon} e^{-ip(x-y)}\\
+                     &= -i \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} e^{-ip(x-y)}\\
+                     &= -i \delta(x-y).
+    \end{align*}
+\end{proof}

@@ -1,14 +1,14 @@
 % vim: spl=en
 \begin{problem}{Harmonic oscillator}{p1}
-    Consider a harmonic oscillator in one dimension.
-    \begin{enumerate}[label=(\alph*)]
-       \item Obtain the propagator 
-          \begin{equation*}
-             \braket{x_ft_f}{x_it_i} = \bra{x_f}\exp\left(-\frac{iH(t_f - t_i)}{\hbar}\right)\ket{x_i}
-          \end{equation*}
-          using path integrals.
-       \item From the previous result obtain the ground state wave function.
-    \end{enumerate}
+   Consider a harmonic oscillator in one dimension.
+   \begin{enumerate}[label=(\alph*)]
+      \item Obtain the propagator 
+         \begin{equation*}
+            \braket{x_ft_f}{x_it_i} = \bra{x_f}\exp\left(-\frac{iH(t_f - t_i)}{\hbar}\right)\ket{x_i}
+         \end{equation*}
+         using path integrals.
+      \item From the previous result obtain the ground state wave function.
+   \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
    Let \(S\) be the action defined by the functional
@@ -94,19 +94,22 @@
    \end{align*}
    as \(\det{\Lambda} = \det{M \lambda M^\top} = \det{\lambda} = \prod_{j = 1}^{\kappa - 1}{\lambda_{j}}.\) To tackle this determinant, we show the recurrence relation for \(\kappa > 2\)
    \begin{align*}
-      \det \Lambda_{\kappa + 1} &= \det \begin{pmatrix}
+      \det \Lambda_{\kappa + 1} 
+      &= \det 
+      \begin{pmatrix}
          2- \omega^2 \tau^2 && -1 && 0 && \dots\\
          -1 && 2 - \omega^2 \tau^2 && -1 && \dots\\
          0 && -1 && 2 - \omega^2 \tau^2 && \dots\\
          \vdots && \vdots && \vdots && \ddots
       \end{pmatrix}_{\kappa \times \kappa}\\
-                           &= (2 - \omega^2 \tau^2) \det \Lambda_\kappa - (-1) \det \begin{pmatrix}
-                              -1 && -1 && 0 && \dots\\
-                              0 && 2 - \omega^2 \tau^2 && -1 && \dots\\
-                              0 && -1 && 2- \omega^2 \tau^2 && \dots\\
-                              \vdots && \vdots && \vdots && \ddots
-                           \end{pmatrix}_{(\kappa-1) \times (\kappa-1)}\\
-                           &= (2- \omega^2 \tau^2)\det \Lambda_\kappa - \det \Lambda_{\kappa -1},
+      &= (2 - \omega^2 \tau^2) \det \Lambda_\kappa - (-1) \det 
+      \begin{pmatrix}
+         -1 && -1 && 0 && \dots\\
+         0 && 2 - \omega^2 \tau^2 && -1 && \dots\\
+         0 && -1 && 2- \omega^2 \tau^2 && \dots\\
+         \vdots && \vdots && \vdots && \ddots
+      \end{pmatrix}_{(\kappa-1) \times (\kappa-1)}\\
+      &= (2- \omega^2 \tau^2)\det \Lambda_\kappa - \det \Lambda_{\kappa -1},
    \end{align*}
    that is,
    \begin{equation*}
@@ -123,16 +126,16 @@
    and
    \begin{equation*}
       \frac{\sin(3 \theta)}{\sin\theta} = \frac{\sin(2\theta) \cos\theta}{\sin\theta} + \frac{\cos(2\theta)\sin\theta}{\sin\theta} = 4\cos^2\theta - 1 = (2 - \omega^2 \tau^2)^2 - 1 = \det\left(\begin{smallmatrix}
-         2 - \omega^2 \tau^2 && -1\\
-         -1 && 2 - \omega^2\tau^2
-   \end{smallmatrix}\right) = \det{\Lambda_{3}},
+            2 - \omega^2 \tau^2 && -1\\
+            -1 && 2 - \omega^2\tau^2
+      \end{smallmatrix}\right) = \det{\Lambda_{3}},
    \end{equation*}
    therefore the expression holds true for \(\kappa = 2\) e \(\kappa = 3\). Suppose this expression holds for all \(3 < m < \kappa,\) then by the recurrence relation we have
    \begin{align*}
       \det{\Lambda_{\kappa}} &= (2\cos\theta) \det{\Lambda_{\kappa - 1}} - \det{\Lambda}_{\kappa -2}\\
-                            &= \frac{2 \cos\theta \sin[(\kappa - 1)\theta] - \sin[(\kappa - 2)\theta]}{\sin\theta}\\
-                            &= \frac{2 \cos^2\theta \sin(\kappa \theta) - \sin(\kappa \theta) \cos(2\theta)}{\sin\theta}\\
-                            &= \frac{\sin(\kappa \theta)}{\sin\theta},
+                             &= \frac{2 \cos\theta \sin[(\kappa - 1)\theta] - \sin[(\kappa - 2)\theta]}{\sin\theta}\\
+                             &= \frac{2 \cos^2\theta \sin(\kappa \theta) - \sin(\kappa \theta) \cos(2\theta)}{\sin\theta}\\
+                             &= \frac{\sin(\kappa \theta)}{\sin\theta},
    \end{align*}
    that is, it also holds for \(\kappa\). By the strong principle of induction, we conclude that
    \begin{equation*}
@@ -140,7 +143,7 @@
    \end{equation*}
    for all \(\kappa\). In the limit \(\tau \to 0\), we have
    \begin{equation*}
-       \cos\theta = 1 - \frac12 \omega^2 \tau^2 \simeq \cos(\omega \tau),
+      \cos\theta = 1 - \frac12 \omega^2 \tau^2 \simeq \cos(\omega \tau),
    \end{equation*}
    so we take \(\theta = \omega \tau.\) We have thus shown that \(\det{\Lambda_\kappa} = \frac{\sin(\kappa \omega \tau)}{\sin(\omega \tau)}\) in the limit \(\tau \to 0\), hence
    \begin{equation*}
@@ -162,18 +165,18 @@
    \begin{align*}
       F(t_f, t_i) &= K(0 t_f; 0 t_i)\\
                   &= \int_{\mathbb{R}} \dli{x'} \bra{0_x}U(t_f, t')\ket{x'} \theta(t_f - t') \bra{x'} U(t', t_i) \ket{0_x} \theta(t' - t_i)\\
-                      &= \int_{\mathbb{R}} \dli{x'} K(0t_f; x' t') K(x' t'; 0t_i)\\
-                      &= \int_{\mathbb{R}} \dli{x'} \exp\left[\frac{i}{\hbar}S_\mathrm{cl}(0, t_f, x', t')\right] F(t_f, t') \exp\left[\frac{i}{\hbar}S_\mathrm{cl}(x', t', 0, t_i)\right] F(t', t_i)\\
-                      &= F(t_f, t') F(t', t_i) \int_{\mathbb{R}} \dli{x'} \exp\left\{-\frac{m \omega {x'}^2}{2i\hbar} \left[\cot\left[\omega(t_f - t')\right] + \cot\left[\omega(t' - t_i)\right] \right]\right\}\\
-                      &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i\hbar}{m \omega}} \left\{\cot\left[\omega(t_f - t')\right] + \cot\left[\omega(t' - t_i)\right]\right\}^{-\frac12}\\
-                      &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i \hbar}{m \omega}} \left\{\frac{\cos\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right] + \sin\left[\omega(t_f - t')\right]\cos\left[\omega(t' - t_i)\right]}{\sin\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right]}\right\}^{-\frac12}\\
-                      &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i \hbar}{m \omega}} \left\{\frac{\sin\left[\omega(t_f - t_i)\right]}{\sin\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right]}\right\}^{-\frac12}\\
-                      &= \sqrt{\frac{2\pi i \hbar \sin\left[\omega (t_f - t')\right]\sin\left[\omega (t_f - t')\right]}{m \omega \sin\left[\omega(t_f - t_i)\right]}} F(t_f, t') F(t', t_i)\\
-                      &= \sqrt{\frac{m \omega}{2\pi i \hbar \sin\left[\omega(t_f - t_i)\right]}} \frac{F(t_f, t')}{\sqrt{\frac{m \omega}{2\pi i\hbar \sin\left[\omega( t_f - t')\right]}}} \frac{F(t', t_i)}{\sqrt{\frac{m \omega}{2\pi i\hbar \sin\left[\omega(t' - t_i)\right]}}}.
+                  &= \int_{\mathbb{R}} \dli{x'} K(0t_f; x' t') K(x' t'; 0t_i)\\
+                  &= \int_{\mathbb{R}} \dli{x'} \exp\left[\frac{i}{\hbar}S_\mathrm{cl}(0, t_f, x', t')\right] F(t_f, t') \exp\left[\frac{i}{\hbar}S_\mathrm{cl}(x', t', 0, t_i)\right] F(t', t_i)\\
+                  &= F(t_f, t') F(t', t_i) \int_{\mathbb{R}} \dli{x'} \exp\left\{-\frac{m \omega {x'}^2}{2i\hbar} \left[\cot\left[\omega(t_f - t')\right] + \cot\left[\omega(t' - t_i)\right] \right]\right\}\\
+                  &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i\hbar}{m \omega}} \left\{\cot\left[\omega(t_f - t')\right] + \cot\left[\omega(t' - t_i)\right]\right\}^{-\frac12}\\
+                  &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i \hbar}{m \omega}} \left\{\frac{\cos\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right] + \sin\left[\omega(t_f - t')\right]\cos\left[\omega(t' - t_i)\right]}{\sin\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right]}\right\}^{-\frac12}\\
+                  &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i \hbar}{m \omega}} \left\{\frac{\sin\left[\omega(t_f - t_i)\right]}{\sin\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right]}\right\}^{-\frac12}\\
+                  &= \sqrt{\frac{2\pi i \hbar \sin\left[\omega (t_f - t')\right]\sin\left[\omega (t_f - t')\right]}{m \omega \sin\left[\omega(t_f - t_i)\right]}} F(t_f, t') F(t', t_i)\\
+                  &= \sqrt{\frac{m \omega}{2\pi i \hbar \sin\left[\omega(t_f - t_i)\right]}} \frac{F(t_f, t')}{\sqrt{\frac{m \omega}{2\pi i\hbar \sin\left[\omega( t_f - t')\right]}}} \frac{F(t', t_i)}{\sqrt{\frac{m \omega}{2\pi i\hbar \sin\left[\omega(t' - t_i)\right]}}}.
    \end{align*}
    As this last equality holds for all \(t' \in [t_i, t_f],\) \(F(t_f, t_i)\) must not depend on \(t',\) hence we conclude
    \begin{equation*}
-       F(t_f, t_i) = \sqrt{\frac{m \omega}{2\pi i \hbar \sin\left[\omega(t_f - t_i)\right]}},
+      F(t_f, t_i) = \sqrt{\frac{m \omega}{2\pi i \hbar \sin\left[\omega(t_f - t_i)\right]}},
    \end{equation*}
    as before.
 
@@ -213,7 +216,7 @@
    \end{equation*}
    where we have chosen the phase of the wave function such that it is a real function. Finally, we multiply the result by \(e^{-i \omega_0 t}\) and obtain
    \begin{equation*}
-   \varphi_0(x, t) = \left(\frac{m \omega}{\pi \hbar}\right)^{\frac14} \exp\left[-\frac{\omega}{2}\left(\frac{m x^2}{\hbar} + i t\right)\right]
+      \varphi_0(x, t) = \left(\frac{m \omega}{\pi \hbar}\right)^{\frac14} \exp\left[-\frac{\omega}{2}\left(\frac{m x^2}{\hbar} + i t\right)\right]
    \end{equation*}
    as the ground state wave function.
 \end{proof}

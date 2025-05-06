@@ -1,0 +1,219 @@
+% vim: spl=en
+\begin{problem}{Harmonic oscillator}{p1}
+    Consider a harmonic oscillator in one dimension.
+    \begin{enumerate}[label=(\alph*)]
+       \item Obtain the propagator 
+          \begin{equation*}
+             \braket{x_ft_f}{x_it_i} = \bra{x_f}\exp\left(-\frac{iH(t_f - t_i)}{\hbar}\right)\ket{x_i}
+          \end{equation*}
+          using path integrals.
+       \item From the previous result obtain the ground state wave function.
+    \end{enumerate}
+\end{problem}
+\begin{proof}[Solution]
+   Let \(S\) be the action defined by the functional
+   \begin{equation*}
+      S[x(t)] = \frac12 m \int_{t_i}^{t_f} \dli{t} (\dot{x}^2 - \omega^2 x^2),
+   \end{equation*}
+   with its domain as the set of trajectories \(x(t)\) that satisfy \(x(t_i) = x_i\) and \(x(t_f) = x_f\), and let \(\tilde{S}\) be the action with the same functional with its domain as the set of trajectories \(\eta(t)\) with \(\eta(t_i) = \eta(t_f) = 0.\) Then,
+   \begin{align*}
+      S[x(t) + \eta(t)]
+      &= \frac12 m\int_{t_i}^{t_f} \dli{t} \left[ \dot{x}^2 + 2\dot{x} \dot{\eta} + \dot{\eta}^2 - \omega^2 \left(x^2 + 2x\eta + \eta^2\right)\right]\\
+      &= S[x(t)] + \tilde{S}[\eta(t)] + \frac12 m \left[\dot{x}(t) \eta(t)\right]_{t_i}^{t_f} - m \int_{t_i}^{t_f} \dli{t} (\ddot{x} + \omega^2 x) \eta\\
+      &= S[x(t)] + \tilde{S}[\eta(t)] - m \int_{t_i}^{t_f} \dli{t} (\ddot{x} + \omega^2 x) \eta
+   \end{align*}
+   for every \(x\) and \(\eta\) in the domains of \(S\) and \(\tilde{S}\). If we take \(\eta\) to be infinitesimal, we see that \(\diff.d.{S}{x} = -m(\ddot{x} + \omega^2 x),\) therefore the classical trajectory \(q(t)\) is such that 
+   \begin{align*}
+      \diff.d.{S}{x}[x(t) = q(t)] = 0 &\implies \ddot{q}(t) + \omega^2 q(t) = 0\\
+                                      &\implies q(t) = x_i \cos[\omega (t - t_i)] + \frac{v}{\omega} \sin[\omega (t - t_i)],
+   \end{align*}
+   where we have defined
+   \begin{align*}
+      \frac{v}{\omega} &= \frac{x_f - x_i \cos(\omega \Delta t)}{\sin(\omega \Delta t)}\\
+                       &= \csc(\omega \Delta t)\left[ x_f - x_i \cos(\omega \Delta t)\right],
+   \end{align*}
+   with \(\Delta t = t_f - t_i.\) We now evaluate the classical action,
+   \begin{align*}
+      S_{\mathrm{cl}} &= S[q(t)] = \frac12 m\int_{t_i}^{t_f} \dli{t} (\dot{q}^2 - \omega^2 q^2)\\
+                      &= \frac12 m\omega^2 \int_{0}^{t_f-t_i} \dli{t} \left[\left(\frac{v}{\omega} \cos(\omega t)- x_i \sin(\omega t)\right)^2 - \left(x_i \cos(\omega t) + \frac{v}{\omega} \sin(\omega t)\right)^2\right]\\
+                      &= \frac12 m \omega^2 \int_{0}^{\Delta t} \dli{t} \left[\left(\frac{v^2}{\omega^2} - x_i^2\right) \cos(2 \omega t ) - \frac{2v x_i}{\omega} \sin(2 \omega t)\right]\\
+                      &= \frac14 m \omega \left[\left(\frac{v^2}{\omega^2} - x_i^2\right) \sin(2 \omega \Delta t) + \frac{2 v x_i}{\omega} \left(\cos(2 \omega \Delta t) - 1\right)\right]\\
+                      &= \frac12 m \omega \left[\frac{x_f^2 - 2x_i x_f \cos(\omega \Delta t) + x_i^2 \cos(2 \omega \Delta t)}{\sin(\omega \Delta t)}\cos(\omega \Delta t) - 2\left(x_i x_f - x_i^2 \cos(\omega \Delta t)\right)\sin(\omega \Delta t)\right]\\
+                      &= \frac12 m \omega \frac{x_f^2 \cos(\omega \Delta t) - 2x_i x_f \left[\cos^2(\omega \Delta t) + \sin^2(\omega \Delta t)\right] + x_i^2 \cos(\omega \Delta t) \left[\cos(2 \omega \Delta t) +2\sin^2(\omega \Delta t)\right]}{\sin(\omega \Delta t)}\\
+                      &= \frac12 m \omega \frac{(x_f^2 + x_i^2) \cos[\omega (t_f - t_i)] - 2x_i x_f}{\sin[\omega (t_f - t_i)]},
+   \end{align*}
+   and notice that for a trajectory \(q(t) + \eta(t)\) satisfies
+   \begin{equation*}
+      S[q(t) + \eta(t)] = S_{\mathrm{cl}} + \tilde{S}[\eta(t)]
+   \end{equation*}
+   with \(\eta\) in the domain of \(\tilde{S},\) as the functional derivative of \(S\) vanishes for the classical trajectory. In one of the computations for the propagator, it is useful to consider the function of \((x_2, t_2)\) and \((x_1, t_1)\),
+   \begin{equation*}
+      S_{\mathrm{cl}}(x_2,t_2, x_1, t_1) = \frac12 m\omega (x_2^2 + x_1^2) \cot\left[\omega(t_2 - t_1)\right] - m \omega x_1 x_2 \csc\left[\omega(t_2 - t_1)\right],
+   \end{equation*}
+   which takes values equal to the classical action for a harmonic oscillator with trajectories from \((x_1, t_1)\) to \((x_2, t_2),\) with \(t_1 < t_2.\)
+
+   With the classical action evaluated, the propagator for \(t_f > t_i\) is
+   \begin{align*}
+      K(x_ft_f; x_it_i) &= \braket{x_f t_f}{x_i t_i} \theta(t_f - t_i)\\
+                        &=\int_{(x_i,t_i)}^{(x_f, t_f)} \dlp{x(t)} \exp\left(\frac{i}{\hbar}S[x(t)]\right)\\
+                        &= \exp\left(\frac{i}{\hbar} S_{\mathrm{cl}}\right)\int_{(0, t_i)}^{(0, t_f)} \dlp{\eta(t)} \exp\left(\frac{i}{\hbar} \tilde{S}[\eta(t)]\right)\\
+                        &=\exp\left(\frac{i}{\hbar} S_{\mathrm{cl}}\right) F(t_f, t_i),
+   \end{align*}
+   where \(F(t, t') = F(t - t')\) is the propagator from \((0,t')\) to \((0,t)\),
+   \begin{equation*}
+      F(t, t') = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t - t'}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{y_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{y_1} \exp\left\{\frac{i m}{ 2 \hbar \tau} \sum_{j = 0}^{\kappa - 1} \left[\left(y_{j+1} - y_j\right)^2 - \omega^2\tau^2 y_j^2\right]\right\}}.
+   \end{equation*}
+   We'll obtain \(F(t, t')\) with two methods: by computing this integral directly and by avoiding it entirely.
+
+   In order to compute the path integral, we will consider the \((\kappa - 1) \times (\kappa - 1)\) matrix \(\tilde{\Lambda}\) with elements
+   \begin{equation*}
+      \tilde{\Lambda}_{ij} = -\delta^{i + 1}_{j}  + 2\delta^{i}_{j} - \delta^{i - 1}_{j}
+   \end{equation*}
+   for all \(i,j \in \set{1, \dots, \kappa-1}.\) Notice that
+   \begin{align*}
+      \sum_{j = 0}^{\kappa - 1} (y_{j + 1} - y_{j})^2 
+      &= \sum_{j = 0}^{\kappa - 1} y_{j + 1}^2 + \sum_{j = 0}^{\kappa - 1} y_j^2 - \sum_{j = 0}^{\kappa - 1} y_{j} y_{j + 1} - \sum_{j = 0}^{\kappa -1}\\
+      &= \sum_{j = 1}^{\kappa} y_j^2 + \sum_{j = 1}^{\kappa - 1} y_j^2 - \sum_{j = 1}^{\kappa - 1} y_j y_{j+1} - \sum_{j = 1}^{\kappa} y_{j-1} y_j\\
+      &= \sum_{j = 1}^{\kappa-1} y_j^2 + \sum_{j = 1}^{\kappa - 1} y_j^2 - \sum_{j = 1}^{\kappa - 1} y_j y_{j+1} - \sum_{j = 1}^{\kappa-1} y_{j-1} y_j\\
+      &= \sum_{j = 1}^{\kappa - 1} (2 y_j^2 - y_j y_{j+1} - y_{j-1} y_j)\\
+      &= \sum_{j = 1}^{\kappa - 1} y_j \sum_{i = 0}^{\kappa - 1} (2 \delta^i_j - \delta^{i-1}_{j} - y^{i + 1}_{j})y_i\\
+      &= \sum_{j = 1}^{\kappa - 1} \sum_{i = 1}^{\kappa - 1} y_j \tilde{\Lambda}_{ij} y_i\\
+      &= \inner{y}{\tilde{\Lambda} y}
+   \end{align*}
+   where we have used that \(y_\kappa = y(t_f) = 0 = y(t_i) = y_0.\) Then, the bilinear form \(\Lambda_\kappa = \tilde{\Lambda} - \omega^2 \tau^2 \unity\) is a real symmetric matrix, thus real-diagonalizable, hence there exists an orthogonal matrix \(M\) and a diagonal matrix \(\lambda = \operatorname{diag}(\set{\lambda_j})\) such that \(\Lambda_\kappa = M\lambda M^\top,\) where \(\lambda_j\) are the eigenvalues of \(\Lambda_\kappa.\) In the path integral for \(F\), we consider the change of variables \(\xi = M^\top y,\) which satisfies
+   \begin{equation*}
+      \sum_{j = 0}^{\kappa - 1} \left[(y_{j+1} - y_j)^2 - 2 \omega^2 \tau^2 y_j^2\right] = \inner{y}{\Lambda_\kappa y} =\inner{y}{M \lambda M^\top y} = \inner{M^\top y}{\lambda \xi} = \inner{\xi}{\lambda \xi} = \sum_{j = 1}^{\kappa - 1} \lambda_j \xi_j^2
+   \end{equation*}
+   with a unitary jacobian, as \(\diffp{\xi_j}{x_k} = M_{jk}\) and \(M\) is orthogonal. We thus obtain
+   \begin{align*}
+      F(\Delta t) &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{\xi_{\kappa - 1}} \dots \int_{\mathbb{R}} \dli{\xi_1} \exp\left[\frac{im}{2 \hbar \tau} \sum_{j = 1}^{\kappa - 1} \lambda_j \xi_j^2\right]}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2}\int_{\mathbb{R}} \dli{\xi_{\kappa - 1}} \exp\left[\frac{im \lambda_{\kappa - 1} \xi_{\kappa - 1}^2}{2 \hbar \tau}\right]\dots \int_{\mathbb{R}} \dli{\xi_1} \exp\left[\frac{im \lambda_1 \xi_{1}^2}{2 \hbar \tau}\right]}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2} \prod_{j = 1}^{\kappa - 1} \int_{\mathbb{R}} \dli{\xi} \exp\left[-\frac{m \lambda_j \xi^2}{2i \hbar \tau}\right]}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\left(\frac{m}{2\pi i \hbar \tau}\right)^{\frac\kappa2} \prod_{j = 1}^{\kappa - 1} \sqrt{\frac{2\pi i\hbar \tau}{m \lambda_j}}}\\
+                  &= \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = \Delta t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda_\kappa}}},
+   \end{align*}
+   as \(\det{\Lambda} = \det{M \lambda M^\top} = \det{\lambda} = \prod_{j = 1}^{\kappa - 1}{\lambda_{j}}.\) To tackle this determinant, we show the recurrence relation for \(\kappa > 2\)
+   \begin{align*}
+      \det \Lambda_{\kappa + 1} &= \det \begin{pmatrix}
+         2- \omega^2 \tau^2 && -1 && 0 && \dots\\
+         -1 && 2 - \omega^2 \tau^2 && -1 && \dots\\
+         0 && -1 && 2 - \omega^2 \tau^2 && \dots\\
+         \vdots && \vdots && \vdots && \ddots
+      \end{pmatrix}_{\kappa \times \kappa}\\
+                           &= (2 - \omega^2 \tau^2) \det \Lambda_\kappa - (-1) \det \begin{pmatrix}
+                              -1 && -1 && 0 && \dots\\
+                              0 && 2 - \omega^2 \tau^2 && -1 && \dots\\
+                              0 && -1 && 2- \omega^2 \tau^2 && \dots\\
+                              \vdots && \vdots && \vdots && \ddots
+                           \end{pmatrix}_{(\kappa-1) \times (\kappa-1)}\\
+                           &= (2- \omega^2 \tau^2)\det \Lambda_\kappa - \det \Lambda_{\kappa -1},
+   \end{align*}
+   that is,
+   \begin{equation*}
+      \frac{\det{\Lambda_{\kappa+1}} + \det{\Lambda_{\kappa - 1}}}{\det{\Lambda_{\kappa}}} = 2 - \omega^2 \tau^2.
+   \end{equation*}
+   As the right hand side is independent of \(\kappa,\) so must be the left hand side. We define \(\theta\) such that \(\cos\theta = 1 - \frac12 \omega^2 \tau^2\) and consider the ansatz \(\det \Lambda_{\kappa} = \alpha \cos(\kappa \theta) + \beta \sin(\kappa \theta),\) which satisfies
+   \begin{equation*}
+      \frac{\det{\Lambda_{\kappa+1}} + \det{\Lambda_{\kappa - 1}}}{\det{\Lambda_{\kappa}}} = \frac{2\left[\alpha \cos(\kappa \theta) \cos\theta + \beta \sin(\kappa \theta) \cos \theta\right]}{\alpha \cos(\kappa \theta) + \beta \sin (\kappa \theta)} = 2 \cos\theta = 2 - \omega^2 \tau^2.
+   \end{equation*}
+   We'll show \(\det\Lambda_{\kappa} = \frac{\sin(\kappa \theta)}{\sin\theta}\) for all \(\kappa \geq 2.\) First, observe that
+   \begin{equation*}
+      \frac{\sin(2 \theta)}{\sin\theta} = 2\cos\theta = 2 - \omega^2 \tau^2 = \det[2 - \omega^2 \tau^2] = \det{\Lambda_{2}}
+   \end{equation*}
+   and
+   \begin{equation*}
+      \frac{\sin(3 \theta)}{\sin\theta} = \frac{\sin(2\theta) \cos\theta}{\sin\theta} + \frac{\cos(2\theta)\sin\theta}{\sin\theta} = 4\cos^2\theta - 1 = (2 - \omega^2 \tau^2)^2 - 1 = \det\left(\begin{smallmatrix}
+         2 - \omega^2 \tau^2 && -1\\
+         -1 && 2 - \omega^2\tau^2
+   \end{smallmatrix}\right) = \det{\Lambda_{3}},
+   \end{equation*}
+   therefore the expression holds true for \(\kappa = 2\) e \(\kappa = 3\). Suppose this expression holds for all \(3 < m < \kappa,\) then by the recurrence relation we have
+   \begin{align*}
+      \det{\Lambda_{\kappa}} &= (2\cos\theta) \det{\Lambda_{\kappa - 1}} - \det{\Lambda}_{\kappa -2}\\
+                            &= \frac{2 \cos\theta \sin[(\kappa - 1)\theta] - \sin[(\kappa - 2)\theta]}{\sin\theta}\\
+                            &= \frac{2 \cos^2\theta \sin(\kappa \theta) - \sin(\kappa \theta) \cos(2\theta)}{\sin\theta}\\
+                            &= \frac{\sin(\kappa \theta)}{\sin\theta},
+   \end{align*}
+   that is, it also holds for \(\kappa\). By the strong principle of induction, we conclude that
+   \begin{equation*}
+      \det{\Lambda_{\kappa}} = \frac{\sin(\kappa \theta)}{\sin\theta},\quad\text{with}\quad\cos\theta = 1 - \frac12 \omega^2 \tau^2
+   \end{equation*}
+   for all \(\kappa\). In the limit \(\tau \to 0\), we have
+   \begin{equation*}
+       \cos\theta = 1 - \frac12 \omega^2 \tau^2 \simeq \cos(\omega \tau),
+   \end{equation*}
+   so we take \(\theta = \omega \tau.\) We have thus shown that \(\det{\Lambda_\kappa} = \frac{\sin(\kappa \omega \tau)}{\sin(\omega \tau)}\) in the limit \(\tau \to 0\), hence
+   \begin{equation*}
+      F(t) 
+      % = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\sqrt{\frac{m}{2\pi i \hbar \tau \det \Lambda_{\kappa}}}} 
+      = \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\sqrt{\frac{m \sin(\omega \tau)}{2\pi i \hbar \tau \sin(\kappa \omega \tau)}}} = \sqrt{\frac{m \omega}{2\pi i \hbar} \Lim_{\substack{\kappa \to \infty\\ \tau \to 0\\ \kappa \tau = t}}{\frac{\sin(\omega \tau)}{\omega \tau} \frac{1}{\sin(\kappa \omega \tau)}}} = \sqrt{\frac{m \omega}{2 \pi i \hbar \sin(\omega t)}}.
+   \end{equation*}
+   With this result, we have shown that
+   \begin{equation*}
+      K(x_ft_f; x_it_i) =\sqrt{\frac{m \omega}{2 \pi i \hbar \sin[\omega (t_f - t_i)]}}\exp\left[\frac{i m \omega}{2 \hbar}\left(\frac{(x_f^2 + x_i^2) \cos[\omega (t_f - t_i)] - 2x_i x_f}{\sin[\omega (t_f - t_i)]}\right)\right]\theta(t_f - t_i)
+   \end{equation*}
+   is the expression for the propagator from \((x_i,t_i)\) to \((x_f, t_f)\).
+
+   We now avoid computing the path integral by using the composition property of the time evolution operator. For any \(t'\) we have
+   \begin{equation*}
+      K(0 t_f; 0 t_i) = \bra{0_x} U(t_f, t_i) \ket{0_x} = \bra{0_x} U(t_f, t') U(t', t_i) \ket{0_x} = \int_{\mathbb{R}}\dli{x'} \bra{0_x} U(t_f, t') \ketbra{x'}{x'} U(t', t_i) \ket{0_x},
+   \end{equation*}
+   hence for \(t' \in [t_i, t_f]\), we have
+   \begin{align*}
+      F(t_f, t_i) &= K(0 t_f; 0 t_i)\\
+                  &= \int_{\mathbb{R}} \dli{x'} \bra{0_x}U(t_f, t')\ket{x'} \theta(t_f - t') \bra{x'} U(t', t_i) \ket{0_x} \theta(t' - t_i)\\
+                      &= \int_{\mathbb{R}} \dli{x'} K(0t_f; x' t') K(x' t'; 0t_i)\\
+                      &= \int_{\mathbb{R}} \dli{x'} \exp\left[\frac{i}{\hbar}S_\mathrm{cl}(0, t_f, x', t')\right] F(t_f, t') \exp\left[\frac{i}{\hbar}S_\mathrm{cl}(x', t', 0, t_i)\right] F(t', t_i)\\
+                      &= F(t_f, t') F(t', t_i) \int_{\mathbb{R}} \dli{x'} \exp\left\{-\frac{m \omega {x'}^2}{2i\hbar} \left[\cot\left[\omega(t_f - t')\right] + \cot\left[\omega(t' - t_i)\right] \right]\right\}\\
+                      &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i\hbar}{m \omega}} \left\{\cot\left[\omega(t_f - t')\right] + \cot\left[\omega(t' - t_i)\right]\right\}^{-\frac12}\\
+                      &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i \hbar}{m \omega}} \left\{\frac{\cos\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right] + \sin\left[\omega(t_f - t')\right]\cos\left[\omega(t' - t_i)\right]}{\sin\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right]}\right\}^{-\frac12}\\
+                      &= F(t_f, t') F(t', t_i) \sqrt{\frac{2 \pi i \hbar}{m \omega}} \left\{\frac{\sin\left[\omega(t_f - t_i)\right]}{\sin\left[\omega(t_f - t')\right]\sin\left[\omega(t' - t_i)\right]}\right\}^{-\frac12}\\
+                      &= \sqrt{\frac{2\pi i \hbar \sin\left[\omega (t_f - t')\right]\sin\left[\omega (t_f - t')\right]}{m \omega \sin\left[\omega(t_f - t_i)\right]}} F(t_f, t') F(t', t_i)\\
+                      &= \sqrt{\frac{m \omega}{2\pi i \hbar \sin\left[\omega(t_f - t_i)\right]}} \frac{F(t_f, t')}{\sqrt{\frac{m \omega}{2\pi i\hbar \sin\left[\omega( t_f - t')\right]}}} \frac{F(t', t_i)}{\sqrt{\frac{m \omega}{2\pi i\hbar \sin\left[\omega(t' - t_i)\right]}}}.
+   \end{align*}
+   As this last equality holds for all \(t' \in [t_i, t_f],\) \(F(t_f, t_i)\) must not depend on \(t',\) hence we conclude
+   \begin{equation*}
+       F(t_f, t_i) = \sqrt{\frac{m \omega}{2\pi i \hbar \sin\left[\omega(t_f - t_i)\right]}},
+   \end{equation*}
+   as before.
+
+   Let \(\setc{\ket{n}}{n \in \mathbb{N}_0}\) be the complete orthonormal basis that diagonalizes the Hamiltonian, with \(H\ket{n} = \hbar \omega_n \ket{n}\) and \(\omega_n \geq \omega_0\) for all \(n \in \mathbb{N}_0.\) Then
+   \begin{align*}
+      K(x_f t_f; x_i t_i) &= \bra{x_f} U(t_f, t_i) \ket{x_i} \theta(t_f - t_i)\\
+                          &= \sum_{n \in \mathbb{N}_0} \bra{x_f}e^{-i \frac{H}{\hbar} (t_f - t_i)}\ket{n}\braket{n}{x_i}\\
+                          &= \sum_{n \in \mathbb{N}_0} e^{-i \omega_n (t_f - t_i)} \varphi_n(x_f) \varphi^*_n(x_i),
+   \end{align*}
+   where \(\varphi_n(x') = \braket{x'}{n}\) are the stationary states' wave functions. The time evolution of the wave functions are
+   \begin{equation*}
+      \varphi_n(x', t') = \bra{x'} U(t', 0) \ket{n} = e^{-i \omega_n t'} \braket{x'}{n} = e^{-i\omega_n t'} \varphi_n(x'),
+   \end{equation*}
+   then the imaginary time limit yields the ground state wave function as we have
+   \begin{align*}
+      \lim_{t_i \to + i \infty}{e^{-i \omega_0 t_i} K(x' t'; x_i t_i)}
+      &= \lim_{t_i \to +i \infty}{\sum_{n \in \mathbb{N}_0} e^{-i \omega_n t'} \varphi_n(x') e^{i (\omega_n - \omega_0) t_i} \varphi^*_n(x_i)}\\
+      &= \sum_{n \in \mathbb{N}_0} \varphi_n(x', t') \delta_{n,0} \varphi_n^*(x_i)\\
+      &= \varphi_0(x', t') \varphi_0^*(x_i).
+   \end{align*}
+   We compute the ground state wave function at \(t' = 0\) by using \(x_i = 0\) using the limit above,
+   \begin{align*}
+      \varphi_0(x) &= \frac{1}{\varphi_0^*(0)} \lim_{T \to +i \infty}{ e^{-i \omega_0 T} K(x 0; 0 T)}\\
+                   &= \frac{1}{\varphi_0^*(0)} \sqrt{\frac{m \omega}{2\pi i \hbar}} \lim_{T \to +i\infty}{\frac{\exp\left[\frac{im \omega x^2 \cot(- \omega T)}{2\hbar} - i \omega_0 T\right]}{\sqrt{\sin(-\omega T)}}}\\
+                   &= \frac{1}{\varphi_0^*(0)} \sqrt{\frac{m \omega}{2\pi i \hbar}} \lim_{\tau \to +\infty}{\frac{\exp\left[-\frac{im \omega x^2 \cot(i\omega \tau)}{2\hbar} + \omega_0 \tau\right]}{\sqrt{\sin(-i\omega \tau)}}}\\
+                   &= \frac{1}{\varphi_0^*(0)}\sqrt{\frac{m \omega}{2 \pi i \hbar}} \lim_{\tau \to +\infty}{\frac{\exp\left[-\frac{m \omega x^2 \coth(\omega \tau)}{2\hbar} + \omega_0 \tau\right]}{\sqrt{-i \sinh(\omega \tau)}}}\\
+                   &= \frac{1}{\varphi_0^*(0)}\sqrt{\frac{m \omega}{\pi \hbar}} \exp\left[-\frac{m \omega x^2}{2\hbar}\right] \lim_{\tau \to +\infty}{\frac{\exp\left[\omega_0 \tau\right]}{\sqrt{e^{\omega \tau} - e^{-\omega \tau}}}}\\
+                   &= \frac{1}{\varphi_0^*(0)}\sqrt{\frac{m \omega}{\pi \hbar}} \exp\left[-\frac{m \omega x^2}{2\hbar}\right] \sqrt{\lim_{\tau \to +\infty}{e^{(2 \omega_0 - \omega)\tau}\frac{1}{1 - e^{-2\omega \tau}}}},
+   \end{align*}
+   and we conclude \(\omega_0 = \frac12 \omega\) in order for the limit to be non-vanishing and finite, hence
+   \begin{equation*}
+      \varphi_0(x) = \frac{1}{\varphi_0^*(0)} \sqrt{\frac{m \omega}{\pi \hbar}} \exp\left[-\frac{m\omega x^2}{2 \hbar}\right].
+   \end{equation*}
+   To obtain the normalization factor \(\varphi_0^*(0)\) we compute the expression at \(x = 0,\) yielding
+   \begin{equation*}
+      \abs{\varphi_0(0)}^2 = \sqrt{\frac{m \omega}{\pi \hbar}} \implies \varphi_0(x) = \left(\frac{m \omega}{\pi \hbar}\right)^{\frac14} \exp\left[- \frac{m \omega x^2}{2 \hbar}\right],
+   \end{equation*}
+   where we have chosen the phase of the wave function such that it is a real function. Finally, we multiply the result by \(e^{-i \omega_0 t}\) and obtain
+   \begin{equation*}
+   \varphi_0(x, t) = \left(\frac{m \omega}{\pi \hbar}\right)^{\frac14} \exp\left[-\frac{\omega}{2}\left(\frac{m x^2}{\hbar} + i t\right)\right]
+   \end{equation*}
+   as the ground state wave function.
+\end{proof}

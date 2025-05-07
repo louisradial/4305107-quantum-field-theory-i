@@ -14,4 +14,69 @@
                      &= -i \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} e^{-ip(x-y)}\\
                      &= -i \delta(x-y).
     \end{align*}
+    For the linear coupled Lagrangian density, \(\mathcal{L}^{J,J^*} = \partial_\mu \varphi^* \partial^\mu \varphi - (m^2 - i \epsilon) \varphi^* \varphi + J^* \varphi + J \varphi^*,\) the equations of motion are \(L_x \varphi(x) = J(x)\) and \(L_x \varphi^*(x) = J^*(x),\) hence the classical solutions are
+    \begin{equation*}
+        \psi(x) = i \int_{\mathbb{R}^4} \dln4{y}D_F(x,y) J(y)
+        \quad\text{and}\quad
+        \psi^*(x) = i \int_{\mathbb{R}^4} \dln4{y}D_F(x,y) J^*(y).
+    \end{equation*}
+
+    We'll obtain the generating functional
+    \begin{equation*}
+        Z[J,J^*] = \int \dlp{\varphi(x)} \dlp{\varphi^*(x)} \exp\left(i \int_{\mathbb{R}^4} \dln4x \mathcal{L}^{J,J^*}\right),
+    \end{equation*}
+    by using the previous discussion in order to compute the action \(S^{J,J^*} = \int_{\mathbb{R}^4} \dln4x \mathcal{L}^{J,J^*}\). Integrating by parts we obtain
+    \begin{align*}
+        S^{J,J^*} &= \int_{\mathbb{R}^4} \dln4x \left[\partial_\mu \varphi^* \partial^\mu \varphi - (m^2 - i \epsilon) \varphi^* \varphi + J^* \varphi + J \varphi^*\right]\\
+                  &= \int_{\mathbb{R}^4} \dln4x \left[- \varphi^* \square_x \varphi - (m^2 - i \epsilon) \varphi^* \varphi + J^* \varphi + J\varphi^*\right]\\
+                  &= \int_{\mathbb{R}^4} \dln4x \left[- \varphi^* L_x \varphi + J^* \varphi + J \varphi^*\right],
+    \end{align*}
+    using that the boundary terms all vanish as the fields are assumed to go to zero sufficiently fast. Notice the substitutions \(\varphi(x) = \tilde{\varphi}(x) + \psi(x)\) and \(\varphi^*(x) = \tilde{\varphi}^*(x) + \psi^*(x)\) have unitary jacobian for the path integral and that we have
+    \begin{align*}
+        \varphi^* L_x \varphi &= \left[\tilde{\varphi}^*(x) + \psi^*(x)\right]L_x \left[\tilde{\varphi}(x) + \psi(x)\right]\\
+                              &= \left[\tilde{\varphi}^*(x) + \psi^*(x)\right] \left[L_x \tilde{\varphi}(x) + J(x)\right]\\
+                              &= \tilde{\varphi}^*(x) L_x \tilde{\varphi}(x) + \tilde{\varphi}^*(x) J(x) + \psi^*(x) L_x \tilde{\varphi}(x) + \psi^*(x) J(x),
+    \end{align*}
+    thus
+    \begin{align*}
+        S^{J, J^*} &= - \int_{\mathbb{R}^4} \dln4x \left[ \tilde{\varphi}^* L_x \tilde{\varphi} + \tilde{\varphi}^* J + \psi^* L_x \tilde{\varphi} + \psi^* J  - J^*(\tilde{\varphi} + \psi) - J(\tilde{\varphi}^*  +\psi^*) \right]\\
+                   &= - \int_{\mathbb{R}^4} \dln4x \left[\tilde{\varphi}^* L_x \tilde{\varphi} + (-1)^{2}(L_x\psi^*) \tilde{\varphi} - J^* (\tilde{\varphi} + \psi)\right]\\
+                   &= - \int_{\mathbb{R}^4} \dln4x \left[\tilde{\varphi}^* L_x \tilde{\varphi} - J^* \psi\right].
+    \end{align*}
+    As a result, the generating functional is
+    \begin{align*}
+        Z[J, J^*] &= \int \dlp{\tilde{\varphi}(x)} \dlp{\tilde{\varphi}^*(x)} \exp\left[-i \int_{\mathbb{R}^4} \dln4x \left(\tilde{\varphi}^*(x)L_x \tilde{\varphi}(x) - J^*(x) \psi(x)\right)\right]\\
+                  &=\exp\left[i\int_{\mathbb{R}^4} \dln4x J^*(x) \psi(x)\right]\underbrace{\int \dlp{\tilde{\varphi}(x)} \dlp{\tilde{\varphi}^*(x)} \exp\left[-i \int_{\mathbb{R}^4} \dln4x \tilde{\varphi}^*(x)L_x \tilde{\varphi}(x) \right]}_{Z[0]}\\
+                  &= Z[0] \exp\left[-\int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y J^*(x) D_F(x,y) J(y)\right].
+    \end{align*}
+    
+    We'll compute the two point function \(\bra{0} T \varphi(x_1) \herm{\varphi}(x_2) \ket{0}\) using the generating functional and obtain the Feynman propagator. By definition, the two point function is
+    \begin{equation*}
+        \bra{0} T \varphi(x_1) \herm{\varphi}(x_2) \ket{0} = \left(\frac1i\right)^2 \frac{\braket{0}{0}}{Z[0]}\diff.d.{Z[J, J^*]}{J^*(x_1),J(x_2)}[\substack{J = 0\\J^* = 0}] = - \frac{1}{Z[0]} \diff.d.{Z[J,J^*]}{J^*(x_1),J(x_2)}[\substack{J = 0\\J^*=0}],
+    \end{equation*}
+    so it remains to compute the first two functional derivatives of \(Z.\) For the first derivative, we have
+    \begin{align*}
+        \diff.d.{Z[J, J^*]}{J(x_2)} &= - Z[J, J^*] \diff.d.*{\left(\int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y J^*(x) D_F(x,y) J(y)\right)}{J(x_2)}\\
+                                    &= - Z[J, J^*] \int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y J^*(x)D_F(x,y) \delta(y - x_2)\\
+                                    &= - Z[J, J^*] \int_{\mathbb{R}^4} \dln4x  J^*(x) D_F(x, x_2)
+    \end{align*}
+    and
+    \begin{align*}
+        \diff.d.{Z[J, J^*]}{J^*(x_1)} &= - Z[J, J^*] \diff.d.*{\left(\int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y J^*(x) D_F(x,y) J(y)\right)}{J^*(x_1)}\\
+                                    &= - Z[J, J^*] \int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y \delta(x - x_1)D_F(x,y) J(y)\\
+                                    &= - Z[J, J^*] \int_{\mathbb{R}^4} \dln4y  D_F(x_1, y) J(y),
+    \end{align*}
+    then the second functional derivative of interest is
+    \begin{align*}
+        \diff.d.{Z[J,J^*]}{J^*(x_1),J(x_2)} &= -\diff.d.*{Z[J,J^*] \int_{\mathbb{R}^4} \dln4x J^*(x) D_F(x, x_2)}{J^*(x_1)}\\
+                                           &= Z[J, J^*] \left(\int_{\mathbb{R}^4} \dln4y D_F(x_1,y) J(y) \int_{\mathbb{R}^4} \dln4x J^*(x) D_F(x, x_2) - \int_{\mathbb{R}^4} \dln4x \delta(x - x_1) D_F(x, x_2)\right)\\
+                                           &= Z[J, J^*] \left(\int_{\mathbb{R}^4} \dln4y D_F(x_1,y) J(y) \int_{\mathbb{R}^4} \dln4x J^*(x) D_F(x, x_2) - D_F(x_1, x_2)\right).
+    \end{align*}
+    These results yield
+    \begin{align*}
+        \bra{0}T \varphi(x_1) \herm{\varphi}(x_2) \ket{0} &= - \left[\frac{Z[J, J^*]}{Z[0]} \left(\int_{\mathbb{R}^4} \dln4y D_F(x_1,y) J(y) \int_{\mathbb{R}^4} \dln4x J^*(x) D_F(x, x_2) - D_F(x_1, x_2)\right)\right]_{\substack{J = 0\\J^*=0}}\\
+                                                          &= \frac{Z[0]}{Z[0]} D_F(x_1, x_2)\\
+                                                          &= D_F(x_1,x_2),
+    \end{align*}
+    as desired.
 \end{proof}

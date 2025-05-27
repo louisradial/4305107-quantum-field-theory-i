@@ -1,0 +1,25 @@
+% vim: spl=en
+\begin{problem}{Lowest order matrix elements for scattering processes}{p2}
+   Obtain the matrix elements in the lowest order (just the connected part) for the processes
+   \begin{enumerate}[label=(\alph*)]
+       \item \(\Phi_1 S_2 \to \Phi_3 S_4\) and
+       \item \(\Phi_1 \Phi_2 \to S_3 S_4\).
+   \end{enumerate}
+\end{problem}
+\begin{proof}[Solution]
+   For the process \(\Phi_1 S_2 \to \Phi_3 S_4\) we may use the diagram
+   \begin{center}
+      \feynmandiagram [medium, horizontal=a to b] {
+         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, rmomentum'=\(p_2\)] i2 [particle=\(S_2\)],
+         a -- [anti charged scalar, edge label = \(\conj{\Phi}\), momentum'=\(p_1 + p_2\)] b,
+         b -- [charged scalar, momentum=\(p_3\)] f1 [particle=\(\Phi_3\)],
+         b -- [scalar, momentum=\(p_4\)] f2 [particle = \(S_4\)],
+      };
+   \end{center}
+   which uses two \(\Delta\) vertices, hence according to the Feynman rules the correlation function of interest is
+   \begin{align*}
+      \bra{0}T\left\{S(x_4)\Phi(x_3)S(x_2)\Phi(x_1)\right\}\ket{0} &= (-i\Delta)^2 \int_{\mathbb{R}^4}\dln4z \int_{\mathbb{R}^4} \dln4{z'} D_S(x_2 - z) D_\Phi(x_1 - z) D_\Phi(z - z') \times\\
+                                                                   &{\phantom{= (-i\Delta)^2 \int_{\mathbb{R}^4}\dln4z \int_{\mathbb{R}^4} \dln4{z'}}} \times D_\Phi(z' - x_3) D_S(z' - x_4).
+   \end{align*}
+   By the LSZ reduction formula, we have
+\end{proof}

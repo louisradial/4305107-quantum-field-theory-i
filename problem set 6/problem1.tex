@@ -1,0 +1,129 @@
+% vim: spl=en
+\begin{problem}{Feynman rules for an interacting theory of scalar field and charged scalar field}{p1}
+   Consider a complex scalar field \(\Phi\) and a real one \(S\). The Lagrangian density describing this model is
+   \begin{equation*}
+         \mathcal{L} = \partial_\nu \conj{\Phi} \partial^\nu \Phi - \mu^2 \conj{\Phi}\Phi - \frac{\lambda}{4} (\conj{\Phi}\Phi)^2 + \frac12 \partial_\nu S\partial^\nu S - \frac12 m^2 S^2 - \frac{g}{4!} S^4 - \Delta \conj{\Phi}\Phi S,
+   \end{equation*}
+   where \(\mu, \lambda, m, g,\) and \(\Delta\) are constants.
+   \begin{enumerate}[label=(\alph*)]
+       \item Obtain the Feynman rules for this model in the coordinate space.
+       \item Obtain the Feynman rules for this model in the momentum space.
+   \end{enumerate}
+\end{problem}
+\begin{proof}[Solution]
+   We'll write the free action as
+   \begin{equation*}
+      S_0[\Phi, \conj{\Phi}, S] = \int_{\mathbb{R}^4}{\dln4x \left[\partial_\nu \conj{\Phi} \partial^\nu \Phi - (\mu^2 - i \epsilon) \conj{\Phi}\Phi + \frac12 \partial_\nu S\partial^\nu S - \frac12 (m^2 - i \epsilon) S^2\right]},
+   \end{equation*}
+   and the interaction action as
+   \begin{equation*}
+      S_\mathrm{int}[\Phi, \conj{\Phi}, S] = -\int_{\mathbb{R}^4}{\dln4x\left(\frac{\lambda}{4} (\conj{\Phi}\Phi)^2  + \frac{g}{4!} S^4 + \Delta \conj{\Phi}\Phi S\right)},
+   \end{equation*}
+   then the generating functional is
+   \begin{align*}
+      Z[\conj{J}, J, K] &= \int{\dlp{S} \dlp{\Phi}\dlp{\conj{\Phi}} e^{iS_\mathrm{int}[\Phi, \conj{\Phi}, S]} e^{i S_0[\Phi, \conj{\Phi}, S]} \exp\left[i\int_{\mathbb{R}^4}{\dln4x \left(\conj{J}\Phi + J \conj{\Phi} + K S\right)}\right]}\\
+                        &= \int{\dlp{S} \dlp{\Phi}\dlp{\conj{\Phi}} \exp\left(iS_\mathrm{int}\left[\frac{1}{i} \diff.d.{}{\conj{J}}, \frac1i \diff.d.{}{J}, \frac1i \diff.d.{}{K}\right]\right) e^{i S_0[\Phi, \conj{\Phi}, S] + i\int_{\mathbb{R}^4}{\dln4x \left(\conj{J}\Phi + J \conj{\Phi} + K S\right)}}}\\
+                        &= \exp\left(iS_\mathrm{int}\left[\frac{1}{i} \diff.d.{}{\conj{J}}, \frac1i \diff.d.{}{J}, \frac1i \diff.d.{}{K}\right]\right) Z_0[\conj{J}, J, K]\\
+                        &= \sum_{k = 0}^\infty{\frac{(-i)^k}{k!} \left\{\int_{\mathbb{R}^4}{\dln4z\left[\frac{\lambda}{4} \left(\diff.d.{}{J_z} \diff.d.{}{\conj{J}_z}\right)^2  + \frac{g}{4!} \left(\diff.d.{}{K_z}\right)^4 + i\Delta \diff.d.{}{J_z}\diff.d.{}{\conj{J}_z} \diff.d.{}{K_z}\right]}\right\}^kZ_0[\conj{J}, J, K]},
+   \end{align*}
+   where \(Z_0[\conj{J},J,K]\) is the generating functional for the free theory, given by
+   \begin{equation*}
+      Z_0[\conj{J},J,K] = Z_0[0] \exp\left[-\int_{\mathbb{R}^4}{
+            \dln4{x}\int_{\mathbb{R}^4}{
+               \dln4{y} \left(\frac12 K(x)D_S(x-y)K(y) + \conj{J}(x) D_\Phi(x - y) J(y)\right)
+            }
+      }\right],
+   \end{equation*}
+   where
+   \begin{equation*}
+      D_S(x-y) = \int_{\mathbb{R}^4}\frac{\dln4p}{(2\pi)^4} \frac{ie^{-ip(x-y)}}{p_\nu p^\nu - m^2 + i \epsilon}
+      \quad\text{and}\quad
+      D_\Phi(x-y) = \int_{\mathbb{R}^4}\frac{\dln4p}{(2\pi)^4} \frac{ie^{-ip(x-y)}}{p_\nu p^\nu - \mu^2 + i \epsilon}
+   \end{equation*}
+   are the propagators of each field, satisfying the differential equations
+   \begin{equation*}
+      (\square_x + m^2) D_S(x-y) = -i \delta(x - y)
+      \quad\text{and}\quad
+      (\square_x + \mu^2) D_\Phi(x - y) = -i \delta(x-y).
+   \end{equation*}
+
+   For each interaction term we'll compute at first order the relevant correlation function to obtain the vertices of the interacting theory. In first order of \(g,\) we consider
+   \begin{align*}
+      G_g^{(4)}(x_1, x_2, x_3,x_4) &= \bra{0}T\left\{S(x_1)S(x_2) S(x_3)S(x_4)\right\}\ket{0}\\
+                                   &= \frac{\braket{0}{0}}{Z[0]} \diff.d.{Z[\conj{J}, J, K]}{K_{x_1},K_{x_2},K_{x_3},K_{x_4}}[\substack{\conj{J} = 0\\J=0\\K=0}]\\
+                                   &= \frac{\braket{0}{0} Z_0[0]}{Z[0]}\diff.d.*{\left[1 - \frac{ig}{4!}\int_{\mathbb{R}^4}{\dln4z \left(\diff.d.{}{K_z}\right)^4}\right]e^{-\frac12 KD_SK}}{K_{x_1},K_{x_2},K_{x_3},K_{x_4}}[K=0],
+   \end{align*}
+   where we denote \(KD_SK \equiv \int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y K(x) D_S(x-y) K(y)\) as shorthand. The prefactor \(\frac{\braket{0}{0} Z_0[0]}{Z[0]}\) is responsible for removing disconnected diagrams, then we need only consider the fourth order expansion of \(e^{-\frac12 KD_SK},\) yielding
+   \begin{align*}
+      G_g^{(4)} &= \frac{(-ig)}{2^4(4!)^2} \diff.d.*{ \int_{\mathbb{R}^4}\dln4z \left(\diff.d.{}{K_z}\right)^4 \left[\int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y K(x)D_S(x - y)K(y)\right]^4 }{K_{x_1},K_{x_2},K_{x_3},K_{x_4}}[\substack{K=0\\\text{connected}}]\\
+                &= (-ig)\frac{8 \times 6 \times 4 \times 2 \times 4!}{2^4 (4!)^2} \int_{\mathbb{R}^4} \dln4z D_S(x_1 - z) D_S(x_2 - z) D_S(x_3 - z) D_S(x_4 - z)\\
+                &= (-ig) \int_{\mathbb{R}^4} \dln4z D_S(x_1 - z) D_S(x_2 - z) D_S(x_3 - z) D_S(x_4 - z),
+   \end{align*}
+   where we have used that, in order to get the connected diagrams, the internal point functional derivatives must act on different \(KD_SK,\) yielding the \(2^4 4!\) symmetry factor, and then the other functional derivatives yield the additional \(4!\) symmetry factor. In momentum space, we have
+   \begin{align*}
+      \tilde{G}_g^{(4)}(p_1, p_2, p_3, p_4) &= \int_{\mathbb{R}^4} \dln4{x_1}\int_{\mathbb{R}^4} \dln4{x_2}\int_{\mathbb{R}^4} \dln4{x_3}\int_{\mathbb{R}^4} \dln4{x_4}e^{i(p_1 x_1 + p_2 x_2 + p_3x_3 + p_4 x_4)} G^{(4)}_g(x_1, x_2,x_3,x_4)
+   \end{align*}
+   then as
+   \begin{align*}
+      \int_{\mathbb{R}^4} \dln4x  e^{ipx} D(x - z) &= \int_{\mathbb{R}^4} \frac{\dln4k}{(2\pi)^4} \int_{\mathbb{R}^4}\dln4x e^{ikz} \frac{ie^{ix(p - k)}}{k_\nu k^\nu - M^2 + i \epsilon}\\
+                                                   &= \int_{\mathbb{R}^4} \dln4k \frac{ie^{ikz}}{k_\nu k^\nu - M^2 + i \epsilon} \delta(p - k)\\
+                                                   &= \frac{i e^{ipz}}{p_\nu p^\nu - M^2 + i \epsilon},
+   \end{align*}
+   we get
+   \begin{align*}
+      \tilde{G}_g^{(4)}(p_1, p_2, p_3, p_4) &= -ig \int_{\mathbb{R}^4} \dln4z \prod_{\ell = 1}^4{\frac{i e^{ip_\ell z}}{p_\ell^2 - m^2 + i \epsilon}}\\
+                                            &= -ig (2\pi)^4 \delta(p_1 + p_2 + p_3 + p_4) \prod_{\ell = 1}^4{\frac{i}{p_\ell^2 - m^2 + i \epsilon}},
+   \end{align*}
+   where \(p_\ell^2 = (p_\ell)_\nu (p_\ell)^\nu.\)
+
+   We now consider the first order of \(\lambda,\) following similar arguments. The correlation function of interest is the four-point function
+   \begin{align*}
+      G^{(4)}_\lambda(x_1, x_2,x_3,x_4) &= \bra{0}T\left\{\conj{\Phi}(x_1)\Phi(x_2)\conj{\Phi}(x_3)\Phi(x_4)\right\}\ket{0}\\
+                                        &= \frac{\braket{0}{0} Z_0[0]}{Z[0]}\diff.d.*{\left[1 - \frac{i\lambda}{4}\int_{\mathbb{R}^4}{\dln4z \left(\diff.d.{}{J_z}\diff.d.{}{\conj{J}_z}\right)^2}\right]e^{-J^*D_\Phi J}}{J_{x_1},\conj{J}_{x_2},J_{x_3},\conj{J}_{x_4}}[\substack{\conj{J} = 0\\J=0}]\\
+                                        &= \frac{(-i \lambda)}{2^2 4!}\diff.d.*{\left[\int_{\mathbb{R}^4}{\dln4z \left(\diff.d.{}{J_z}\diff.d.{}{\conj{J}_z}\right)^2}\right]\left(J^*D_\Phi J\right)^4}{J_{x_1},\conj{J}_{x_2},J_{x_3},\conj{J}_{x_4}}[\substack{\conj{J} = 0\\J=0\\\text{connected}}]\\
+                                        &= -i\lambda\frac{4 \times 3 \times 2 \times 2 \times 2}{2^2 4!}\int_{\mathbb{R}^4} \dln4z D_\Phi(z - x_1) D_\Phi(x_2 - z) D_\Phi(z - x_3) D_\Phi(x_4 - z)\\
+                                        &= -i \lambda \int_{\mathbb{R}^4} \dln4z\dln4z D_\Phi(z - x_1) D_\Phi(x_2 - z) D_\Phi(z - x_3) D_\Phi(x_4 - z),
+   \end{align*}
+   where the symmetry factor arises from a similar argument as before. In momentum space, we have
+   \begin{align*}
+      \tilde{G}^{(4)}_{\lambda}(p_1, p_2, p_3, p_4) 
+                                              = -i \lambda (2\pi)^4 \delta(p_1 + p_3 + p_2 + p_4) \prod_{\ell = 1}^{4}{\frac{i}{p_{\ell}^2 - \mu^2 + i \epsilon}},
+   \end{align*}
+   since we have \(D_\Phi(x - y) = D_\Phi(y -x),\) or, explicitly,
+   \begin{align*}
+      \int_{\mathbb{R}^4} \dln4x  e^{ipx} D(z - x) &= \int_{\mathbb{R}^4} \frac{\dln4k}{(2\pi)^4} \int_{\mathbb{R}^4}\dln4x e^{-ikz} \frac{ie^{ix(p + k)}}{k_\nu k^\nu - M^2 + i \epsilon}\\
+                                                   &= \int_{\mathbb{R}^4} \dln4k \frac{ie^{-ikz}}{k_\nu k^\nu - M^2 + i \epsilon} \delta(p + k)\\
+                                                   &= \frac{i e^{ipz}}{p_\nu p^\nu - M^2 + i \epsilon}.
+   \end{align*}
+
+   Finally, we consider the first order of \(\Delta.\) The correlation function that we consider is
+   \begin{align*}
+      G_{\Delta}^{(3)}(x_1,x_2,x_3) &= \bra{0}T\left\{S(x_1)\conj{\Phi}(x_2) \Phi(x_3)\right\}\ket{0}\\
+                                    &= i\frac{\braket{0}{0}Z_0[0]}{Z[0]} \diff.d.*{\left[1 + \Delta \int_{\mathbb{R}^4}\dln4z \diff.d.{}{J_z}\diff.d.{}{\conj{J}_z} \diff.d.{}{K_z}\right] e^{-\frac12 KD_SK - \conj{J}D_\Phi J}} {K_{x_1},J_{x_2},\conj{J}_{x_3}}[\substack{K=0\\J=0\\\conj{J}=0}]\\
+                                    &= \frac{(-i\Delta)}{4} \diff.d.*{\int_{\mathbb{R}^4}\dln4z \diff.d.{}{J_z}\diff.d.{}{\conj{J}_z} \diff.d.{}{K_z}\left(KD_S K\right)\left(\conj{J}D_\Phi J\right)^2} {K_{x_1},J_{x_2},\conj{J}_{x_3}}[\begin{subarray}{l}K=0\\J=0\\\conj{J}=0\\\text{connected}\end{subarray}]\\
+                                    &= -i \Delta \frac{2 \times 2}{4} \int_{\mathbb{R}^4} \dln4z D_S(x_1 - z) D_\Phi(x_2 - z) D_\Phi(x_3 - z)\\
+                                    &= -i \Delta \int_{\mathbb{R}^4} \dln4z D_S(x_1 - z) D_\Phi(x_2 - z) D_\Phi(x_3 - z).
+   \end{align*}
+   As before, in momentum space we have
+   \begin{equation*}
+      \tilde{G}_{\Delta}^{(3)}(p_1, p_2, p_3) = - i \Delta (2\pi)^4 \delta(p_1 + p_2 + p_3) \frac{i}{p_1^2 - m^2 + i \epsilon}\prod_{\ell = 2}^3 \frac{i}{p_\ell^2 - \mu^2 + i \epsilon}.
+   \end{equation*}
+
+   We now compile the Feynman rules for our theory. In coordinate space, 
+   \begin{enumerate}[label=(\alph*)]
+      \item write down the external points \(x_i\) at which the correlation function is evaluated and draw the corresponding particle line from them:  \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(x_i\)] -- [scalar] b}; for a scalar, and \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(x_i\)] -- [charged scalar] b}; for a charged scalar;
+      \item for each vertex of type \(g,\) multiply by a factor \(-ig\) and integrate over the internal point \(z_j^g,\) and do analogously for the other vertex types;
+      \item a scalar line \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(y_i\)] -- [scalar] b [particle=\(y_j\)]}; corresponds to the propagator \(D_S(y_i - y_j)\);
+      \item a charged scalar line \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(y_i\)] -- [charged scalar] b [particle=\(y_j\)]}; corresponds to the propagator \(D_\Phi(y_i - y_j)\);
+      \item multiply by the symmetry factor.
+   \end{enumerate}
+   In momentum space,
+   \begin{enumerate}[label=(\alph*)]
+       \item for each vertex multiply by the appropriate coupling factor, as in the coordinate space;
+       \item internal scalar lines \feynmandiagram [inline=(b.base),small, horizontal=a to b] {a -- [scalar, momentum=\(p\)] b}; correspond to \(\frac{i}{p^2 - m^2 + i \epsilon}\);
+       \item internal charged scalar lines \feynmandiagram [inline=(b.base),small, horizontal=a to b] {a -- [charged scalar, momentum=\(p\)] b}; correspond to \(\frac{i}{p^2 - \mu^2 + i \epsilon}\);
+       \item conserve momentum at each vertex with \((2\pi)^4\delta(\sum_i q_i)\), where \(q_i\) are the incoming momenta at the vertex;
+       \item integrate over the undetermined momenta \(\int_{\mathbb{R}^4}\frac{\dln4k}{(2\pi)^4};\)
+       \item multiply by the symmetry factor.
+   \end{enumerate}
+\end{proof}

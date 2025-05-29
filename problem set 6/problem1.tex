@@ -109,7 +109,7 @@
       \tilde{G}_{\Delta}^{(3)}(p_1, p_2, p_3) = - i \Delta (2\pi)^4 \delta(p_1 + p_2 + p_3) \frac{i}{p_1^2 - m^2 + i \epsilon}\prod_{\ell = 2}^3 \frac{i}{p_\ell^2 - \mu^2 + i \epsilon}.
    \end{equation*}
 
-   We now compile the Feynman rules for our theory. In coordinate space, 
+   We now compile the Feynman rules to obtain the correlation functions in our theory. In coordinate space, 
    \begin{enumerate}[label=(\alph*)]
       \item write down the external points \(x_i\) at which the correlation function is evaluated and draw the corresponding particle line from them:  \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(x_i\)] -- [scalar] b}; for a scalar, and \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(x_i\)] -- [charged scalar] b}; for a charged scalar;
       \item for each vertex of type \(g,\) multiply by a factor \(-ig\) and integrate over the internal point \(z_j^g,\) and do analogously for the other vertex types;
@@ -117,11 +117,11 @@
       \item a charged scalar line \feynmandiagram [inline=(a.base),small, horizontal=a to b] {a [particle=\(y_i\)] -- [charged scalar] b [particle=\(y_j\)]}; corresponds to the propagator \(D_\Phi(y_i - y_j)\);
       \item multiply by the symmetry factor.
    \end{enumerate}
-   In momentum space,
+   In momentum space, 
    \begin{enumerate}[label=(\alph*)]
        \item for each vertex multiply by the appropriate coupling factor, as in the coordinate space;
-       \item internal scalar lines \feynmandiagram [inline=(b.base),small, horizontal=a to b] {a -- [scalar, momentum=\(p\)] b}; correspond to \(\frac{i}{p^2 - m^2 + i \epsilon}\);
-       \item internal charged scalar lines \feynmandiagram [inline=(b.base),small, horizontal=a to b] {a -- [charged scalar, momentum=\(p\)] b}; correspond to \(\frac{i}{p^2 - \mu^2 + i \epsilon}\);
+       \item scalar lines \feynmandiagram [inline=(b.base),small, horizontal=a to b] {a -- [scalar, momentum=\(p\)] b}; correspond to \(\frac{i}{p^2 - m^2 + i \epsilon}\);
+       \item charged scalar lines \feynmandiagram [inline=(b.base),small, horizontal=a to b] {a -- [charged scalar, momentum=\(p\)] b}; correspond to \(\frac{i}{p^2 - \mu^2 + i \epsilon}\);
        \item conserve momentum at each vertex with \((2\pi)^4\delta(\sum_i q_i)\), where \(q_i\) are the incoming momenta at the vertex;
        \item integrate over the undetermined momenta \(\int_{\mathbb{R}^4}\frac{\dln4k}{(2\pi)^4};\)
        \item multiply by the symmetry factor.

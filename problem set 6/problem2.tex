@@ -77,9 +77,17 @@
          i2 [particle=\(\bar{\Phi}_2\)] -- [anti charged scalar, momentum=\(\bar{p}_2\)] a,
       };,
    \end{center}
-   as the lowest order contribution. If it were \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4 S_5\) we would get, the \(\Delta^3\) contribution from diagrams such as
+   as the lowest order contribution. If it were \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4 S_5\) we would get a \(\Delta g\) and a \(\Delta^3\) contribution from diagrams such as
    \begin{center}
-      \feynmandiagram [small, vertical=c to a] {
+      \feynmandiagram [inline=(f2.base),medium, horizontal=a to b] {
+         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [charged scalar, rmomentum'=\(\bar{p}_2\)] i2 [particle=\(\bar{\Phi}_2\)],
+         a -- [scalar, momentum'=\(k\)] b,
+         b -- [scalar, momentum=\(s_3\)] f1 [particle=\(S_3\)],
+         b -- [scalar, momentum=\(s_4\)] f2 [particle = \(S_4\)],
+         b -- [scalar, momentum=\(s_5\)] f3 [particle = \(S_5\)],
+      }; 
+      and
+      \feynmandiagram [inline=(f2.base),small, vertical=c to a] {
          i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum=\(s_3\)] f1 [particle=\(S_3\)],
          a -- [anti charged scalar, momentum=\(\bar{k}\)] b,
          b -- [scalar, momentum=\(s_4\)] f2 [particle=\(S_4\)],
@@ -91,5 +99,5 @@
          % i1 -- [draw=none] i2,
       }; 
    \end{center}
-   as the lowest order contribution.
+   as the lowest orders contributions, depending on the ratio \(\frac{g}{\Delta^2}.\)
 \end{proof}

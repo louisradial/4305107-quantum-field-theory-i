@@ -3,23 +3,93 @@
    Obtain the matrix elements in the lowest order (just the connected part) for the processes
    \begin{enumerate}[label=(\alph*)]
        \item \(\Phi_1 S_2 \to \Phi_3 S_4\) and
-       \item \(\Phi_1 \Phi_2 \to S_3 S_4\).
+       \item \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4\).
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-   For the process \(\Phi_1 S_2 \to \Phi_3 S_4\) we may use the diagram
-   \begin{center}
-      \feynmandiagram [medium, horizontal=a to b] {
-         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, rmomentum'=\(p_2\)] i2 [particle=\(S_2\)],
-         a -- [anti charged scalar, edge label = \(\conj{\Phi}\), momentum'=\(p_1 + p_2\)] b,
-         b -- [charged scalar, momentum=\(p_3\)] f1 [particle=\(\Phi_3\)],
-         b -- [scalar, momentum=\(p_4\)] f2 [particle = \(S_4\)],
-      };
-   \end{center}
-   which uses two \(\Delta\) vertices, hence according to the Feynman rules the correlation function of interest is
+   We recall the LSZ reduction formula for the \(S\) field,
    \begin{align*}
-      \bra{0}T\left\{S(x_4)\Phi(x_3)S(x_2)\Phi(x_1)\right\}\ket{0} &= (-i\Delta)^2 \int_{\mathbb{R}^4}\dln4z \int_{\mathbb{R}^4} \dln4{z'} D_S(x_2 - z) D_\Phi(x_1 - z) D_\Phi(z - z') \times\\
-                                                                   &{\phantom{= (-i\Delta)^2 \int_{\mathbb{R}^4}\dln4z \int_{\mathbb{R}^4} \dln4{z'}}} \times D_\Phi(z' - x_3) D_S(z' - x_4).
+      \braket{s_1 \dots s_N\mathrm{, out}}{r_1 \dots r_L\mathrm{, in}} 
+      &= \left(i Z_S^{-\frac12}\right)^{N + L} \int_{\mathbb{R}^4} \dln4{x_1} \dots \int_{\mathbb{R}^4} \dln4{x_N} \int_{\mathbb{R}^4} \dln4{y_1}\dots \int_{\mathbb{R}^4} \dln4{y_L} \times\\
+      &{}\phantom{\left(i Z_S^{-\frac12}\right)^{N+L}\int_{\mathbb{R}^4}}\times \prod_{n = 1}^N e^{-i s_n x_n} (\square_{x_n} + m^2) \prod_{\ell = 1}^L e^{i r_\ell y_\ell} (\square_{y_\ell} + m^2) \times\\
+      &{}\phantom{\left(i Z_S^{-\frac12}\right)^{N+L}\int_{\mathbb{R}^4}} \times \bra{0} T\left\{S(x_1)\dots S(x_N) S(y_1) \dots S(y_L)\right\}\ket{0}.
    \end{align*}
-   By the LSZ reduction formula, we have
+   To obtain the LSZ reduction formula for the \(\Phi\) field, notice that for charged scalar fields, we have
+   \begin{align*}
+      \sqrt{2 \omega_{\vetor{k}}} \left({\herm{a}_{\vetor{k}}}^{(\mathrm{in})} - {\herm{a}_{\vetor{k}}}^{(\mathrm{out})}\right)
+      &= - \sqrt{2 \omega_{\vetor{k}}} Z_{\Phi}^{-\frac12} \int_{\mathbb{R}} \dli{t} \diffp*{\int_{\mathbb{R}^3} \frac{\dln3x}{\sqrt{2 \omega_{\vetor{k}}}} e^{-ikx} \left(\omega_{\vetor{k}} \herm{\Phi}(x) - i \partial_t \herm{\Phi}(x)\right)}{t}\\
+      &= -Z_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4x e^{-ikx} \left(-i \omega_{\vetor{k}}^2 - \omega_{\vetor{k}} \partial_t \herm{\Phi}(x) + \omega_{\vetor{k}} \partial_t \herm{\Phi}(x) - i \partial_t^2 \herm{\Phi}(x)\right)\\
+      &= iZ_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4x e^{-ikx} (\norm{\vetor{k}}^2 + \mu^2 + \partial_t^2)\herm{\Phi}(x)\\
+      &= iZ_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4x \left[e^{-ikx} (\mu^2 + \partial_t^2)\herm{\Phi}(x) - \left(\partial_j \partial^j e^{-ikx}\right)\herm{\Phi}(x)\right]\\
+      &= iZ_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4x e^{-ikx} (\square_{x} + \mu^2) \herm{\Phi}(x),
+   \end{align*}
+   hence we obtain
+   \begin{equation*}
+      \sqrt{2 \omega_{\vetor{p}}} \left(a^{(\mathrm{out})}_{\vetor{p}} - a^{(\mathrm{in})}_{\vetor{p}}\right) = i Z_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4y e^{ipy} (\square_{y} + \mu^2) \Phi(y),
+   \end{equation*}
+   \begin{equation*}
+      \sqrt{2 \omega_{\vetor{\bar{p}}}} \left(b^{(\mathrm{out})}_{\vetor{\bar{p}}} - b^{(\mathrm{in})}_{\vetor{\bar{p}}}\right) = i Z_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4{\bar{y}}e^{i\bar{p}\bar{y}} (\square_{\bar{y}} + \mu^2) \herm{\Phi}(\bar{y}),
+   \end{equation*}
+   and
+   \begin{equation*}
+      \sqrt{2 \omega_{\vetor{\bar{k}}}} \left({\herm{b}_{\vetor{\bar{k}}}}^{(\mathrm{in})} - {\herm{b}_{\vetor{\bar{k}}}}^{(\mathrm{out})}\right) = i Z_{\Phi}^{-\frac12} \int_{\mathbb{R}^4} \dln4{\bar{x}} e^{-i\bar{k} \bar{x}} (\square_{\bar{x}} + \mu^2) \Phi(\bar{x}),
+   \end{equation*}
+   analogously. For an in state with \(L\) particles with momentum \(k_\ell\) and \(\bar{L}\) antiparticles with momentum \(\bar{k}_{\bar{\ell}}\) and an out state with \(N\) particles with momentum \(p_n\) and \(\bar{N}\) antiparticles with momentum \(\bar{p}_{\bar{n}},\) we have
+   \begin{align*}
+      \braket{\mathrm{out}}{\mathrm{in}} &= \left(iZ_\Phi^{-\frac12}\right)^{L + \bar{L} + N + \bar{N}} \int_{\mathbb{R}^{4(L + \bar{L} + N + \bar{N})}} \dln4{x_1} \dots \dln4{x_L} \dln4{\bar{x}_1} \dots \dln4{\bar{x}_{\bar{L}}} \dln4{y_1} \dots \dln4{y_N} \dln4{\bar{y}_1} \dots \dln4{\bar{y}_{\bar{N}}} \times\\
+                                         &{}\phantom{\left(iZ_\Phi^{-\frac12}\right)}\times 
+                                         \prod_{\ell = 1}^{L} e^{-ik_\ell x_\ell} (\square_{x_\ell} + \mu^2) 
+                                         \prod_{\bar{\ell} = 1}^{\bar{L}}e^{\bar{-ik}_{\bar{\ell}} \bar{x}_{\bar{\ell}}} (\square_{\bar{x}_{\bar{\ell}}} + \mu^2) 
+                                         \prod_{n = 1}^{N} e^{ip_n y_n} (\square_{y_n} + \mu^2) 
+                                         \prod_{\bar{n} = 1}^{\bar{N}} e^{\bar{ip}_{\bar{n}} \bar{y}_{\bar{n}}} (\square_{\bar{y}_{\bar{n}}} + \mu^2) \times\\
+                                         &{}\phantom{\left(iZ_\Phi^{-\frac12}\right)}\times \bra{0}T\left\{\Phi(y_1) \dots \Phi(y_N) \herm{\Phi}(\bar{y}_1) \dots \herm{\Phi}(\bar{y}_{\bar{N}}) \herm{\Phi}(x_1) \dots \herm{\Phi}(x_L) \Phi(\bar{x}_1) \dots \Phi(\bar{x}_{\bar{L}})\right\}\ket{0}
+   \end{align*}
+   as the LSZ reduction formula for complex scalar fields. Due to the LSZ reduction formulas, as each differential operator acts on a propagator \(D(z - z')\) yielding a \(-i \delta(z - z'),\) we see that the Feynman rules for matrix elements are the same as those of the correlation function in momentum space, but with the additional rule that external legs contribute with the appropriate factor of \(Z^{-\frac12}\) instead of the momentum space propagator.
+
+   For the process \(\Phi_1 S_2 \to \Phi_3 S_4\) we may use the diagrams
+   \begin{center}
+      \feynmandiagram [inline=(a.base),medium, horizontal=a to b] {
+         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, rmomentum'=\(s_2\)] i2 [particle=\(S_2\)],
+         a -- [anti charged scalar, edge label = \(\bar{\Phi}\), momentum'=\(p_1 + s_2\)] b,
+         b -- [charged scalar, momentum=\(p_3\)] f1 [particle=\(\Phi_3\)],
+         b -- [scalar, momentum=\(s_4\)] f2 [particle = \(S_4\)],
+      }; 
+      \quad and \quad
+      \feynmandiagram [inline=(b.base),medium, vertical=a to b] {
+         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum'=\(s_4\)] f1 [particle=\(S_4\)],
+         a -- [anti charged scalar, edge label = \(\bar{\Phi}\), momentum'=\(p_1 - s_4\)] b,
+         b -- [charged scalar, momentum=\(p_3\)] f2 [particle=\(\Phi_3\)],
+         b -- [scalar, rmomentum=\(s_2\)] i2 [particle=\(S_2\)],
+      };,
+   \end{center}
+   which uses two \(\Delta\) vertices. According to the Feynman rules, we need only resolve the momentum conservation in the vertices with the internal antiparticle line, hence
+   \begin{align*}
+      \braket{p_3 s_4}{p_1 s_2} &= (-i \Delta)^2 \int_{\mathbb{R}^4}\frac{\dln4k}{(2\pi)^4} \frac{i (2\pi)^8 \left[\delta(p_1 + s_2 - k)\delta(k - p_3 - s_4) + \delta(p_1 - s_4 - k)\delta(k + s_2 - p_3)\right]}{Z_S Z_\Phi (k^2 - \mu^2 + i \epsilon)}\\
+      &= (2\pi)^4(-i \Delta)^2 Z_S^{-1} Z_\Phi^{-1} \left[\frac{i \delta(p_1 + s_2 - p_3 - s_4)}{(p_1 + s_2)^2 - \mu^2 + i \epsilon} + \frac{i \delta(p_1 + s_2 - p_3 - s_4)}{(p_1 - s_4)^2 - \mu^2 + i \epsilon}\right]\\
+                                &= \frac{-i \Delta^2 (2\pi)^4 \delta(p_1 + s_2 - p_3 - s_4)}{Z_S Z_\Phi}\left[\frac{1}{(p_1 + s_2)^2 - \mu^2 + i \epsilon} + \frac{1}{(p_1 - s_4)^2 - \mu^2 + i \epsilon}\right],
+   \end{align*}
+   is the lowest order matrix element for the considered process. 
+
+   There is no Feynman diagram with the vertices of the theory such that a process \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4\) is possible, so the matrix element is zero. If the process considered were \(\Phi_1 \bar{\Phi}_2 \to S_3,\) we would simply get the \(\Delta\) vertex,
+   \begin{center}
+      \feynmandiagram[inline=(f1.base), small, horizontal=a to f1] {
+         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum'=\(s_3\)] f1 [particle=\(S_3\)],
+         i2 [particle=\(\bar{\Phi}_2\)] -- [anti charged scalar, momentum=\(\bar{p}_2\)] a,
+      };,
+   \end{center}
+   as the lowest order contribution. If it were \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4 S_5\) we would get, the \(\Delta^3\) contribution from diagrams such as
+   \begin{center}
+      \feynmandiagram [small, vertical=c to a] {
+         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum=\(s_3\)] f1 [particle=\(S_3\)],
+         a -- [anti charged scalar, momentum=\(\bar{k}\)] b,
+         b -- [scalar, momentum=\(s_4\)] f2 [particle=\(S_4\)],
+         b -- [charged scalar, momentum=\(k\)] c,
+         c -- [scalar, momentum=\(s_5\)] f3 [particle = \(S_5\)],
+         i2 [particle=\(\bar{\Phi}_2\)] -- [anti charged scalar, momentum'=\(\bar{p}_2\)] c,
+         f1 -- [draw=none] f2,
+         f2 -- [draw=none] f3,
+         % i1 -- [draw=none] i2,
+      }; 
+   \end{center}
+   as the lowest order contribution.
 \end{proof}

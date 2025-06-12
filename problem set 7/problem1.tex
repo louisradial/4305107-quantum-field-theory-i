@@ -7,5 +7,38 @@
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   We consider the generating functional
+   \begin{equation*}
+      Z[\eta, \bar{\eta}] = Z[0,0] \exp\left[- \int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y \bar{\eta}(x) S_F(x - y) \eta(y)\right],
+   \end{equation*}
+   where \(\eta\) and \(\bar{\eta}\) are Grassmann variables. The \(2N\)-point function is then
+   \begin{align*}
+      G^{(2N)}(x_1, \dots, x_{2N}) &= \bra{0} T \Psi(x_1) \bar{\Psi}(x_2) \dots \Psi(x_{2N - 1}) \bar{\Psi}(x_{2N})\ket{0}\\
+                                   &= \frac{1}{Z[0,0]}\diff.d.{Z[\eta,\bar{\eta}]}{\bar{\eta}(x_{1})\eta(x_{2})\dots \bar{\eta}(x_{2N -1}) \eta(x_{2N})}[\eta = \bar{\eta} = 0].
+   \end{align*}
+   We'll obtain the four-point function and generalize the result to \(2N.\) To make notation less cumbersome, we'll use the shorthand 
+   \begin{equation*}
+      \bar{\eta} S \eta \equiv \int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4{y} \bar{\eta}(x) S_F(x - y) \eta(y),
+   \end{equation*}
+   \begin{equation*}
+      (\bar{\eta} S)_i \equiv \int_{\mathbb{R}^4} \dln4x \bar{\eta}(x) S_F(x - x_i),
+      \quad\text{and}\quad
+      (S \eta)_i \equiv \int_{\mathbb{R}^4} \dln4y S_F(x_i - y)\eta(y),
+   \end{equation*}
+   as well as \(\eta(x_i) = \eta_i,\) \(\bar{\eta}(x_i) = \bar{\eta}_i,\) and \(S(x_i - x_j) = S_{ij}\) Notice
+   \begin{align*}
+      \diff.d.{e^{- \bar{\eta} S \eta}}{\bar{\eta}_j,\eta_i} &= \diff.d.*{}{\bar{\eta}_j} (\bar{\eta} S)_i e^{- \bar{\eta} S \eta} = S_{ji} e^{- \bar{\eta} S \eta} - (\bar{\eta} S)_i \diff.d.*{}{\bar{\eta}_j} e^{-\bar{\eta}S\eta} = S_{ji} e^{- \bar{\eta} S \eta} + (\bar{\eta} S)_i (S \eta)_j e^{- \bar{\eta} S \eta}\\
+      &= \left[S_{ji} + (\bar{\eta} S)_i (S \eta)_j\right]e^{- \bar{\eta} S \eta},
+   \end{align*}
+   then
+   \begin{align*}
+      \diff.d.{e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2,\bar{\eta}_3,\eta_4} 
+      &= \diff.d.*{\left[S_{34}  + (\bar{\eta} S)_4 (S \eta)_3\right]e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2}\\
+      &= \left[S_{34}  + (\bar{\eta} S)_4 (S \eta)_3\right]\left[S_{12}  + (\bar{\eta} S)_2 (S \eta)_1\right]e^{- \bar{\eta} S \eta} - S_{14} S_{32} e^{- \bar{\eta} S \eta},
+   \end{align*}
+   hence
+   \begin{equation*}
+      G^{(4)}(x_1 x_2 x_3 x_4) = S_{34} S_{12} - S_{14} S_{32} = S_F(x_1 - x_2) S_F(x_3 - x_4) - S_F(x_1 - x_4) S_F(x_3 - x_2)
+   \end{equation*}
+   is the four point function.
 \end{proof}

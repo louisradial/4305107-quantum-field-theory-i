@@ -25,20 +25,25 @@
       \quad\text{and}\quad
       (S \eta)_i \equiv \int_{\mathbb{R}^4} \dln4y S_F(x_i - y)\eta(y),
    \end{equation*}
-   as well as \(\eta(x_i) = \eta_i,\) \(\bar{\eta}(x_i) = \bar{\eta}_i,\) and \(S(x_i - x_j) = S_{ij}\) Notice
+   as well as \(\eta(x_i) = \eta_i,\) \(\bar{\eta}(x_i) = \bar{\eta}_i,\) and \(S(x_i - x_j) = S_{ij}\) Notice that
    \begin{align*}
       \diff.d.{e^{- \bar{\eta} S \eta}}{\bar{\eta}_j,\eta_i} &= \diff.d.*{}{\bar{\eta}_j} (\bar{\eta} S)_i e^{- \bar{\eta} S \eta} = S_{ji} e^{- \bar{\eta} S \eta} - (\bar{\eta} S)_i \diff.d.*{}{\bar{\eta}_j} e^{-\bar{\eta}S\eta} = S_{ji} e^{- \bar{\eta} S \eta} + (\bar{\eta} S)_i (S \eta)_j e^{- \bar{\eta} S \eta}\\
       &= \left[S_{ji} + (\bar{\eta} S)_i (S \eta)_j\right]e^{- \bar{\eta} S \eta},
    \end{align*}
-   then
+   and that
+   \begin{align*}
+      \diff.d.*{\left[S_{ji} + (\bar{\eta} S)_i(S \eta)_j\right]f(\eta, \bar{\eta})}{\bar{\eta}_\ell,\eta_k}
+      &= \left[S_{ji} + (\bar{\eta} S)_i (S \eta)_j\right] \diff.d.{f(\eta, \bar{\eta})}{\bar{\eta}_\ell,\eta_k} - S_{\ell i}S_{jk} f(\eta, \bar{\eta}).
+   \end{align*}
+   The immediate result is
    \begin{align*}
       \diff.d.{e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2,\bar{\eta}_3,\eta_4} 
-      &= \diff.d.*{\left[S_{34}  + (\bar{\eta} S)_4 (S \eta)_3\right]e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2}\\
+      % &= \diff.d.*{\left[S_{34}  + (\bar{\eta} S)_4 (S \eta)_3\right]e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2}\\
       &= \left[S_{34}  + (\bar{\eta} S)_4 (S \eta)_3\right]\left[S_{12}  + (\bar{\eta} S)_2 (S \eta)_1\right]e^{- \bar{\eta} S \eta} - S_{14} S_{32} e^{- \bar{\eta} S \eta},
    \end{align*}
    hence
    \begin{equation*}
       G^{(4)}(x_1 x_2 x_3 x_4) = S_{34} S_{12} - S_{14} S_{32} = S_F(x_1 - x_2) S_F(x_3 - x_4) - S_F(x_1 - x_4) S_F(x_3 - x_2)
    \end{equation*}
-   is the four point function.
+   is the four point function. To generalize, we note that
 \end{proof}

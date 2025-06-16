@@ -7,5 +7,9 @@
     in the center of mass frame. Consider unpolarized beams and sum over the final state spins. Express the answer in terms of Mandelstam variables.
 \end{problem}
 \begin{proof}[Solution]
-    
+    We consider the phase space
+    \begin{align*}
+        \int \dli{\Pi_2} &= \int_{\mathbb{R}^3}\frac{\dln3{p_1}}{(2\pi)^3 (2E_1)} \int_{\mathbb{R}^3} \frac{\dln3{p_2}}{(2\pi)^3 (2E_2)} (2\pi)^4 \delta^{(4)}(p_a + p_b - p_1 - p_2)\\
+                         &= \int_{\mathbb{R}^3} \frac{\dln3{p_1}}{(2\pi)^3} \frac{2\pi \delta(E_a + E_b - E_1 - E_2)}{4 E_1 E_2}
+    \end{align*}
 \end{proof}

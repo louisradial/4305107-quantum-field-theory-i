@@ -7,5 +7,39 @@
    where \(\varphi\) is a real scalar field and \(\Psi\) a Dirac fermion. Evaluate the amplitude for the decay of the scalar into a fermion-antifermion pair where these are in helicity states.
 \end{problem}
 \begin{proof}[Solution]
-    
+   The amplitude of the decay of a scalar into a fermion-antifermion pair is
+   \begin{align*}
+      \braket{f_2 \bar{f}_3}{s_1} &= iZ_\varphi^{-\frac12} Z_\Psi^{-1} \int_{\mathbb{R}^4} \dln4{x_1} \int_{\mathbb{R}^4} \dln4{x_2} \int_{\mathbb{R}^4} \dln4{x_3} e^{-i(p_1 x_1 - p_2 x_2 - p_3 x_3)} (\square_{x_1} + \mu^2) \bar{u}(p_2) (i \slashed{\partial}_{x_2} - m) \times\\
+                                  &{}\phantom{= iZ_\varphi^{-\frac12} Z_\psi^{-1}\int_{\mathbb{R}^4} \dln4{x_1}\int_{\mathbb{R}^4} \dln4{x_2}\int_{\mathbb{R}^4} \dln4{x_3}} \times \bra{0} T\left\{\varphi(x_1) \bar{\Psi}(x_2) \Psi(x_3)\right\}\ket{0} \overleftarrow{(i \slashed{\partial}_{x_3} + m)} v(p_3)
+   \end{align*}
+   by the LSZ reduction formula, where \(\bar{u}\) and \(v\) are understood as helicity states for the fermion and anti-fermion into which the scalar decays. It remains to determine the three-point function
+   \begin{equation*}
+      G^{(3)}(x_1, x_2, x_3) = \bra{0} T\left\{\varphi(x_1) \bar{\Psi}(x_2) \Psi(x_3)\right\}\ket{0} = -\frac{i}{Z[0,0,0]} \diff.d.{Z[J, \eta, \bar{\eta}]}{J_{x_1},\eta_{x_2},\bar{\eta}_{x_3}}[J = \eta = \bar{\eta} = 0],
+   \end{equation*}
+   where \(Z[J, \eta, \bar{\eta}]\) is the generating functional. For the Yukawa model we have
+   \begin{equation*}
+      Z[J,\eta,\bar{\eta}] = Z_0\exp\left[-g \int_{\mathbb{R}^4} \dln4z \diff.d.{}{J_z} \diff.d.{}{\eta_z} \diff.d.{}{\bar{\eta}_z}\right]e^{-\int_{\mathbb{R}^4} \dln4x \int_{\mathbb{R}^4} \dln4y \left[\bar{\eta}(x) S_\psi(x - y) \eta(y) + \frac12 J(x) D_\varphi(x - y) J(y)\right]},
+   \end{equation*}
+   where \((i \slashed{\partial}_{x} - m) S_\Psi(x-y) = -i \delta(x - y)\) and \((\square_x + \mu^2) D_\varphi(x-y) = -i \delta(x - y),\) then in first order of \((-ig),\) the three-point function is, borrowing the notation of \cref{prob:p1},
+   \begin{equation*}
+      G^{(3)}(x_1,x_2,x_3) = ig\diff.d.*{\left[\int_{\mathbb{R}^4} \dln4z \diff.d.{}{J_z} \diff.d.{}{\eta_z} \diff.d.{}{\bar{\eta}_z}e^{- \bar{\eta} S \eta - \frac12 J D J}\right]}{J_{x_1},\eta_{x_2},\bar{\eta}_{x_3}}[\substack{J = 0\\\eta = 0\\ \bar{\eta} = 0\\\mathrm{connected}}],
+   \end{equation*}
+   where we have used that the \(\frac{1}{Z[0,0,0]}\) factor makes it so only connected diagrams contribute. There are only two derivatives with respect to \(J,\) then the only term that contributes from the \(e^{-JDJ}\) exponential is \(-D_\varphi(x_1 - z),\) where the symmetry factor cancels with the other factors, yielding
+   \begin{equation*}
+      G^{(3)}(x_1,x_2,x_3) = -ig\diff.d.*{\left[\int_{\mathbb{R}^4} \dln4z D_\varphi(x_1 - z) \diff.d.{}{\eta_z} \diff.d.{}{\bar{\eta}_z}e^{- \bar{\eta} S \eta}\right]}{\eta_{x_2},\bar{\eta}_{x_3}}[\substack{\eta = \bar{\eta} = 0\\\mathrm{connected}}].
+   \end{equation*}
+   We use the analogous result of \cref{prob:p1},
+   \begin{equation*}
+      \diff.d.{e^{- \bar{\eta} S \eta}}{\eta_1,\bar{\eta}_2,\eta_3,\bar{\eta}_4}[\eta = \bar{\eta} = 0] = S_{43}S_{21} - S_{41}S_{23}
+   \end{equation*}
+   then the connected part is the one without \(S_{zz},\) hence
+   \begin{equation*}
+      G^{(3)}(x_1,x_2,x_3) = -ig \int_{\mathbb{R}^4} \dln4z D_\varphi(x_1 - z) S_\Psi(x_2 - z) S_\Psi(z - x_3)
+   \end{equation*}
+   is the three-point function. Then the differential operators in the LSZ reduction formulas yield delta functions when they act on the propagators, hence once we integrate over the space variables we get
+   \begin{align*}
+      \braket{f_2 \bar{f}_3}{s_1} &= \frac{-ig}{Z_\varphi^{\frac12} Z_\Psi} \int_{\mathbb{R}^4} \dln4z e^{-i(p_1 - p_2 - p_3)z} \bar{u}(p_2) v(p_3)\\
+                                  &= \frac{(-ig)(2\pi)^4}{Z_\varphi^{\frac12} Z_\Psi} \bar{u}(p_2)v(p_3) \delta(p_1 - p_2 - p_3)
+   \end{align*}
+   as the amplitude.
 \end{proof}

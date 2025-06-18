@@ -7,9 +7,152 @@
     in the center of mass frame. Consider unpolarized beams and sum over the final state spins. Express the answer in terms of Mandelstam variables.
 \end{problem}
 \begin{proof}[Solution]
-    We consider the phase space
+    The cross section for a process with two initial and final identical particles with scattering amplitude \((2\pi)^4 \delta(p_1 + p_2 - p_3 - p_4) i\mathcal{M}\) is
+    \begin{equation*}
+        \dl{\sigma} = \frac{\abs{i \mathcal{M}}^2}{(2 E_1)(2 E_2) \norm{\vetor{v}_1 - \vetor{v}_2}} \dl{\Phi_2},
+    \end{equation*}
+    if we may take the particles initially moving collinearly, where
+    \begin{equation*}
+        \dl{\Phi_2} = \frac{\dln3{p_3}\dln3{p_4}}{(2\pi)^2 (2E_3)(2E_4)} \delta(p_1 + p_2 - p_3 - p_4)
+    \end{equation*}
+    is the differential two-to-two phase space. In the center of momentum frame, the initial momentum is \((p_1 + p_2)^\mu = (\sqrt{s}, \vetor{0}),\) so we have
+    \begin{equation*}
+        \delta(p_1 + p_2 - p_3 - p_4) = \delta(\sqrt{s} - E_3 - E_4) \delta(\vetor{p}_3 + \vetor{p}_4)
+    \end{equation*}
+    and we may resolve \(\vetor{p}_4 = - \vetor{p}_3\) and \(E_4 = \sqrt{m^2 + \norm{\vetor{p}_3}^2} = E_3\) when we integrate the differential phase space,
+    \begin{equation*}
+        \int \dli{\Phi_2} = \int_{\mathbb{R}^3} \frac{\dln3{p_3}}{(2\pi)^2 (2 E_3)^2} \delta(\sqrt{s} - 2E_3) = \int \dli{\Omega}\int_{0}^\infty \dli{p} \frac{p^2}{2(2\pi)^2 s} \delta\left(\sqrt{p^2 + m^2} - \frac{\sqrt{s}}{2}\right).
+    \end{equation*}
+    Notice
     \begin{align*}
-        \int \dli{\Pi_2} &= \int_{\mathbb{R}^3}\frac{\dln3{p_1}}{(2\pi)^3 (2E_1)} \int_{\mathbb{R}^3} \frac{\dln3{p_2}}{(2\pi)^3 (2E_2)} (2\pi)^4 \delta^{(4)}(p_a + p_b - p_1 - p_2)\\
-                         &= \int_{\mathbb{R}^3} \frac{\dln3{p_1}}{(2\pi)^3} \frac{2\pi \delta(E_a + E_b - E_1 - E_2)}{4 E_1 E_2}
+        \theta(p)\delta\left(\sqrt{p^2 + m^2} - \frac{\sqrt{s}}{2}\right) &= \theta(p)\frac{\delta\left(p - \sqrt{\frac{s}{4} - m^2}\right)}{2\sqrt{\frac{\frac{s}{4} - m^2}{s}}} = \frac{\theta(p) \delta\left(p - \frac{\sqrt{s}}{2}\sqrt{1- \frac{4m^2}{s}}\right)}{\sqrt{1 - \frac{4m^2}{s}}}\\
+        &= \frac{\sqrt{s}\theta(p)\delta\left(p - \frac{\sqrt{s}}{2}\sqrt{1 - \frac{4m^2}{s}}\right)}{2p}
     \end{align*}
+    then
+    \begin{equation*}
+        \int \dli{\Phi_2} = \int \dli{\Omega} \int_0^\infty \dli{p} \frac{p\delta\left(p - \frac{\sqrt{s}}{2}\sqrt{1 - \frac{4m^2}{s}}\right)}{4(2\pi)^2 \sqrt{s}} = \int \dli{\Omega} \frac{\sqrt{1 - \frac{4m^2}{s}}}{8(2\pi)^2},
+    \end{equation*}
+    that is,
+    \begin{equation*}
+        \dli{\Phi_2} = \frac{1}{32\pi^2}\sqrt{1 - \frac{4m^2}{s}}\dli{\Omega}
+    \end{equation*}
+    is the differential phase space. In the center of momentum we have \(\vetor{p}_1 = -\vetor{p}_2\) and \(E_1 = E_2 = \frac{\sqrt{s}}{2}\), then
+    \begin{equation*}
+        (2 E_1)(2E_2) \norm{\vetor{v}_1 - \vetor{v}_2} = s \norm*{\frac{\vetor{p}_1}{E_1} - \frac{\vetor{p}_2}{E_2}} = s \norm*{\frac{2\vetor{p}_1}{\frac12\sqrt{s}}} = 2s \sqrt{1 - \frac{4m^2}{s}},
+    \end{equation*}
+    that is,
+    \begin{equation*}
+        \diff{\sigma}{\Omega} = \frac{\abs{i\mathcal{M}}^2}{64 \pi^2 s}
+    \end{equation*}
+    is the differential cross section.
+
+    For the elastic scattering of two fermions \(f_1 + f_2 \to f_3 + f_4\) where the initial beam is unpolarized, the differential cross section is
+    \begin{equation*}
+        \diff{\sigma}{\Omega} = \frac{\frac14\sum_{\mathrm{spin}}\abs{i\mathcal{M}}^2}{64 \pi^2 s},
+    \end{equation*}
+    where \(i\mathcal{M} = i\mathcal{M}_t + i \mathcal{M}_u\) is the sum of the matrix elements of the \(t\) and \(u\) channel diagrams
+    \begin{center}
+      \feynmandiagram [inline=(b.base),medium, vertical=a to b] {
+         i1 [particle=\(f_1\)] -- [fermion, momentum=\(p_1\)] a -- [fermion, momentum'=\(p_3\)] f1 [particle=\(f_3\)],
+         a -- [scalar, momentum'=\(p_1 - p_3\)] b,
+         b -- [fermion, momentum=\(p_4\)] f2 [particle=\(f_4\)],
+         b -- [anti fermion, rmomentum=\(p_2\)] i2 [particle=\(f_2\)],
+      };
+      \quad and \quad
+      \feynmandiagram [inline=(b.base),medium, vertical=a to b] {
+         i1 [particle=\(f_1\)] -- [fermion, momentum=\(p_1\)] a -- [fermion, momentum'=\(p_4\)] f1 [particle=\(f_4\)],
+         a -- [scalar, momentum'=\(p_1 - p_4\)] b,
+         b -- [fermion, momentum=\(p_3\)] f2 [particle=\(f_3\)],
+         b -- [anti fermion, rmomentum=\(p_2\)] i2 [particle=\(f_2\)],
+      };,
+   \end{center}
+   which, by the Feynman rules for this theory, are
+   \begin{equation*}
+       i\mathcal{M}_t = \bar{u}_a^{s_3}(p_3) u_a^{s_1}(p_1) \frac{(-i g)^2}{t - \mu^2} \bar{u}_b^{s_4}(p_4)u_b^{s_2}(p_2)
+       \quad\text{and}\quad
+       i\mathcal{M}_u = \bar{u}_c^{s_4}(p_4) u_c^{s_1}(p_1) \frac{(-i g)^2}{u - \mu^2} \bar{u}_d^{s_3}(p_3)u_d^{s_2}(p_2),
+   \end{equation*}
+   omitting the overall \((2\pi)^4 \delta(p_1 + p_2 - p_3 - p_4)\) momentum conservation delta function as it is already accounted for in the definitions of the differential cross section and differential phase space. The overall amplitude is then
+   \begin{equation*}
+       \abs{i\mathcal{M}}^2 = \abs{i\mathcal{M}_t}^2 + \abs{i \mathcal{M}_u}^2 + (i\mathcal{M}_t)^*(i\mathcal{M}_u) + (i\mathcal{M}_u)^*(i\mathcal{M}_t)
+   \end{equation*}
+   and we'll proceed by computing each term separately. For the \(t\)-channel we have
+   \begin{equation*}
+       (i \mathcal{M}_t)^* = (i \mathcal{M}_t)^\dag = \frac{(-ig)^2}{t - \mu^2}\bar{u}_c^{s_2}(p_2) u_c^{s_4}(p_4) \bar{u}_d^{s_1}(p_1) u_d^{s_3}(p_3),
+   \end{equation*}
+   then
+   \begin{align*}
+       \abs{i \mathcal{M}_t}^2 &= \left(\frac{g^2}{t - \mu^2}\right)^2\bar{u}_c^{s_2}(p_2) u_c^{s_4}(p_4) \bar{u}_d^{s_1}(p_1) u_d^{s_3}(p_3)\bar{u}_a^{s_3}(p_3) u_a^{s_1}(p_1) \bar{u}_b^{s_4}(p_4)u_b^{s_2}(p_2)\\
+                               &=\left(\frac{g^2}{t - \mu^2}\right)^2 \bar{u}_d^{s_1}(p_1)u_a^{s_1}(p_1) \bar{u}_c^{s_2}(p_2) u_b^{s_2}(p_2) \bar{u}^{s_3}_a(p_3) u_d^{s_3}(p_3) \bar{u}_b^{s_4}(p_4) u_c^{s_4}(p_4)
+   \end{align*}
+   and when we sum over spins we get
+   \begin{align*}
+       \sum_{\mathrm{spin}}{\abs{i \mathcal{M}_t}^2}&= \left(\frac{g^2}{t - \mu^2}\right)^2 (\slashed{p}_1 + m)_{da} (\slashed{p}_3 + m)_{ad} (\slashed{p}_2 + m)_{cb} (\slashed{p}_4 + m)_{bc}\\
+                                                   &= \left(\frac{g^2}{t - \mu^2}\right)^2 \Tr\left[(\slashed{p}_1 + m)(\slashed{p}_3 + m)\right] \Tr\left[(\slashed{p}_2 + m)(\slashed{p}_4 + m)\right]\\
+                                                   &= \left(\frac{g^2}{t - \mu^2}\right)^2 \left(4p_1 p_3 + 4m^2\right)\left(4p_2 p_4 + 4m^2\right),
+   \end{align*}
+   where we have used that the \(\gamma\) matrices are traceless and that
+   \begin{equation*}
+       \Tr(\slashed{a} \slashed{b}) = a_\mu b_\nu\Tr(\gamma^\mu \gamma^\nu) = \frac12 a_\mu b_\nu\Tr\anticommutator{\gamma^\mu}{\gamma^\nu} = a_\mu b_\nu g^{\mu\nu}\Tr\unity = 4 ab,
+   \end{equation*}
+   where the commutator term vanished due to the cyclic property of the trace. Furthermore, we have
+   \begin{equation*}
+       -2p_1 p_3 = (p_1 - p_3)^2 - p_1^2 - p_3^2 = t - 2m^2 \implies 4p_1 p_3 = 4m^2 - 2t \implies 4p_1 p_3 + 4m^2 = 8m^2 - 2t
+   \end{equation*}
+   and analogously, \(4p_2 p_4 + 4m^2 = 8m^2 - 2t,\) hence
+   \begin{equation*}
+       \sum_{\mathrm{spin}}{\abs{i\mathcal{M}_t}^2} = 4\left(\frac{g^2}{t - \mu^2}\right)^2 (4m^2 - t)^2
+   \end{equation*}
+   The \(u\)-channel follows analogously but we may use the \(t\)-channel results and simply replace \(3 \leftrightarrow 4\) and \(t \to u,\) obtaining
+   \begin{equation*}
+       (i \mathcal{M}_u)^* = (i \mathcal{M}_u)^\dag = \frac{(-ig)^2}{u - \mu^2}\bar{u}_a^{s_2}(p_2) u_a^{s_3}(p_3) \bar{u}_b^{s_1}(p_1) u_b^{s_4}(p_4),
+   \end{equation*}
+   and
+   \begin{equation*}
+       \sum_{\mathrm{spin}}{\abs{i \mathcal{M}_u}^2} = 4\left(\frac{g^2}{u - \mu^2}\right)^2 (4m^2 - u)^2.
+   \end{equation*}
+   Next, we have
+   \begin{align*}
+       (i\mathcal{M}_t)^*(i\mathcal{M}_u) &= \frac{(-ig)^4}{(t - \mu^2)(u - \mu^2)}\bar{u}_a^{s_2}(p_2) u_a^{s_4}(p_4) \bar{u}_b^{s_1}(p_1) u_b^{s_3}(p_3)\bar{u}_c^{s_4}(p_4) u_c^{s_1}(p_1)  \bar{u}_d^{s_3}(p_3)u_d^{s_2}(p_2)\\
+                                          &= \frac{g^4}{(t - \mu^2)(u - \mu^2)} \bar{u}_b^{s_1}(p_1) u_c^{s_1}(p_1) \bar{u}_a^{s_2}(p_2) u_d^{s_2}(p_2) \bar{u}_d^{s_3}(p_3) u_b^{s_3}(p_3) \bar{u}_c^{s_4}(p_4) u_a^{s_4}(p_4),
+   \end{align*}
+   hence
+   \begin{align*}
+       \sum_{\mathrm{spin}}{(i\mathcal{M}_t)^*(i\mathcal{M}_u)} 
+       &= \frac{g^4}{(t - \mu^2)(u - \mu^2)} (\slashed{p}_1 + m)_{bc} (\slashed{p}_2 + m)_{ad} (\slashed{p}_3 + m)_{db} (\slashed{p}_4 + m)_{ca}\\
+       &= \frac{g^4}{(t - \mu^2)(u - \mu^2)}\Tr\left[(\slashed{p}_2 + m)(\slashed{p}_3 + m)(\slashed{p}_1 + m)(\slashed{p}_4 + m)\right]\\
+       &= \frac{g^4\Tr\left[\slashed{p}_2 \slashed{p}_3 \slashed{p}_1 \slashed{p}_4 + m^4 + m^2\left(\slashed{p}_2 \slashed{p}_3 + \slashed{p}_2 \slashed{p}_1 + \slashed{p}_2 \slashed{p}_4 + \slashed{p}_3 \slashed{p}_1 + \slashed{p}_3 \slashed{p}_4 + \slashed{p}_1 \slashed{p}_4\right)\right]}{(t - \mu^2)(u - \mu^2)}\\
+       &= \frac{g^4\left[\Tr\left(\slashed{p}_2 \slashed{p}_3 \slashed{p}_1 \slashed{p}_4\right) + 4m^4 + 4m^2\left(p_2 p_3 + p_2 p_1 + p_2 p_4 + p_3 p_1 + p_3 p_4 + p_1 p_4\right)\right]}{(t - \mu^2)(u - \mu^2)}
+       % &= \frac{g^4\left[\Tr\left(\slashed{p}_2 \slashed{p}_3 \slashed{p}_1 \slashed{p}_4\right) \right]}{(t - \mu^2)(u - \mu^2)}
+   \end{align*}
+   where we have used that the trace of a product of an odd number of gamma matrices is zero. We already know \(p_2 p_4 + p_3 p_1 = 2m^2 - t,\) then analogously we obtain
+   \begin{equation*}
+       p_1p_4 + p_2 p_3 = 2m^2 - u
+       \quad\text{and}\quad
+       p_2 p_1 + p_3 p_4 = s - 2m^2,
+   \end{equation*}
+   hence
+   \begin{equation*}
+       \sum_{\mathrm{spin}}{(i\mathcal{M}_t)^*(i\mathcal{M}_u)} = \frac{g^4\left[\Tr\left(\slashed{p}_2 \slashed{p}_3 \slashed{p}_1 \slashed{p}_4\right) + 4m^4 + 4m^2\left(2m^2 + s - u - t\right)\right]}{(t - \mu^2)(u - \mu^2)}.
+   \end{equation*}
+   Finally, we use the result (which we will prove on a future problem set)
+   \begin{equation*}
+       \Tr\left[\gamma^{\alpha} \gamma^\beta \gamma^\sigma \gamma^\rho\right] = 4 \left(g^{\alpha \beta} g^{\sigma \rho} - g^{\alpha \sigma} g^{\beta \rho} + g^{\alpha \rho}g^{\beta \sigma}\right),
+   \end{equation*}
+   and we obtain
+   \begin{align*}
+       \Tr\left[\slashed{p}_2 \slashed{p}_3 \slashed{p}_1 \slashed{p}_4\right] 
+       &= (2p_2 p_3) (2p_1 p_4) - (2p_2 p_1) (2p_3 p_4) + (2p_2 p_4)(2p_1 p_3)\\
+       &= (2m^2 - u)^2 - (s - 2m^2)^2 + (2m^2 - t)^2\\
+       &= 4m^4 + u^2 - s^2 + t^2 - 4m^2(u + t - s),
+   \end{align*}
+   hence
+   \begin{equation*}
+       \sum_{\mathrm{spin}}{(i\mathcal{M}_t)^*(i\mathcal{M}_u)} = \frac{g^4\left[16m^4 + u^2 - s^2 + t^2 + 8m^2\left(s - u - t\right)\right]}{(t - \mu^2)(u - \mu^2)}.
+   \end{equation*}
+   Notice that \((i\mathcal{M}_t)^* (i \mathcal{M}_u) = (i\mathcal{M}_u)^* (i \mathcal{M}_t)\) since the difference in these computations would be to swap \(3 \leftrightarrow 4,\) and every step to obtain this last result is invariant under such changes. Adding these results, 
+   \begin{equation*}
+       \diff{\sigma}{\Omega} = \frac{g^4}{64 \pi^2 s}\left[\frac{(4m^2 - t)^2}{(t - \mu^2)^2} + \frac{(4m^2 - u)^2}{(u - \mu^2)^2} + \frac{8m^4 + \frac{u^2 - s^2 + t^2}{2} + 4m^2(s - u - t)}{(t - \mu^2)(u - \mu^2)}\right]
+   \end{equation*}
+   is the differential cross section.
 \end{proof}

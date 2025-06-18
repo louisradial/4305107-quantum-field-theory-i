@@ -45,5 +45,23 @@
    \begin{equation*}
       G^{(4)}(x_1 x_2 x_3 x_4) = S_{34} S_{12} - S_{14} S_{32} = S_F(x_1 - x_2) S_F(x_3 - x_4) - S_F(x_1 - x_4) S_F(x_3 - x_2)
    \end{equation*}
-   is the four point function. To generalize, we note that
+   is the four point function. To generalize, we note that instead of the four-point function being the sum over the possible contractions, there is a relative sign for the exchange of two indices, hence
+   \begin{equation*}
+      G^{(2N)}(x_1, \dots, x_{2N}) = \sum_{\sigma \in S_N} \sgn(\sigma) \prod_{j = 1}^N S_F(x_{2j-1} - x_{2\sigma(j)})
+   \end{equation*}
+   is the \(2N\)-point function, where \(S_N\) is the permutation group of \(N\) elements.
 \end{proof}
+   % To verify this, we should get
+   % \begin{equation*}
+   %    G^{(6)}(x_1, x_2,x_3,x_4,x_5,x_6) = S_{12} S_{34} S_{56} + S_{16} S_{32} S_{54} + S_{14} S_{36} S_{52} - S_{14} S_{32} S_{56} - S_{16} S_{34} S_{52} - S_{12} S_{36} S_{54}
+   % \end{equation*}
+   % with the explicit computation. We use the previous intermediate results to get
+   % \begin{align*}
+   %    \diff.d.{e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2,\bar{\eta}_3,\eta_4,\bar{\eta}_5,\eta_6}[\substack{\eta = 0\\ \bar{\eta} = 0}]
+   %    &= \diff.d.*{\left\{\left[S_{56}  + (\bar{\eta} S)_6 (S \eta)_5\right]\left[S_{34}  + (\bar{\eta} S)_4 (S \eta)_3\right] - S_{36} S_{54} \right\}e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2}[\substack{\eta = 0\\ \bar{\eta} = 0}]\\
+   %    &= - S_{16}S_{52} S_{34} + S_{56}S_{14}S_{32} - (S_{56}S_{34} - S_{36}S_{54})S_{12},
+   % \end{align*}
+   % hence
+   % \begin{equation*}
+   %    G^{(6)}(x_1, x_2, x_3, x_4, x_5, x_6) = 
+   % \end{equation*}

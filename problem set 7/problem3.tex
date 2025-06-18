@@ -10,11 +10,11 @@
    The amplitude of the decay of a scalar into a fermion-antifermion pair is
    \begin{align*}
       \braket{f_2 \bar{f}_3}{s_1} &= iZ_\varphi^{-\frac12} Z_\Psi^{-1} \int_{\mathbb{R}^4} \dln4{x_1} \int_{\mathbb{R}^4} \dln4{x_2} \int_{\mathbb{R}^4} \dln4{x_3} e^{-i(p_1 x_1 - p_2 x_2 - p_3 x_3)} (\square_{x_1} + \mu^2) \bar{u}(p_2) (i \slashed{\partial}_{x_2} - m) \times\\
-                                  &{}\phantom{= iZ_\varphi^{-\frac12} Z_\psi^{-1}\int_{\mathbb{R}^4} \dln4{x_1}\int_{\mathbb{R}^4} \dln4{x_2}\int_{\mathbb{R}^4} \dln4{x_3}} \times \bra{0} T\left\{\varphi(x_1) \bar{\Psi}(x_2) \Psi(x_3)\right\}\ket{0} \overleftarrow{(i \slashed{\partial}_{x_3} + m)} v(p_3)
+                                  &{}\phantom{= iZ_\varphi^{-\frac12} Z_\psi^{-1}\int_{\mathbb{R}^4} \dln4{x_1}\int_{\mathbb{R}^4} \dln4{x_2}\int_{\mathbb{R}^4} \dln4{x_3}} \times \bra{0} T\left\{\varphi(x_1) \Psi(x_2) \bar{\Psi}(x_3)\right\}\ket{0} \overleftarrow{(i \slashed{\partial}_{x_3} + m)} v(p_3)
    \end{align*}
    by the LSZ reduction formula, where \(\bar{u}\) and \(v\) are understood as helicity states for the fermion and anti-fermion into which the scalar decays. It remains to determine the three-point function
    \begin{equation*}
-      G^{(3)}(x_1, x_2, x_3) = \bra{0} T\left\{\varphi(x_1) \bar{\Psi}(x_2) \Psi(x_3)\right\}\ket{0} = -\frac{i}{Z[0,0,0]} \diff.d.{Z[J, \eta, \bar{\eta}]}{J_{x_1},\eta_{x_2},\bar{\eta}_{x_3}}[J = \eta = \bar{\eta} = 0],
+      G^{(3)}(x_1, x_2, x_3) = \bra{0} T\left\{\varphi(x_1) \Psi(x_2) \bar{\Psi}(x_3)\right\}\ket{0} = -\frac{i}{Z[0,0,0]} \diff.d.{Z[J, \eta, \bar{\eta}]}{J_{x_1},\bar{\eta}_{x_2},\eta_{x_3}}[J = \eta = \bar{\eta} = 0],
    \end{equation*}
    where \(Z[J, \eta, \bar{\eta}]\) is the generating functional. For the Yukawa model we have
    \begin{equation*}
@@ -22,7 +22,7 @@
    \end{equation*}
    where \((i \slashed{\partial}_{x} - m) S_\Psi(x-y) = -i \delta(x - y)\) and \((\square_x + \mu^2) D_\varphi(x-y) = -i \delta(x - y),\) then in first order of \((-ig),\) the three-point function is, borrowing the notation of \cref{prob:p1},
    \begin{equation*}
-      G^{(3)}(x_1,x_2,x_3) = ig\diff.d.*{\left[\int_{\mathbb{R}^4} \dln4z \diff.d.{}{J_z} \diff.d.{}{\eta_z} \diff.d.{}{\bar{\eta}_z}e^{- \bar{\eta} S \eta - \frac12 J D J}\right]}{J_{x_1},\eta_{x_2},\bar{\eta}_{x_3}}[\substack{J = 0\\\eta = 0\\ \bar{\eta} = 0\\\mathrm{connected}}],
+      G^{(3)}(x_1,x_2,x_3) = ig\diff.d.*{\left[\int_{\mathbb{R}^4} \dln4z \diff.d.{}{J_z} \diff.d.{}{\eta_z} \diff.d.{}{\bar{\eta}_z}e^{- \bar{\eta} S \eta - \frac12 J D J}\right]}{J_{x_1},\bar{\eta}_{x_2},\eta_{x_3}}[\substack{J = 0\\\eta = 0\\ \bar{\eta} = 0\\\mathrm{connected}}],
    \end{equation*}
    where we have used that the \(\frac{1}{Z[0,0,0]}\) factor makes it so only connected diagrams contribute. There are only two derivatives with respect to \(J,\) then the only term that contributes from the \(e^{-JDJ}\) exponential is \(-D_\varphi(x_1 - z),\) where the symmetry factor cancels with the other factors, yielding
    \begin{equation*}
@@ -30,16 +30,62 @@
    \end{equation*}
    We use the analogous result of \cref{prob:p1},
    \begin{equation*}
-      \diff.d.{e^{- \bar{\eta} S \eta}}{\eta_1,\bar{\eta}_2,\eta_3,\bar{\eta}_4}[\eta = \bar{\eta} = 0] = S_{43}S_{21} - S_{41}S_{23}
+      \diff.d.{e^{- \bar{\eta} S \eta}}{\bar{\eta}_1,\eta_2,\eta_3,\bar{\eta}_4}[\eta = \bar{\eta} = 0] = S_{41}S_{23} - S_{43}S_{21} 
    \end{equation*}
    then the connected part is the one without \(S_{zz},\) hence
    \begin{equation*}
-      G^{(3)}(x_1,x_2,x_3) = -ig \int_{\mathbb{R}^4} \dln4z D_\varphi(x_1 - z) S_\Psi(x_2 - z) S_\Psi(z - x_3)
+      G^{(3)}(x_1,x_2,x_3) = -ig \int_{\mathbb{R}^4} \dln4z D_\varphi(x_1 - z) S_\Psi(z - x_2) S_\Psi(x_3 - z)
    \end{equation*}
    is the three-point function. Then the differential operators in the LSZ reduction formulas yield delta functions when they act on the propagators, hence once we integrate over the space variables we get
    \begin{align*}
       \braket{f_2 \bar{f}_3}{s_1} &= \frac{-ig}{Z_\varphi^{\frac12} Z_\Psi} \int_{\mathbb{R}^4} \dln4z e^{-i(p_1 - p_2 - p_3)z} \bar{u}(p_2) v(p_3)\\
-                                  &= \frac{(-ig)(2\pi)^4}{Z_\varphi^{\frac12} Z_\Psi} \bar{u}(p_2)v(p_3) \delta(p_1 - p_2 - p_3)
+                                  &= \frac{(-ig)(2\pi)^4}{Z_\varphi^{\frac12} Z_\Psi} \bar{u}_{h_2}(p_2)v_{h_3}(p_3) \delta(p_1 - p_2 - p_3)
    \end{align*}
-   as the amplitude.
+   as the amplitude, here \(h_2\) and \(h_3\) are the helicity eigenvalues for the fermion and antifermion.
+
+   We consider the decay in the center of momentum frame, then the total angular momentum is simply the spin of the scalar, that is, zero. In this frame, the momentum conservation guaranteed by the delta function yields \(\vetor{p}_2 = -\vetor{p}_3\) and \(E_2 + E_3 = \mu,\) hence we infer from the dispersion relation \(E^2 = m^2 + \norm{\vetor{p}}^2\) that \(E_2 = E_3 = E = \frac{\mu}{2}.\) Orienting the coordinate frame such that \(\vetor{p}_2 = P\vetor{e}_z\), we have from \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset4}{Problem set IV} that in the chiral basis
+   \begin{equation*}
+      u_{\uparrow}(p_2) = \begin{pmatrix}
+         \sqrt{E - P} \psi_{\uparrow}\\
+         \sqrt{E + P} \psi_{\uparrow}
+      \end{pmatrix} \quad
+      u_{\downarrow}(p_2) = \begin{pmatrix}
+         \sqrt{E + P} \psi_{\downarrow}\\
+         \sqrt{E - P} \psi_{\downarrow}
+      \end{pmatrix}\quad
+      v_{\uparrow}(p_3) = \begin{pmatrix}
+         \sqrt{E + P} \psi_{\uparrow}\\
+         \sqrt{E - P} \psi_{\uparrow}
+      \end{pmatrix} \quad\text{and}\quad
+      v_{\downarrow}(p_3) = \begin{pmatrix}
+         \sqrt{E - P} \psi_{\downarrow}\\
+         \sqrt{E + P} \psi_{\downarrow}
+      \end{pmatrix}
+   \end{equation*}
+   are the helicity eigenstates \(u(p_2)\) and \(v(p_3),\) where \(\psi_{\uparrow} = (\begin{smallmatrix}1\\0 \end{smallmatrix})\) and \(\psi_{\downarrow} = (\begin{smallmatrix}0\\1\end{smallmatrix})\). Then
+   \begin{equation*}
+      \bar{u}_{\uparrow}(p_2) = \begin{pmatrix}
+         \sqrt{E - P}\herm{\psi}_{\uparrow} && \sqrt{E + P}\herm{\psi}_{\uparrow}
+      \end{pmatrix}
+      \begin{pmatrix}
+         && \unity\\
+         \unity &&
+      \end{pmatrix} = 
+      \begin{pmatrix}
+         \sqrt{E + P} \herm{\psi}_{\uparrow} && \sqrt{E - P}\herm{\psi}_{\uparrow}
+      \end{pmatrix},
+   \end{equation*}
+   hence
+   \begin{equation*}
+      \bar{u}_{\uparrow}(p_2) v_\uparrow(p_3) = (E + P) + (E - P) = 2E \herm{\psi}_{\uparrow}\psi_{\uparrow} = \mu
+   \end{equation*}
+   and
+   \begin{equation*}
+      \bar{u}_{\uparrow}(p_2) v_{\downarrow}(p_3) = 2\sqrt{E^2 - P^2} \herm{\psi}_{\uparrow} \psi_{\downarrow} = 0.
+   \end{equation*}
+   Analogously for the other helicity eigenstates we have \(\bar{u}_{\downarrow}(p_2)\bar{v}_{\uparrow}(p_3) = 0\) and \(\bar{u}_{\downarrow}(p_2)\bar{v}_{\downarrow}(p_3) = \mu.\) The cases where the amplitude vanishes are the ones that do not conserve angular momentum: when the particles have opposite spin, that is, the same helicity, the total angular momentum is zero. We conclude that when \(h_2 \neq h_3\) the amplitude vanishes and when \(h_2 = h_3\) we have
+   \begin{equation*}
+      \braket{f_2 \bar{f}_3}{s_1} = \frac{(-ig)\mu (2\pi)^4 \delta(p_1 - p_2 - p_3)}{Z_\varphi^{\frac12}Z_\Psi}
+   \end{equation*}
+   as the amplitude for the decay.
 \end{proof}

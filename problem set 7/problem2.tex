@@ -12,27 +12,33 @@
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-   Before drawing the diagrams, the vertices of the theory are interchangeable and each contributes with a \(\frac{1}{4!}\) factor, hence the symmetry factor is \(S = \frac{C}{(4!)^V}\) where \(C\) comes from number of ways to draw the diagram starting from empty \(V\) vertices and external legs. To illustrate, we'll draw the Feynman diagram on the left and count for each step. We begin by drawing the external legs and connecting them to one vertex each, yielding a factor of \(4^2\).
+   In this theory, the \(N\)-point function with \(V\) vertices is the connected part of the expression,
+   \begin{equation*}
+      G^{(N)}(x_1, \dots, x_N) = \left(-i\right)^N \diff.d.{}{J_{x_1}} \dots \diff.d.{}{J_{x_N}} \left\{\frac{1}{V!} \left[\frac{(-i \lambda)}{4!}\int_{\mathbb{R}^4} \dln4z \left(\diff.d.{}{J_{z}}\right)^4\right]^V\right\}e^{-\frac12 \int_{\mathbb{R}^4} \dln4x\int_{\mathbb{R}^4} \dln4y J(x) D(x - y) J(y)},
+   \end{equation*}
+   then we immediately see that each vertex contributes to the symmetry factor with \(\frac{1}{V!(4!)^V}\). The symmetry factor is then \(\frac{C'}{V! (4!)^V},\) where \(C'\) is the number of possible ways to draw the diagrams. We may undercount and cancel the \(V!\) by considering the vertices as interchangeable before connecting them to the other parts of the diagram, hence the symmetry factor is \(\frac{C}{(4!)^V},\) where \(C\) is the number of ways to draw the diagrams with this consideration.
+
+   To illustrate, we'll draw the Feynman diagram on the left and count for each step. We begin by drawing the external legs and connecting them to one vertex each, yielding a factor of \(4^2\).
    \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{p2ai.png}
+      \includegraphics[width=0.9\textwidth]{p2ai.png}
    \end{figure}
    \noindent Now we have \(3!\) ways to connect the internal legs,
    \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{p2ai2.png}
+      \includegraphics[width=0.9\textwidth]{p2ai2.png}
    \end{figure}
    \noindent and we obtain \(C = 4 (4!),\)  hence \(S = \frac16.\) For the second diagram, we have 
    \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{p2aii.png}
+      \includegraphics[width=0.9\textwidth]{p2aii.png}
    \end{figure}
    \noindent hence \(S = \frac{2(4!)^2}{(4!)^3} = \frac1{12}.\) For the last diagram, we have
    \begin{figure}[H]
       \centering
-      \includegraphics[width=0.8\textwidth]{p2aiii.png}
+      \includegraphics[width=0.9\textwidth]{p2aiii.png}
    \end{figure}
-   \noindent hence \(S = \frac{36 \cdot 4!}{(4!)^3} = \frac{1}{16}.\)
+   \noindent hence \(S = \frac{2(4!)^2}{(4!)^3} = \frac{1}{12}.\)
 
    In order to write the momentum conservation terms for the last diagram, we annotate the momenta at each leg
    \begin{figure}[H]
@@ -41,7 +47,7 @@
    \end{figure}
    \noindent From the Feynman rules, this diagram corresponds to the matrix element
    \begin{align*}
-      i \mathcal{M} &= \frac{(-i \lambda)^3}{16(2 \pi)^8 Z_\varphi} \int_{\mathbb{R}^4} \dln4{k_1} \int_{\mathbb{R}^4} \dln4{k_2} \int_{\mathbb{R}^4} \dln4{k_3} \int_{\mathbb{R}^4} \dln4{k_4} \int_{\mathbb{R}^4} \dln4{k_5} \delta(p_i - p_f + k_2 - k_1) \times \\
+      \bra{\mathrm{out}}iT\ket{\mathrm{in}}  &= \frac{(-i \lambda)^3}{12(2 \pi)^8 Z_\varphi} \int_{\mathbb{R}^4} \dln4{k_1} \int_{\mathbb{R}^4} \dln4{k_2} \int_{\mathbb{R}^4} \dln4{k_3} \int_{\mathbb{R}^4} \dln4{k_4} \int_{\mathbb{R}^4} \dln4{k_5} \delta(p_i - p_f + k_2 - k_1) \times \\
                     &{}\phantom{=\frac{(-i \lambda)^3}{(2 \pi)^8 S Z_\varphi}} \times \delta(k_1 - k_3 - k_4 - k_5) \delta(k_3 + k_4 + k_5 - k_2) \prod_{\ell = 1}^5 \frac{i}{k_i^2 - m + i \epsilon}
    \end{align*}
    where \(Z_\varphi\) is the coefficient that relates the field with the in and out fields.

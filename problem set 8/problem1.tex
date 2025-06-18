@@ -7,5 +7,25 @@
    where \(F_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A_\mu.\) What is the condition for this system to be invariant under a gauge transformation?
 \end{problem}
 \begin{proof}[Solution]
-    
+   Under a gauge transformation \(A_\mu \to A'_\mu = A_\mu + \partial_\mu \Lambda,\) we have
+   \begin{equation*}
+      F'_{\mu\nu} = \partial_\mu\left(A_\nu + \partial_\nu \Lambda\right) - \partial_\nu \left(A_\mu + \partial_\mu \Lambda\right) = F_{\mu\nu} + \left(\partial_\mu \partial_\nu - \partial_\nu \partial_\mu\right)\Lambda = F_{\mu\nu},
+   \end{equation*}
+   and
+   \begin{equation*}
+      J^\mu A'_{\mu} = J^\mu A_\mu + J^\mu \partial_\mu \Lambda,
+   \end{equation*}
+   which results in
+   \begin{equation*}
+      \mathcal{L}' = - \frac14 F'_{\mu\nu} F'^{\mu\nu} - J^\mu A'_\mu = - \frac14 F_{\mu\nu} F^{\mu\nu} - J^\mu A_\mu - J^\mu \partial_\mu \Lambda = \mathcal{L} - J^\mu \partial_\mu \Lambda.
+   \end{equation*}
+   Notice
+   \begin{equation*}
+      \delta \mathcal{L} = \mathcal{L}' - \mathcal{L} = -J^\mu \partial_\mu \Lambda = (\partial_\mu J^\mu)\Lambda - \partial_\mu\left(J^\mu \Lambda\right),
+   \end{equation*}
+   so in order for the system to be invariant under gauge transformation we must have the constraint \(\partial_\mu J^\mu = 0,\) which ensures the symmetry for the action. On shell this condition is already satisfied due to the equation of motion \(\partial_\mu F^{\mu\nu} = J^\nu\) and the antisymmetry of \(F^{\mu\nu},\)
+   \begin{equation*}
+      \partial_\nu J^\nu = \partial_\nu \partial_\mu F^{\mu\nu} = 0,
+   \end{equation*}
+   but it is a constraint that must be imposed off shell in order to have gauge invariance.
 \end{proof}

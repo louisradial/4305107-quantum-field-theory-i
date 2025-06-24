@@ -1,16 +1,32 @@
 % vim: spl=en
-\begin{problem}{Massive real vector field}{p2}
-   Consider a real vector field \(V_\mu\) with mass \(M_V\) whose Lagrangian is
+\begin{problem}{Free Proca field}{p2}
+   Consider a real vector field \(V_\mu\) with mass \(M\) whose Lagrangian is
    \begin{equation*}
-      \mathcal{L} = - \frac14 V_{\mu \nu} V^{\mu\nu} + \frac12 M_V^2 V^\mu V_\mu,
+      \mathcal{L} = - \frac14 F_{\mu \nu} F^{\mu\nu} + \frac12 M^2 V^\mu V_\mu,
    \end{equation*}
-   with \(V_{\mu\nu} = \partial_\mu V_\nu - \partial_\nu V_\mu.\)
+   with \(F_{\mu\nu} = \partial_\mu V_\nu - \partial_\nu V_\mu.\)
    \begin{enumerate}[label=(\alph*)]
        \item Obtain the classical equations of motion of this system and show that \(\partial_\mu V^\mu = 0.\)
        \item Canonically quantize this system.
-       \item Obtain the Feynman propagator for this field.
+   \item Obtain the Feynman propagator for this field.
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   We have shown in \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset1}{Problem Set I} that
+   \begin{equation*}
+      \diffp{\mathcal{L}}{(\partial_\mu V_\nu)} = -F^{\mu \nu},
+   \end{equation*}
+   then we have
+   \begin{equation*}
+      \diffp{\mathcal{L}}{V_\nu} = \partial_\mu \left[\diffp{\mathcal{L}}{(\partial_\mu V_\nu)}\right] \implies \partial_\mu F^{\mu\nu} = - M^2 V^\nu
+   \end{equation*}
+   as the classical equation of motion. We consider \(G^{\mu\nu} = \frac12 \epsilon^{\mu \nu \rho \sigma} F_{\rho \sigma},\) then we also have
+   \begin{equation*}
+      \partial_\mu G^{\mu\nu} = \frac12 \partial_\mu \epsilon^{\mu \nu \rho \sigma} F_{\rho \sigma} = \frac12  \epsilon^{\mu\nu \rho \sigma} \left(\partial_\mu\partial_{\rho}V_{\sigma} - \partial_\mu \partial_{\sigma} V_{\rho}\right) = 0,
+   \end{equation*}
+   as we contract the antisymmetric indices of \(\epsilon^{\mu\nu \rho \sigma}\) with the symmetric tensors \(\partial_\mu \partial_\rho\) and \(\partial_\mu \partial_\sigma.\) On shell we have
+   \begin{equation*}
+      \partial_\nu V^\nu = -\frac{1}{M^2}\partial_\nu \partial_\mu F^{\mu\nu} = 0,
+   \end{equation*}
+   as we have done in \cref{prob:p1}.
 \end{proof}

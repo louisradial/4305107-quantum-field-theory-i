@@ -3,5 +3,55 @@
    Obtain the phase space of two particles in terms of the Mandelstam variables.
 \end{problem}
 \begin{proof}[Solution]
-    
+   Other than the case of the initial state being a single massless particle, which we ignore, the initial state can always be considered, in its center of momentum frame, to have momentum \((E_\mathrm{CM}, \vetor{0}).\) For instance, we consider either a particle of mass \(M > 0\) or a pair of particles with momenta \(p_1\) and \(p_2,\) then in the center of momentum frame the initial momentum is either \((M, \vetor{0})\) or \((\sqrt{s}, \vetor{0})\) in these cases. For definiteness, we will consider the latter case but the result generalizes for any initial state by replacing \(\sqrt{s} \to E_{\mathrm{CM}}\). The phase space of two final particles is
+   \begin{align*}
+      \dl{\Phi_2} &= \frac{\dln3{p_3}}{(2\pi)^3 (2 E_3)}\frac{\dln3{p_4}}{(2\pi)^3 (2 E_4)} (2\pi)^4 \delta(p_1 + p_2 - p_3 - p_4)\\
+                  &= \dln3{p_3} \dln3{p_4} \frac{\delta(\sqrt{s} - E_3 - E_4)}{(2\pi)^2 (2 E_3) (2E_4)}\delta(\vetor{p}_3 + \vetor{p}_4)
+   \end{align*}
+   When we integrate, we resolve the spatial momenta \(\vetor{p}_4 = - \vetor{p}_3,\) hence
+   \begin{equation*}
+      \int \dli{\Phi_2} = \int\dli{\Omega} \int_0^\infty \dli{p} p^2\frac{\delta(\sqrt{s} - E_3 - E_4)}{16\pi^2 E_3 E_4} = \int \dli{\Omega} \int_0^\infty \dli{p} p^2\frac{\delta\left(\sqrt{s} - \sqrt{p^2 + m_3^2} - \sqrt{p^2 + m_4^2}\right)}{16\pi^2 \sqrt{p^2 + m_3^2} \sqrt{p^2 + m_4^2}}.
+   \end{equation*}
+   To rewrite the delta function, we consider the function
+   \begin{equation*}
+      f(p) = \sqrt{p^2 + m_3^2} + \sqrt{p^2 + m_4^2} - \sqrt{s}
+   \end{equation*}
+   and its non-negative zero \(p_*\) given by
+   \begin{align*}
+      f(p_*) = 0 \land p_* \geq 0 &\implies (p_*^2 + m_3^2) - (p_*^2 + m_4^2) = \sqrt{s}\left(\sqrt{p_*^2 + m_3^2} - \sqrt{p_*^2 + m_4^2}\right)\\
+                                  &\implies \sqrt{p_*^2 + m_3^2} = \frac{m_3^2 - m_4^2}{\sqrt{s}} + \sqrt{p_*^2 + m_4^2}\\
+                                  &\implies m_3^2 - m_4^2 = \left(\frac{m_3^2 - m_4^2}{\sqrt{s}}\right)^2 + 2\left(\frac{m_3^2 - m_4^2}{\sqrt{s}}\right)\sqrt{p_*^2 + m_4^2}\\
+                                  &\implies \sqrt{p_*^2 + m_4^2} = \frac{m_3^2 - m_4^2 - \left(\frac{m_3^2 - m_4^2}{\sqrt{s}}\right)^2}{2\left(\frac{m_3^2 - m_4^2}{\sqrt{s}}\right)}\\
+                                  &\implies \sqrt{p_*^2 + m_4^2} = \frac{s - (m_3^2 - m_4^2)}{2\sqrt{s}}\\
+                                  &\implies p_* = \sqrt{\frac{s^2 - 2s(m_3^2 + m_4^2) + (m_3^2 - m_4^2)^2}{4s}},
+   \end{align*}
+   and we emphasize the results
+   \begin{equation*}
+      \sqrt{p_*^2 + m_3^2} = \frac{s + (m_3^2 - m_4^2)}{2\sqrt{s}}
+      \quad\text{and}\quad
+      \sqrt{p_*^2 + m_4^2} = \frac{s - (m_3^2 - m_4^2)}{2\sqrt{s}}.
+   \end{equation*}
+   We have
+   \begin{equation*}
+      f'(p_*) = \frac{p_*}{\sqrt{p_*^2 + m_3^2}} + \frac{p_*}{\sqrt{p_*^2 + m_4^2}} = \frac{\sqrt{p_*^2 + m_3^2} + \sqrt{p_*^2 + m_4^2}}{\sqrt{p_*^2 + m_3^2}\sqrt{p_*^2 + m_3^2}}p_* = \frac{\sqrt{s} p_*}{\sqrt{p_*^2 + m_3^2}\sqrt{p_*^2 + m_3^2}},
+   \end{equation*}
+   then
+   \begin{equation*}
+      \theta(p) \delta\left(\sqrt{s} - \sqrt{p^2 + m_3^2} - \sqrt{p^2 + m_4^2}\right)
+      = \theta(p) \frac{\delta(p - p_*)}{\abs{f'(p_*)}} = \theta(p) \frac{\sqrt{p_*^2 + m_3^2} \sqrt{p_*^2 + m_4^2}}{p_* \sqrt{s}} \delta(p - p_*).
+   \end{equation*}
+   We use this result to obtain
+   \begin{align*}
+      \int \dli{\Phi_2} &= \int \dli{\Omega} \int_0^\infty \dli{p} \frac{p^2}{16\pi^2 p_* \sqrt{s}} \sqrt{\frac{(p_*^2 + m_3^2)(p_*^2 + m_4^2)}{(p^2 + m_3^2)(p^2 + m_4^2)}} \delta(p - p_*)\\
+                        &= \int \dli{\Omega} \frac{p_*}{16\pi^2 \sqrt{s}},
+   \end{align*}
+   hence
+   \begin{equation*}
+      \dl{\Phi_2} = \dli{\Omega} \frac{\sqrt{s^2 - 2s(m_3^2 + m_4^2) + (m_3^2 - m_4^2)^2}}{32 \pi^2 s} = \dli{\Omega} \frac{1}{32\pi^2}\sqrt{1 - 2\left(\frac{m_3^2 + m_4^2}{s}\right) - \left(\frac{m_3^2 - m_4^2}{s}\right)^2}
+   \end{equation*}
+   is the differential phase space for two particle final states. When \(m_3 = m_4 = m,\) we get the familiar result
+   \begin{equation*}
+      \dl{\Phi_2} = \dli{\Omega} \frac{1}{32\pi^2} \sqrt{1 - \frac{4m^2}{s}}
+   \end{equation*}
+   which was shown in \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset7}{Problem Set VII}.
 \end{proof}

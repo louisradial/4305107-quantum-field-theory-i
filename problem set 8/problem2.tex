@@ -28,5 +28,242 @@
    \begin{equation*}
       \partial_\nu V^\nu = -\frac{1}{M^2}\partial_\nu \partial_\mu F^{\mu\nu} = 0,
    \end{equation*}
-   as we have done in \cref{prob:p1}.
+   as we have done in \cref{prob:p1}. With this, we have
+   \begin{equation*}
+      \partial_\mu F^{\mu\nu} = \partial_\mu \partial^\mu V^\nu - \partial_\mu \partial^\nu V^\mu = \partial_\mu \partial^\mu V^\nu,
+   \end{equation*}
+   hence the equations of motion for the free Proca field are
+   \begin{equation*}
+      (\square + M^2)V^\nu = 0.
+   \end{equation*}
+   Notice the conjugated momenta are
+   \begin{equation*}
+      \pi^{\nu} = \diffp{\mathcal{L}}{(\partial_0 V_\nu)} = -F^{0\nu} = F^{\nu 0} = \partial^\nu V^0 - \partial^0 V^\nu,
+   \end{equation*}
+   then we have the constraint \(\pi^0 = 0.\) We obtain a second constraint by taking the equation of motion for \(V^0,\) obtaining
+   \begin{equation*}
+      V^0 = -\frac{1}{M^2}\partial_\mu F^{\mu0} = -\frac{1}{M^2}\partial_i F^{i0} = -\frac{1}{M^2} \partial_i \pi^i.
+   \end{equation*}
+
+   For \(p^\mu\) such that \(p_\mu p^\mu = M^2,\) the plane wave \(\epsilon^{\mu}(p) e^{-ipx}\) is a solution of the equation of motion as we have
+   \begin{equation*}
+      (\square + M^2) \epsilon^{\mu}(p) e^{-ipx} = (M^2-p_\mu p^\mu) \epsilon^{\mu}(p) e^{-ipx} = 0,
+   \end{equation*}
+   and if \(p_\mu \epsilon^\mu = 0,\) then it also satisfies \(\partial_\mu \epsilon^\mu(p) e^{-ipx} = 0.\) For a fixed \(p\) we define
+   \begin{equation*}
+      \epsilon^{\mu}_{(0)}(p) = \frac{p^\mu}{M}
+   \end{equation*}
+   and three other vectors defined by
+   \begin{equation*}
+      p_\mu \epsilon^{\mu}_{(j)}(p) = 0
+   \end{equation*}
+   with \(j \in \set{1,2,3}\) and the normalization condition
+   \begin{equation*}
+      g_{\mu\nu} \epsilon^{\mu}_{(\lambda)}(p) \epsilon^{\nu}_{(\lambda')}(p) = g_{\lambda \lambda'}
+   \end{equation*}
+   where \(\lambda, \lambda' \in \set{0,1,2,3}.\) That is, the set \(\epsilon^{\mu}_{\lambda}(p)\) is an orthonormal basis and we have
+   \begin{equation*}
+      \sum_{\lambda = 0}^3 g_{\lambda \lambda} \epsilon_{(\lambda)}^\mu (p) \epsilon_{(\lambda)}^\nu(p) = g^{\mu\nu} \implies
+      \sum_{\lambda = 1}^3 \epsilon^{\mu}_{(\lambda)}(p) \epsilon^{\nu}_{(\lambda)}(p) = \frac{p^\mu p^\nu}{M^2}-g^{\mu\nu}.
+   \end{equation*}
+
+   Promoting \(V^\mu(x)\) to operator-valued distributions, they must satisfy the equations of motion as distributions, hence its Fourier transform
+   \begin{equation*}
+      \tilde{V}^\mu(p) = \int_{\mathbb{R}^4} \dln4{x} V^\mu(x) e^{ipx}
+   \end{equation*}
+   can be written as
+   \begin{equation*}
+      \tilde{V}^\mu(p) = 2\pi \delta(p_\nu p^\nu - M^2) \Xi^\mu(p_0, \vetor{p}),
+   \end{equation*}
+   hence
+   \begin{align*}
+      V^\mu(x) &= \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^3} \delta(p_\nu p^\nu - M^2) \Xi^\mu(p_0, \vetor{p}) e^{-ipx}\\
+               &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3(2 \omega_p)} \left[\Xi^\mu(\omega_p, \vetor{p}) e^{-i px} + \Xi^\mu(-\omega_p, \vetor{p}) e^{i \omega_p t + i \vetor{p} \cdot \vetor{x}}\right]\\
+               &= \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3(2 \omega_p)} \left[\Xi^\mu(\omega_p, \vetor{p}) e^{-ipx} + \Xi^\mu(-\omega_p, -\vetor{p}) e^{i px}\right],
+   \end{align*}
+   where \(\omega_p = \sqrt{p_\nu p^\nu + M^2}\) and \(p_0 = \omega_p.\) We impose the condition \(\partial_\mu V^\mu = 0\) by requiring that \(p_\mu \Xi^\mu(p) = 0,\) hence we expand \(\Xi^\mu(p)\) in the \(\epsilon^\mu_{(\lambda)}(p)\) basis in the subspace orthogonal to \(p,\)
+   \begin{equation*}
+      \Xi^\mu(\omega_p, \vetor{p}) = \sqrt{2 \omega_p} \sum_{\lambda = 1}^3 a_{\lambda}(p)\epsilon^\mu_{(\lambda)}(p)
+      \quad\text{and}\quad
+      \Xi^\mu(-\omega_p, -\vetor{p}) = \sqrt{2 \omega_p} \sum_{\lambda = 1}^3 b_{\lambda}(p)\epsilon^\mu_{(\lambda)}(p),
+   \end{equation*}
+   then
+   \begin{equation*}
+      V^{\mu}(x) = \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} \sum_{\lambda = 1}^3 \left[\epsilon_{(\lambda)}^\mu(p) a_{\lambda}(p) e^{-ipx} + \epsilon_{(\lambda)}^{\mu}(p) b_{\lambda}(p) e^{ipx}\right],
+   \end{equation*}
+   where \(a_\lambda(p)\) and \(b_\lambda(p)\) are operators. In order to have less cumbersome notation, we will write
+   \begin{equation*}
+       a^\mu(p) = \sum_{\lambda = 1}^3 a_{\lambda}(p)\epsilon^\mu_{(\lambda)}(p)
+       \quad\text{and}\quad
+       b^\mu(p) = \sum_{\lambda = 1}^3 b_{\lambda}(p)\epsilon^\mu_{(\lambda)}(p)
+   \end{equation*}
+   then
+   \begin{equation*}
+      V^{\mu}(x) = \int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} \left[a^\mu(p) e^{-ipx} + b^{\mu}(p) e^{ipx}\right],
+   \end{equation*}
+   \begin{equation*}
+      \partial^\nu V^{\mu}(x) = -i\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} p^\nu\left[a^\mu(p) e^{-ipx} - b^{\mu}(p) e^{ipx}\right],
+   \end{equation*}
+   \begin{equation*}
+      F^{\nu\mu}(x) = -i\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} \left\{\left[p^\nu a^\mu(p) - p^\mu a^\nu(p)\right] e^{-ipx} - \left[p^\nu b^{\mu}(p) - p^\mu b^\nu(p)\right] e^{ipx}\right\}
+   \end{equation*}
+   and, in particular,
+   \begin{equation*}
+      \pi^j(x) = -i\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} \left\{\left[p^j a^0(p) - \omega_p a^j(p)\right] e^{-ipx} - \left[p^j b^{0}(p) - \omega_p b^j(p)\right] e^{ipx}\right\}.
+   \end{equation*}
+   Notice we have
+   \begin{equation*}
+      p_j a^j(p) = \sum_{\lambda = 1}^3 a_\lambda(p) p_j \epsilon_{(\lambda)}^j(p) = \sum_{\lambda = 1}^3 a_{\lambda}(p) \left[p_\mu \epsilon^\mu_{(\lambda)}(p) - \omega_p \epsilon^0_{(\lambda)}(p)\right] = - \omega_p \sum_{\lambda = 1}^3 a_{\lambda}(p) \epsilon^{0}_{(\lambda)}(p) = -\omega_p a^0(p)
+   \end{equation*}
+   and analogously for \(p_j b^j(p),\) then
+   \begin{align*}
+      \partial_j \pi^j &= -\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} p_j\left\{\left[p^j a^0(p) - \omega_p a^j(p)\right] e^{-ipx} + \left[p^j b^{0}(p) - \omega_p b^j(p)\right] e^{ipx}\right\}\\
+                       &= -\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} \left\{\left[p_j p^j + \omega_p^2\right]a^0(p) e^{-ipx} + \left[p_j p^j + \omega_p^2\right]b^0(p) e^{ipx}\right\}\\
+                       &=  -M^2 \int_{\mathbb{R}^3}\frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} \left[a^0(p) e^{-ipx} + b^0 (p)e^{ipx}\right]\\
+                       &= -M^2 V^0(x),
+   \end{align*}
+   that is, the secondary constraint is also satisfied. For \(\lambda \in \set{1,2,3}\) and at \(x^0 = t,\) we have
+   \begin{align*}
+      \int_{\mathbb{R}^3} \dln3x i \omega_p g_{\mu\nu} \epsilon^\mu_{(\lambda)}(p) V^\nu(x)e^{ipx} 
+      &= i\int_{\mathbb{R}^3} \frac{\dln3k \omega_p}{(2\pi)^3\sqrt{2 \omega_k}} \int_{\mathbb{R}^3} \dln3x g_{\mu\nu} \epsilon^\mu_{(\lambda)}(p) \left[a^\nu(k) e^{i(p-k)x} + b^\nu(k) e^{i(k+p)x}\right]\\
+      &= i\int_{\mathbb{R}^3} \frac{\dln3k \omega_p}{\sqrt{2\omega_p}} g_{\mu\nu} \epsilon^\mu_{(\lambda)}(p) \left[a^\nu(p) \delta(\vetor{p} - \vetor{k}) + b^\nu(-p)e^{2i \omega_p t} \delta(\vetor{p} + \vetor{k})\right]\\
+      &= -i\frac{\omega_p}{\sqrt{2 \omega_p}}\left[a_{\lambda}(p) - g_{\mu\nu} \epsilon^\mu_{(\lambda)}(p) b^\nu(-p) e^{2i \omega_p t}\right],
+   \end{align*}
+   where we have used that
+   \begin{equation*}
+      g_{\mu\nu} \epsilon^\mu_{(\lambda)}(p) a^\nu(p) = \sum_{\lambda' = 1}^3 a_{\lambda'}(p) g_{\mu\nu}\epsilon_{(\lambda)}^\mu(p)\epsilon^\nu_{(\lambda')}(p) = \sum_{\lambda' = 1}^3 a_{\lambda'}(p) g_{\lambda \lambda'} = - a_{\lambda}(p).
+   \end{equation*}
+   Analogously we obtain
+   \begin{align*}
+      \int_{\mathbb{R}^3} \dln3x g_{\mu\nu} \epsilon_{(\lambda)}^\mu(p) \pi^\nu(x) e^{ipx}
+      &= \frac{-i g_{\mu\nu} \epsilon^{\mu}_{(\lambda)}(p)}{\sqrt{2 \omega_p}} \left\{\left[p^\nu a^0(p) - \omega_p a^\nu(p)\right] - \left[p^\nu b^{0}(-p) - \omega_p b^\nu(-p)\right] e^{2i\omega_p t}\right\}\\
+      &= -i \frac{\omega_p}{\sqrt{2\omega_p}} \left[a_{\lambda}(p) + g_{\mu\nu} \epsilon^\mu_{(\lambda)} b^{\nu}(-p) e^{2i \omega_p t}\right],
+   \end{align*}
+   hence
+   \begin{equation*}
+      a_{\lambda}(p) = \frac{i}{\sqrt{2\omega_p}}\int_{\mathbb{R}^3} \dln3x g_{\mu\nu} \epsilon_{(\lambda)}^\mu(p) \left[\pi^\nu(x) + i\omega_p V^\nu(x)\right] e^{ipx}.
+   \end{equation*}
+   Repeating the same procedure with \(e^{-ipx}\) instead of \(e^{ipx}\), we get
+   \begin{equation*}
+      b_\lambda(p) = -\frac{i}{\sqrt{2\omega_p}}\int_{\mathbb{R}^3} \dln3x g_{\mu\nu} \epsilon_{(\lambda)}^\mu(p) \left[\pi^\nu(x) - i\omega_p V^\nu(x)\right] e^{-ipx},
+   \end{equation*}
+   hence the fields and canonical momenta being hermitian imply \(b_\lambda(p) = \herm{a}_\lambda(p)\). 
+
+   We now impose the same-time commutation relations,
+   \begin{equation*}
+      \commutator{V^i(t, \vetor{x})}{\pi^j(t, \vetor{y})} = -ig^{ij}\delta(\vetor{x} - \vetor{y})
+      \quad\text{and}\quad
+      \commutator{V^i(t, \vetor{x})}{V^j(t, \vetor{y})} = 0 = \commutator{\pi^i(t, \vetor{x})}{\pi^j(t, \vetor{y})},
+   \end{equation*}
+   then it follows from the constraint \(A^0 = -\frac{1}{M^2} \partial_j \pi^j\) that
+   \begin{equation*}
+      \commutator{V^0(t, \vetor{x})}{\pi^j(t, \vetor{y})} = -\frac{1}{M^2} \commutator*{\diffp{\pi^i(t, \vetor{x})}{x^i}}{\pi^j(t, \vetor{y})} = - \frac{1}{M^2} \diffp*{}{x^i} \commutator{\pi^i(t, \vetor{x})}{\pi^j(t, \vetor{y})} = 0,
+   \end{equation*}
+   that
+   \begin{equation*}
+      \commutator{V^0(t, \vetor{x})}{V^j(t, \vetor{y})} = - \frac{1}{M^2} \diffp*{}{x^i} \commutator{\pi^i(t, \vetor{x})}{V^j(t, \vetor{y})} = -\frac{i}{M^2} \partial^j_{x} \delta(\vetor{x} - \vetor{y}),
+   \end{equation*}
+   and that
+   \begin{equation*}
+      \commutator{V^0(t, \vetor{x})}{V^0(t, \vetor{y})} = \frac{1}{M^4} \diffp*{}{x^iy^j} \commutator{\pi^i(t, \vetor{x})}{\pi^j(t, \vetor{y})} = 0.
+   \end{equation*}
+   Notice we have
+   \begin{align*}
+      \epsilon^\mu_{(\lambda)}(p) \epsilon^\nu_{(\lambda')}(k) \commutator{\pi_\nu(t, \vetor{y})}{V_\mu(t, \vetor{x})} 
+      &= \epsilon^\mu_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) \commutator{\pi_j(t, \vetor{y})}{V_\mu(t, \vetor{x})}\\
+      &= \epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) \commutator{\pi_j(t, \vetor{y})}{V_i(t, \vetor{x})}\\
+      &= i g_{ij} \epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) \delta(\vetor{x} - \vetor{y})
+   \end{align*}
+   and
+   \begin{align*}
+      \epsilon^\mu_{(\lambda)}(p) \epsilon^\nu_{(\lambda')}(k) \commutator{V_\nu(t, \vetor{y})}{V_\mu(t, \vetor{x})} 
+      &= \epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) \commutator{V_j(t, \vetor{y})}{V_0(t, \vetor{x})}+ \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k) \commutator{V_0(t, \vetor{y})}{V_j(t, \vetor{x})}\\
+      &= \frac{i}{M^2}\left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) \partial^x_j \delta(\vetor{x} - \vetor{y}) - \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k) \partial_j^y \delta(\vetor{x} - \vetor{y})\right]\\
+      &= -\frac{i}{M^2}\left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k)  + \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k)\right]\partial^y_j \delta(\vetor{x} - \vetor{y}).
+   \end{align*}
+   Using these commutation relations, we obtain
+   \begin{align*}
+      \commutator{a_{\lambda}(p)}{a_{\lambda'}(k)} 
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y  \commutator*{\frac{\pi_\nu(t, \vetor{y}) + i \omega_k V_\nu(t, \vetor{y})}{e^{-iky}\sqrt{2\omega_k}}\epsilon^\mu_{(\lambda')}(k)}{\frac{\pi_\mu(t, \vetor{x}) + i \omega_p V_\mu(t, \vetor{x})}{e^{-ipx}\sqrt{2\omega_p}}\epsilon^\mu_{(\lambda)}(p)}\\
+      &= \int_{\mathbb{R}^3}\dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px + ky)}}{\sqrt{4\omega_p \omega_k}}\epsilon^\mu_{(\lambda)}(p) \epsilon^\nu_{(\lambda')}(k)\left(i \omega_p \commutator*{\pi_\nu(t, \vetor{y})}{V_{\mu}(t, \vetor{x})} +{}\right.\\
+      &{}\phantom{=\int_{\mathbb{R}^3}\dln3x \int_{\mathbb{R}^3} \dln3y\frac{e^{i(px + ky)}}{\sqrt{4\omega_p \omega_k}}}\left.{}+ i \omega_k\commutator*{V_\nu(t, \vetor{y})}{\pi_{\mu}(t, \vetor{x})} - \omega_k \omega_p \commutator{V_\nu(t, \vetor{y})}{V_\mu(t, \vetor{x})}\right)\\
+      &= i\int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3}\dln3y \frac{e^{i(px + ky)}}{\sqrt{4 \omega_p \omega_k}} g_{ij}\left[\omega_p \epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k)  - \omega_k \epsilon^j_{(\lambda)}(p) \epsilon^i_{(\lambda')}(k) \right]\delta(\vetor{x} - \vetor{y})+{}\\
+      &{}\phantom{=} + \frac{i}{M^2}\int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px + ky)}}{\sqrt{4 \omega_p \omega_k}} \omega_k \omega_p\left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) + \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k)\right] \partial_j^y \delta(\vetor{x} - \vetor{y})\\
+      &= i\int_{\mathbb{R}^3} \dln3x \frac{e^{i(p + k)x}}{\sqrt{4 \omega_p \omega_k}} g_{ij}\epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k)\left[\omega_p - \omega_k  \right] + {}\\
+      &{}\phantom{=} + \frac{1}{M^2}\int_{\mathbb{R}^3}\dln3x \int_{\mathbb{R}^3}\dln3y\frac{e^{i(px + ky)}}{\sqrt{4 \omega_p \omega_k}} \omega_k \omega_p k_j \left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) + \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k)\right]\delta(\vetor{x} - \vetor{y})\\
+      &= \frac{(2\pi)^3 \omega_p \delta(\vetor{p} + \vetor{k})}{2M^2} \left[\epsilon^0_{(\lambda)}(p) k_j\epsilon^j_{(\lambda')}(k) - p_j \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k)\right]
+   \end{align*}
+   then as
+   \begin{equation*}
+      p_j \epsilon^j_{(\lambda)}(p) = p_\mu \epsilon^\mu_{(\lambda)}(p) - \omega_p \epsilon^0_{(\lambda)}(p) = - \omega_p \epsilon^0_{(\lambda)}(p)
+   \end{equation*}
+   for \(\lambda \in \set{1,2,3},\) we conclude
+   \begin{equation*}
+      \commutator{a_\lambda(p)}{a_{\lambda'}(k)} = 0
+   \end{equation*}
+   and as a result,
+   \begin{equation*}
+      \commutator{\herm{a}_{\lambda}(p)}{\herm{a}_{\lambda'}(k)} = 0.
+   \end{equation*}
+   We repeat this computation to obtain the other commutation relation,
+   \begin{align*}
+      \commutator{a_{\lambda}(p)}{\herm{a}_{\lambda'}(k)} 
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y  \commutator*{\frac{\pi_\mu(t, \vetor{x}) + i \omega_p V_\mu(t, \vetor{x})}{e^{-ipx}\sqrt{2\omega_p}}\epsilon^\mu_{(\lambda)}(p)}{\frac{\pi_\nu(t, \vetor{y}) - i \omega_k V_\nu(t, \vetor{y})}{e^{iky}\sqrt{2\omega_k}}\epsilon^\nu_{(\lambda')}(k)}\\
+      &= \int_{\mathbb{R}^3}\dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{\sqrt{4\omega_p \omega_k}}\epsilon^\mu_{(\lambda)}(p) \epsilon^\nu_{(\lambda')}(k)\left(i \omega_p \commutator*{V_{\mu}(t, \vetor{x})}{\pi_\nu(t, \vetor{y})} +{}\right.\\
+      &{}\phantom{=\int_{\mathbb{R}^3}\dln3x \int_{\mathbb{R}^3} \dln3y\frac{e^{i(px - ky)}}{\sqrt{4\omega_p \omega_k}}}\left.{}+ i \omega_k\commutator*{V_\nu(t, \vetor{y})}{\pi_{\mu}(t, \vetor{x})} + \omega_k \omega_p \commutator{V_\mu(t, \vetor{x})}{V_\nu(t, \vetor{y})}\right)\\
+      &= \int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3}\dln3y \frac{e^{i(px - ky)}}{\sqrt{4 \omega_p \omega_k}} g_{ij}\epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k)\left(\omega_p + \omega_k\right)\delta(\vetor{x} - \vetor{y})+{}\\
+      &{}\phantom{=} + \frac{i}{M^2}\int_{\mathbb{R}^3} \dln3x \int_{\mathbb{R}^3} \dln3y \frac{e^{i(px - ky)}}{\sqrt{4 \omega_p \omega_k}} \omega_k \omega_p\left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) + \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k)\right] \partial_j^y \delta(\vetor{x} - \vetor{y})\\
+      &= \int_{\mathbb{R}^3} \dln3x \frac{e^{i(p - k)x}}{\sqrt{4 \omega_p \omega_k}} g_{ij}\epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k)\left(\omega_p + \omega_k  \right) + {}\\
+      &{}\phantom{=} - \frac{1}{M^2}\int_{\mathbb{R}^3}\dln3x \int_{\mathbb{R}^3}\dln3y\frac{e^{i(px - ky)}}{\sqrt{4 \omega_p \omega_k}} \omega_k \omega_p k_j \left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(k) + \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(k)\right]\delta(\vetor{x} - \vetor{y})\\
+      &= (2\pi)^3 \delta(\vetor{p} - \vetor{k})\left\{g_{ij} \epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(p) - \frac{\omega_p p_j}{2M^2}\left[\epsilon^0_{(\lambda)}(p) \epsilon^j_{(\lambda')}(p) + \epsilon^j_{(\lambda)}(p) \epsilon^0_{(\lambda')}(p)\right]\right\}\\
+      &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \left[g_{ij} \epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(p) + \frac{p_ip_j}{M^2} \epsilon^i_{(\lambda)} (p)\epsilon^j_{(\lambda')}(p)\right]\\
+      &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \left(g_{ij} + \frac{p_i p_j}{M^2}\right)\epsilon^i_{(\lambda)}(p) \epsilon^j_{(\lambda')}(p)\\
+      &= \text{vou comer vidro}
+      % &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \left[g_{\mu\nu} \epsilon^\mu_{(\lambda)}(p) \epsilon^\nu_{(\lambda')}(p) + \left(\frac{\omega_p^2}{M^2} - 1\right) \epsilon^0_{(\lambda)} (p)\epsilon^0_{(\lambda')}(p)\right]\\
+      % &= (2\pi)^3 \delta(\vetor{p} - \vetor{k}) \left[g_{\lambda \lambda'} + \frac{\norm{\vetor{p}}^2}{M^2}\epsilon^0_{(\lambda)}(p) \epsilon^0_{(\lambda')}(p)\right].
+   \end{align*}
+
+   We rewrite the equations of motion for \(V^\mu\) 
+   \begin{equation*}
+      \partial_\mu F^{\mu\nu} + M^2 V^\nu = 0 \implies \left(\square g^{\mu\nu} - \partial^\mu \partial^\nu + M^2 g^{\mu\nu} \right)V_{\nu} = 0
+   \end{equation*}
+   and thus consider the differential operator
+   \begin{equation*}
+      \mathcal{O}_x^{\mu\nu} = \square g^{\mu\nu} - \partial^\mu \partial^\nu + M^2 g^{\mu\nu}.
+   \end{equation*}
+   The propagator \(S_{\mu\nu}(x - y)\) is then defined as the Green function of this differential operator,
+   \begin{equation*}
+      \mathcal{O}_x^{\mu\nu}S_{\mu\sigma}(x - y) = i\delta\indices{^\nu_\sigma} \delta(x - y)
+   \end{equation*}
+   once we include the \(i \epsilon\) prescription. In terms of its Fourier transform,
+   \begin{equation*}
+      S_{\mu\sigma}(x - y) = \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \tilde{S}_{\mu\sigma}(p) e^{-ip(x-y)},
+   \end{equation*}
+   we have
+   \begin{equation*}
+      \mathcal{O}_x^{\mu\nu} S_{\mu\sigma}(x - y) = \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \tilde{S}_{\mu\sigma}(p) \left(-p_\alpha p^\alpha g^{\mu\nu} + p^\mu p^\nu + M^2 g^{\mu\nu}\right) e^{-ip(x - y)},
+   \end{equation*}
+   then as
+   \begin{equation*}
+      i \delta\indices{^\nu_\sigma} \delta(x - y) = \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} i \delta\indices{^\nu_\sigma} e^{-ip(x - y)},
+   \end{equation*}
+   we must require
+   \begin{equation*}
+      \tilde{S}_{\mu\sigma}(p) (p_\alpha p^\alpha g^{\mu\nu} - p^\mu p^\nu - M^2 g^{\mu\nu}) = -i \delta\indices{^\nu_\sigma}.
+   \end{equation*}
+   Notice
+   \begin{align*}
+      \left(g_{\nu \rho} - \frac{p_\nu p_\rho}{M^2}\right) (p_\alpha p^\alpha g^{\mu\nu} - p^\mu p^\nu - M^2 g^{\mu\nu}) 
+      &= (p_\alpha p^\alpha - M^2)\delta\indices{^\mu_\rho} - \frac{p_\alpha p^\alpha p^\mu p_\rho}{M^2} + \frac{p_\nu p^\nu p^\mu p_\rho}{M^2}\\
+      &= (p_\alpha p^\alpha - M^2) \delta\indices{^\mu_\rho} 
+   \end{align*}
+   then
+   \begin{equation*}
+      (p_\alpha p^\alpha - M^2) \tilde{S}_{\rho\sigma}(p) = -i\left( g_{\rho \sigma} - \frac{p_\sigma p_\rho}{M^2}\right) \implies \tilde{S}_{\mu\nu}(p) = \frac{-i}{p_\alpha p^\alpha - M^2} \left(g_{\mu\nu} - \frac{p_{\mu}p_\nu}{M^2}\right)
+   \end{equation*}
+   and we conclude
+   \begin{equation*}
+      S_{\mu\nu}(x - y) = \int_{\mathbb{R}^4} \frac{\dln4p}{(2\pi)^4} \frac{-i e^{-ip(x - y)}}{p_\alpha p^\alpha - M^2 + i \epsilon}\left(g_{\mu\nu} - \frac{p_\mu p_\nu}{M^2}\right)
+   \end{equation*}
+   is the propagator for the free Proca field.
 \end{proof}

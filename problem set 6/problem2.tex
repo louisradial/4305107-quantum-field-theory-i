@@ -50,19 +50,19 @@
    \begin{center}
       \feynmandiagram [inline=(a.base),medium, horizontal=a to b] {
          i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, rmomentum'=\(s_2\)] i2 [particle=\(S_2\)],
-         a -- [anti charged scalar, edge label = \(\bar{\Phi}\), momentum'=\(p_1 + s_2\)] b,
+         a -- [charged scalar, momentum'=\(p_1 + s_2\)] b,
          b -- [charged scalar, momentum=\(p_3\)] f1 [particle=\(\Phi_3\)],
          b -- [scalar, momentum=\(s_4\)] f2 [particle = \(S_4\)],
       }; 
       \quad and \quad
       \feynmandiagram [inline=(b.base),medium, vertical=a to b] {
          i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum'=\(s_4\)] f1 [particle=\(S_4\)],
-         a -- [anti charged scalar, edge label = \(\bar{\Phi}\), momentum'=\(p_1 - s_4\)] b,
+         a -- [charged scalar, momentum'=\(p_1 - s_4\)] b,
          b -- [charged scalar, momentum=\(p_3\)] f2 [particle=\(\Phi_3\)],
          b -- [scalar, rmomentum=\(s_2\)] i2 [particle=\(S_2\)],
       };,
    \end{center}
-   which uses two \(\Delta\) vertices. According to the Feynman rules, we need only resolve the momentum conservation in the vertices with the internal antiparticle line, hence
+   which uses two \(\Delta\) vertices. According to the Feynman rules, we need only resolve the momentum conservation in the vertices with the internal line, hence
    \begin{align*}
       \braket{p_3 s_4}{p_1 s_2} &= (-i \Delta)^2 \int_{\mathbb{R}^4}\frac{\dln4k}{(2\pi)^4} \frac{i (2\pi)^8 \left[\delta(p_1 + s_2 - k)\delta(k - p_3 - s_4) + \delta(p_1 - s_4 - k)\delta(k + s_2 - p_3)\right]}{Z_S Z_\Phi (k^2 - \mu^2 + i \epsilon)}\\
       &= (2\pi)^4(-i \Delta)^2 Z_S^{-1} Z_\Phi^{-1} \left[\frac{i \delta(p_1 + s_2 - p_3 - s_4)}{(p_1 + s_2)^2 - \mu^2 + i \epsilon} + \frac{i \delta(p_1 + s_2 - p_3 - s_4)}{(p_1 - s_4)^2 - \mu^2 + i \epsilon}\right]\\
@@ -70,33 +70,27 @@
    \end{align*}
    is the lowest order matrix element for the considered process. 
 
-   There is no Feynman diagram with the vertices of the theory such that a process \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4\) is possible, so the matrix element is zero. If the process considered were \(\Phi_1 \bar{\Phi}_2 \to S_3,\) we would simply get the \(\Delta\) vertex,
+   For the process \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4\) we consider the diagrams
    \begin{center}
-      \feynmandiagram[inline=(f1.base), small, horizontal=a to f1] {
-         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum'=\(s_3\)] f1 [particle=\(S_3\)],
-         i2 [particle=\(\bar{\Phi}_2\)] -- [anti charged scalar, momentum=\(\bar{p}_2\)] a,
+      \feynmandiagram[inline=(b.base),medium,vertical = a to b] {
+         i1 [particle = \(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum'=\(s_3\)] f1 [particle = \(S_3\)],
+         i2 [particle = \(\bar{\Phi}_2\)] -- [anti charged scalar, momentum=\(p_2\)] b, 
+         b -- [scalar, momentum'=\(s_4\)] f2 [particle = \(S_4\)],
+         a -- [charged scalar, momentum=\(p_1-s_3\)] b,
+      };
+      and
+      \feynmandiagram[inline=(b.base),medium,vertical = a to b] {
+         i1 [particle = \(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum'=\(s_4\)] f1 [particle = \(S_4\)],
+         i2 [particle = \(\bar{\Phi}_2\)] -- [anti charged scalar, momentum=\(p_2\)] b, 
+         b -- [scalar, momentum'=\(s_3\)] f2 [particle = \(S_3\)],
+         a -- [charged scalar, momentum=\(p_1-s_4\)] b,
       };,
    \end{center}
-   as the lowest order contribution. If it were \(\Phi_1 \bar{\Phi}_2 \to S_3 S_4 S_5\) we would get a \(\Delta g\) and a \(\Delta^3\) contribution from diagrams such as
-   \begin{center}
-      \feynmandiagram [inline=(f2.base),medium, horizontal=a to b] {
-         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [charged scalar, rmomentum'=\(\bar{p}_2\)] i2 [particle=\(\bar{\Phi}_2\)],
-         a -- [scalar, momentum'=\(k\)] b,
-         b -- [scalar, momentum=\(s_3\)] f1 [particle=\(S_3\)],
-         b -- [scalar, momentum=\(s_4\)] f2 [particle = \(S_4\)],
-         b -- [scalar, momentum=\(s_5\)] f3 [particle = \(S_5\)],
-      };
-      \quad and\quad
-      \feynmandiagram [inline=(f2.base),small, vertical=c to a] {
-         i1 [particle=\(\Phi_1\)] -- [charged scalar, momentum=\(p_1\)] a -- [scalar, momentum=\(s_3\)] f1 [particle=\(S_3\)],
-         a -- [anti charged scalar, momentum=\(\bar{k}\)] b,
-         b -- [scalar, momentum=\(s_4\)] f2 [particle=\(S_4\)],
-         b -- [charged scalar, momentum=\(k\)] c,
-         c -- [scalar, momentum=\(s_5\)] f3 [particle = \(S_5\)],
-         i2 [particle=\(\bar{\Phi}_2\)] -- [anti charged scalar, momentum'=\(\bar{p}_2\)] c,
-         f1 -- [draw=none] f2,
-         f2 -- [draw=none] f3,
-      };
-   \end{center}
-   as the lowest orders contributions, depending on the ratio \(\frac{g}{\Delta^2}.\)
+   then analogously as the previous process we obtain
+   \begin{align*}
+      \braket{s_3 s_4}{p_1 p_2} &= (-i \Delta)^2 \int_{\mathbb{R}^4}\frac{\dln4k}{(2\pi)^4} \frac{i (2\pi)^8 \left[\delta(p_1 - s_3 - k)\delta(k + p_2 - s_4) + \delta(p_1 - s_4 - k)\delta(k + p_2 - s_3)\right]}{Z_S Z_\Phi (k^2 - \mu^2 + i \epsilon)}\\
+      &= (2\pi)^4(-i \Delta)^2 Z_S^{-1} Z_\Phi^{-1} \left[\frac{i \delta(p_1 +p_2 - s_3 - s_4)}{(p_1 - s_3)^2 - \mu^2 + i \epsilon} + \frac{i \delta(p_1 + p_2 - s_3 - s_4)}{(p_1 - s_4)^2 - \mu^2 + i \epsilon}\right]\\
+                                &= \frac{-i \Delta^2 (2\pi)^4 \delta(p_1 + p_2 - s_3 - s_4)}{Z_S Z_\Phi}\left[\frac{1}{(p_1 - s_3)^2 - \mu^2 + i \epsilon} + \frac{1}{(p_1 - s_4)^2 - \mu^2 + i \epsilon}\right],
+   \end{align*}
+   as its lowest order matrix element.
 \end{proof}

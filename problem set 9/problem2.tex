@@ -5,9 +5,45 @@
        \item \(\gamma^\alpha \gamma^\beta \gamma_\alpha = - 2\gamma^\beta\);
        \item \(\gamma^\alpha \gamma^\beta \gamma^\nu \gamma_\alpha = 4 g^{\nu \beta}\);
        \item \(\gamma^\alpha \gamma^\beta \gamma^\nu \gamma^\mu \gamma_\alpha = -2 \gamma^\mu \gamma^\nu \gamma^\beta\); and
-       \item \(\Tr\left(\gamma^\alpha \gamma^\beta \gamma^\nu \gamma^\mu\right) = 4(g^{\alpha \beta} g^{\nu \mu} - g^{\alpha \nu} g^{\beta \mu} + g^{\alpha \mu} g^{\beta \nu}\).
+       \item \(\Tr\left(\gamma^\alpha \gamma^\beta \gamma^\nu \gamma^\mu\right) = 4(g^{\alpha \beta} g^{\nu \mu} - g^{\alpha \nu} g^{\beta \mu} + g^{\alpha \mu} g^{\beta \nu})\).
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   Notice
+   \begin{equation*}
+      \gamma^\alpha\gamma_\alpha = g_{\alpha \beta} \gamma^\alpha \gamma^\beta = - g_{\alpha \beta} \gamma^{\beta}\gamma^{\alpha} + 2g_{\alpha \beta}g^{\alpha \beta} = - \gamma^\alpha \gamma_\alpha + 8 \implies \gamma^\alpha \gamma_\alpha = 4,
+   \end{equation*}
+   then
+   \begin{equation*}
+      \gamma^\alpha \gamma^\beta \gamma_\alpha = - 4\gamma^\beta + 2g^{\alpha \beta} \gamma_{\alpha} = -2 \gamma^\beta.
+   \end{equation*}
+   We also have
+   \begin{equation*}
+      \anticommutator{\gamma^\nu}{\gamma_{\alpha}} = g_{\alpha \beta}\anticommutator{\gamma^\nu}{\gamma^\beta} = 2g_{\alpha \beta} g^{\beta \nu} = 2 \delta\indices{^\nu_\alpha},
+   \end{equation*}
+   then
+   \begin{equation*}
+      \gamma^\alpha \gamma^\beta \gamma^\nu \gamma_{\alpha} = - \gamma^\alpha \gamma^\beta \gamma_{\alpha} \gamma^\nu + 2 \gamma^\alpha \gamma^\beta \delta\indices{^\nu_\alpha} = 2 \gamma^\beta \gamma^\nu + 2 \gamma^{\nu}\gamma^\beta = 2 \anticommutator{\gamma^\nu}{\gamma^\beta} = 4 g^{\nu \beta}
+   \end{equation*}
+   and
+   \begin{equation*}
+      \gamma^\alpha \gamma^\beta \gamma^\nu \gamma^\mu \gamma_{\alpha} = - 4g^{\nu \beta} \gamma^\mu + 2 \gamma^\mu \gamma^\beta \gamma^\nu = -4 g^{\nu \beta} \gamma^\mu - 2 \gamma^\mu \gamma^\beta \gamma^\nu + 4 \gamma^\mu g^{\beta\nu} = -2 \gamma^\mu \gamma^\beta \gamma^\nu.
+   \end{equation*}
+
+   For the trace, we build it up from \(\Tr(\gamma^\alpha) = 0,\) the anticommutation relations and the cyclic property of trace. We have
+   \begin{equation*}
+      \Tr(\gamma^\alpha \gamma^\beta) = -\Tr(\gamma^\beta \gamma^\alpha) + 8g^{\alpha \beta} = -\Tr(\gamma^\alpha \gamma^\beta) + 8g^{\alpha \beta} \implies \Tr(\gamma^\alpha \gamma^\beta) = 4g^{\alpha \beta},
+   \end{equation*}
+   then
+   \begin{align*}
+      \Tr(\gamma^\alpha \gamma^\beta \gamma^\nu \gamma^\mu) &= -\Tr(\gamma^\alpha \gamma^\beta \gamma^\mu \gamma^\nu) + 2g^{\mu\nu}\Tr(\gamma^\alpha \gamma^\beta)\\
+                                                            &= \Tr(\gamma^\alpha \gamma^\mu\gamma^\beta \gamma^\nu) - 8g^{\mu \beta} g^{\alpha \nu} + 8 g^{\mu\nu} g^{\alpha \beta}\\
+                                                            &= -\Tr(\gamma^\mu \gamma^\alpha \gamma^\beta \gamma^\nu) - 8 g^{\mu\beta}g^{\alpha \nu} + 8 g^{\mu \nu}g^{\alpha \beta} + 8 g^{\mu \alpha} g^{\nu \beta}\\
+                                                            &= -\Tr(\gamma^\alpha \gamma^\beta \gamma^\nu \gamma^\mu) + 8(g^{\alpha \beta}g^{\nu\mu} - g^{\alpha \nu}g^{\mu \beta} + g^{\alpha\mu}g^{\beta\nu})
+   \end{align*}
+   hence \(\Tr(\gamma^\alpha \gamma^\beta \gamma^\nu) = 4(g^{\alpha \beta} g^{\nu\mu}-g^{\alpha\nu}g^{\beta\mu} + g^{\alpha \mu}g^{\beta \nu}).\) Another trace property we use is that the trace of three gamma matrices vanishes
+   \begin{equation*}
+      \Tr(\gamma^\alpha \gamma^\beta \gamma^\nu) = - \Tr(\gamma^\alpha \gamma^\nu \gamma^\beta) + 2g^{\beta \nu} \Tr(\gamma^\alpha) = - \Tr(\gamma^\alpha \gamma^\nu \gamma^\beta) \implies \Tr(\gamma^\alpha \gamma^\beta \gamma^\nu) = 0
+   \end{equation*}
+   and it generalizes to the vanishing of the trace of any odd number of gamma matrices.
 \end{proof}

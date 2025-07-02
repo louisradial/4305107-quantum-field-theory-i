@@ -1,7 +1,233 @@
 % vim: spl=en
 \begin{problem}{Cross section for annihilation of electron-positron in QED}{p3}
-    In QED, evaluate the unpolarized cross section for \(e^+ e^- \to \gamma \gamma\) as a function of the final state photon polarizations. Take into account the non-vanishing electron mass.
+    In QED, evaluate the unpolarized cross section for \(e^+ e^- \to \gamma \gamma\) as a function of the final state photon polarizations\footnote{We'll ignore this and sum over photon polarizations.}. Take into account the non-vanishing electron mass.
 \end{problem}
 \begin{proof}[Solution]
-    
+    For the annihilation \(e^+ e^- \to \gamma \gamma\) we consider the lowest order diagrams
+    \begin{center}
+        \feynmandiagram[inline=(a.base),medium,vertical=a to b]{
+            i1 [particle=\(e^-\)] -- [fermion, momentum'=\(p_1\)] a -- [photon, momentum'=\(p_3\)] f1 [particle=\(\gamma\)];
+            a -- [fermion, momentum=\(p_1 - p_3\)] b;
+            b -- [photon, momentum=\(p_4\)] f2 [particle=\(\gamma\)];
+            i2 [particle=\(e^+\)] -- [anti fermion, momentum=\(p_2\)] b;
+        };
+        and
+        \feynmandiagram[inline=(a.base),medium,vertical=a to b]{
+            i1 [particle=\(e^-\)] -- [fermion, momentum'=\(p_1\)] a -- [photon, momentum'=\(p_4\)] f1 [particle=\(\gamma\)];
+            a -- [fermion, momentum=\(p_1 - p_4\)] b;
+            b -- [photon, momentum=\(p_3\)] f2 [particle=\(\gamma\)];
+            i2 [particle=\(e^+\)] -- [anti fermion, momentum=\(p_2\)] b;
+        };
+    \end{center}
+    with amplitudes
+    \begin{align*}
+        i \mathcal{M}_t &= \bar{v}(p_2) (i e \gamma^\nu) \epsilon^*_{\nu}(p_4) i\frac{\slashed{p}_1 - \slashed{p}_3 + m}{t - m^2} \epsilon^*_{\mu}(p_3) (i e \gamma^\mu) u(p_1) \\
+                        &= i(ie)^2 \bar{v}(p_2) \slashed{\epsilon}^*(p_4) \frac{\slashed{p}_1 - \slashed{p}_3 + m}{t - m^2} \slashed{\epsilon}^*(p_3) u(p_1)
+    \end{align*}
+    and
+    \begin{equation*}
+        i\mathcal{M}_u = i(ie)^2 \bar{v}(p_2) \slashed{\epsilon}^*(p_3) \frac{\slashed{p}_1 - \slashed{p}_4 + m}{u - m^2} \slashed{\epsilon}^*(p_4) u(p_1).
+    \end{equation*}
+    In order to compute the cross section, we'll compute the amplitude
+    \begin{equation*}
+        i \mathcal{M} = i\mathcal{M}_t +  i\mathcal{M}_u,
+    \end{equation*}
+    sum over photon polarizations, and average over the initial spins
+    \begin{equation*}
+        \overline{\abs{i\mathcal{M}}^2} = \frac14\sum_{\lambda,\lambda'}\sum_{\mathrm{spin}}\abs{i \mathcal{M}}^2 = \underbrace{\frac14\sum_{\lambda,\lambda'}\sum_{\mathrm{spin}}\abs{i \mathcal{M}_t}^2}_{\overline{\abs{i\mathcal{M}_t}^2}} + \underbrace{\frac14\sum_{\lambda,\lambda'}\sum_{\mathrm{spin}} \abs{i\mathcal{M}_u}^2}_{\overline{\abs{i\mathcal{M}_u}^2}} + \underbrace{\frac12\sum_{\lambda,\lambda'}\sum_{\mathrm{spin}} \Re\left(\mathcal{M}_t^*\mathcal{M}_u\right)}_{2\overline{\Re\left(\mathcal{M}_t^*\mathcal{M}_u\right)}}.
+    \end{equation*}
+    As we have
+    \begin{equation*}
+        (\bar{v} \Lambda u)^* = \bar{u} \gamma^0 \herm{\Lambda} \gamma^0 v,
+    \end{equation*}
+    we compute
+    \begin{equation*}
+        [\slashed{a}^* (\slashed{b} + c) \slashed{d}^*]^\dag = \gamma^0 \slashed{d} \gamma^0 \gamma^0 (\slashed{b} + c) \gamma^0 \gamma^0 \slashed{a} \gamma^0 = \gamma^0 \slashed{d} (\slashed{b} + c) \slashed{a} \gamma^0,
+    \end{equation*}
+    then
+    \begin{equation*}
+        (i \mathcal{M}_t)^* = -i(ie)^2 \bar{u}(p_1) \slashed{\epsilon}(p_3) \frac{\slashed{p}_1 - \slashed{p}_3 + m}{t - m^2} \slashed{\epsilon}(p_4) v(p_2).
+    \end{equation*}
+    % and
+    % \begin{equation*}
+    %     (i \mathcal{M}_u)^* = -i(ie)^2 \bar{u}(p_1) \slashed{\epsilon}(p_4) \frac{\slashed{p}_1 - \slashed{p}_4 + m}{u - m^2} \slashed{\epsilon}(p_3) v(p_2) 
+    % \end{equation*}
+    For the \(t\)-channel we have
+    \begin{equation*}
+        \abs{i\mathcal{M}_t}^2 = e^4 \bar{u}_a^{s_1}(p_1) \left[\slashed{\epsilon}(p_3) \frac{\slashed{p}_1 - \slashed{p}_3 + m}{t - m^2}\slashed{\epsilon}(p_4)\right]_{ab} v^{s_2}_b(p_2)\bar{v}_c^{s_2}(p_2)\left[\slashed{\epsilon}^*(p_4) \frac{\slashed{p}_1 - \slashed{p}_3 + m}{t - m^2}\slashed{\epsilon}^*(p_3)\right]_{cd}u^{s_1}_d(p_1)
+    \end{equation*}
+    then
+    \begin{align*}
+        \frac14 \sum_{\mathrm{spin}}{\abs{i\mathcal{M}_t}^2} &= \frac{e^4}{4(t - m^2)^2} \Tr\left[(\slashed{p}_1 + m)\slashed{\epsilon}(p_3)(\slashed{p}_1 - \slashed{p}_3 + m) \slashed{\epsilon}(p_4)(\slashed{p}_2 - m)\slashed{\epsilon}^*(p_4) (\slashed{p}_1 - \slashed{p}_3 + m) \slashed{\epsilon}^*(p_3)\right]\\
+                                                             &= \frac{e^4}{4(t - m^2)^2} \Tr\left[\slashed{\epsilon}^*(p_3)(\slashed{p}_1 + m)\slashed{\epsilon}(p_3)(\slashed{p}_1 - \slashed{p}_3 + m) \slashed{\epsilon}(p_4)(\slashed{p}_2 - m)\slashed{\epsilon}^*(p_4) (\slashed{p}_1 - \slashed{p}_3 + m)\right].
+    \end{align*}
+    When we sum over photon polarizations, we will get
+    \begin{equation*}
+        \sum_{\lambda} \sum_{\lambda'} \slashed{\epsilon}^*(p_3, \lambda) \dots \slashed{\epsilon}(p_3,\lambda) \dots \slashed{\epsilon}(p_4,\lambda') \dots \slashed{\epsilon}^*(p_4, \lambda') \dots  = \gamma^\mu \dots \gamma_\mu \dots \gamma^\nu \dots \gamma_\nu \dots,
+    \end{equation*}
+    then we may use \cref{prob:p2} to obtain
+    \begin{equation*}
+        \gamma^\nu (\slashed{p}_2 - m) \gamma_\nu = - 2(\slashed{p}_2 + 2m)\quad\text{and}\quad
+        \gamma^\mu (\slashed{p}_1 + m) \gamma_\mu = -2(\slashed{p}_1 - 2m),
+    \end{equation*}
+    hence
+    \begin{equation*}
+        \overline{\abs{i\mathcal{M}_t}^2} = \frac{e^4}{(t - m^2)^2} \Tr\left[(\slashed{p}_1 - 2m)(\slashed{p}_1 - \slashed{p}_3 + m) (\slashed{p}_2 + 2m)(\slashed{p}_1 - \slashed{p}_3 + m)\right].
+    \end{equation*}
+    Henceforth we will use the following results concerning Mandelstam variables: first, their sum,
+    \begin{equation*}
+        s + t + u = p_1^2 + p_2^2 + p_3^2 + p_4^2 = 2m^2,
+    \end{equation*}
+    then the momentum product identities, for \(s\)
+    \begin{equation*}
+        2 p_1 p_2 = s - p_1^2 - p_2^2 = s - 2m^2,\quad\text{and}\quad
+        2 p_3 p_4 = s - p_3^2 - p_4^2 = s
+    \end{equation*}
+    for \(t\)
+    \begin{equation*}
+        2 p_1 p_3 = p_1^2 + p_3^2 - t = m^2 - t,\quad\text{and}\quad
+        2 p_2 p_4 = p_2^2 + p_4^2 - t = m^2 - t
+    \end{equation*}
+    and for \(u\)
+    \begin{equation*}
+        2 p_1 p_4 = p_1^2 + p_4^2 - u = m^2 - u,\quad\text{and}\quad
+        2 p_2 p_3 = p_2^2 + p_3^2 - u = m^2 - u.
+    \end{equation*}
+    As the product of an odd number of \(\gamma\) matrices is traceless, we need only collect the terms of the \(m\) polynomial with even degree. For \(m^0\) we have
+    \begin{align*}
+        \Tr[\slashed{p}_1 (\slashed{p}_1 - \slashed{p}_3) \slashed{p}_2 (\slashed{p}_1 - \slashed{p}_3)] 
+        &= 8(p_1^2 - p_1p_3)(p_2 p_1 - p_2 p_3) - 4 p_1 p_2 t\\
+        &= 2(2 m^2 - 2p_1 p_3)(2p_2 p_1 - 2p_2 p_3) - 2 (s - 2m^2)t\\
+        &= 2(m^2 + t)(s - 3m^2 + u) - 2(s - 2m^2)t\\
+        &= 2(m^2 + t)(s + u + t - 3m^2 - t) - 2(s - 2m^2)t\\
+        &= - 2(m^4 + 2m^2 t + t^2) - 2(s - 2m^2)t\\
+        &= -2m^4 -2t^2 -2st,
+    \end{align*}
+    for \(m^2\) we have
+    \begin{align*}
+        \Tr[\slashed{p}_1 \slashed{p}_2 + 4(\slashed{p}_1 - \slashed{p}_2) (\slashed{p}_1 - \slashed{p}_3) - 4 (\slashed{p}_1 - \slashed{p}_3)^2] 
+        &= 4 p_1 p_2 + 16 (p_1 - p_2)(p_1 - p_3) - 16 t\\
+        &= 2 s - 4m^2 +  8(2m^2 - 2p_1 p_3 - 2p_1 p_2 + 2p_2 p_3) - 16t\\
+        &= 2s - 4m^2 + 8(4m^2 + t - s - u) - 16t\\
+        &= 2s - 4m^2 + 8(2t + 2m^2) - 16t\\
+        &= 2s + 12m^2
+    \end{align*}
+    then
+    \begin{align*}
+        \overline{\abs{i\mathcal{M}_t}^2} &= \frac{e^4\left[(-2m^4 - 2t^2-2st)m^0 + (2s + 12m^2)m^2 - 16m^4\right]}{(t - m^2)^2}\\
+                                          &= \frac{2e^4\left(m^2s-3m^4 - t^2 - st\right)}{(t - m^2)^2}.
+    \end{align*}
+    Replacing \(t \to u\) we obtain the \(u\) channel amplitude,
+    \begin{align*}
+        \overline{\abs{i\mathcal{M}_u}^2} = \frac{2e^4\left(m^2s-3m^4 - u^2 - su\right)}{(u - m^2)^2}.
+    \end{align*}
+    For the interference term, we have
+    \begin{equation*}
+        \mathcal{M}_t^*\mathcal{M}_u = 
+        e^4 \bar{u}^{s_1}_a(p_1) \left[\slashed{\epsilon}(p_3) \frac{\slashed{p}_1 - \slashed{p}_3 + m}{t - m^2} \slashed{\epsilon}(p_4)\right]_{ab} v^{s_2}_b(p_2)\bar{v}^{s_2}_c(p_2) \left[\slashed{\epsilon}^*(p_3) \frac{\slashed{p}_1 - \slashed{p}_4 + m}{u - m^2} \slashed{\epsilon}^*(p_4)\right]_{cd} u^{s_1}_d(p_1),
+    \end{equation*}
+    then
+    \begin{equation*}
+        \frac12 \sum_{\mathrm{spin}} \mathcal{M}_t^* \mathcal{M}_u = \frac{e^4\Tr\left[(\slashed{p}_1 + m) \slashed{\epsilon}(p_3)(\slashed{p}_1 - \slashed{p}_3 + m) \slashed{\epsilon}(p_4) (\slashed{p}_2 - m) \slashed{\epsilon}^*(p_3) (\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4)\right]}{2(t - m^2)(u - m^2)}.
+    \end{equation*}
+    Before summing over polarizations, we consider the term between the \(\slashed{\epsilon}(p_3, \lambda)\) polarizations
+    \begin{align*}
+        (\slashed{p}_1 - \slashed{p}_3 + m) \slashed{\epsilon}(p_4) (\slashed{p}_2 - m) 
+        &= (\slashed{p}_1 - \slashed{p}_3 + m)( \slashed{\epsilon}(p_4) \slashed{p}_2 - m \slashed{\epsilon}(p_4))\\
+        &= (\slashed{p}_1 - \slashed{p}_3)\slashed{\epsilon}(p_4) \slashed{p}_2 - m(\slashed{p}_1 - \slashed{p}_3)\slashed{\epsilon}(p_4) + m \slashed{\epsilon}(p_4) \slashed{p}_2 - m^2 \slashed{\epsilon}(p_4)\\
+        &=(\slashed{p}_1 - \slashed{p}_3)\slashed{\epsilon}(p_4) \slashed{p}_2 + m \left[\slashed{\epsilon}(p_4) \slashed{p}_2 - (\slashed{p}_1 - \slashed{p}_3) \slashed{\epsilon}(p_4)\right] - m^2 \slashed{\epsilon}(p_4)
+    \end{align*}
+    then when we sum over \(\lambda\) this term becomes
+    \begin{equation*}
+        \sum_{\lambda} \slashed{\epsilon}(p_3)(\slashed{p}_1 - \slashed{p}_3 + m) \slashed{\epsilon}(p_4) (\slashed{p}_2 - m) \slashed{\epsilon}^*(p_3) = 2 \slashed{p}_2 \slashed{\epsilon}(p_4) (\slashed{p}_1 - \slashed{p}_3) - 4m(p_2 + p_3 - p_1) \epsilon(p_4) - 2m^2 \slashed{\epsilon}(p_4)
+    \end{equation*}
+    and hence 
+    \begin{align*}
+        \frac12 \sum_{\lambda} \sum_{\mathrm{spin}} \mathcal{M}_t^*\mathcal{M}_u 
+        &= -\frac{e^4}{(t - m^2)(u - m^2)}\left\{m^2\Tr\left[(\slashed{p}_1 + m) \slashed{\epsilon}(p_4) (\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4)\right]\right. + \\
+        &{}\phantom{=-{(t - m^2)(u - m^2)}} {}+ 2m(p_2 + p_3 - p_1) \epsilon(p_4) \Tr\left[(\slashed{p}_1 + m) (\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4)\right]+\\
+        &{}\phantom{=-{(t - m^2)(u - m^2)}} \left.{}- \Tr\left[(\slashed{p}_1 + m) \slashed{p}_2 \slashed{\epsilon}(p_4) (\slashed{p}_1 - \slashed{p}_3) (\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4)\right]\right\}.
+    \end{align*}
+    When we sum over \(\lambda'\) we will get the following developments
+    \begin{equation*}
+        \sum_{\lambda'}\slashed{\epsilon}(p_4)(\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4) = 2(\slashed{p}_1 - \slashed{p}_4 - 2m),
+    \end{equation*}
+    \begin{equation*}
+        \sum_{\lambda'} \epsilon_\mu(p_4) \Tr\left[(\slashed{p}_1 + m) (\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4)\right] = - g_{\mu\nu} \Tr\left[(\slashed{p}_1 + m)(\slashed{p}_1 - \slashed{p}_4 + m) \gamma^\nu\right],
+    \end{equation*}
+    and
+    \begin{equation*}
+        \sum_{\lambda'} \slashed{\epsilon}(p_4) (\slashed{p}_1 - \slashed{p}_3) (\slashed{p}_1 - \slashed{p}_4 + m) \slashed{\epsilon}^*(p_4) = - 4(p_1 - p_3)(p_1 - p_4) + 2m (\slashed{p}_1 - \slashed{p}_3)
+    \end{equation*}
+    then
+    \begin{align*}
+        \frac12 \sum_{\lambda, \lambda'} \sum_{\mathrm{spin}} \mathcal{M}_t^* \mathcal{M}_u 
+        &= - \frac{e^4}{(t - m^2)(u - m^2)} \left\{2m^2 \Tr\left[(\slashed{p}_1 + m)(\slashed{p}_1 - \slashed{p}_4 - 2m)\right]+\right.\\
+        &{}\phantom{=-(t - m^2)(u - m^2)} -2m \Tr\left[(\slashed{p}_1 + m)(\slashed{p}_1 - \slashed{p}_4 + m)(\slashed{p}_2 + \slashed{p}_3 - \slashed{p}_1)\right]\\
+        &{}\phantom{=-(t - m^2)} \left.+ 4(p_1 - p_3)(p_1 - p_4) \Tr\left[(\slashed{p}_1 + m)\slashed{p}_2\right] - 2m \Tr\left[(\slashed{p}_1 + m)\slashed{p}_2(\slashed{p}_1 - \slashed{p}_3)\right]\right\}.
+    \end{align*}
+    We compute the traces separately,
+    \begin{align*}
+        \Tr\left[(\slashed{p}_1 + m)(\slashed{p}_1 - \slashed{p}_4 - 2m)\right] 
+        &= \Tr\left[\slashed{p}_1(\slashed{p}_1 - \slashed{p}_4)\right] - 8m^2\\
+        &= 2(2p_1^2 - 2p_1 p_4) - 8m^2\\
+        &= 2(m^2 + u) - 8m^2\\
+        &= 2u - 6m^2,
+    \end{align*}
+    \begin{align*}
+        \Tr\left[(\slashed{p}_1 + m)(\slashed{p}_1 - \slashed{p}_4 + m)(\slashed{p}_2 + \slashed{p}_3 - \slashed{p}_1)\right] 
+        &= m\Tr\left[(2\slashed{p}_1 - \slashed{p}_4)(\slashed{p}_2 + \slashed{p}_3 - \slashed{p}_1)\right]\\
+        &= 2m (4p_1p_2 + 4p_1p_3 - 4p_1^2 - 2p_4p_2 - 2p_4p_3 + 2p_4p_1)\\
+        &= 2m[(4p_1 p_2 - 2p_3 p_4) + (4p_1 p_3 - 2p_2 p_4) + 2p_1 p_4 - 4p_1^2]\\
+        &= 2m(s - 4m^2 + m^2 - t + m^2 - u - 4m^2)\\
+        &= 2m[2s - (s + t + u) - 6m^2]\\
+        &= 4m(s - 4m^2)
+    \end{align*}
+    \begin{align*}
+        (p_1 - p_3)(p_1 - p_4)\Tr\left[(\slashed{p}_1 + m) \slashed{p}_2\right] 
+        &= (2p_1^2 - 2p_1 p_4 - 2p_1 p_3 + 2p_3 p_4)(2p_1 p_2)\\
+        &= (2m^2 - m^2 + u - m^2 + t + s)(s - 2m^2)\\
+        &= 2m^2 (s - 2m^2)
+    \end{align*}
+    and
+    \begin{align*}
+        \Tr\left[(\slashed{p}_1 + m)\slashed{p}_2(\slashed{p}_1 - \slashed{p}_3)\right]
+        &= m \Tr\left[\slashed{p}_2 (\slashed{p}_1 - \slashed{p}_3)\right]\\
+        &= 2m (2p_1 p_2 -2 p_2 p_3)\\
+        &= 2m (s - 3m^2 + u)\\
+        &= -2m (m^2 + t)
+    \end{align*}
+    then noticing all of these results are real, we have
+    \begin{align*}
+        2\overline{\Re(\mathcal{M}_t^*\mathcal{M}_u)} &= -\frac{e^4}{(t - m^2)(u - m^2)} \left[2m^2(2u - 6m^2) - 8m^2(s - 4m^2) + 8m^2(s - 2m^2) + 4m^2(m^2 + t)\right]\\
+                                                      &= -\frac{4m^2e^4\left[(u - 3m^2) - 2(s - 4m^2) + 2(s - 2m^2) + m^2 + t\right]}{(t - m^2)(u - m^2)}\\
+                                                      &= - \frac{4m^2 e^4 (2m^2 + u + t)}{(t - m^2)(u - m^2)}
+    \end{align*}
+    Then, the amplitude is
+    \begin{equation*}
+        \overline{\abs{i\mathcal{M}}^2} = \frac{2e^4\left(m^2s-3m^4 - t^2 - st\right)}{(t - m^2)^2} + \frac{2e^4\left(m^2s-3m^4 - u^2 - su\right)}{(u - m^2)^2}- \frac{4m^2 e^4(t + u + 2m^2)}{(t - m^2)(u - m^2)},
+    \end{equation*}
+    which yields
+    \begin{equation*}
+        \overline{\abs{i\mathcal{M}}^2} \to -2e^4\left(\frac{t + s}{t} + \frac{u + s}{u}\right) = 2e^4 \left(\frac{u}{t} + \frac{t}{u}\right)
+    \end{equation*}
+    in the high energy limit \(m \to 0.\)
+
+    The differential cross section of the pair annihilation is
+    \begin{equation*}
+        \dl{\sigma} = \dli{\Pi_2} \frac{\overline{\abs{i\mathcal{M}}^2}}{F},
+    \end{equation*}
+    where the differential phase space is, by \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset8}{Problem 3 of Problem Set VIII},
+    \begin{equation*}
+        \dl{\Pi_2} = \dli{\Omega} \frac{1}{32\pi^2},
+    \end{equation*}
+    and, as we've shown in \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset7}{Problem 4 of Problem Set VII}, the flux factor in the center of momentum frame is
+    \begin{equation*}
+    F = (2E_1)(2E_2) \sqrt{(\vetor{v}_1 - \vetor{v}_2)^2 - (\vetor{v}_1 \times \vetor{v}_2)^2} = 2 s\sqrt{1 - \frac{4m^2}{s}},
+    \end{equation*}
+    hence
+    \begin{equation*}
+        \diff{\sigma}{\Omega} = \frac{e^4}{32\pi^2 s\sqrt{1 - \frac{4m^2}{s}}}\left[\frac{m^2s-3m^4 - t^2 - st}{(t - m^2)^2} + \frac{m^2s-3m^4 - u^2 - su}{(u - m^2)^2}- \frac{2m^2 (t + u + 2m^2)}{(t - m^2)(u - m^2)}\right]
+    \end{equation*}
+    is the cross section for \(e^+ e^- \to \gamma \gamma.\)
 \end{proof}

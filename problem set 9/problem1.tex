@@ -1,15 +1,31 @@
 % vim: spl=en
 \begin{problem}{Charged scalar field with electromagnetic interaction}{p1}
-   Consider a free charged scalar field \(\varphi\) whose Lagrangian density is
+   Consider a free charged scalar field \(\phi\) whose Lagrangian density is
    \begin{equation*}
-      \mathcal{L} = \partial_\mu \varphi^* \partial^\mu \varphi - \mu^2 \varphi^* \varphi.
+      \mathcal{L} = \partial_\mu \phi^* \partial^\mu \phi - \mu^2 \phi^* \phi.
    \end{equation*}
    \begin{enumerate}[label=(\alph*)]
        \item Introduce the electromagnetic interaction using the covariant derivative.
        \item Obtain the Feynman rules for this model.
-       \item Evaluate the cross section of the process \(\varphi^+ \varphi^- \to \gamma \gamma.\) Obtain the result in terms of the final state photon polarizations.
+       \item Evaluate the cross section of the process \(\phi^+ \phi^- \to \gamma \gamma.\) Obtain the result in terms of the final state photon polarizations.
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   For the electromagnetic interaction, we consider the covariant derivative
+   \begin{equation*}
+       \partial_\mu\phi \to D_\mu\phi = \partial_\mu\phi + iq A_\mu\phi
+       \quad\text{and}\quad
+       \partial_\mu \phi^* \to D_\mu \phi^* = \partial_\mu \phi^* - iq A_\mu\phi^*
+   \end{equation*}
+   then we have
+   \begin{align*}
+      D_\mu \phi^* D^\mu \phi &= (\partial_\mu - iq A_\mu)\phi^* (\partial^\mu + iq A^\mu) \phi\\
+                              &= \partial_\mu\phi^* \partial^\mu \phi - iq A_\mu \phi^* \partial^\mu \phi + iq A^\mu(\partial_\mu \phi^*)\phi + q^2 A_\mu A^\mu \phi^* \phi.
+                              % &= \partial_\mu(\phi^* \partial^\mu \phi) -\phi^*(\partial_\mu \partial^\mu)\phi + iq A^\mu \left[(\partial_\mu \phi^*) \phi -\phi^*(\partial_\mu \phi)\right] + q^2 A_\mu A^\mu \phi^* \phi.
+   \end{align*}
+   We consider thus the lagrangian density
+   \begin{equation*}
+      \mathcal{L} = -\frac14 F^{\mu\nu}F_{\mu\nu} + q^2 A_\mu A^\mu \phi^*\phi + \partial_\mu \phi^*\partial^\mu \phi - \mu^2\phi^*\phi + iq A^\mu \left[(\partial_\mu \phi^*)\phi - \phi^*(\partial_\mu\phi)\right],
+   \end{equation*}
+   where we have removed the four divergence \(\partial_\mu(\phi^* \partial^\mu \phi).\)
 \end{proof}

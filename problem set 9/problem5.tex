@@ -8,5 +8,80 @@
    \end{enumerate}
 \end{problem}
 \begin{proof}[Solution]
-    
+   We will consider gauge invariance of \(\mathcal{M} = \mathcal{M}_s + \mathcal{M}_t,\) where
+   \begin{equation*}
+      i\mathcal{M}_s = i(ie)^2 \bar{u}(k_4) \slashed{\epsilon}^*(k_3) \frac{\slashed{k}_1 + \slashed{k}_2 + m}{s - m^2} \slashed{\epsilon}(k_2) u(k_1)
+      \;\text{and}\;
+      i\mathcal{M}_t = i (i e)^2\bar{u}(k_4) \slashed{\epsilon}(k_2) \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{\epsilon}^*(k_3) u(k_1)
+   \end{equation*}
+   and we will use the gauge transformations
+   \begin{equation*}
+      \epsilon_\mu(k_3) \to \tilde{\epsilon}_\mu(k_3) = \epsilon_\mu(k_3) + \xi {k_3}_\mu
+      \quad\text{and}\quad
+      \epsilon_\mu(k_2) \to \tilde{\epsilon}_\mu(k_2) = \epsilon_\mu(k_2) + \zeta {k_2}_\mu.
+   \end{equation*}
+   To verify gauge invariance, we will consider the following definitions
+   \begin{equation*}
+      \mathcal{A}_s = \frac{i\tilde{\mathcal{M}}_s - i\mathcal{M}_s}{i(ie)^2}
+      \quad\text{and}\quad
+      \mathcal{A}_t = \frac{i\tilde{\mathcal{M}}_t - i\mathcal{M}_s}{i(ie)^2},
+   \end{equation*}
+   check that they are non-vanishing but that \(\mathcal{A}_s + \mathcal{A}_t = 0.\) 
+
+   For the \(s\) channel, we have
+   \begin{equation*}
+      \mathcal{A}_s = \bar{u}_4 \left[\xi\slashed{k}_3 \frac{\slashed{k}_1 + \slashed{k}_2 + m}{s - m^2} \slashed{\epsilon}_2 + \xi \zeta \slashed{k}_3 \frac{\slashed{k}_1 + \slashed{k}_2 + m}{s - m^2} \slashed{k}_2 + \zeta \slashed{\epsilon}^*_3 \frac{\slashed{k}_1 + \slashed{k}_2 + m}{s - m^2}\slashed{k}_2 \right] u_1,
+   \end{equation*}
+   where we are using the shorthand \(\slashed{\epsilon}_2 = \slashed{\epsilon}(k_2)\) and similarly for \(u\) and \(\bar{u}.\) Notice
+   \begin{equation*}
+      \slashed{k}_2 u_1 = \left[(\slashed{k}_1 + \slashed{k}_2 - m) - (\slashed{k}_1 - m)\right]u_1 = (\slashed{k}_1 + \slashed{k}_2 - m) u_1
+   \end{equation*}
+   by the Dirac equation \((\slashed{p} - m) u(p) = 0,\) then as
+   \begin{equation*}
+      (\slashed{p} \pm m)(\slashed{p} \mp m) = p_\mu p_\nu \gamma^\mu \gamma^\nu - m^2 = \frac12 p_\mu p_\nu \anticommutator{\gamma^\mu}{\gamma^\nu} - m^2 = p_\mu p^\mu - m^2,
+   \end{equation*}
+   we have
+   \begin{equation*}
+      \frac{\slashed{k}_1 + \slashed{k}_2 + m}{s - m^2}\slashed{k}_2 u_1 = \frac{(k_1 + k_2)^2 - m^2}{s - m^2} u_1 = u_1.
+   \end{equation*}
+   Now, recall that the matrix elements \(i \mathcal{M}\) are accompanied by a delta function that establishes momentum conservation, then \(\slashed{k}_3 = \slashed{k}_1 + \slashed{k}_2 - \slashed{k}_4\) and we have
+   \begin{equation*}
+       \bar{u}_4 \slashed{k}_3 = \bar{u}_4 (\slashed{k}_1 + \slashed{k}_2 - \slashed{k}_4) = \bar{u}_4(\slashed{k}_1 + \slashed{k}_2 - m),
+   \end{equation*}
+   where we have used the Dirac equation \(\bar{u}(p) (\slashed{p} - m) = 0.\) After these developments, we get
+   \begin{align*}
+      \mathcal{A}_s &= \bar{u}_4 \left[\xi \slashed{\epsilon}_2 + \xi \zeta (\slashed{k}_1 + \slashed{k}_2 - m) + \zeta \slashed{\epsilon}^*_3\right]u_1\\
+                    &= \bar{u}_4 \left[\xi \slashed{\epsilon}_2 + \xi \zeta \slashed{k}_2 + \zeta \slashed{\epsilon}^*_3\right]u_1,
+   \end{align*}
+   which is not zero in general.
+
+   We now repeat the procedure for the \(t\) channel
+   \begin{equation*}
+      \mathcal{A}_t = \bar{u}_4\left[\xi\slashed{\epsilon}_2 \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{k}_3 + \xi \zeta \slashed{k}_2 \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{k}_3 + \zeta \slashed{k}_2 \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{\epsilon}^*_3 \right]u_1
+   \end{equation*}
+   with the following identities
+   \begin{equation*}
+       \bar{u}_4 \slashed{k}_2 = \bar{u}_4 (\slashed{k}_3 - \slashed{k}_1 + \slashed{k}_4) = - \bar{u}_4(\slashed{k}_1 - \slashed{k}_3 - m),
+   \end{equation*}
+   \begin{equation*}
+       \slashed{k}_3 u_1 = \slashed{k}_3u_1 - (\slashed{k}_1 - m)u_1 = -(\slashed{k}_1 - \slashed{k}_3 - m)u_1,
+   \end{equation*}
+   then
+   \begin{align*}
+      \mathcal{A}_t &= \bar{u}_4\left[\xi\slashed{\epsilon}_2 \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{k}_3 + \xi \zeta \slashed{k}_2 \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{k}_3 + \zeta \slashed{k}_2 \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{\epsilon}^*_3 \right]u_1\\
+                    &= \bar{u}_4\left[-\xi \slashed{\epsilon}_2 + \xi \zeta (\slashed{k}_1 - \slashed{k}_3 - m) - \zeta \slashed{\epsilon}_3^*\right]u_1\\
+                    &= -\bar{u}_4\left[\xi \slashed{\epsilon}_2 + \xi \zeta \slashed{k}_3 + \zeta \slashed{\epsilon}_3^*\right]u_1,
+   \end{align*}
+   which is also non-zero.
+
+   The difference for the process amplitude is
+   \begin{align*}
+      i \tilde{\mathcal{M}} - i \mathcal{M} &= i (ie)^2 (\mathcal{A}_s + \mathcal{A}_t)\\
+                                            &= i(ie)^2 \bar{u}_4 \left[\left(\xi \slashed{\epsilon}_2 + \xi \zeta \slashed{k}_2 + \zeta \epsilon_3^*\right) - \left(\xi \slashed{\epsilon}_2 + \xi \zeta \slashed{k}_3 + \zeta \slashed{\epsilon}_3^*\right)\right]\\
+                                            &= i(i e)^2 \xi \zeta \bar{u}_4\left(\slashed{k}_2 - \slashed{k}_3\right) u_1\\
+                                            &= i(ie)^2 \xi \zeta \bar{u}_4 \left(\slashed{k}_4 - \slashed{k}_1\right) u_1\\
+                                            &= i(ie)^2 \xi \zeta (m - \slashed{k}_1) u_1\\
+                                            &= 0,
+   \end{align*}
+   hence gauge invariant.
 \end{proof}

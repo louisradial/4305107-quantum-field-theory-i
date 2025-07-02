@@ -2,11 +2,122 @@
 \begin{problem}{Integrals in \(d\) dimensions}{p6}
    Evaluate the following integrals in \(d\) dimensions
    \begin{equation*}
-      \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^\mu}{(k^2 + 2k \cdot p - \Delta)^n}
+      \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^\mu}{(k_\sigma k^\sigma + 2k_\sigma p^\sigma - \Delta)^n}
       \quad\text{and}\quad
-      \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^\mu k^\nu}{(k^2 + 2k \cdot p - \Delta)^n}.
+      \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^\mu k^\nu}{(k_\sigma k^\sigma + 2k_\sigma p^\sigma - \Delta)^n}.
    \end{equation*}
 \end{problem}
 \begin{proof}[Solution]
-    
+   We consider the scalar integral
+   \begin{equation*}
+      I_{n}(p, \Delta) = \int_{\mathbb{R}^d}{\frac{\dln{d}{k}}{(2\pi)^d} \frac{1}{(k_\sigma k^\sigma + 2 k_\sigma p^\sigma - \Delta)^n}}
+   \end{equation*}
+   and the desired integrals
+   \begin{equation*}
+      J^\mu_{n}(p, \Delta) = 
+      \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^\mu}{(k_\sigma k^\sigma + 2k_\sigma p^\sigma - \Delta)^n}
+      \quad\text{and}\quad
+      K_n^{\mu\nu}(p, \Delta) = \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^\mu k^\nu}{(k_\sigma k^\sigma + 2k_\sigma p^\sigma - \Delta)^n}.
+   \end{equation*}
+   We note that, when well-defined, we have
+   \begin{equation*}
+      J_{n}^\mu(p, \Delta) = -\frac{1}{2(n-1)}\diffp{I_{n-1}(p, \Delta)}{p_\mu}[\Delta]\quad\text{and}\quad
+      K_{n}^{\mu\nu}(p, \Delta) = -\frac{1}{2(n-1)} \diffp{J_{n-1}^\mu(p, \Delta)}{p_\nu}[\Delta],
+   \end{equation*}
+   so part of our task is to compute \(I_{n}(p, \Delta).\) In order to do so, we'll prove two results of \(d\)-dimensional integrals in Euclidean space.
+   \begin{lemma}{Trigonometric integral representation of the beta function}{gamma_beta}
+      The beta function,
+      \begin{equation*}
+         B(p,q) = \frac{\Gamma(p) \Gamma(q)}{\Gamma(p + q)},
+      \end{equation*}
+      can be expressed as
+      \begin{equation*}
+         B(p,q) = 2\int_0^{\frac{\pi}{2}} \dli{\theta} \cos^{2p - 1}\theta \sin^{2q - 1}\theta
+      \end{equation*}
+      for all \(p, q > 0\).
+   \end{lemma}
+   \begin{proof}
+      For \(x > 0\) we have
+      \begin{equation*}
+         \Gamma(x) = \int_0^\infty \dli{t} e^{-t} t^{x - 1} = 2 \int_0^\infty \dli{t} e^{-t^2}t^{2x - 1}
+      \end{equation*}
+      with the change of variables \(t \mapsto t^2\). Then, for \(p, q > 0\) it follows that
+      \begin{align*}
+         \Gamma(p)\Gamma(q) &= 4 \left(\int_0^\infty\dli{t} e^{-t^2} t^{2p - 1}\right)\left(\int_0^\infty\dli{s} e^{-s^2} s^{2q - 1}\right)\\
+                            &= 4 \int_0^\infty \dli{t} \int_0^\infty \dli{s} e^{-(t^2 + s^2)} t^{2p - 1} s^{2q - 1}.
+      \end{align*}
+      With polar coordinates we obtain
+      \begin{align*}
+         \Gamma(p)\Gamma(q) &= 4 \int_0^\infty \dli{r} \int_0^{\frac{\pi}{2}} r\dli\theta e^{-r^2}r^{2(p+q) - 2} \cos^{2p - 1}\theta \sin^{2q-1}\theta\\
+                            &= \left(2 \int_0^{\infty}\dli{r} e^{-r^2}r^{2(p+q)-1}\right)\left(2 \int_0^{\frac{\pi}{2}}\dli{\theta} \cos^{2p - 1}\theta \sin^{2q - 1}\theta\right)\\
+                            &= \Gamma(p + q) \left(2 \int_0^{\frac{\pi}{2}}\dli{\theta} \cos^{2p - 1}\theta \sin^{2q - 1}\theta\right),
+      \end{align*}
+      that is,
+      \begin{equation*}
+         B(p,q) = \frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)} = 2 \int_0^{\frac{\pi}{2}}\dli{\theta} \cos^{2p - 1}\theta \sin^{2q - 1}\theta
+      \end{equation*}
+      as claimed.
+   \end{proof}
+   \begin{lemma}{Isotropic \(d\)-dimensional integral in Euclidean space}{hypersphere}
+      In Euclidean space, let \(\Omega = \setc{\vetor{x} \in \mathbb{R}^d}{\norm{\vetor{x}} < R}\), with \(R > 0\), and let \(f : \mathbb{R}^d \to \mathbb{R}\) be an \(\Omega\)-integrable mapping such that \(f(\vetor{x}) = \tilde{f}(\norm{\vetor{x}})\) for all \(\vetor{x} \in \Omega\), where \(\tilde{f} : \mathbb{R} \to \mathbb{R}\) is a mapping integrable over \([0, R]\). Then
+      \begin{equation*}
+         \int_{\Omega} \dln{d}x f(\vetor{x}) = C_d \int_0^R \dli{r} r^{d - 1}\tilde{f}(r)
+      \end{equation*}
+      where
+      \begin{equation*}
+         C_d = \frac{\pi^{\frac{d}{2}}d}{\Gamma(\frac{d}{2}+1)} = \frac{2 \pi^{\frac{d}{2}}}{\Gamma\left(\frac{d}{2}\right)}.
+      \end{equation*}
+   \end{lemma}
+   \begin{proof}
+      With hyperspherical coordinates, we have
+      \begin{align*}
+         \int_{\Omega} \dln{d}xf(\vetor{x}) 
+      &= \int_0^R \dli{r} \int_0^{\pi} r \dli{\varphi_1} \int_0^{\pi} r\sin\varphi_1 \dli{\varphi_2} \dots \int_0^{2\pi} r \left(\prod_{n = 1}^{d-2} \sin\varphi_n\right)\dli{\varphi_{d-1}} \tilde{f}(r)\\
+      &= 2\int_{0}^R \dli{r} r^{d-1} \tilde{f}(r) \int_0^\pi \dli{\varphi_1} \sin^{d-2}\varphi_1 \int_0^\pi \dli{\varphi_2}\sin^{d - 3}\varphi_2 \dots \int_0^\pi \dli{\varphi_{d-1}}\\
+      % &= 2\left[\int_0^R \dli{r} r^{d-1} \tilde{f}(r)\right] \prod_{n = 1}^{d-1} \left[\int_0^\pi \dli{\varphi_n} \sin^{d - 1 - n}\varphi_n\right]\\
+        &= 2\left[\int_0^R \dli{r} r^{d-1} \tilde{f}(r)\right] \prod_{n=1}^{d-1} \left[2\int_0^{\frac{\pi}{2}}\dli{\varphi \sin^{n-1}\varphi}\right] = C_d \int_0^R \dli{r} r^{d-1} \tilde{f}(r).
+   \end{align*}
+   Using \cref{lem:gamma_beta}, we obtain
+   \begin{equation*}
+      C_d = 2 \prod_{n=1}^{d-1} \left[2 \int_0^{\frac{\pi}{2}} \sin^{n - 1}\varphi\right] = 2 \prod_{n = 1}^{d - 1}{B\left(\frac12,\frac{n}{2}\right)} =  2\prod_{n=1}^{d-1}\frac{\sqrt{\pi} \Gamma(\frac{n}{2})}{\Gamma(\frac{n+1}{2})} = \frac{2 \pi^{\frac{d-1}{2}}\Gamma(\frac12)}{\Gamma(\frac{d}{2})} = \frac{2d \pi^{\frac{d}{2}}}{d \Gamma(\frac{d}{2})} = \frac{\pi^{\frac{d}{2}}d}{\Gamma(\frac{d}{2} + 1)},
+   \end{equation*}
+   as claimed.
+   \end{proof}
+
+   In order to use the Euclidean space results, we perform the Wick rotations \(k_0 \to ik_0\) and \(p \to ip_0,\) then \(k_\sigma k^\sigma \to -\norm{k_E}^2,\) \(k_\sigma p^\sigma \to -i k_E \cdot p_E,\) and
+   \begin{equation*}
+      k_\sigma k^\sigma + 2 k_\sigma p^\sigma - \Delta \to -\left[(k_E + p_E)^2 + M^2\right],
+   \end{equation*}
+   where \(M^2 = \Delta - \norm{p_E}^2 = \Delta + p_\sigma p^\sigma.\) With this, we obtain
+   \begin{equation*}
+      I_n(p, \Delta) = i(-1)^n\int_{\mathbb{R}^d}\frac{\dln{d}{k_E}}{(2\pi)^d} \frac{1}{\left[(k_E + p_E)^2 + M^2\right]^n},
+   \end{equation*}
+   then by a translation \(r = k_E + p_E,\) we get
+   \begin{equation*}
+      I_{n}(p, \Delta) = i(-1)^n\int_{\mathbb{R}^d} \frac{\dln{d}r}{(2\pi)^d} \frac{1}{(r^2 + M^2)^n},
+   \end{equation*}
+   which has an isotropic integrand, then
+   \begin{equation*}
+      I_{n}(p, \Delta) = i\frac{2(-1)^n \pi^{\frac{d}{2}}}{(2\pi)^d \Gamma\left(\frac{d}{2}\right)} \int_{0}^\infty \dli{r} \frac{r^{d-1}}{(r^2 + M^2)^n}
+   \end{equation*}
+   by \cref{lem:hypersphere}. For \(M = 0\) this integral diverges, and for \(M \neq 0\) we use the substitution \(r = M \tan\theta,\) then
+   \begin{align*}
+      I_{n}(p, \Delta) &= i\frac{2(-1)^n \pi^{\frac{d}{2}}}{(2\pi)^d \Gamma\left(\frac{d}{2}\right)} \int_{0}^{\frac\pi2} M \sec^2{\theta}\dli{\theta} \frac{M^{d - 1} \tan^{d - 1}\theta}{M^{2n} \sec^{2n}\theta}\\
+                                   &= i\frac{M^{d - 2n} (-1)^n \pi^{\frac{d}{2}}}{(2\pi)^d \Gamma\left(\frac{d}{2}\right)} 2\int_0^{\frac\pi2} \dli{\theta} \sin^{d - 1}\theta \cos^{2n - d - 1}\theta\\
+                                   &= i\frac{M^{d - 2n} (-1)^n \pi^{\frac{d}{2}}}{(2\pi)^d \Gamma\left(\frac{d}{2}\right)} B\left(n - \frac{d}{2}, \frac{d}{2}\right)\\
+                                   &= iM^{d - 2n}\frac{(-1)^n \pi^{\frac{d}{2}}\Gamma\left(n - \frac{d}{2}\right)}{(2\pi)^d \Gamma(n)}\\
+                                   &= i(\Delta + p_\sigma p^\sigma)^{\frac{d}{2}-n} \frac{(-1)^n \Gamma\left(n - \frac{d}{2}\right)}{2^d \pi^{\frac{d}{2}} \Gamma(n)},
+   \end{align*}
+   where convergence relies on \(n - \frac{d}{2}\) and \(n\) not being non-positive integers. For such cases, we have
+   \begin{align*}
+      J^\mu_{n}(p, \Delta) &= - \frac{1}{2(n - 1)} \diffp{I_{n - 1}(p, \Delta)}{p_\mu}[\Delta]\\
+                           &= i\frac{(-1)^n \Gamma\left(n - 1 - \frac{d}{2}\right)}{2^{d+1}  \pi^{\frac{d}{2}} \Gamma(n)} \diffp*{(\Delta + p_\sigma p^\sigma)^{\frac{d}{2} - n + 1}}{p_\mu}[\Delta]\\
+                           &= -i\frac{(-1)^{n} \Gamma\left(n - \frac{d}{2}\right)}{2^{d}  \pi^{\frac{d}{2}} \Gamma(n)} \frac{p^\mu}{(\Delta + p_\sigma p^\sigma)^{n - \frac{d}{2}}}
+   \end{align*}
+   and
+   \begin{align*}
+      K^{\mu\nu}_{n}(p, \Delta) &= - \frac{1}{2(n - 1)} \diffp{J^\mu_{n - 1}(p, \Delta)}{p_\nu}[\Delta]\\
+                                &= i\frac{(-1)^n \Gamma\left(n - 1 - \frac{d}{2}\right)}{2^{d+1}  \pi^{\frac{d}{2}} \Gamma(n)} \diffp*{\frac{p^\mu}{(\Delta + p_\sigma p^\sigma)^{n - 1 - \frac{d}{2}}}}{p_\nu}[\Delta]\\
+                                &= i\frac{(-1)^n \Gamma\left(n - 1 - \frac{d}{2}\right)}{2^{d+1}  \pi^{\frac{d}{2}} \Gamma(n)} \left[\frac{g^{\mu\nu}}{(\Delta + p_\sigma p^\sigma)^{n - 1 - \frac{d}{2}}} - \frac{2\left(n - 1 - \frac{d}{2}\right) p^\mu p^\nu}{(\Delta +p_\sigma p^\sigma)^{n - \frac{d}{2}}}\right].
+   \end{align*}
 \end{proof}

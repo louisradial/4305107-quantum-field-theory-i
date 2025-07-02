@@ -3,5 +3,58 @@
    Obtain the Compton cross section using the crossing symmetry and the result of the previous problem.
 \end{problem}
 \begin{proof}[Solution]
-    
+   We consider the Compton scattering \(e^- \gamma \to e^- \gamma,\) with the following tree level diagrams
+   \begin{center}
+      \feynmandiagram[inline=(b.base),medium, horizontal=a to b]{
+         i1 [particle=\(e^-\)] -- [fermion, momentum=\(k_1\)] a;
+         i2 [particle=\(\gamma\)] -- [photon, momentum=\(k_2\)] a;
+         a -- [fermion, momentum'=\(k_1 + k_2\)] b;
+         b -- [fermion, momentum=\(k_4\)] f1 [particle=\(e^-\)];
+         b -- [photon, momentum=\(k_3\)] f2 [particle=\(\gamma\)];
+      };
+      and
+      \feynmandiagram[inline=(b.base),medium,vertical=a to b]{
+         i1 [particle=\(e^-\)] -- [fermion, momentum'=\(k_1\)] a -- [photon, momentum'=\(k_3\)] f1 [particle=\(\gamma\)];
+         a -- [fermion, momentum=\(k_1 - k_3\)] b;
+         b -- [fermion, momentum=\(k_4\)] f2 [particle=\(e^-\)];
+         i2 [particle=\(\gamma\)] -- [photon, momentum=\(k_2\)] b;
+      };
+   \end{center}
+   which contribute to the matrix element
+   \begin{equation*}
+      i\mathcal{M} = i(ie)^2 \left[\bar{u}(k_4) \slashed{\epsilon}^*(k_3) \frac{\slashed{k}_1 + \slashed{k}_2 + m}{s - m^2} \slashed{\epsilon}(k_2) u(k_1) + \bar{u}(k_4) \slashed{\epsilon}(k_2) \frac{\slashed{k}_1 - \slashed{k}_3 + m}{t - m^2} \slashed{\epsilon}^*(k_3) u(k_1)\right].
+   \end{equation*}
+   With respect to the previous process, we have crossed the positron and a photon, which corresponds to the assignments \(k_1 = p_1,\) \(k_2 = -p_4,\) \(k_3 = p_3,\) and \(k_4 = -p_2\), and thus when we sum over polarization and spin we get the same amplitude as before, changing \(s \mapsto u,\) \(t\mapsto t\) and \(u \mapsto s,\) that is,
+   \begin{equation*}
+      \overline{\abs{i\mathcal{M}}^2} = \frac{2e^4\left(m^2u-3m^4 - t^2 - ut\right)}{(t - m^2)^2} + \frac{2e^4\left(m^2u-3m^4 - s^2 - us\right)}{(s - m^2)^2}- \frac{4m^2 e^4(t + s + 2m^2)}{(t - m^2)(s - m^2)}.
+   \end{equation*}
+
+   The differential cross section is
+   \begin{equation*}
+      \dl{\sigma} = \frac{\overline{\abs{i\mathcal{M}}^2}}{F} \dli{\Pi_2},
+   \end{equation*}
+   where the differential phase space is 
+   \begin{equation*}
+      \dl{\Pi_2} = \dli{\Omega}\frac{1}{32\pi^2} \sqrt{1 - 2\frac{m^2}{s} + \frac{m^4}{s^2}},
+   \end{equation*}
+   using the result from \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset8}{Problem 3 of Problem Set VIII}. In the center of momentum frame, the flux term is 
+   \begin{align*}
+      F &= 4 E_1 E_2 \sqrt{\vetor{v}_1^2 + \vetor{v}_2^2 - 2\vetor{v}_1 \cdot \vetor{v}_2}\\
+        &= 4 \sqrt{E_2^2 \vetor{k}_1^2 + E_1^2 \vetor{k}_2^2 - 2 E_1 E_2 \vetor{k}_1 \cdot \vetor{k}_2}\\
+        &= 4 \sqrt{(k_1 k_2)^2 - k_1^2 k_2^2}\\
+        &= 4k_1 k_2\\
+        &= 2s - 2m^2,
+   \end{align*}
+   where we have used
+   \begin{align*}
+      (k_1 k_2)^2 - k_1^2 k_2^2 &= (E_1E_2 - \vetor{k}_1 \cdot \vetor{k}_2)^2 - (E_1^2 - \vetor{k}_1^2)(E_2^2 - \vetor{k}_2^2)\\
+                                &= (E_1 E_2)^2 - 2 E_1 E_2 \vetor{k}_1 \cdot \vetor{k}_2 + (\vetor{k}_1 \cdot \vetor{k}_2)^2 - E_1^2 E_2^2 - \vetor{k}_1^2 \vetor{k}_2^2 + E_1^2 \vetor{k}_2^2 + E_2^2 \vetor{k}_1^2\\
+                                &= E_2^2 \vetor{k}_1^2 + E_1^2 \vetor{k}_2^2 - 2 E_1 E_2 \vetor{k}_1 \cdot \vetor{k}_2 - (\vetor{k}_1 \times \vetor{k}_2)^2\\
+                                &= E_2^2 \vetor{k}_1^2 + E_1^2 \vetor{k}_2^2 - 2 E_1 E_2 \vetor{k}_1 \cdot \vetor{k}_2,
+   \end{align*}
+   where \(\vetor{k}_1 \times \vetor{k}_2 = \vetor{0}\) since they are collinear. Then,
+   \begin{equation*}
+      \diff{\sigma}{\Omega} = \frac{e^4\sqrt{1 - 2\frac{m^2}{s} + \frac{m^4}{s^2}}}{32\pi^2 (s - m^2)}\left[\frac{m^2u-3m^4 - t^2 - ut}{(t - m^2)^2} + \frac{m^2u-3m^4 - s^2 - us}{(s - m^2)^2}- \frac{2m^2(t + s + 2m^2)}{(t - m^2)(s - m^2)}\right]
+   \end{equation*}
+   is the differential cross section for the Compton scattering.
 \end{proof}

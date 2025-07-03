@@ -23,9 +23,97 @@
                               &= \partial_\mu\phi^* \partial^\mu \phi - iq A_\mu \phi^* \partial^\mu \phi + iq A^\mu(\partial_\mu \phi^*)\phi + q^2 A_\mu A^\mu \phi^* \phi.
                               % &= \partial_\mu(\phi^* \partial^\mu \phi) -\phi^*(\partial_\mu \partial^\mu)\phi + iq A^\mu \left[(\partial_\mu \phi^*) \phi -\phi^*(\partial_\mu \phi)\right] + q^2 A_\mu A^\mu \phi^* \phi.
    \end{align*}
-   We consider thus the lagrangian density
+   Under the gauge transformation
    \begin{equation*}
-      \mathcal{L} = -\frac14 F^{\mu\nu}F_{\mu\nu} + q^2 A_\mu A^\mu \phi^*\phi + \partial_\mu \phi^*\partial^\mu \phi - \mu^2\phi^*\phi + iq A^\mu \left[(\partial_\mu \phi^*)\phi - \phi^*(\partial_\mu\phi)\right],
+      \phi \to \phi' = e^{-iq \Lambda} \phi
+      \quad\text{and}\quad
+      A_\mu \to A'_\mu = A_\mu + \partial_\mu \Lambda
    \end{equation*}
-   where we have removed the four divergence \(\partial_\mu(\phi^* \partial^\mu \phi).\)
+   we have
+   \begin{align*}
+      D'_\mu \phi' &= (\partial_\mu + i q A'_\mu) e^{-iq \Lambda} \phi \\
+      &= -iq e^{-i q\Lambda}(\partial_\mu \Lambda) \phi + e^{-iq \Lambda} \partial_\mu \phi + iq A'_\mu e^{-iq \Lambda} \phi\\
+      &= e^{-iq \Lambda} \left[iq(A'_\mu - \partial_\mu \Lambda) + \partial_\mu\right]\phi\\
+      &= e^{-iq \Lambda} D_\mu\phi,
+   \end{align*}
+   hence \(D_\mu \phi^* D^\mu \phi\) is invariant such transformation. We consider thus the Lagrangian density
+   \begin{align*}
+      \mathcal{L} &= -\frac14 F^{\mu\nu}F_{\mu\nu} + D_\mu\phi^* D^\mu \phi - \mu^2 \phi^*\phi\\
+                  &= -\frac14 F^{\mu\nu}F_{\mu\nu} +  \partial_\mu \phi^*\partial^\mu \phi - \mu^2\phi^*\phi + iq A^\mu \left[(\partial_\mu \phi^*)\phi - \phi^*(\partial_\mu\phi)\right] + q^2 A_\mu A^\mu \phi^*\phi,
+   \end{align*}
+   that couples the charged scalar field with electrodynamics and is gauge invariant.
+
+   The interaction term is
+   \begin{equation*}
+      \mathcal{L}_{\mathrm{int}} = q^2 A_\mu A^\mu \phi^*\phi + iq A^\mu \left[(\partial_\mu \phi^*)\phi - \phi^* (\partial_\mu \phi)\right],
+   \end{equation*}
+   and we will simply state the vertices of interaction, understanding the Feynman rules of quantum electrodynamics as a baseline. The vertex associated with the \(iq A^\mu \left[(\partial_\mu \phi^*)\phi - \phi^* (\partial_\mu \phi)\right]\) term depends on the direction of the incoming momenta of the charged scalar field, as 
+   \begin{equation*}
+      \partial_\mu \phi(x) = -i\int_{\mathbb{R}^3} \frac{\dln3p}{(2\pi)^3 \sqrt{2 \omega_p}} p_\mu \left(a_{\vetor{p}} e^{-ipx} - \herm{b}_{\vetor{p}}e^{ipx}\right),
+   \end{equation*}
+   then we'll have
+   \begin{equation*}
+      \feynmandiagram[inline=(a.base),medium,vertical=a to f1]{
+         i1 -- [charged scalar, momentum'=\(p\)] a -- [photon] f1 [particle=\(\mu\)];
+         a -- [charged scalar, momentum'=\(p'\)] f2;
+      }; = -iq (p_\mu + p'_\mu),
+   \end{equation*}
+   that is, incoming charged particles contribute with \(-iq p_\mu\) and incoming charged antiparticles contribute with \(iq p_\mu.\) For the other vertex we'll have
+   \begin{equation*}
+      \feynmandiagram[inline=(a.base),medium,vertical=i1 to f2]{
+         i1 -- [charged scalar] a -- [photon] f1 [particle=\(\mu\)];
+         a -- [charged scalar] f2;
+         i2 [particle=\(\nu\)] -- [photon] a;
+      }; = 2i q^2 g_{\mu\nu},
+   \end{equation*}
+   where we have already included the symmetry factor.
+
+   For the annihilation process \(\phi \phi^* \to \gamma \gamma\) we have at leading order \(q^2\) the diagram
+   \begin{equation*}
+      \feynmandiagram[inline=(a.base),medium, vertical=i1 to i2]{
+         i1 [particle=\(\phi\)]-- [charged scalar, momentum'=\(p_1\)] a -- [photon, momentum=\(k_3\)] f1 [particle=\(\gamma\)];
+         a -- [charged scalar, rmomentum=\(p_2\)] i2 [particle=\(\phi^*\)];
+         f2 [particle=\gamma] -- [photon,rmomentum'=\(k_4\)] a;
+      }; \equiv i \mathcal{M}_4 = 2i q^2 g^{\mu\nu} \epsilon^\lambda_\mu(k_3)^* \epsilon^{\lambda'}_\nu(k_4)^*
+   \end{equation*}
+   and the \(t\) and \(u\) channels with the other vertex
+   \begin{equation*}
+      \feynmandiagram[inline=(a.base),medium,vertical=a to b]{
+         i1 [particle=\(\phi\)] -- [charged scalar, momentum'=\(p_1\)] a -- [photon, momentum'=\(k_3\)] f1 [particle=\(\gamma\)];
+         a -- [charged scalar, momentum=\(p_1 - k_3\)] b;
+         b -- [photon, momentum=\(k_4\)] f2 [particle=\(\gamma\)];
+         i2 [particle=\(\phi^*\)] -- [anti charged scalar, momentum=\(p_2\)] b;
+      }; \equiv i \mathcal{M}_t = (-iq)^2(p_1 + p_1 - k_3)^\mu \epsilon^\lambda_\mu(k_3)^* \frac{i}{t - \mu^2} (p_1 - k_3 - p_2)^\nu \epsilon^{\lambda'}_\nu(k_4)^*
+   \end{equation*}
+   and
+   \begin{equation*}
+      \feynmandiagram[inline=(a.base),medium,vertical=a to b]{
+         i1 [particle=\(\phi\)] -- [charged scalar, momentum'=\(p_1\)] a -- [photon, momentum'=\(k_4\)] f1 [particle=\(\gamma\)];
+         a -- [charged scalar, momentum=\(p_1 - k_4\)] b;
+         b -- [photon, momentum=\(k_3\)] f2 [particle=\(\gamma\)];
+         i2 [particle=\(\phi^*\)] -- [anti charged scalar, momentum=\(p_2\)] b;
+      }; \equiv i \mathcal{M}_t = (-iq)^2(p_1 + p_1 - k_4)^\nu \epsilon^{\lambda'}_\nu(k_4)^* \frac{i}{u - \mu^2} (p_1 - k_4 - p_2)^\mu \epsilon^{\lambda}_\mu(k_3)^*.
+   \end{equation*}
+   Without summing over final state photon polarizations, the total amplitude \(i\mathcal{M} = i \mathcal{M}_4 + i \mathcal{M}_t + i \mathcal{M}_u\) will not have a neat simplification, thus the best thing we can do is to simply hide it 
+   \begin{equation*}
+      i\mathcal{M} = iq^2\epsilon^{\lambda}_\mu(k_3)^* \epsilon^{\lambda'}_\nu(k_4)^* L^{\mu\nu},
+   \end{equation*}
+   where \(L^{\mu\nu}\) contains everything else. With this, we have
+   \begin{equation*}
+      \abs{i \mathcal{M}}^2 = q^4 \epsilon_\alpha^{\lambda}(k_3) \epsilon^\lambda_\mu(k_3)^* \epsilon_{\beta}^{\lambda'}(k_4) \epsilon^{\lambda'}_\nu(k_4)^* L^{\mu\nu} {L^{\alpha \beta}}^*.
+   \end{equation*}
+
+   From \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset8}{Problem 3 of Problem Set VIII}, the differential phase space is
+   \begin{equation*}
+      \dl{\Pi_2} = \dli{\Omega} \frac{1}{32\pi^2},
+   \end{equation*}
+   and from \href{https://github.com/louisradial/4305107-quantum-field-theory-i/releases/tag/pset7}{Problem 4 of Problem Set VII}, the flux factor is
+   \begin{equation*}
+      F = 2s \sqrt{1 - \frac{4\mu^2}{s}},
+   \end{equation*}
+   so
+   \begin{equation*}
+      \diff{\sigma}{\Omega} = \frac{q^4 \epsilon_\alpha^{\lambda}(k_3) \epsilon^\lambda_\mu(k_3)^* \epsilon_{\beta}^{\lambda'}(k_4) \epsilon^{\lambda'}_\nu(k_4)^* L^{\mu\nu} {L^{\alpha \beta}}^*}{64 \pi^2 s \sqrt{1 - \frac{4\mu^2}{s}}}
+   \end{equation*}
+   is the differential cross section in the center of momentum frame.
 \end{proof}

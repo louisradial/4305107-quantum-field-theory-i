@@ -2,10 +2,92 @@
 \begin{problem}{Wave function renormalization constant for scalar field in the Yukawa model}{p7}
    Consider the Yukawa model
    \begin{equation*}
-      \mathcal{L} = \frac12 \partial_\mu\varphi \partial^\mu \varphi - \frac{\mu^2}{2} \varphi^2 - \frac{\mu^2}{4!} \varphi^4 + \bar{\Psi} (i \slashed{\partial} - m) \Psi - g \varphi \bar{\Psi}\Psi,
+      \mathcal{L} = \frac12 \partial_\nu\varphi_0 \partial^\nu \varphi_0 - \frac{\mu_0^2}{2} \varphi_0^2 - \frac{\lambda_0}{4!} \varphi_0^4 + \bar{\Psi} (i \slashed{\partial} - m) \Psi - g_0 \varphi_0 \bar{\Psi}\Psi,
    \end{equation*}
-   where \(\varphi\) is a real scalar field and \(\Psi\) is a Dirac fermion. Evaluate the wave function renormalization constant \(Z\) for the scalar field \(\varphi_F = Z^{\frac12} \varphi_B.\)
+   where \(\varphi_B\) is a real scalar field and \(\Psi\) is a Dirac fermion. Evaluate the wave function renormalization constant \(Z\) for the scalar field \(\varphi = Z^{\frac12} \varphi_0.\)
 \end{problem}
 \begin{proof}[Solution]
-    
+   The physical field \(\varphi\) will be the rescaled bare field \(\varphi_0\) defined by \(\varphi = Z^{-\frac12} \varphi_0\) due to the Källén-Lehmann spectral representation. With the definitions of the difference between physical parameters and bare parameters,
+   \begin{equation*}
+      Z = 1 + \delta Z,\quad
+      \mu^2_0Z = \mu^2 + \delta\mu^2,\quad
+      g_0 Z^{\frac12} = g + \delta g,\quad\text{and}\quad
+      \lambda_0 Z^2 = \lambda + \delta \lambda,
+   \end{equation*}
+   the Yukawa model Lagrangian density becomes
+   \begin{align*}
+      \mathcal{L} &= \bar{\Psi} (i \slashed{\partial} - m) \Psi - g \varphi \bar{\Psi}\Psi  + \frac12 \partial_\nu\varphi \partial^\nu \varphi - \frac{\mu^2}{2} \varphi^2 - \frac{\lambda}{4!} \varphi^4 
+                  %&{}\phantom{=\bar{\Psi} (i \slashed{\partial} - m) \Psi} 
+      - \delta g \varphi \bar{\Psi}\Psi  + 
+      \frac{\delta Z} 2 \partial_\nu\varphi \partial^\nu \varphi - \frac{\delta \mu^2}{2} \varphi^2 - \frac{\delta \lambda}{4!} \varphi^4 
+               \end{align*}
+               and we may interpret the latter terms as part of the interaction, which correspond to the vertices
+               \begin{equation*}
+                  \feynmandiagram[small,vertical=i1 to i2, inline=(a.base)]{
+                     i1 -- [scalar] a [crossed dot] -- [scalar] f1;
+                     i2 -- [scalar] a -- [scalar] f2;
+                  }; = -i \delta\lambda,\quad
+                  \feynmandiagram[small, horizontal=i1 to i2, horizontal=a to f1, inline=(f1.base)]{
+                     i1 -- [scalar] a [crossed dot] -- [scalar] f1;
+                     i2 -- [draw=none] a -- [draw=none] f2;
+                  }; = -i(\delta \mu^2 - p^2 \delta Z),\quad\text{and}\quad
+                  \feynmandiagram[small,vertical=i1 to i2, inline=(a.base)]{
+                     i1 -- [fermion] a [crossed dot] -- [scalar] f1;
+                     i2 -- [anti fermion] a;
+                  }; = -i \delta g.
+               \end{equation*}
+               The contributions for the two-point correlation functional at one-loop order are
+               \begin{align*}
+                  \feynmandiagram[small, horizontal=a to f1, inline=(f1.base)]{
+                     i1 -- [scalar,momentum'=\(p\)] a [blob] -- [scalar] f1;
+                     i2 -- [draw=none] a -- [draw=none] f2;
+                  };
+      &= 
+      \feynmandiagram[small, horizontal=i1 to f1, inline=(a.base)]{
+         i1 -- [scalar,momentum'=\(p\)] a -- [scalar] f1;
+         a --[scalar, out=135, in=45, loop, min distance=2cm] a;
+         % i1 -- [draw=none] f1;
+      }; + 
+      \feynmandiagram[small, horizontal=a to f1, inline=(f1.base)]{
+         i1 -- [scalar,momentum'=\(p\)] a [crossed dot] -- [scalar] f1;
+         i2 -- [draw=none] a -- [draw=none] f2;
+      }; +
+      \feynmandiagram [layered layout, small, horizontal=b to c, inline=(a.base)] {
+         a -- [scalar,momentum'=\(p\)] b
+         -- [fermion, half left, looseness=1.5, momentum= \(k+ p\)] c
+         -- [fermion, half left, looseness=1.5, momentum=\(k\)] b,
+         c -- [scalar] d,
+      };
+   \end{align*}
+   as the other counterterms contribute when we consider higher order loops contributions. Computing the amplitudes from the Feynman rules we get
+   \begin{align*}
+      -i \Sigma &= \frac{(-i \lambda)}{2} \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{i}{k^2 - \mu^2} -i(\delta \mu^2 - p^2 \delta Z) - (-i g)^2\int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d}\Tr\left[\frac{i(\slashed{k} + \slashed{p} + m)}{(k + p)^2 - m^2}\frac{i(\slashed{k} + m)}{k^2 - m^2}\right]\\
+                &= \frac{\lambda}{2} \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{1}{k^2 - \mu^2} -i(\delta \mu^2 - p^2 \delta Z) - g^2\int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d}\frac{4 (k^2 + k p + m^2)}{\left[(k + p)^2 - m^2\right]\left(k^2 - m^2\right)}\\
+                &= \frac{\lambda}{2} \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{1}{k^2 - \mu^2} -i(\delta \mu^2 - p^2 \delta Z) - g^2\int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d}\int_0^1 \dli{x} \frac{4 (k^2 + k p + m^2)}{(k^2 + 2x kp + x p^2 - m^2)^2}\\
+                &= \frac{\lambda}{2} I_1(0, \mu^2) - i(\delta \mu^2 - p^2 \delta Z) - 4g^2 \int_0^1 \dli{x} \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^2 - (x - x^2)p^2 + (1 - 2x) p k + m^2}{[k^2 - m^2 - (x - x^2) p^2]^2}
+   \end{align*}
+   where we have used the results from \cref{prob:p6}, introduced a Feynman parameter, and used the change of variables \(k + xp \to k\) in the last steps. In the numerator of the fermion loop integral the term linear in \(k\) vanishes due to substitution \(k \to -k\), so we have
+   \begin{align*}
+      \feynmandiagram [layered layout, small, horizontal=b to c, inline=(a.base)] {
+         a -- [scalar,momentum'=\(p\)] b
+         -- [fermion, half left, looseness=1.5, momentum= \(k+ p\)] c
+         -- [fermion, half left, looseness=1.5, momentum=\(k\)] b,
+         c -- [scalar] d,
+      }; 
+      &=- 4g^2 \int_0^1 \dli{x} \int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \frac{k^2 - (x - x^2)p^2 + m^2}{[k^2 - m^2 - (x - x^2) p^2]^2}\\
+      &= -4g^2 \int_0^1 \dli{x}\int_{\mathbb{R}^d} \frac{\dln{d}k}{(2\pi)^d} \left\{\frac{1}{k^2 - m^2 - (x - x^2)p^2} + \frac{3m^2}{[k^2 - m^2 - (x - x^2)p^2]^2}\right\}\\
+      &= - 4g^2 \int_0^1 \dli{x} \left[I_1(0, m^2 + (x - x^2)p^2) + 3m^2 I_2(0, m^2 + (x - x^2)p^2)\right]\\
+      &= 4ig^2 \int_0^1 \dli{x} \frac{\left[m^2 + (x - x^2)p^2\right]^{\frac{d}{2} - 2}}{(4\pi)^{\frac{d}{2}}}\left\{\left[m^2 + (x - x^2)p^2\right] \Gamma\left(1 - \frac{d}{2}\right) - 3m^2\Gamma\left(2 - \frac{d}{2}\right)\right\}.
+   \end{align*}
+   In order to obtain \(\delta Z\) we impose that the residue of the propagator is the physical mass, hence from \(-i \diff{\Sigma(p^2)}{p^2}[p^2 = \mu^2] = 0\) we get
+   \begin{align*}
+      \delta Z &= 8g^2 \int_0^1 \dli{x} \frac{(x - x^2)\left\{[m^2 + (x- x^2)\mu^2]^{\frac{d}{2} - 2}\Gamma\left(2 - \frac{d}{2}\right) - 3m^2 [m^2 + (x - x^2)\mu^2]^{\frac{d}{2} - 3} \Gamma\left(3 - \frac{d}{2}\right)\right\}}{{(4\pi)^{\frac{d}{2}}}}\\
+               &\stackrel{d=4 - \epsilon}{=} \frac{g^2}{2\pi^2} \int_0^1 \dli{x} \frac{(x - x^2) \left\{\Gamma\left(\frac{\epsilon}{2}\right) - 3m^2 \left[m^2 + (x - x^2)\mu^2\right]^{-1}\right\}}{\left[\frac{m^2 + (x - x^2) \mu^2}{4\pi}\right]^{\frac\epsilon2}}\\
+               &\stackrel{\epsilon \to 0}{=} \frac{g^2}{2\pi^2} \int_0^1 \dli{x} (x - x^2) \left\{\frac{2}{\epsilon} - \gamma + \ln\left[\frac{4\pi}{m^2 + (x - x^2)\mu^2} \right] + O(\epsilon)\right\}
+   \end{align*}
+   and thus
+   \begin{equation*}
+      Z = 1 + \frac{g^2}{2\pi^2} \int_0^1 \dli{x} (x - x^2) \left\{\frac{2}{\epsilon} - \gamma + \ln\left[\frac{4\pi}{m^2 + (x - x^2)\mu^2} \right] + O(\epsilon)\right\}
+   \end{equation*}
+   is the wave function renormalization constant.
 \end{proof}

@@ -81,13 +81,13 @@
    \end{align*}
    In order to obtain \(\delta Z\) we impose that the residue of the propagator is the physical mass, hence from \(-i \diff{\Sigma(p^2)}{p^2}[p^2 = \mu^2] = 0\) we get
    \begin{align*}
-      \delta Z &= 8g^2 \int_0^1 \dli{x} \frac{(x - x^2)\left\{[m^2 + (x- x^2)\mu^2]^{\frac{d}{2} - 2}\Gamma\left(2 - \frac{d}{2}\right) - 3m^2 [m^2 + (x - x^2)\mu^2]^{\frac{d}{2} - 3} \Gamma\left(3 - \frac{d}{2}\right)\right\}}{{(4\pi)^{\frac{d}{2}}}}\\
-               &\stackrel{d=4 - \epsilon}{=} \frac{g^2}{2\pi^2} \int_0^1 \dli{x} \frac{(x - x^2) \left\{\Gamma\left(\frac{\epsilon}{2}\right) - 3m^2 \left[m^2 + (x - x^2)\mu^2\right]^{-1}\right\}}{\left[\frac{m^2 + (x - x^2) \mu^2}{4\pi}\right]^{\frac\epsilon2}}\\
-               &\stackrel{\epsilon \to 0}{=} \frac{g^2}{2\pi^2} \int_0^1 \dli{x} (x - x^2) \left\{\frac{2}{\epsilon} - \gamma + \ln\left[\frac{4\pi}{m^2 + (x - x^2)\mu^2} \right] + O(\epsilon)\right\}
+      \delta Z &= 8g^2 \int_0^1 \dli{x} \frac{(x - x^2)\left\{[m^2 + (x- x^2)\mu^2]^{\frac{d}{2} - 2}\Gamma\left(2 - \frac{d}{2}\right) - 3m^2  [m^2 + (x - x^2)\mu^2]^{\frac{d}{2} - 3} \Gamma\left(3 - \frac{d}{2}\right)\right\}}{{(4\pi)^{\frac{d}{2}}}}\\
+               &\stackrel{d=4 - \epsilon}{=} \frac{g^2}{2\pi^2} \int_0^1 \dli{x} \frac{(x - x^2) \left\{\Gamma\left(\frac{\epsilon}{2}\right) - 3m^2\Gamma\left(1+ \frac{\epsilon}{2}\right) \left[m^2 + (x - x^2)\mu^2\right]^{-1}\right\}}{\left[\frac{m^2 + (x - x^2) \mu^2}{4\pi}\right]^{\frac\epsilon2}}\\
+               &\stackrel{\epsilon \to 0}{=} \frac{g^2}{2\pi^2} \int_0^1 \dli{x} (x - x^2) \left\{\frac{2}{\epsilon} - \gamma - \frac{3m^2}{m^2 + (x - x^2)\mu^2}+ \ln\left[\frac{4\pi}{m^2 + (x - x^2)\mu^2} \right] + O(\epsilon)\right\}
    \end{align*}
    and thus
    \begin{equation*}
-      Z = 1 + \frac{g^2}{2\pi^2} \int_0^1 \dli{x} (x - x^2) \left\{\frac{2}{\epsilon} - \gamma + \ln\left[\frac{4\pi}{m^2 + (x - x^2)\mu^2} \right] + O(\epsilon)\right\}
+      Z = 1 + \frac{g^2}{2\pi^2} \int_0^1 \dli{x} (x - x^2) \left\{\frac{2}{\epsilon} - \gamma - \frac{3m^2}{m^2 + (x - x^2)\mu^2}+ \ln\left[\frac{4\pi}{m^2 + (x - x^2)\mu^2} \right] + O(\epsilon)\right\}
    \end{equation*}
    is the wave function renormalization constant.
 \end{proof}
